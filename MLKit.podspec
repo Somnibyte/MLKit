@@ -9,26 +9,25 @@
 Pod::Spec.new do |s|
   s.name             = 'MLKit'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of MLKit.'
-
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
+  s.summary          = 'A simple machine learning framework written in Swift 🤖'
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+    MLKit is a simple machine learning framework written in Swift. Currently MLKit features machine learning algorithms that deal with the topic of regression, but the framework will expand over time with topics such as classification, clustering, recommender systems, and deep learning. The vision and goal of this framework is to provide developers with a toolkit to create products that can learn from data. MLKit is a side project of mine in order to make it easier for developers to implement machine learning algorithms on the go, and to familiarlize myself with machine learning concepts.
+
+
                        DESC
 
-  s.homepage         = 'https://github.com/Guled Ahmed/MLKit'
+
+  s.homepage         = 'https://github.com/Somnibyte/MLKit'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Guled Ahmed' => 'guledahmed777@gmail.com' }
-  s.source           = { :git => 'https://github.com/Guled Ahmed/MLKit.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.source           = { :git => 'https://github.com/Somnibyte/MLKit.git', :tag => s.version.to_s }
+  # s.social_media_url = 'https://twitter.com/_Guled_'
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '9.0'
+  s.watchos.deployment_target = '3.1'
+  s.tvos.deployment_target = '10.1'
 
   s.source_files = 'MLKit/Classes/**/*'
   
@@ -37,6 +36,6 @@ TODO: Add long description of the pod here.
   # }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.frameworks = 'UIKit', 'MapKit'
+  s.dependency 'Upsurge'
 end
