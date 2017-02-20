@@ -10,8 +10,6 @@ import Foundation
 import Upsurge
 
 open class MLDataManager {
-
-    
     
     enum MLDataHandelingError: Error {
         case noData
