@@ -24,6 +24,7 @@ pod 'MachineLearningKit', '0.1.1'
 ## Wiki 
 
 - [x] [Simple Linear Regression (1 Feature)](https://github.com/Somnibyte/MLKit/wiki/Simple-Linear-Regression-Tutorial)
+- [x] [Polynomail Regression](https://github.com/Somnibyte/MLKit/wiki/Polynomial-Regression-Tutorial)
 
 ## Features (So Far)
 
