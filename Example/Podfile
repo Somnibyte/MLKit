@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'MLKit_Example' do
+  pod 'MLKit', :path => '../'
+
+  target 'MLKit_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
