@@ -26,7 +26,6 @@ Pod::Spec.new do |s|
   # s.social_media_url = 'https://twitter.com/_Guled_'
 
   s.ios.deployment_target = '9.0'
-  s.watchos.deployment_target = '3.1'
   s.tvos.deployment_target = '10.1'
 
   s.source_files = 'MLKit/Classes/**/*'
