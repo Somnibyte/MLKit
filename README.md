@@ -21,6 +21,10 @@ it, simply add the following line to your Podfile:
 pod 'MachineLearningKit', '0.1.1'
 ```
 
+## Wiki 
+
+- [x] [Simple Linear Regression (1 Feature)](https://github.com/Somnibyte/MLKit/wiki/Simple-Linear-Regression-Tutorial)
+
 ## Features (So Far)
 
 - [x] Matrix and Vector Operations (uses [Upsurge framework](https://github.com/aleph7/Upsurge))
@@ -40,7 +44,7 @@ pod 'MachineLearningKit', '0.1.1'
 ### Week of Feb 20th
 |M|T|W|Th|F|
 |---|---|---|---|---|
-|K-Means Clustering|TBD|TBD|TBD|TBD|
+|K-Means Clustering|K-Means Clustering|TBD|TBD|TBD|
 
 
 # License
