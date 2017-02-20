@@ -137,7 +137,6 @@
 		98C52913DD43FF732C4CB0156035175F /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9951688C60A46DD572589F5DACF0C4A5 /* Pods-MLKit_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MLKit_Example-umbrella.h"; sourceTree = "<group>"; };
 		9A54B39B1E5B57680059B577 /* CSVReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSVReader.swift; sourceTree = "<group>"; };
-		9A54B3B21E5B5CD60059B577 /* kc_house_data.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = kc_house_data.csv; sourceTree = "<group>"; };
 		9A54B3B31E5B5CFC0059B577 /* MLKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLKit.h; sourceTree = "<group>"; };
 		9C6B6A08749A762D9174E03E4409BD8E /* Pods-MLKit_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MLKit_Example-frameworks.sh"; sourceTree = "<group>"; };
 		9D3A07F4F6A05CA6A00CF85FDA94AB57 /* Pods-MLKit_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MLKit_Tests-dummy.m"; sourceTree = "<group>"; };
@@ -231,7 +230,6 @@
 		359BA9B86E3D5293915D8FAEE42F7D94 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				9A54B3B21E5B5CD60059B577 /* kc_house_data.csv */,
 				CF7CD40586C565721136E5F335A1C1C1 /* Info.plist */,
 				B55CE52B6D7E1BFB32CA107D866D8F5E /* MLKit.modulemap */,
 				8F8701F33FE2CB44B8248C34C564501B /* MLKit.xcconfig */,
