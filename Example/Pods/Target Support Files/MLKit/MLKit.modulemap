@@ -1,0 +1,6 @@
+framework module MLKit {
+  umbrella header "MLKit-umbrella.h"
+
+  export *
+  module * { export * }
+}
