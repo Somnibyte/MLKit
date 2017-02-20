@@ -7,7 +7,7 @@
 #
 
 Pod::Spec.new do |s|
-  s.name             = 'MLKit'
+  s.name             = 'MachineLearningKit'
   s.version          = '0.1.1'
   s.summary          = 'A simple machine learning framework written in Swift 🤖'
 

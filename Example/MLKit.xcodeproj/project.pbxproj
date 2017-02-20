@@ -58,7 +58,7 @@
 		9A54B3B01E5B59160059B577 /* RidgeRegressionTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RidgeRegressionTest.swift; sourceTree = "<group>"; };
 		9A54B3B71E5B5D6D0059B577 /* kc_house_data.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = kc_house_data.csv; sourceTree = "<group>"; };
 		AD54BBE1B07E33FF3F5DD543 /* Pods-MLKit_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MLKit_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-MLKit_Example/Pods-MLKit_Example.release.xcconfig"; sourceTree = "<group>"; };
-		BCFC43680C2D8165DD3A9F1E /* MLKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = MLKit.podspec; path = ../MLKit.podspec; sourceTree = "<group>"; };
+		BCFC43680C2D8165DD3A9F1E /* MachineLearningKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = MachineLearningKit.podspec; path = ../MachineLearningKit.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,7 +170,7 @@
 		607FACF51AFB993E008FA782 /* Podspec Metadata */ = {
 			isa = PBXGroup;
 			children = (
-				BCFC43680C2D8165DD3A9F1E /* MLKit.podspec */,
+				BCFC43680C2D8165DD3A9F1E /* MachineLearningKit.podspec */,
 				65CE8F014155800F07E3652F /* README.md */,
 				1C1CAD4BD2BE393928F7BE50 /* LICENSE */,
 			);
