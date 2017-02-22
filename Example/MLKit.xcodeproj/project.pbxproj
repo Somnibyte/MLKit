@@ -33,6 +33,19 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		9A4707BB1E5C8FCB002C2268 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		0A3DE73AE01ACF9939D79E62 /* Pods-MLKit_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MLKit_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MLKit_Tests/Pods-MLKit_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		1C1CAD4BD2BE393928F7BE50 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
@@ -51,6 +64,7 @@
 		65CE8F014155800F07E3652F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		6FE1BF7F8EF374CFB92CBB77 /* Pods-MLKit_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MLKit_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MLKit_Tests/Pods-MLKit_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		8829C99A800D59865185C8D0 /* Pods_MLKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MLKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A4707A91E5C8F51002C2268 /* MLKit-PlayGround.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = "MLKit-PlayGround.playground"; path = "../MLKit-PlayGround.playground"; sourceTree = "<group>"; };
 		9A54B3A21E5B578A0059B577 /* LassoRegressionTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LassoRegressionTest.swift; sourceTree = "<group>"; };
 		9A54B3A31E5B578A0059B577 /* MLDataManagerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLDataManagerTest.swift; sourceTree = "<group>"; };
 		9A54B3A51E5B578A0059B577 /* PolynomialRegressionTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PolynomialRegressionTest.swift; sourceTree = "<group>"; };
@@ -104,6 +118,7 @@
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
+				9A4707A91E5C8F51002C2268 /* MLKit-PlayGround.playground */,
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example for MLKit */,
 				607FACE81AFB9204008FA782 /* Tests */,
@@ -190,6 +205,7 @@
 				607FACCE1AFB9204008FA782 /* Resources */,
 				B2A28970539C0F840B7FC745 /* [CP] Embed Pods Frameworks */,
 				3A8A5DE2CE9B29776BD52FBD /* [CP] Copy Pods Resources */,
+				9A4707BB1E5C8FCB002C2268 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

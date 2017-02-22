@@ -30,6 +30,7 @@ open class MLDataManager {
         return totalSum / totalAmountOfData
     }
 
+    
     /**
      The dataToMatrix method takes an array of features (which contain your data of a specific feature), along with your observations/output
      and turns your features into a Matrix of type Float and your output into an array in order to be processed by machine learning algorithms
@@ -46,13 +47,13 @@ open class MLDataManager {
         let outputMatrix = Matrix<Float>(rows: output.count, columns: 1, elements: output)
 
         // Create "contant/intercept" list
-        let contantArray = [Float](repeating: 1.0, count: features[0].count)
+        let constantArray = [Float](repeating: 1.0, count: features[0].count)
         var matrixAsArray: [[Float]] = []
 
-        for (i, _) in contantArray.enumerated() {
+        for (i, _) in constantArray.enumerated() {
             var newRow: [Float] = []
             
-            newRow.append(contantArray[i])
+            newRow.append(constantArray[i])
 
             for featureArray in features {
                 newRow.append(featureArray[i])

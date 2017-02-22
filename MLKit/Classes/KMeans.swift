@@ -7,22 +7,27 @@
 //
 
 import Foundation
-
+import Upsurge
 
 open class KMeans {
 
-    fileprivate var centroids:[Float]!
+    fileprivate var centroids:Matrix<Float>!
     fileprivate var k:Int!
     fileprivate var smartInit:Bool!
-    fileprivate var dataset:[Float]!
+    fileprivate var dataset: Matrix<Float>!
     fileprivate var associationArr:[Int]!
+    fileprivate var dimension:Int!
     
-    public init(dataset:[Float], smartInit:Bool, k:Int){
+    public init(dataset:[[Float]], k:Int){
         
-        // KMeans++ initialization method will be activated if smartInit is true
-        self.smartInit = smartInit
+        // Set k (number of clusters)
         self.k = k
-        self.dataset = dataset
+        
+        // Initilization the centroids 
+        self.centroids = randomCentroidInit(inputDataset: dataset)
+        
+        // Convert our dataset into a Matrix 
+        self.dataset = Matrix(dataset)
         
         // The associations array will be used to indicate which data point belongs to which cluster
         self.associationArr = [Int](repeatElement(0, count: self.dataset.count))
@@ -30,101 +35,22 @@ open class KMeans {
     }
     
     
-    /*
-    Credit goes to Martin. First Answer:
-     http://stackoverflow.com/questions/30309556/generate-random-numbers-with-a-given-distribution
+    
+    /** 
+     The randomCentroidInit method returns clusters that have been chosen randomly from the dataset itself.
     */
-    func randomNumber(probabilities: [Float]) -> Int {
+    func randomCentroidInit(inputDataset:[[Float]]) -> Matrix<Float>{
         
-        // Sum of all probabilities (so that we don't have to require that the sum is 1.0):
-        let sum = probabilities.reduce(0, +)
-        // Random number in the range 0.0 <= rnd < sum :
-        let rnd = sum * Float(arc4random_uniform(UInt32.max)) / Float(UInt32.max)
-        // Find the first interval of accumulated probabilities into which `rnd` falls:
-        var accum = Float(0.0)
-        for (i, p) in probabilities.enumerated() {
-            accum += p
-            if rnd < accum {
-                return i
-            }
-        }
-        // This point might be reached due to floating point inaccuracies:
-        return (probabilities.count - 1)
-    }
-
-    
-    func calcSquaredDistOfFirstCenter(input_centroids:[Float]) -> [Float]{
-        var squaredDists = [Float](repeating: 0.0, count: self.dataset.count)
+        var randomClusters =  Array(repeatElement([Float](repeatElement(0.0, count: inputDataset[0].count)), count: k))
         
-        for (var idx, var x) in squaredDists.enumerated(){
-            let aggregate = pow(dataset[idx] - input_centroids[0] , 2.0)
-
-            squaredDists[idx] = pow(sqrt(aggregate),2.0)/Float(self.dataset.count)
+        for i in 0..<k {
+            
+            var randomIdx = Int(arc4random_uniform(UInt32(inputDataset.count)))
+            randomClusters[i] = inputDataset[randomIdx]
         }
         
-        return squaredDists
+        return Matrix<Float>(randomClusters)
     }
-    
-    
-    func calcMinSquaredDist(range:Int, input_centroids:[Float]) -> [Float] {
-        
-        var squaredDists = [Float](repeating: 0.0, count: self.dataset.count)
-        var distances:[Float] = []
-        
-        for (var idx, var x) in squaredDists.enumerated() {
-            
-            for var i in (0..<range) {
-                let aggregate = pow(dataset[idx] - input_centroids[i] , 2.0)
-                
-                distances.append(pow(sqrt(aggregate), 2.0))
-            }
-            
-            squaredDists[idx] = (distances.min()!)/Float(self.dataset.count)
-            distances = []
-        }
-        
-        
-        return squaredDists
-    }
-    
-    
-    /**
-     The smartInitialization method initializes our centroids using the KMeans++ algorithm.
-     
-     - returns: Centroids that are intiliazed via KMeans++ method.
-     */
-    func smartInitialization() -> [Float] {
-        
-        // Initialize centroids
-        var smart_centroids:[Float] = [Float](repeating: 0.0, count: k)
-        
-        // Choose an initial center uniformly at random from our dataset.
-        // Compute the vector containing the square distances between all points in the dataset and center 1 (centroids[0]).
-        let randomIndex = Int(arc4random_uniform(UInt32(self.dataset.count)))
-        
-        centroids[0] = self.dataset[randomIndex]
-        
-        // Compute the distances from the first centroid chosen to all of the other data points 
-        var squaredDist:[Float] = calcSquaredDistOfFirstCenter(input_centroids: smart_centroids)
-        
-        
-        // Initialize the rest of the centroids 
-        for var i in (1..<self.k) {
-            
-            // Pick next data point at random 
-            var idx = randomNumber(probabilities: squaredDist)
-            
-            centroids[i] = self.dataset[idx]
-            
-            
-            squaredDist = calcMinSquaredDist(range: i+1, input_centroids: smart_centroids)
-        }
-        
-        
-        return smart_centroids
-    }
-    
-    
     
     /**
      The train method performs KMeans with the provided dataset and choice of 'k' value. After calling the 'train' method please call the 'obtainCentroids' methods to retrieve the newly adjusted centroids.
@@ -132,33 +58,30 @@ open class KMeans {
     open func train(){
         
         // Create k Clusters
-        var training_centroids:[Float] = [Float](repeating: 0.0, count: k)
+        var trainingCentroids:Matrix<Float> = centroids
+
+        var comparison:Matrix<Float>!
         
-        if self.smartInit == true {
-            training_centroids = smartInitialization()
-        }
-        
-        
-        var comparison:[Float] = []
         var distances:[Float] = Array(repeatElement(0.0, count: k))
         
         
         while true {
             
             // Obtain the previous clusters
-            comparison = training_centroids
+            comparison = trainingCentroids
             
-            for (var i, var x) in dataset.enumerated() {
+            for var i in 0..<dataset.count {
                 
                 var smallestDistance = Float.infinity
                 var idx = 0
                 for var i in (0...k-1){
                     
                     // Calculate the distance between a centroid and a given point
-                    let aggregate = pow(dataset[idx] - training_centroids[i] , 2.0)
-
+                    var difference = dataset.row(idx) - trainingCentroids.row(i)
+                    var squared = difference * difference
+                    var reduced = squared.reduce(0, +)
                     
-                    distances[i] = sqrtf(aggregate)
+                    distances[i] = sqrtf(reduced)
                     
                     if distances[i] < smallestDistance {
                         smallestDistance = distances[i]
@@ -170,40 +93,45 @@ open class KMeans {
             }
             
             // Reset the clusters
-            training_centroids = [Float](repeating: 0.0, count: k)
+            trainingCentroids = Matrix(rows: k, columns: dataset.columns, repeatedValue: 0.0)
             
+        
             // Move the centroids
-            for (var i, var x) in dataset.enumerated() {
-                training_centroids[self.associationArr[i]] += x
+
+            for var i in associationArr {
+                var currentCentroid = trainingCentroids.row(associationArr[i])
+                currentCentroid += dataset.row(i)
             }
             
             for var i in (0...k-1){
-                training_centroids[i] /= Float(dataset.count)
+                var currentCentroid = trainingCentroids.row(i)
+                currentCentroid.map({ $0/Float(dataset.count) })
             }
-            
-            
-            var difference = Float(0);
+
+            var finalDifference = Float(0);
             
             for var i in (0...k-1){
                 
-                let aggregate = powf(comparison[i] - centroids[i] , 2.0)
+                var difference = comparison.row(i) - trainingCentroids.row(i)
+
+                difference.map({$0 * $0})
+
+                var aggregate = difference.reduce(0,+)
                 
                 var distance = sqrtf(aggregate)
                 
-                difference = (difference > distance) ? difference:distance
+                finalDifference = (finalDifference > distance) ? finalDifference:distance
                 
                 
             }
             
-            if difference < 1 {
+            if finalDifference < 1 {
                 break
             }
             
         }
         
-        
-        
-        self.centroids = training_centroids
+        self.centroids = trainingCentroids
     }
 
     
@@ -212,9 +140,9 @@ open class KMeans {
     /**
      obtainCentroids
     
-     - returns: Your newly adusted centroids.
+     - returns: Your newly adusted centroids in the form of a Matrix (See UpSurge Framework)
      */
-    open func obtainCentroids() -> [Float] {
+    open func obtainCentroids() -> Matrix<Float> {
         return self.centroids
     }
 

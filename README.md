@@ -1,18 +1,15 @@
 # [WIP] MLKit (a.k.a Machine Learning Kit) 🤖
 MLKit is a simple machine learning framework written in Swift. Currently MLKit features machine learning algorithms that deal with the topic of regression, but the framework will expand over time with topics such as classification, clustering, recommender systems, and deep learning. The vision and goal of this framework is to provide developers with a toolkit to create products that can learn from data. MLKit is a side project of mine in order to make it easier for developers to implement machine learning algorithms on the go, and to familiarlize myself with machine learning concepts.
 
-[![CI Status](http://img.shields.io/travis/Guled Ahmed/MLKit.svg?style=flat)](https://travis-ci.org/Guled Ahmed/MLKit)
 [![Version](https://img.shields.io/cocoapods/v/MLKit.svg?style=flat)](https://cocoapods.org/pods/MachineLearningKit)
 [![License](https://img.shields.io/cocoapods/l/MLKit.svg?style=flat)](https://cocoapods.org/pods/MachineLearningKit)
 [![Platform](https://img.shields.io/cocoapods/p/MLKit.svg?style=flat)](https://cocoapods.org/pods/MachineLearningKit)
 
-## Example
-
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
-
 ## Requirements
 
 ## Installation
+
+**Example Project Coming Soon!**
 
 MLKit is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
@@ -46,7 +43,7 @@ pod 'MachineLearningKit', '0.1.1'
 ### Week of Feb 20th
 |M|T|W|Th|F|
 |---|---|---|---|---|
-|K-Means Clustering|K-Means Clustering|TBD|TBD|TBD|
+|K-Means Clustering (Prototype Currently in `develop` branch)|K-Means Clustering|K-Means Clustering & Neural Network (Perceptron) [`develop` branch]|TBD|TBD|
 
 
 # License
