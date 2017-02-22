@@ -43,7 +43,7 @@ pod 'MachineLearningKit', '0.1.2'
 ### Week of Feb 20th
 |M|T|W|Th|F|
 |---|---|---|---|---|
-|K-Means Clustering (Prototype Currently in `develop` branch)|K-Means Clustering|K-Means Clustering & Neural Network (Perceptron) [`develop` branch]|TBD|TBD|
+|K-Means Clustering (Prototype Currently in `develop` branch)|K-Means Clustering|K-Means Clustering (Now available 🎉 ,wiki coming soon)| Neural Network (Perceptron) [`develop` branch] |Neural Network (Perceptron & Adaline)  [`develop` branch] |
 
 
 # License
