@@ -50,7 +50,7 @@ class RidgeRegressionTests: XCTestCase {
         let csvUrl = NSURL(fileURLWithPath: path!)
         let file = try! String(contentsOf: csvUrl as URL, encoding: String.Encoding.utf8)
         let data = CSVReader(with: file)
-        
+
         // Setup the features we need and convert them to floats if necessary
         let training_data_string = data.columns["sqft_living"]!
         // Features
@@ -78,36 +78,36 @@ class RidgeRegressionTests: XCTestCase {
     }
 
     func testOneTimePrediction() {
-        
+
         // Obtain data from csv file
         let path = Bundle(for: PolynomialRegressionTests.self).path(forResource: "kc_house_data", ofType: "csv")
         let csvUrl = NSURL(fileURLWithPath: path!)
         let file = try! String(contentsOf: csvUrl as URL, encoding: String.Encoding.utf8)
         let data = CSVReader(with: file)
-        
+
         // Setup the features we need and convert them to floats if necessary
         let training_data_string = data.columns["sqft_living"]!
         // Features
         let training_data = training_data_string.map { Float($0)! }
-        
+
         // Output
         let output_as_string = data.columns["price"]!
         let output_data = output_as_string.map { Float($0)! }
-        
+
         // Fit the model
         let ridgeModel = RidgeRegression()
-        
+
         // Setup initial weights
         let initial_weights = Matrix<Float>(rows: 2, columns: 1, elements: [0.0, 0.0])
-        
+
         // Fit the model and obtain the weights
         let weights = try! ridgeModel.train([training_data], output: output_data, initialWeights: initial_weights, stepSize: Float(1e-12), l2Penalty: 0.0, maxIterations: 1000)
-        
+
         // Make a prediction
         let quickPrediction = ridgeModel.predict([Float(1.0), Float(1.18000000e+03)], yourWeights: weights.elements)
         print(quickPrediction)
-        let actualPrediction:Float = 310445.062
-        
+        let actualPrediction: Float = 310445.062
+
         XCTAssertEqual(quickPrediction, actualPrediction)
 
     }

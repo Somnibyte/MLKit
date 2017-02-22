@@ -201,7 +201,7 @@ open class SimpleLinearRegression {
 
      - returns: A prediction (of type Float).
      */
-    open func predict (_ slope: Float, intercept: Float,  inputValue: Float) -> Float {
+    open func predict (_ slope: Float, intercept: Float, inputValue: Float) -> Float {
         let yHat = intercept + slope * inputValue
         return yHat
     }
@@ -217,22 +217,21 @@ open class SimpleLinearRegression {
 
         return predictionsFromTrainingData
     }
-    
-    
-    /** 
+
+
+    /**
      The getRegressionCoefficients function returns your slope and intercept.
     */
-    open func getRegressionCoefficients() -> (Float,Float) {
+    open func getRegressionCoefficients() -> (Float, Float) {
         return (self.slope, self.intercept)
     }
-    
-    /** 
+
+    /**
         The getCostFunctionResult function returns your cost function result (RSS).
     */
-    open func getCostFunctionResult() -> Float{
+    open func getCostFunctionResult() -> Float {
         return self.costFunctionResult
     }
 
-    
-}
 
+}

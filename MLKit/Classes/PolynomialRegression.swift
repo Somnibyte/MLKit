@@ -31,24 +31,24 @@ open class PolynomialLinearRegression {
      - returns: A Matrix of type Float consisting your regression coefficients/weights.
      */
     open func train(_ features: [Array<Float>], output: Array<Float>, initialWeights: Matrix<Float>, stepSize: Float, tolerance: Float) throws -> Matrix<Float> {
-        
+
         // Error Handeling
-        
-        // Check Feature Length 
+
+        // Check Feature Length
         var featureLength = 0
-        
+
         for (i, featureArray) in features.enumerated() {
-            
+
             if i == 0 {
                 featureLength = featureArray.count
             }
-            
+
             if featureArray.count != featureLength {
                 throw MachineLearningError.lengthOfDataArrayNotEqual
             }
         }
-        
-        
+
+
         // Main ML Algorithm
         var converged = false
         var predictions: ValueArray<Float>!
@@ -152,37 +152,37 @@ open class PolynomialLinearRegression {
 
         return predictions.elements
     }
-    
-    
-    
+
+
+
     func getFeatureDerivative(_ errors: ValueArray<Float>, feature: ValueArraySlice<Float>) -> Float {
-        
+
         let derivative = 2 * (errors • feature)
-        
+
         return derivative
     }
-    
+
     /**
      The getCostFunctionResult function returns your cost function result (RSS).
     */
-    open func getCostFunctionResult() -> Float{
+    open func getCostFunctionResult() -> Float {
         return self.costFunctionResult
     }
-    
+
     /**
      The getWeightsAsMatrix function returns your weights.
      */
     open func getWeightsAsMatrix() -> Matrix<Float> {
         return self.finalWeights
     }
-    
+
     /**
      The getWeightsAsValueArray function returns a value array that contains your weights.
      */
     open func getWeightsAsValueArray() -> ValueArray<Float> {
         return self.finalWeights.elements
     }
-    
+
     /**
      The getWeightsAsArray function returns a array (of type Float) that contains your weights.
      */

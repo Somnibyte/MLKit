@@ -22,11 +22,11 @@ class PolynomialRegressionTests: XCTestCase {
         let csvUrl = NSURL(fileURLWithPath: path!)
         let file = try! String(contentsOf: csvUrl as URL, encoding: String.Encoding.utf8)
         let data = CSVReader(with: file)
-        
+
         // Setup the features we need and convert them to floats if necessary
         let training_data_string = data.columns["sqft_living"]!
         let training_data_2_string = data.columns["bedrooms"]!
-        
+
         // Features
         let training_data = training_data_string.map { Float($0)! }
         let training_data_2 = training_data_2_string.map { Float($0)! }
@@ -51,7 +51,7 @@ class PolynomialRegressionTests: XCTestCase {
         XCTAssertEqualWithAccuracy(weights.column(0)[2], actualWeights.column(0)[2], accuracy: 0.01)
     }
 
-    
+
     /*
     // (Might take awhile...) Tests RSS (cost function) for Polynomial Regression
     func testRSS() {
@@ -86,7 +86,7 @@ class PolynomialRegressionTests: XCTestCase {
 
         // Estimated RSS
         let actualRSS = Float(1.4885e+15)
-        
+
         // Xcode will say the test failed, but the values are extremely close to one another.
         // I will come back to this test.
         //XCTAssertEqualWithAccuracy(rss, actualRSS, accuracy: 0.0001)
@@ -100,7 +100,7 @@ class PolynomialRegressionTests: XCTestCase {
         let csvUrl = NSURL(fileURLWithPath: path!)
         let file = try! String(contentsOf: csvUrl as URL, encoding: String.Encoding.utf8)
         let data = CSVReader(with: file)
-        
+
         // Setup the features we need and convert them to floats if necessary
         let training_data_string = data.columns["sqft_living"]!
         let training_data_2_string = data.columns["bedrooms"]!
@@ -126,10 +126,10 @@ class PolynomialRegressionTests: XCTestCase {
 
         let estimatedPrediction = Float(257921.0)
 
-        // Xcode will say the test failed, but the values are extremely close to one another. 
+        // Xcode will say the test failed, but the values are extremely close to one another.
         // I will come back to this test.
         //XCTAssertEqualWithAccuracy(quickPrediction, estimatedPrediction, accuracy: 0.0001)
     }
     */
-    
+
 }

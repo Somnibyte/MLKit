@@ -18,7 +18,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-open class ComplexArray<T: Real>: MutableLinearType, ExpressibleByArrayLiteral  {
+open class ComplexArray<T: Real>: MutableLinearType, ExpressibleByArrayLiteral {
     public typealias Index = Int
     public typealias Element = Complex<T>
     public typealias Slice = ComplexArraySlice<T>
@@ -57,7 +57,7 @@ open class ComplexArray<T: Real>: MutableLinearType, ExpressibleByArrayLiteral  
     open func formIndex(after i: inout Index) {
         i += 1
     }
-    
+
     open var span: Span {
         return Span(zeroTo: [endIndex])
     }
@@ -119,7 +119,7 @@ open class ComplexArray<T: Real>: MutableLinearType, ExpressibleByArrayLiteral  
     }
 
     /// Construct a ComplexArray from contiguous memory
-    public required init<C : LinearType>(_ values: C) where C.Element == Element {
+    public required init<C: LinearType>(_ values: C) where C.Element == Element {
         elements = ValueArray<Complex<T>>(values)
     }
 
@@ -140,7 +140,7 @@ open class ComplexArray<T: Real>: MutableLinearType, ExpressibleByArrayLiteral  
             elements[index] = newValue
         }
     }
-    
+
     open subscript(indices: [Int]) -> Element {
         get {
             assert(indices.count == 1)
@@ -151,7 +151,7 @@ open class ComplexArray<T: Real>: MutableLinearType, ExpressibleByArrayLiteral  
             self[indices[0]] = newValue
         }
     }
-    
+
     open subscript(intervals: [IntervalType]) -> Slice {
         get {
             assert(intervals.count == 1)
@@ -178,7 +178,7 @@ open class ComplexArray<T: Real>: MutableLinearType, ExpressibleByArrayLiteral  
         elements.append(value)
     }
 
-    open func appendContentsOf<C : Collection>(_ values: C) where C.Iterator.Element == Element {
+    open func appendContentsOf<C: Collection>(_ values: C) where C.Iterator.Element == Element {
         elements.appendContentsOf(values)
     }
 

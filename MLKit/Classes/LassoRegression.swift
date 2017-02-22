@@ -17,64 +17,64 @@ open class LassoRegression {
     public init () {
         costFunctionResult = 0.0
     }
-    
-    
-    
-    open func train(_ features: [Array<Float>], output: Array<Float>, initialWeights: Matrix<Float>, l1Penalty:Float, tolerance:Float) throws -> Matrix<Float> {
+
+
+
+    open func train(_ features: [Array<Float>], output: Array<Float>, initialWeights: Matrix<Float>, l1Penalty: Float, tolerance: Float) throws -> Matrix<Float> {
         // Error Handeling
-        
+
         // Check Feature Length
         var featureLength = 0
-        
+
         for (i, featureArray) in features.enumerated() {
-            
+
             if i == 0 {
                 featureLength = featureArray.count
             }
-            
+
             if featureArray.count != featureLength {
                 throw MachineLearningError.lengthOfDataArrayNotEqual
             }
         }
-        
-        
+
+
         // Convert the users array of features and output into matrices and vectors
         let featureMatrixAndOutput = MLDataManager.dataToMatrix(features, output: output)
         let featureMatrix = featureMatrixAndOutput.0
         let normalizedFeatureMatrix = transpose(normalize(featureMatrix))
-        
-        var converged:Bool = false
-        
+
+        var converged: Bool = false
+
         while converged == false {
-            
-            var changeForFullCycle:[Float] = []
-            
+
+            var changeForFullCycle: [Float] = []
+
             for i  in (0..<initialWeights.elements.count) {
-                
+
                 let oldWeight = initialWeights.elements[i]
 
                 initialWeights.elements[i] = lassoCoordinateDescentStep(i, featureMatrix: normalizedFeatureMatrix, output: output, weights: initialWeights, l1Penalty: l1Penalty)
-                
+
                 let change = abs(initialWeights.elements[i] - oldWeight)
-                
+
                 changeForFullCycle.append(change)
             }
-            
+
             let maxChange = max(changeForFullCycle)
 
             if maxChange < tolerance {
                 converged = true
             }
         }
-        
+
         // set the weights
         self.finalWeights = initialWeights
 
         return initialWeights
     }
-    
-    
-    
+
+
+
     func lassoCoordinateDescentStep(_ i: Int, featureMatrix: Matrix<Float>, output: Array<Float>, weights: Matrix<Float>, l1Penalty: Float) -> Float {
 
         // Compute predictions
@@ -86,21 +86,21 @@ open class LassoRegression {
         let ro = sum(roAsValueArray)
 
         // Calculate new weight
-        var newWeight:Float! = 0.0
+        var newWeight: Float! = 0.0
 
         if i == 0 {
             newWeight = ro
-        }else if ro < (-l1Penalty/2.0) {
+        } else if ro < (-l1Penalty/2.0) {
             newWeight = (ro + l1Penalty/2.0)
-        }else if ro > (l1Penalty/2.0) {
+        } else if ro > (l1Penalty/2.0) {
             newWeight = (ro - l1Penalty/2.0)
-        }else{
+        } else {
             newWeight = 0.0
         }
-        
+
         return newWeight
     }
-    
+
 
     /**
      The RSS method computes the residual sum of squares or the cost function of your model.
@@ -186,7 +186,7 @@ open class LassoRegression {
     open func getWeightsAsValueArray() -> ValueArray<Float> {
         return self.finalWeights.elements
     }
-    
+
     /**
      The getWeightsAsArray function returns a array (of type Float) that contains your weights.
      */

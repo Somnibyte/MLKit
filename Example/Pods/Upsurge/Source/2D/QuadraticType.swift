@@ -31,7 +31,7 @@ public protocol QuadraticType: TensorType {
 
     /// The arrangement of rows and columns
     var arrangement: QuadraticArrangement { get }
-    
+
     /// The number of rows
     var rows: Int { get }
 
@@ -40,7 +40,7 @@ public protocol QuadraticType: TensorType {
 
     /// The step size between major-axis elements
     var stride: Int { get }
-    
+
     /// The step of the base elements
     var step: Int { get }
 }
@@ -50,7 +50,7 @@ public extension QuadraticType {
     public var count: Int {
         return rows * columns
     }
-    
+
     public var dimensions: [Int] {
         if arrangement == .rowMajor {
             return [rows, columns]

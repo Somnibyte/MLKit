@@ -30,7 +30,7 @@ public protocol LinearType: Collection, TensorType {
 
     /// The step size between valid elements
     var step: Int { get }
-    
+
     var span: Span { get }
 
     subscript(position: Int) -> Element { get }
@@ -41,7 +41,7 @@ public extension LinearType {
     public var count: Int {
         return (endIndex - startIndex + step - 1) / step
     }
-    
+
     public var dimensions: [Int] {
         return [count]
     }
@@ -59,23 +59,23 @@ public protocol MutableLinearType: LinearType, MutableTensorType {
 
 extension Array: LinearType {
     public typealias Slice = ArraySlice<Element>
-    
+
     public var step: Int {
         return 1
     }
-    
+
     public var span: Span {
         return Span(ranges: [startIndex ... endIndex - 1])
     }
 
     public init<C: LinearType>(other: C) where C.Iterator.Element == Array.Element {
         self.init()
-        
+
         for v in other {
             self.append(v)
         }
     }
-    
+
     public subscript(indices: [Int]) -> Element {
         get {
             assert(indices.count == 1)
@@ -86,7 +86,7 @@ extension Array: LinearType {
             self[indices[0]] = newValue
         }
     }
-    
+
     public subscript(intervals: [IntervalType]) -> Slice {
         get {
             assert(indices.count == 1)

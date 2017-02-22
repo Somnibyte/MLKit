@@ -23,15 +23,15 @@ open class TwoDimensionalTensorSlice<T: Value>: MutableQuadraticType, Equatable 
     public typealias Index = [Int]
     public typealias Slice = TwoDimensionalTensorSlice<Element>
     public typealias Element = T
-    
+
     open var arrangement: QuadraticArrangement {
         return .rowMajor
     }
-    
+
     open let rows: Int
     open let columns: Int
     open var stride: Int
-    
+
     var base: Tensor<Element>
     open var span: Span
 
@@ -50,20 +50,20 @@ open class TwoDimensionalTensorSlice<T: Value>: MutableQuadraticType, Equatable 
     open func withUnsafeMutablePointer<R>(_ body: (UnsafeMutablePointer<Element>) throws -> R) rethrows -> R {
         return try base.withUnsafeMutablePointer(body)
     }
-    
+
     open var step: Int {
         return base.elements.step
     }
-    
+
     init(base: Tensor<Element>, span: Span) {
         assert(span.dimensions.count == base.dimensions.count)
         self.base = base
         self.span = span
-        
+
         assert(base.spanIsValid(span))
-        assert(span.dimensions.reduce(0){ $0.1 > 1 ? $0.0 + 1 : $0.0 } <= 2)
+        assert(span.dimensions.reduce(0) { $0.1 > 1 ? $0.0 + 1 : $0.0 } <= 2)
         assert(span.dimensions.last! >= 1)
-        
+
         var rowIndex: Int
         if let index = span.dimensions.index(where: { $0 > 1 }) {
             rowIndex = index
@@ -72,10 +72,10 @@ open class TwoDimensionalTensorSlice<T: Value>: MutableQuadraticType, Equatable 
         }
         rows = span.dimensions[rowIndex]
         columns = span.dimensions.last!
-        
+
         stride = span.dimensions.suffix(from: rowIndex + 1).reduce(1, *)
     }
-    
+
     open subscript(row: Int, column: Int) -> Element {
         get {
             return self[[row, column]]
@@ -84,7 +84,7 @@ open class TwoDimensionalTensorSlice<T: Value>: MutableQuadraticType, Equatable 
             self[[row, column]] = newValue
         }
     }
-    
+
     open subscript(indices: Index) -> Element {
         get {
             var index = span.startIndex
@@ -101,7 +101,7 @@ open class TwoDimensionalTensorSlice<T: Value>: MutableQuadraticType, Equatable 
             base[index] = newValue
         }
     }
-    
+
     open subscript(slice: [IntervalType]) -> Slice {
         get {
             let span = Span(base: self.span, intervals: slice)
@@ -113,7 +113,7 @@ open class TwoDimensionalTensorSlice<T: Value>: MutableQuadraticType, Equatable 
             self[span] = newValue
         }
     }
-    
+
     open subscript(slice: IntervalType...) -> Slice {
         get {
             return self[slice]
@@ -122,7 +122,7 @@ open class TwoDimensionalTensorSlice<T: Value>: MutableQuadraticType, Equatable 
             self[slice] = newValue
         }
     }
-    
+
     subscript(span: Span) -> Slice {
         get {
             assert(self.span.contains(span))
@@ -131,12 +131,12 @@ open class TwoDimensionalTensorSlice<T: Value>: MutableQuadraticType, Equatable 
         set {
             assert(self.span.contains(span))
             assert(span ≅ newValue.span)
-            for (lhsIndex, rhsIndex) in zip(span, newValue.span)  {
+            for (lhsIndex, rhsIndex) in zip(span, newValue.span) {
                 base[lhsIndex] = newValue[rhsIndex]
             }
         }
     }
-    
+
     open var isContiguous: Bool {
         let onesCount: Int
         if let index = dimensions.index(where: { $0 != 1 }) {
@@ -144,18 +144,18 @@ open class TwoDimensionalTensorSlice<T: Value>: MutableQuadraticType, Equatable 
         } else {
             onesCount = rank
         }
-        
+
         let diff = (0..<rank).map({ dimensions[$0] - base.dimensions[$0] }).reversed()
         let fullCount: Int
-        if let index = diff.index(where: { $0 != 0 }) , index.base < count {
+        if let index = diff.index(where: { $0 != 0 }), index.base < count {
             fullCount = rank - index.base
         } else {
             fullCount = rank
         }
-        
+
         return rank - fullCount - onesCount <= 1
     }
-    
+
     open func indexIsValid(_ indices: [Int]) -> Bool {
         assert(indices.count == rank)
         for (i, index) in indices.enumerated() {

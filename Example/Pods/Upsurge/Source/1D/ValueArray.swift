@@ -38,7 +38,7 @@ open class ValueArray<Element: Value>: MutableLinearType, ExpressibleByArrayLite
     open var step: Index {
         return 1
     }
-    
+
     open var span: Span {
         return Span(zeroTo: [endIndex])
     }
@@ -106,7 +106,7 @@ open class ValueArray<Element: Value>: MutableLinearType, ExpressibleByArrayLite
             self[i] = repeatedValue
         }
     }
-    
+
     /// Construct a ValueArray of `count` elements, each initialized with `initializer`.
     public required init(count: Int, initializer: () -> Element) {
         mutablePointer = UnsafeMutablePointer<Element>.allocate(capacity: count)
@@ -120,7 +120,7 @@ open class ValueArray<Element: Value>: MutableLinearType, ExpressibleByArrayLite
     deinit {
         mutablePointer.deallocate(capacity: capacity)
     }
-    
+
     open subscript(index: Index) -> Element {
         get {
             assert(indexIsValid(index))
@@ -131,7 +131,7 @@ open class ValueArray<Element: Value>: MutableLinearType, ExpressibleByArrayLite
             mutablePointer[index * step] = newValue
         }
     }
-    
+
     open subscript(intervals: [IntervalType]) -> Slice {
         get {
             assert(intervals.count == 1)
@@ -149,7 +149,7 @@ open class ValueArray<Element: Value>: MutableLinearType, ExpressibleByArrayLite
             }
         }
     }
-    
+
     open subscript(intervals: IntervalType...) -> Slice {
         get {
             return self[intervals]
@@ -158,7 +158,7 @@ open class ValueArray<Element: Value>: MutableLinearType, ExpressibleByArrayLite
             self[intervals] = newValue
         }
     }
-    
+
     open subscript(intervals: [Int]) -> Element {
         get {
             assert(intervals.count == 1)
@@ -177,7 +177,7 @@ open class ValueArray<Element: Value>: MutableLinearType, ExpressibleByArrayLite
     open func formIndex(after i: inout Int) {
         i += 1
     }
-    
+
     open func copy() -> ValueArray {
         let copy = ValueArray(count: capacity)
         copy.mutablePointer.initialize(from: mutablePointer, count: count)
@@ -201,15 +201,15 @@ open class ValueArray<Element: Value>: MutableLinearType, ExpressibleByArrayLite
         assert(subRange.lowerBound >= startIndex && subRange.upperBound <= endIndex)
         (mutablePointer + subRange.lowerBound).initialize(from: newElements)
     }
-    
+
     open func toRowMatrix() -> Matrix<Element> {
         return Matrix(rows: 1, columns: count, elements: self)
     }
-    
+
     open func toColumnMatrix() -> Matrix<Element> {
         return Matrix(rows: count, columns: 1, elements: self)
     }
-    
+
     open var description: String {
         var string = "["
         for v in self {
@@ -243,7 +243,7 @@ public func ==<T>(lhs: ValueArray<T>, rhs: ValueArray<T>) -> Bool {
     if lhs.count != rhs.count {
         return false
     }
-    
+
     for i in 0..<lhs.count {
         if lhs[i] != rhs[i] {
             return false
@@ -256,7 +256,7 @@ public func ==<T>(lhs: ValueArray<T>, rhs: ValueArraySlice<T>) -> Bool {
     if lhs.count != rhs.count {
         return false
     }
-    
+
     for (lhsIndex, rhsIndex) in zip(0..<lhs.count, rhs.startIndex..<rhs.endIndex) {
         if lhs[lhsIndex] != rhs[rhsIndex] {
             return false
@@ -264,4 +264,3 @@ public func ==<T>(lhs: ValueArray<T>, rhs: ValueArraySlice<T>) -> Bool {
     }
     return true
 }
-

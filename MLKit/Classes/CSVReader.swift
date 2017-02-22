@@ -25,7 +25,7 @@
 import Foundation
 
 open class CSVReader {
-    
+
     fileprivate var _numberOfColumns: Int = 0
     fileprivate var _numberOfRows: Int = 0
     fileprivate var _delimiter: String
@@ -33,19 +33,19 @@ open class CSVReader {
     open var headers = [String]()
     open var columns = [String: [String]]()
     open var rows = [[String: String]]()
-    
+
     open var numberOfColumns: Int {
         get {
             return _numberOfColumns
         }
     }
-    
+
     open var numberOfRows: Int {
         get {
             return _numberOfRows
         }
     }
-    
+
     public init(with: String, delimiter: String) {
         let csv = with.replacingOccurrences(of: "\r", with: "", options: NSString.CompareOptions.literal, range: nil)
         _delimiter = delimiter
@@ -56,11 +56,11 @@ open class CSVReader {
         setRows()
         setColumns()
     }
-    
+
     public convenience init(with: String) {
         self.init(with: with, delimiter: ",")
     }
-    
+
     fileprivate func processLines(_ csv: String) {
         _lines = csv.components(separatedBy: "\n")
         // Remove blank lines
@@ -73,7 +73,7 @@ open class CSVReader {
             i += 1
         }
     }
-    
+
     fileprivate func setRows() {
         var rows = [[String: String]]()
         for i in 1..._numberOfRows {
@@ -88,7 +88,7 @@ open class CSVReader {
         }
         self.rows = rows
     }
-    
+
     fileprivate func setColumns() {
         var columns = [String: [String]]()
         for header in headers {
@@ -100,5 +100,5 @@ open class CSVReader {
         }
         self.columns = columns
     }
-    
+
 }

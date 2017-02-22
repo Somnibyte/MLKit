@@ -165,6 +165,6 @@ public func logb<M: LinearType>(_ x: M) -> ValueArray<Float> where M.Element == 
     withPointer(x) { xp in
         vvlogbf(results.mutablePointer, xp + x.startIndex, [Int32(x.count)])
     }
-    
+
     return results
 }

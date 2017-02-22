@@ -9,7 +9,7 @@
 import Foundation
 
 
-enum MachineLearningError:Error{
+enum MachineLearningError: Error {
     case lengthOfDataArrayNotEqual
     case modelHasNotBeenFit
 }

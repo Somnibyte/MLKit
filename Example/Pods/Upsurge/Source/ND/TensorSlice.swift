@@ -22,7 +22,7 @@
 open class TensorSlice<Element: Value>: MutableTensorType, Equatable {
     public typealias Index = [Int]
     public typealias Slice = TensorSlice<Element>
-    
+
     var base: Tensor<Element>
 
     open var span: Span
@@ -42,13 +42,13 @@ open class TensorSlice<Element: Value>: MutableTensorType, Equatable {
     open func withUnsafeMutablePointer<R>(_ body: (UnsafeMutablePointer<Element>) throws -> R) rethrows -> R {
         return try base.withUnsafeMutablePointer(body)
     }
-    
+
     init(base: Tensor<Element>, span: Span) {
         assert(span.rank == base.rank)
         self.base = base
         self.span = span
     }
-    
+
     open subscript(indices: Int...) -> Element {
         get {
             return self[indices]
@@ -57,7 +57,7 @@ open class TensorSlice<Element: Value>: MutableTensorType, Equatable {
             self[indices] = newValue
         }
     }
-    
+
     open subscript(indices: Index) -> Element {
         get {
             var index = span.startIndex
@@ -74,7 +74,7 @@ open class TensorSlice<Element: Value>: MutableTensorType, Equatable {
             base[index] = newValue
         }
     }
-    
+
     open subscript(slice: [IntervalType]) -> Slice {
         get {
             let span = Span(base: self.span, intervals: slice)
@@ -83,12 +83,12 @@ open class TensorSlice<Element: Value>: MutableTensorType, Equatable {
         set {
             let span = Span(base: self.span, intervals: slice)
             assert(span ≅ newValue.span)
-            for index in span  {
+            for index in span {
                 base[index] = newValue[index]
             }
         }
     }
-    
+
     open subscript(slice: IntervalType...) -> Slice {
         get {
             return self[slice]
@@ -97,7 +97,7 @@ open class TensorSlice<Element: Value>: MutableTensorType, Equatable {
             self[slice] = newValue
         }
     }
-    
+
     subscript(span: Span) -> Slice {
         get {
             assert(self.span.contains(span))
@@ -106,12 +106,12 @@ open class TensorSlice<Element: Value>: MutableTensorType, Equatable {
         set {
             assert(self.span.contains(span))
             assert(span ≅ newValue.span)
-            for (lhsIndex, rhsIndex) in zip(span, newValue.span)  {
+            for (lhsIndex, rhsIndex) in zip(span, newValue.span) {
                 base[lhsIndex] = newValue[rhsIndex]
             }
         }
     }
-    
+
     open var isContiguous: Bool {
         let onesCount: Int
         if let index = dimensions.index(where: { $0 != 1 }) {
@@ -119,18 +119,18 @@ open class TensorSlice<Element: Value>: MutableTensorType, Equatable {
         } else {
             onesCount = rank
         }
-        
+
         let diff = (0..<rank).map({ dimensions[$0] - base.dimensions[$0] }).reversed()
         let fullCount: Int
-        if let index = diff.index(where: { $0 != 0 }) , index.base < count {
+        if let index = diff.index(where: { $0 != 0 }), index.base < count {
             fullCount = rank - index.base
         } else {
             fullCount = rank
         }
-        
+
         return rank - fullCount - onesCount <= 1
     }
-    
+
     open func indexIsValid(_ indices: [Int]) -> Bool {
         assert(indices.count == dimensions.count)
         for (i, index) in indices.enumerated() {

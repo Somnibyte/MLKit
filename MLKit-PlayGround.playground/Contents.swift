@@ -6,7 +6,7 @@ import Upsurge
 
 
 // Initialize Data Set
-var dataset:[[Float]] = [[1.0,2.0],[2.0, 2.0], [1.0, 3.0], [1.0, 2.5],[1.0, 4.5]]
+var dataset: [[Float]] = [[1.0, 2.0], [2.0, 2.0], [1.0, 3.0], [1.0, 2.5], [1.0, 4.5]]
 
 // Instantiate kMeans Object
 var model = KMeans(dataset: dataset, k: 1)

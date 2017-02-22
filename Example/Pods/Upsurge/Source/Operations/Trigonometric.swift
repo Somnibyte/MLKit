@@ -247,6 +247,6 @@ func deg2rad<M: LinearType>(_ x: M) -> ValueArray<Float> where M.Element == Floa
     withPointer(x) { xp in
         vvdivf(results.mutablePointer + results.startIndex, xp + x.startIndex, divisor.pointer, [Int32(x.count)])
     }
-    
+
     return results
 }

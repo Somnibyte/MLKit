@@ -27,7 +27,7 @@ public struct ValueArraySlice<Element: Value>: MutableLinearType, CustomStringCo
     public var startIndex: Int
     public var endIndex: Int
     public var step: Int
-    
+
     public var span: Span {
         return Span(ranges: [startIndex ... endIndex - 1])
     }
@@ -55,7 +55,7 @@ public struct ValueArraySlice<Element: Value>: MutableLinearType, CustomStringCo
         self.endIndex = endIndex
         self.step = step
     }
-    
+
     public subscript(index: Index) -> Element {
         get {
             assert(indexIsValid(index))
@@ -66,7 +66,7 @@ public struct ValueArraySlice<Element: Value>: MutableLinearType, CustomStringCo
             base[index * step] = newValue
         }
     }
-        
+
     public subscript(intervals: [IntervalType]) -> Slice {
         get {
             assert(self.span.contains(intervals))
@@ -85,7 +85,7 @@ public struct ValueArraySlice<Element: Value>: MutableLinearType, CustomStringCo
             }
         }
     }
-    
+
     public subscript(intervals: [Int]) -> Element {
         get {
             assert(intervals.count == 1)
@@ -104,7 +104,7 @@ public struct ValueArraySlice<Element: Value>: MutableLinearType, CustomStringCo
     public func formIndex(after i: inout Index) {
         i += 1
     }
-    
+
     public var description: String {
         var string = "["
         for i in stride(from: startIndex, to: endIndex, by: step) {
@@ -126,7 +126,7 @@ public func ==<T>(lhs: ValueArraySlice<T>, rhs: ValueArray<T>) -> Bool {
     if lhs.count != rhs.count {
         return false
     }
-    
+
     for (lhsIndex, rhsIndex) in zip(lhs.startIndex..<lhs.endIndex, 0..<rhs.count) {
         if lhs[lhsIndex] != rhs[rhsIndex] {
             return false
@@ -139,7 +139,7 @@ public func ==<T>(lhs: ValueArraySlice<T>, rhs: ValueArraySlice<T>) -> Bool {
     if lhs.count != rhs.count {
         return false
     }
-    
+
     for (lhsIndex, rhsIndex) in zip(lhs.startIndex..<lhs.endIndex, rhs.startIndex..<rhs.endIndex) {
         if lhs[lhsIndex] != rhs[rhsIndex] {
             return false

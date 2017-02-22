@@ -10,7 +10,7 @@ import Foundation
 import Upsurge
 
 open class MLDataManager {
-    
+
     enum MLDataHandelingError: Error {
         case noData
         case incorrectFraction
@@ -25,12 +25,12 @@ open class MLDataManager {
      - returns: The mean of the array
      */
     open static func mean (_ data: Array<Float>) -> Float {
-        let totalSum = data.reduce(0.0,+)
+        let totalSum = data.reduce(0.0, +)
         let totalAmountOfData = Float(data.count)
         return totalSum / totalAmountOfData
     }
 
-    
+
     /**
      The dataToMatrix method takes an array of features (which contain your data of a specific feature), along with your observations/output
      and turns your features into a Matrix of type Float and your output into an array in order to be processed by machine learning algorithms
@@ -52,7 +52,7 @@ open class MLDataManager {
 
         for (i, _) in constantArray.enumerated() {
             var newRow: [Float] = []
-            
+
             newRow.append(constantArray[i])
 
             for featureArray in features {
@@ -187,14 +187,13 @@ open class MLDataManager {
 
         return features
     }
-    
-    
-    open static func normalizeFeatures(_ features: [Array<Float>], output: Array<Float>) -> Matrix<Float>{
+
+
+    open static func normalizeFeatures(_ features: [Array<Float>], output: Array<Float>) -> Matrix<Float> {
         let featureMatrixAndOutput = dataToMatrix(features, output: output)
         let normalizedFeatures = transpose(normalize(featureMatrixAndOutput.0))
-        
-        return normalizedFeatures 
+
+        return normalizedFeatures
     }
 
 }
-

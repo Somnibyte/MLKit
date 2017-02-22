@@ -60,7 +60,7 @@ public struct Complex<Element: Real>: Value {
     public var hashValue: Int {
         return real.hashValue ^ imag.hashValue
     }
-    
+
     public var description: String {
         return "\(real) + \(imag)i"
     }

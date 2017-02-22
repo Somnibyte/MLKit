@@ -24,11 +24,11 @@ open class Matrix<T: Value>: MutableQuadraticType, Equatable, CustomStringConver
     public typealias Index = (Int, Int)
     public typealias Slice = MatrixSlice<Element>
     public typealias Element = T
-    
+
     open var rows: Int
     open var columns: Int
     open var elements: ValueArray<Element>
-    
+
     open var span: Span {
         return Span(zeroTo: [rows, columns])
     }
@@ -56,7 +56,7 @@ open class Matrix<T: Value>: MutableQuadraticType, Equatable, CustomStringConver
     open var stride: Int {
         return columns
     }
-    
+
     open var step: Int {
         return elements.step
     }
@@ -96,7 +96,7 @@ open class Matrix<T: Value>: MutableQuadraticType, Equatable, CustomStringConver
         self.columns = columns
         self.elements = ValueArray(count: rows * columns, repeatedValue: repeatedValue)
     }
-    
+
     /// Construct a Matrix from an array of rows
     public convenience init(_ contents: [[Element]]) {
         let rows = contents.count
@@ -108,14 +108,14 @@ open class Matrix<T: Value>: MutableQuadraticType, Equatable, CustomStringConver
             elements.replaceRange(i*cols..<i*cols+min(cols, row.count), with: row)
         }
     }
-    
+
     /// Construct a Matrix from an array of rows
     public init(rows: Int, columns: Int, initializer: () -> Element) {
         self.rows = rows
         self.columns = columns
         self.elements = ValueArray(count: rows * columns, initializer: initializer)
     }
-    
+
     open subscript(indices: Int...) -> Element {
         get {
             return self[indices]
@@ -124,7 +124,7 @@ open class Matrix<T: Value>: MutableQuadraticType, Equatable, CustomStringConver
             self[indices] = newValue
         }
     }
-    
+
     open subscript(indices: [Int]) -> Element {
         get {
             assert(indices.count == 2)
@@ -137,7 +137,7 @@ open class Matrix<T: Value>: MutableQuadraticType, Equatable, CustomStringConver
             elements[(indices[0] * columns) + indices[1]] = newValue
         }
     }
-    
+
     open subscript(intervals: IntervalType...) -> Slice {
         get {
             return self[intervals]
@@ -146,7 +146,7 @@ open class Matrix<T: Value>: MutableQuadraticType, Equatable, CustomStringConver
             self[intervals] = newValue
         }
     }
-    
+
     open subscript(intervals: [IntervalType]) -> Slice {
         get {
             let span = Span(dimensions: dimensions, intervals: intervals)
@@ -157,7 +157,7 @@ open class Matrix<T: Value>: MutableQuadraticType, Equatable, CustomStringConver
             self[span] = newValue
         }
     }
-    
+
     subscript(span: Span) -> Slice {
         get {
             return MatrixSlice(base: self, span: span)
@@ -186,12 +186,12 @@ open class Matrix<T: Value>: MutableQuadraticType, Equatable, CustomStringConver
     open func indexIsValidForRow(_ row: Int, column: Int) -> Bool {
         return row >= 0 && row < rows && column >= 0 && column < columns
     }
-    
+
     open var description: String {
         var description = ""
 
         for i in 0..<rows {
-            let contents = (0..<columns).map{"\(self[i, $0])"}.joined(separator: "\t")
+            let contents = (0..<columns).map {"\(self[i, $0])"}.joined(separator: "\t")
 
             switch (i, rows) {
             case (0, 1):
