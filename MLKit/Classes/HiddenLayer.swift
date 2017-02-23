@@ -5,6 +5,9 @@
 //  Created by Guled  on 2/23/17.
 //
 //
+// Architecture of the code inspired by Fábio M. Soares and Alan M.F Souza's implementation of a Neural Network -
+// in their book Neural Network Programming in Java.
+
 
 import Foundation
 import Upsurge
@@ -39,7 +42,17 @@ public class HiddenLayer: Layer {
         
     }
 
-        
+
+    /**
+     The initializeLayer method initializes an HiddenLayer object by creating Neurons with random weights and then filling the listOfNeurons attribute with the correct number of Neurons specificed by the developer.
+
+     - parameter hiddenLayer: A HiddenLayer object
+     - parameter listOfHiddenLayers: A list of HiddenLayer objects
+     - parameter inputLayer: The input layer (InputLayer Object)
+     - paramter outputLayer: The output layer (OutputLayer Object) 
+
+     - returns: An InputLayer Object
+     */
     open func initializeLayer(hiddenLayer:HiddenLayer, listOfHiddenLayers:[HiddenLayer], inputLayer:InputLayer, outputLayer:OutputLayer) -> [HiddenLayer] {
 
 

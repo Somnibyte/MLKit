@@ -5,6 +5,9 @@
 //  Created by Guled  on 2/23/17.
 //
 //
+// Architecture of the code inspired by Fábio M. Soares and Alan M.F Souza's implementation of a Neural Network -
+// in their book Neural Network Programming in Java.
+
 
 import Foundation
 import Upsurge
@@ -41,6 +44,13 @@ public class OutputLayer: Layer, InputandOutputLayerMethods {
     }
         
 
+    /**
+     The initializeLayer method initializes an OutputLayer object by creating Neurons with random weights and then filling the listOfNeurons attribute with the correct number of Neurons specificed by the developer.
+
+     - parameter inputLayer: An OutputLayer Object
+
+     - returns: An OutputLayer Object
+     */
     open func initializeLayer(outLayer:OutputLayer) -> OutputLayer {
 
         var temporaryWeightsOut: [Float] = []
