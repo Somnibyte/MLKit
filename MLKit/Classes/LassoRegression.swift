@@ -11,8 +11,31 @@ import Upsurge
 
 open class LassoRegression {
 
-    fileprivate var costFunctionResult: Float!
-    fileprivate var finalWeights: Matrix<Float>!
+    fileprivate var _costFunctionResult: Float!
+
+    var costFunctionResult: Float {
+
+        get {
+            return _costFunctionResult
+        }
+
+        set {
+            _costFunctionResult = newValue
+        }
+    }
+
+    fileprivate var _finalWeights: Matrix<Float>!
+
+    var finalWeights: Matrix<Float> {
+
+        get {
+            return _finalWeights
+        }
+
+        set {
+            return _finalWeights = newValue
+        }
+    }
 
     public init () {
         costFunctionResult = 0.0
@@ -49,7 +72,7 @@ open class LassoRegression {
 
             var changeForFullCycle: [Float] = []
 
-            for i  in (0..<initialWeights.elements.count) {
+            for i in (0..<initialWeights.elements.count) {
 
                 let oldWeight = initialWeights.elements[i]
 
@@ -90,10 +113,10 @@ open class LassoRegression {
 
         if i == 0 {
             newWeight = ro
-        } else if ro < (-l1Penalty/2.0) {
-            newWeight = (ro + l1Penalty/2.0)
-        } else if ro > (l1Penalty/2.0) {
-            newWeight = (ro - l1Penalty/2.0)
+        } else if ro < (-l1Penalty / 2.0) {
+            newWeight = (ro + l1Penalty / 2.0)
+        } else if ro > (l1Penalty / 2.0) {
+            newWeight = (ro - l1Penalty / 2.0)
         } else {
             newWeight = 0.0
         }
@@ -166,19 +189,6 @@ open class LassoRegression {
         return predictions.elements
     }
 
-    /**
-     The getCostFunctionResult function returns your cost function result (RSS).
-     */
-    open func getCostFunctionResult() -> Float {
-        return self.costFunctionResult
-    }
-
-    /**
-     The getWeightsAsMatrix function returns your weights.
-     */
-    open func getWeightsAsMatrix() -> Matrix<Float> {
-        return self.finalWeights
-    }
 
     /**
      The getWeightsAsValueArray function returns a value array that contains your weights.

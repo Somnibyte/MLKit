@@ -11,9 +11,60 @@ import Upsurge
 
 open class SimpleLinearRegression {
 
-    fileprivate var slope: Float!
-    fileprivate var intercept: Float!
-    fileprivate var costFunctionResult: Float!
+    fileprivate var _slope: Float!
+
+    var slope: Float {
+
+        get {
+            return _slope
+        }
+
+        set {
+            _slope = newValue
+        }
+
+    }
+
+    fileprivate var _intercept: Float!
+
+    var intercept: Float {
+
+        get {
+            return _intercept
+        }
+
+        set {
+            _intercept = newValue
+        }
+    }
+
+    fileprivate var _costFunctionResult: Float!
+
+    var costFunctionResult: Float {
+
+        get {
+            return _costFunctionResult
+        }
+
+        set {
+            _costFunctionResult = newValue
+        }
+    }
+
+    fileprivate var _finalWeights: Matrix<Float>!
+
+    var finalWeights: Matrix<Float> {
+
+        get {
+            return _finalWeights
+        }
+
+        set {
+            return _finalWeights = newValue
+        }
+    }
+
+
 
     public init() {
         slope = 0.0
@@ -226,12 +277,6 @@ open class SimpleLinearRegression {
         return (self.slope, self.intercept)
     }
 
-    /**
-        The getCostFunctionResult function returns your cost function result (RSS).
-    */
-    open func getCostFunctionResult() -> Float {
-        return self.costFunctionResult
-    }
 
 
 }

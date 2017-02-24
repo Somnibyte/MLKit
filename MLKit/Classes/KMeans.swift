@@ -12,6 +12,7 @@ import Upsurge
 open class KMeans {
 
     fileprivate var centroids: Matrix<Float>!
+
     fileprivate var k: Int!
     fileprivate var smartInit: Bool!
     fileprivate var dataset: Matrix<Float>!

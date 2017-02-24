@@ -11,8 +11,31 @@ import Upsurge
 
 open class PolynomialLinearRegression {
 
-    fileprivate var costFunctionResult: Float!
-    fileprivate var finalWeights: Matrix<Float>!
+    fileprivate var _costFunctionResult: Float!
+
+    var costFunctionResult: Float {
+
+        get {
+            return _costFunctionResult
+        }
+
+        set {
+            _costFunctionResult = newValue
+        }
+    }
+
+    fileprivate var _finalWeights: Matrix<Float>!
+
+    var finalWeights: Matrix<Float> {
+
+        get {
+            return _finalWeights
+        }
+
+        set {
+            return _finalWeights = newValue
+        }
+    }
 
     public init() {
         costFunctionResult = 0.0
@@ -162,12 +185,6 @@ open class PolynomialLinearRegression {
         return derivative
     }
 
-    /**
-     The getCostFunctionResult function returns your cost function result (RSS).
-    */
-    open func getCostFunctionResult() -> Float {
-        return self.costFunctionResult
-    }
 
     /**
      The getWeightsAsMatrix function returns your weights.

@@ -39,7 +39,7 @@ public class HiddenLayer: Layer {
         set {
             return _numberOfNueronsInLayer = newValue
         }
-        
+
     }
 
 
@@ -49,43 +49,43 @@ public class HiddenLayer: Layer {
      - parameter hiddenLayer: A HiddenLayer object
      - parameter listOfHiddenLayers: A list of HiddenLayer objects
      - parameter inputLayer: The input layer (InputLayer Object)
-     - paramter outputLayer: The output layer (OutputLayer Object) 
+     - paramter outputLayer: The output layer (OutputLayer Object)
 
      - returns: An InputLayer Object
      */
-    open func initializeLayer(hiddenLayer:HiddenLayer, listOfHiddenLayers:[HiddenLayer], inputLayer:InputLayer, outputLayer:OutputLayer) -> [HiddenLayer] {
+    open func initializeLayer(hiddenLayer: HiddenLayer, listOfHiddenLayers: [HiddenLayer], inputLayer: InputLayer, outputLayer: OutputLayer) -> [HiddenLayer] {
 
 
-        var weightsComingIn:[Float] = []
-        var weightsGoingOut:[Float] = []
-        var listOfNeurons:[Neuron] = []
+        var weightsComingIn: [Float] = []
+        var weightsGoingOut: [Float] = []
+        var listOfNeurons: [Neuron] = []
 
         var numberOfHiddenLayers = listOfHiddenLayers.count
 
         for var i in 0..<numberOfHiddenLayers {
             for var j in 0..<hiddenLayer.numberOfNueronsInLayer {
 
-                // Initialize Neuron 
+                // Initialize Neuron
                 var neuron = Neuron()
 
-                // Offsets 
-                var limitIn:Int!
-                var limitOut:Int!
+                // Offsets
+                var limitIn: Int!
+                var limitOut: Int!
 
 
                 if i == 0 { // First hidden Layer will recieve the inputLayers number of neurons
                     limitIn = inputLayer.numberOfNueronsInLayer
 
-                    if numberOfHiddenLayers > 1{ // If we have more hidden layers, check for them. 
+                    if numberOfHiddenLayers > 1 { // If we have more hidden layers, check for them.
                         limitOut = listOfHiddenLayers[i + 1].numberOfNueronsInLayer
-                    }else{ // Otherwise set limitOut to the current number of neurons
+                    } else { // Otherwise set limitOut to the current number of neurons
                         limitOut = listOfHiddenLayers[i].numberOfNueronsInLayer
                     }
 
-                }else if i == numberOfHiddenLayers - 1 { // Last Hidden Layer
-                    limitIn =  listOfHiddenLayers[i - 1].numberOfNueronsInLayer // # of neurons from previous layer 
+                } else if i == numberOfHiddenLayers - 1 { // Last Hidden Layer
+                    limitIn =  listOfHiddenLayers[i - 1].numberOfNueronsInLayer // # of neurons from previous layer
                     limitOut = outputLayer.numberOfNueronsInLayer // # of neurons from the output layer
-                }else{ // We are in the middle hidden layers
+                } else { // We are in the middle hidden layers
                     limitIn =  listOfHiddenLayers[i - 1].numberOfNueronsInLayer // # of neurons from previous hidden layer
                     limitOut = listOfHiddenLayers[i + 1].numberOfNueronsInLayer// # of neurons of successor hidden layer
                 }
@@ -117,15 +117,15 @@ public class HiddenLayer: Layer {
         return listOfHiddenLayers
     }
 
-    open func printLayer(listOfHiddenLayers:[HiddenLayer]){
+    open func printLayer(listOfHiddenLayers: [HiddenLayer]) {
         print(" ~ [HIDDEN LAYER] ~")
 
-        var h:Int = 1
+        var h: Int = 1
 
         for hiddenLayer in listOfHiddenLayers {
             print("Hidden Layer # \(h)")
 
-            var n:Int = 1
+            var n: Int = 1
 
             for neuron in hiddenLayer.listOfNeurons {
 
@@ -141,26 +141,3 @@ public class HiddenLayer: Layer {
 
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

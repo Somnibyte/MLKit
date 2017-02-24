@@ -45,6 +45,11 @@
 		9A54B39F1E5B57680059B577 /* CSVReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A54B39B1E5B57680059B577 /* CSVReader.swift */; };
 		9A54B3B41E5B5CFC0059B577 /* MLKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A54B3B31E5B5CFC0059B577 /* MLKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9A54B3F41E5B7DDD0059B577 /* KMeans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A54B3F31E5B7DDD0059B577 /* KMeans.swift */; };
+		9A6B57891E607C6700DE4771 /* TrainingTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6B57881E607C6700DE4771 /* TrainingTypes.swift */; };
+		9A6B578B1E607C9200DE4771 /* ActivationFunctionEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6B578A1E607C9200DE4771 /* ActivationFunctionEnum.swift */; };
+		9AF4D40E1E5F9E6A0034C512 /* Adaline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF4D40D1E5F9E6A0034C512 /* Adaline.swift */; };
+		9AF4D4101E5F9E7A0034C512 /* Perceptron.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF4D40F1E5F9E7A0034C512 /* Perceptron.swift */; };
+		9AF4D4121E5F9E980034C512 /* Training.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF4D4111E5F9E980034C512 /* Training.swift */; };
 		9CC7E26261EA4FC28093C9D8DCB8FA95 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A7AD70C4220827968C76078BCADC96D /* Foundation.framework */; };
 		A0C1601BFA06B5D6B521E5ACD1443019 /* LassoRegression.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08532D32BAE6DA8DC8D53600A166C60 /* LassoRegression.swift */; };
 		A19069C641FDA1F2FC4740497DEFC1FF /* Trigonometric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256074F1D7363486EF2D20DAC2256B83 /* Trigonometric.swift */; };
@@ -63,7 +68,7 @@
 		D4F3197AABFDB36634BF7B25B8838CCB /* TensorSlice.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23D44C4E57760EEFF74E6ABF1BDF55B /* TensorSlice.swift */; };
 		DB246FA23385A722E713AFC3FA4A6D40 /* ComplexArithmetic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CED27A919F9AC910D6B995C9E6F9070 /* ComplexArithmetic.swift */; };
 		DCAABBFA2811041A775F2C85009C0AB2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A7AD70C4220827968C76078BCADC96D /* Foundation.framework */; };
-		E26212D4B3EB8225C28B5CC692F0164C /* RegressionErrorEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198C97247B18408D602DAE3B9C9DCA20 /* RegressionErrorEnum.swift */; };
+		E26212D4B3EB8225C28B5CC692F0164C /* MachineLeanringErrorEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198C97247B18408D602DAE3B9C9DCA20 /* MachineLeanringErrorEnum.swift */; };
 		E88F5C741F5B4A8188864C16F96531EA /* Span.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A2E576BEB215E1FC5897AEF49E5A1D /* Span.swift */; };
 		ECC64EDD4EF7064D0C5FD7FBDF978CAD /* DSP.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3B22185C1CCB8DC579326E9943351A /* DSP.swift */; };
 		F9A4B55A582F524154E7D90A4EE39802 /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44232FB4A62756B9B126B397FA95BE4 /* Matrix.swift */; };
@@ -100,7 +105,7 @@
 		08D39735D7DBDB3A52B19BB1A1BEAD08 /* Pods-MLKit_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-MLKit_Example.modulemap"; sourceTree = "<group>"; };
 		0A4B89CEE67F7EA2A3C6A5E7A8735463 /* Interval.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Interval.swift; path = Source/Types/Interval.swift; sourceTree = "<group>"; };
 		0AA1BC9E09210821462C330A16DF7EF6 /* QuadraticType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuadraticType.swift; path = Source/2D/QuadraticType.swift; sourceTree = "<group>"; };
-		198C97247B18408D602DAE3B9C9DCA20 /* RegressionErrorEnum.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RegressionErrorEnum.swift; sourceTree = "<group>"; };
+		198C97247B18408D602DAE3B9C9DCA20 /* MachineLeanringErrorEnum.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MachineLeanringErrorEnum.swift; sourceTree = "<group>"; };
 		1CED27A919F9AC910D6B995C9E6F9070 /* ComplexArithmetic.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ComplexArithmetic.swift; path = Source/Complex/ComplexArithmetic.swift; sourceTree = "<group>"; };
 		2002FFD090C435360F60A33E88C41DBB /* Pods-MLKit_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MLKit_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		256074F1D7363486EF2D20DAC2256B83 /* Trigonometric.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Trigonometric.swift; path = Source/Operations/Trigonometric.swift; sourceTree = "<group>"; };
@@ -152,6 +157,11 @@
 		9A54B39B1E5B57680059B577 /* CSVReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSVReader.swift; sourceTree = "<group>"; };
 		9A54B3B31E5B5CFC0059B577 /* MLKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLKit.h; sourceTree = "<group>"; };
 		9A54B3F31E5B7DDD0059B577 /* KMeans.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMeans.swift; sourceTree = "<group>"; };
+		9A6B57881E607C6700DE4771 /* TrainingTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingTypes.swift; sourceTree = "<group>"; };
+		9A6B578A1E607C9200DE4771 /* ActivationFunctionEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivationFunctionEnum.swift; sourceTree = "<group>"; };
+		9AF4D40D1E5F9E6A0034C512 /* Adaline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Adaline.swift; sourceTree = "<group>"; };
+		9AF4D40F1E5F9E7A0034C512 /* Perceptron.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Perceptron.swift; sourceTree = "<group>"; };
+		9AF4D4111E5F9E980034C512 /* Training.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Training.swift; sourceTree = "<group>"; };
 		9C6B6A08749A762D9174E03E4409BD8E /* Pods-MLKit_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MLKit_Example-frameworks.sh"; sourceTree = "<group>"; };
 		9D3A07F4F6A05CA6A00CF85FDA94AB57 /* Pods-MLKit_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MLKit_Tests-dummy.m"; sourceTree = "<group>"; };
 		A4A63CA34232025BF3E3D510CFC3E8F8 /* LinearType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LinearType.swift; path = Source/1D/LinearType.swift; sourceTree = "<group>"; };
@@ -361,7 +371,6 @@
 			children = (
 				E08532D32BAE6DA8DC8D53600A166C60 /* LassoRegression.swift */,
 				621EF03469D4C0396DAF6E1D6EB4151A /* PolynomialRegression.swift */,
-				198C97247B18408D602DAE3B9C9DCA20 /* RegressionErrorEnum.swift */,
 				3D462FD03D7521174EA5BEBE9FA8D447 /* RidgeRegression.swift */,
 				EE2EA7CEF8AE93469339404223F786C8 /* SimpleLinearRegression.swift */,
 			);
@@ -373,6 +382,7 @@
 			children = (
 				04E30A1A3A699DF7A60A0599C6EE37AA /* Extensions.swift */,
 				8E3CBB7D5B71A987D614BC05891395AB /* DataManager.swift */,
+				198C97247B18408D602DAE3B9C9DCA20 /* MachineLeanringErrorEnum.swift */,
 			);
 			name = "Helper Classes & Extensions";
 			sourceTree = "<group>";
@@ -380,6 +390,7 @@
 		9A162C3E1E5F4AC600B39F72 /* ANN */ = {
 			isa = PBXGroup;
 			children = (
+				9AF4D40C1E5F9E3E0034C512 /* Learning */,
 				9A162C3F1E5F4FEE00B39F72 /* Neuron.swift */,
 				9A162C411E5F56AA00B39F72 /* LayerProtocol.swift .swift */,
 				9A162C431E5F5A4400B39F72 /* InputLayer.swift */,
@@ -396,6 +407,18 @@
 				9A54B39B1E5B57680059B577 /* CSVReader.swift */,
 			);
 			name = CSVReader;
+			sourceTree = "<group>";
+		};
+		9AF4D40C1E5F9E3E0034C512 /* Learning */ = {
+			isa = PBXGroup;
+			children = (
+				9AF4D40D1E5F9E6A0034C512 /* Adaline.swift */,
+				9AF4D40F1E5F9E7A0034C512 /* Perceptron.swift */,
+				9AF4D4111E5F9E980034C512 /* Training.swift */,
+				9A6B57881E607C6700DE4771 /* TrainingTypes.swift */,
+				9A6B578A1E607C9200DE4771 /* ActivationFunctionEnum.swift */,
+			);
+			name = Learning;
 			sourceTree = "<group>";
 		};
 		A1CC352BE432B887A183A17F36371F37 /* Frameworks */ = {
@@ -688,13 +711,18 @@
 				9A54B3F41E5B7DDD0059B577 /* KMeans.swift in Sources */,
 				9A162C401E5F4FEE00B39F72 /* Neuron.swift in Sources */,
 				9A50D6C61E5F701F00876696 /* NeuralNet.swift in Sources */,
+				9AF4D40E1E5F9E6A0034C512 /* Adaline.swift in Sources */,
 				2FDC4F0540BABDFA8FA5AC030A2AA83E /* PolynomialRegression.swift in Sources */,
 				9A54B39F1E5B57680059B577 /* CSVReader.swift in Sources */,
-				E26212D4B3EB8225C28B5CC692F0164C /* RegressionErrorEnum.swift in Sources */,
+				E26212D4B3EB8225C28B5CC692F0164C /* MachineLeanringErrorEnum.swift in Sources */,
+				9AF4D4121E5F9E980034C512 /* Training.swift in Sources */,
+				9AF4D4101E5F9E7A0034C512 /* Perceptron.swift in Sources */,
 				9A50D6C41E5F681D00876696 /* HiddenLayer.swift in Sources */,
 				9A162C441E5F5A4400B39F72 /* InputLayer.swift in Sources */,
 				1D8405A4A836486A7514D310F487EF8E /* RidgeRegression.swift in Sources */,
 				5A07D8EB3A046D9D9B54A9A6EA597B2D /* SimpleLinearRegression.swift in Sources */,
+				9A6B578B1E607C9200DE4771 /* ActivationFunctionEnum.swift in Sources */,
+				9A6B57891E607C6700DE4771 /* TrainingTypes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

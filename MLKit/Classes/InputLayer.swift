@@ -34,7 +34,7 @@ public class InputLayer: Layer, InputandOutputLayerMethods {
         }
 
         set {
-            return _numberOfNueronsInLayer = newValue
+            return _numberOfNueronsInLayer = newValue + 1 // Don't forget BIAS
         }
 
     }
@@ -47,7 +47,7 @@ public class InputLayer: Layer, InputandOutputLayerMethods {
 
      - returns: An InputLayer Object
      */
-    open func initializeLayer(inputLayer:InputLayer) -> InputLayer {
+    open func initializeLayer(inputLayer: InputLayer) -> InputLayer {
 
         var temporaryWeightsIn: [Float] = []
         var listOfNeurons: [Neuron] = []
@@ -72,26 +72,16 @@ public class InputLayer: Layer, InputandOutputLayerMethods {
 
 
     public func printLayer(layer: Layer) {
+        print(" ~ [INPUT LAYER] ~")
 
-        var n:Int = 1
+        var n: Int = 1
 
         for neuron in layer.listOfNeurons {
             print("Neuron # \(n) :")
             print("Input Weights of Neuron \(n): \(neuron.weightsComingIn)")
-
             n += 1
         }
-        
+
     }
-    
+
 }
-
-
-
-
-
-
-
-
-
-

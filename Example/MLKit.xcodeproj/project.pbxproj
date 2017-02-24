@@ -13,7 +13,6 @@
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
-		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		7D7064C9A3631B7752642915 /* Pods_MLKit_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F7E553BF29858564109C95C /* Pods_MLKit_Tests.framework */; };
 		9A54B3AC1E5B57D00059B577 /* PolynomialRegressionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A54B3A51E5B578A0059B577 /* PolynomialRegressionTest.swift */; };
 		9A54B3AD1E5B57DE0059B577 /* LassoRegressionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A54B3A21E5B578A0059B577 /* LassoRegressionTest.swift */; };
@@ -21,6 +20,7 @@
 		9A54B3AF1E5B57F00059B577 /* SimpleLinearRegressionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A54B3A61E5B578A0059B577 /* SimpleLinearRegressionTest.swift */; };
 		9A54B3B11E5B59160059B577 /* RidgeRegressionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A54B3B01E5B59160059B577 /* RidgeRegressionTest.swift */; };
 		9A54B3B81E5B5D6D0059B577 /* kc_house_data.csv in Resources */ = {isa = PBXBuildFile; fileRef = 9A54B3B71E5B5D6D0059B577 /* kc_house_data.csv */; };
+		9A6B57901E60D18300DE4771 /* NueralNetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6B578E1E60D17C00DE4771 /* NueralNetworkTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,7 +60,6 @@
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* MLKit_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MLKit_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		65CE8F014155800F07E3652F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		6FE1BF7F8EF374CFB92CBB77 /* Pods-MLKit_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MLKit_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MLKit_Tests/Pods-MLKit_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		8829C99A800D59865185C8D0 /* Pods_MLKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MLKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,6 +70,7 @@
 		9A54B3A61E5B578A0059B577 /* SimpleLinearRegressionTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleLinearRegressionTest.swift; sourceTree = "<group>"; };
 		9A54B3B01E5B59160059B577 /* RidgeRegressionTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RidgeRegressionTest.swift; sourceTree = "<group>"; };
 		9A54B3B71E5B5D6D0059B577 /* kc_house_data.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = kc_house_data.csv; sourceTree = "<group>"; };
+		9A6B578E1E60D17C00DE4771 /* NueralNetworkTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NueralNetworkTests.swift; sourceTree = "<group>"; };
 		AD54BBE1B07E33FF3F5DD543 /* Pods-MLKit_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MLKit_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-MLKit_Example/Pods-MLKit_Example.release.xcconfig"; sourceTree = "<group>"; };
 		BCFC43680C2D8165DD3A9F1E /* MachineLearningKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = MachineLearningKit.podspec; path = ../MachineLearningKit.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -162,12 +162,12 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				607FACEB1AFB9204008FA782 /* Tests.swift */,
 				9A54B3A21E5B578A0059B577 /* LassoRegressionTest.swift */,
 				9A54B3A31E5B578A0059B577 /* MLDataManagerTest.swift */,
 				9A54B3A51E5B578A0059B577 /* PolynomialRegressionTest.swift */,
 				9A54B3A61E5B578A0059B577 /* SimpleLinearRegressionTest.swift */,
 				9A54B3B01E5B59160059B577 /* RidgeRegressionTest.swift */,
+				9A6B578E1E60D17C00DE4771 /* NueralNetworkTests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
 			path = Tests;
@@ -409,11 +409,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A54B3AF1E5B57F00059B577 /* SimpleLinearRegressionTest.swift in Sources */,
+				9A6B57901E60D18300DE4771 /* NueralNetworkTests.swift in Sources */,
 				9A54B3AE1E5B57E10059B577 /* MLDataManagerTest.swift in Sources */,
 				9A54B3AC1E5B57D00059B577 /* PolynomialRegressionTest.swift in Sources */,
 				9A54B3AD1E5B57DE0059B577 /* LassoRegressionTest.swift in Sources */,
 				9A54B3B11E5B59160059B577 /* RidgeRegressionTest.swift in Sources */,
-				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

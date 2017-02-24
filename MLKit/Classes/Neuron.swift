@@ -3,7 +3,7 @@
 //  Pods
 //
 //  Created by Guled  on 2/23/17.
-//  
+//
 // Architecture of the code inspired by Fábio M. Soares and Alan M.F Souza's implementation of a Neural Network -
 // in their book Neural Network Programming in Java.
 
@@ -13,10 +13,10 @@ import Upsurge
 
 open class Neuron {
 
-    fileprivate var _weightsComingIn:ValueArray<Float>!
-    fileprivate var _weightsGoingOut:ValueArray<Float>!
+    fileprivate var _weightsComingIn: ValueArray<Float>!
+    fileprivate var _weightsGoingOut: ValueArray<Float>!
 
-    var weightsComingIn:ValueArray<Float> { // List of input weights
+    var weightsComingIn: ValueArray<Float> { // List of input weights
 
 
         get {
@@ -29,7 +29,7 @@ open class Neuron {
         }
     }
 
-    var weightsGoingOut:ValueArray<Float> { // List of output weights
+    var weightsGoingOut: ValueArray<Float> { // List of output weights
 
         get {
             return _weightsGoingOut
@@ -44,11 +44,6 @@ open class Neuron {
     open func initializeNueron() -> Float {
         return Float(arc4random()) / Float(UINT32_MAX)
     }
-    
+
 
 }
-
-
-
-
-

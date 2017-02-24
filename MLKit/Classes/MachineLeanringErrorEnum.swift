@@ -12,4 +12,5 @@ import Foundation
 enum MachineLearningError: Error {
     case lengthOfDataArrayNotEqual
     case modelHasNotBeenFit
+    case invalidInput
 }

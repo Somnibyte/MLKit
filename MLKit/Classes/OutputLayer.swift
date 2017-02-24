@@ -40,9 +40,9 @@ public class OutputLayer: Layer, InputandOutputLayerMethods {
         set {
             return _numberOfNueronsInLayer = newValue
         }
-        
+
     }
-        
+
 
     /**
      The initializeLayer method initializes an OutputLayer object by creating Neurons with random weights and then filling the listOfNeurons attribute with the correct number of Neurons specificed by the developer.
@@ -51,7 +51,7 @@ public class OutputLayer: Layer, InputandOutputLayerMethods {
 
      - returns: An OutputLayer Object
      */
-    open func initializeLayer(outLayer:OutputLayer) -> OutputLayer {
+    open func initializeLayer(outLayer: OutputLayer) -> OutputLayer {
 
         var temporaryWeightsOut: [Float] = []
         var listOfNeurons: [Neuron] = []
@@ -70,7 +70,7 @@ public class OutputLayer: Layer, InputandOutputLayerMethods {
         }
 
         outLayer.listOfNeurons = listOfNeurons
-        
+
         return outLayer
     }
 
@@ -78,7 +78,7 @@ public class OutputLayer: Layer, InputandOutputLayerMethods {
     public func printLayer(layer: Layer) {
         print(" ~ [OUTPUT LAYER] ~")
 
-        var n:Int = 1
+        var n: Int = 1
 
         for neuron in layer.listOfNeurons {
             print("Neuron # \(n) :")
