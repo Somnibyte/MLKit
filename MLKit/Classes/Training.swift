@@ -116,7 +116,7 @@ extension Training {
 
 
 
-    private func activationFunc(fncType: ActivationFunctionType, value: Float) throws -> Float {
+    public func activationFunc(fncType: ActivationFunctionType, value: Float) throws -> Float {
 
         switch fncType {
         case .STEP:
@@ -132,7 +132,7 @@ extension Training {
         }
     }
 
-    private func derivativeFunc(fncType: ActivationFunctionType, value: Float) throws -> Float {
+    public func derivativeFunc(fncType: ActivationFunctionType, value: Float) throws -> Float {
 
         switch fncType {
         case .LINEAR:
@@ -214,53 +214,5 @@ extension Training {
 
 
     }
-
-
-    // Test Function
-
-    public func doesNeuralNetEmulateTarget(trainedNetwork: NeuralNet) -> Bool {
-
-        var rows = trainedNetwork.trainingSet.rows
-        var columns = trainedNetwork.trainingSet.columns
-
-        var weightsComingIn: ValueArray<Float>! = ValueArray<Float>()
-
-        var correct: Bool = true
-
-        for var i in 0..<rows {
-
-            var netValue: Float = 0
-
-            for var j in 0..<columns {
-                weightsComingIn = trainedNetwork.inputLayer.listOfNeurons[j].weightsComingIn
-                var inputWeight = weightsComingIn[0]
-                netValue += inputWeight * trainedNetwork.trainingSet[i, j]
-
-                print("\(trainedNetwork.trainingSet[i, j])")
-            }
-
-            print("\n")
-            var estimatedOutput = try! activationFunc(fncType: trainedNetwork.activationFuncType, value: netValue)
-
-            print("NET OUTPUT: \(estimatedOutput) \t")
-
-            print("REAL OUTPUT: \(trainedNetwork.targetOutputSet[i]) \t")
-
-            if estimatedOutput != trainedNetwork.targetOutputSet[i] {
-                return false
-            }
-
-            var error = estimatedOutput - trainedNetwork.targetOutputSet[i]
-
-            print("ERROR: \(error) \t")
-
-
-            print("------------------------------------")
-        }
-
-
-        return true
-    }
-
 
 }

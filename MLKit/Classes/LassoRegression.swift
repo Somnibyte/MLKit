@@ -135,7 +135,6 @@ open class LassoRegression {
     open func RSS(_ features: [Array<Float>], observation: Array<Float>) throws -> Float {
         // Check if the users model has fit to their data
         if self.finalWeights == nil {
-            print("You need to have fit a model first before computing the RSS/Cost Function.")
             throw MachineLearningError.modelHasNotBeenFit
         }
 

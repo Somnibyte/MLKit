@@ -39,7 +39,7 @@ class NeuralNetworkTests: XCTestCase {
 
         net.activationFuncType = ActivationFunctionType.STEP
 
-        trainedNet = net.trainNet(network: net)
+        trainedNet = try! net.trainNet(network: net)
 
         trainedNet.printNet()
 
@@ -72,7 +72,7 @@ class NeuralNetworkTests: XCTestCase {
 
         net.activationFuncType = ActivationFunctionType.LINEAR
 
-        trainedNet = net.trainNet(network: net)
+        trainedNet = try! net.trainNet(network: net)
 
         trainedNet.printNet()
 

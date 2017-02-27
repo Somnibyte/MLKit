@@ -15,6 +15,9 @@ open class Neuron {
 
     fileprivate var _weightsComingIn: ValueArray<Float>!
     fileprivate var _weightsGoingOut: ValueArray<Float>!
+    fileprivate var _outputValue: Float!
+    fileprivate var _error: Float!
+    fileprivate var _sensibility: Float!
 
     var weightsComingIn: ValueArray<Float> { // List of input weights
 
@@ -40,6 +43,44 @@ open class Neuron {
         }
 
     }
+
+
+    var outputValue: Float! { // List of output weights
+
+        get {
+            return _outputValue
+        }
+
+        set {
+            return _outputValue = newValue
+        }
+        
+    }
+
+    var error: Float! { // List of output weights
+
+        get {
+            return _error
+        }
+
+        set {
+            return _error = newValue
+        }
+
+    }
+    
+    var sensibility: Float! { // List of output weights
+
+        get {
+            return _sensibility
+        }
+
+        set {
+            return _sensibility = newValue
+        }
+
+    }
+
 
     open func initializeNueron() -> Float {
         return Float(arc4random()) / Float(UINT32_MAX)

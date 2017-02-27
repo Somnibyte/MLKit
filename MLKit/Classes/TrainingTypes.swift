@@ -12,4 +12,5 @@ import Foundation
 public enum TrainingType {
     case PERCEPTRON
     case ADALINE
+    case BACKPROPAGATION
 }

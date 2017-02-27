@@ -111,6 +111,20 @@ open class NeuralNet {
 
     }
 
+    fileprivate var _targetOutputMatrix: Matrix<Float>! // The Target Output Matrix 
+
+    public var targetOutputMatrix: Matrix<Float> {
+
+        get {
+            return _targetOutputMatrix
+        }
+
+        set {
+            _targetOutputMatrix = newValue
+        }
+
+    }
+
     fileprivate var _maxEpochs: Int! // Max Epoch (Stopping condition for training)
 
     public var maxEpochs: Int {
@@ -202,6 +216,19 @@ open class NeuralNet {
         }
     }
 
+    fileprivate var _errorMean: Float! // Stores the mean of the error between two or more neurons 
+
+    public var errorMean:Float {
+
+        get {
+            return _errorMean
+        }
+
+        set {
+            _errorMean = newValue
+        }
+    }
+
 
     public init() { }
 
@@ -251,7 +278,7 @@ open class NeuralNet {
     }
 
 
-    open func trainNet(network: NeuralNet) -> NeuralNet {
+    open func trainNet(network: NeuralNet) throws -> NeuralNet {
 
         var trainedNetwork = NeuralNet()
 
@@ -269,8 +296,8 @@ open class NeuralNet {
             trainedNetwork = adaline.train(network: network)
             return trainedNetwork
 
-        default: break
-
+        default:
+            throw MachineLearningError.invalidInput
         }
     }
 

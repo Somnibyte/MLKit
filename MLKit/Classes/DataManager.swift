@@ -15,6 +15,17 @@ open class MLDataManager {
         case noData
         case incorrectFraction
         case unacceptableInput
+
+        var description:String{
+            switch(self){
+            case .noData:
+                return "No data was provided."
+            case .incorrectFraction:
+                return "Your fraction must be between 1.0 and 0.0"
+            case .unacceptableInput:
+                return "Input was not accepted."
+            }
+        }
     }
 
     /**
@@ -101,7 +112,6 @@ open class MLDataManager {
         }
 
         if (fraction == 1.0 || fraction == 0.0 || fraction >= 1.0) {
-            print("Your fraction must be between 1.0 and 0.0")
             throw MLDataHandelingError.incorrectFraction
         }
 
@@ -166,7 +176,6 @@ open class MLDataManager {
         }
 
         if degree < 1 {
-            print("Degree must be greater than 1.")
             throw MLDataHandelingError.unacceptableInput
         }
 
