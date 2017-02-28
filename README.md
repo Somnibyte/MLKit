@@ -17,7 +17,7 @@ MLKit is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'MachineLearningKit', '0.1.2'
+pod 'MachineLearningKit', '0.1.3'
 ```
 
 ## Wiki 
@@ -25,6 +25,15 @@ pod 'MachineLearningKit', '0.1.2'
 - [x] [Simple Linear Regression (1 Feature)](https://github.com/Somnibyte/MLKit/wiki/Simple-Linear-Regression-Tutorial)
 - [x] [Polynomial Regression](https://github.com/Somnibyte/MLKit/wiki/Polynomial-Regression-Tutorial)
 - [x] [Lasso Regression] (https://github.com/Somnibyte/MLKit/wiki/Lasso-Regression-Tutorial)
+
+
+### TODO:
+
+- [] KMeans++ Implementation 
+- [] KMeans Clustering Documentation
+- [] Neural Network Documentation 
+- [] Ridge Regression Documentation 
+
 
 ## Features (So Far)
 
@@ -34,6 +43,7 @@ pod 'MachineLearningKit', '0.1.2'
 - [x] Ridge Regression
 - [x] Allows for splitting your data into training, validation, and test sets.
 - [x] K-Fold Cross Validation & Ability to test various L2 penalties for Ridge Regression
+- [x] Single Layer Perceptron, Multi-Layer Perceptron, & Adaline ANN Architectures 
 
 ## Frameworks that MLKit uses
 
@@ -49,16 +59,12 @@ pod 'MachineLearningKit', '0.1.2'
 * ✅ Cocoapods 
 * ✅ Documentation on Polynomial, and Lasso Regression 
 * ✅ Code Refactoring  [`develop` branch]
-* ❌ Ridge Regression Documentation (Coming Soon) 
-* ❌ KMeans Documentation (Coming Soon) 
-* ❌ Complete ANN (BackPropagation, Time Complexity Improvements) [Pushed to next week] 
-
 ----------------------------------------------
 
 ### Week of Feb 27th
 |M|T|W|Th|F|
 |---|---|---|---|---|
-|Neural Network Documentation & BackPropagation Algorithm|BackPropagation Algorithm & K-Means++|TBD|TBD|TBD|
+|Neural Network Documentation & BackPropagation Algorithm|BackPropagation Algorithm & K-Means++|TBD|TBD|
 
 
 # License
