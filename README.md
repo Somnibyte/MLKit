@@ -24,7 +24,7 @@ pod 'MachineLearningKit', '0.1.3'
 ----------------------------------------------
 
 ## Contributing 
-The mission of this project is to give developers the ability to create add Machine Learning algorithms to their projects with ease and to enable the creation of advanced projects using the Swift programing language. With this being said, I encourage all developers interested in making Machine Learning accessible to the developers who work with the iOS apps and TVOS apps to contribute to this project. 
+The mission of this project is to give developers the ability to create add Machine Learning algorithms to their projects with ease and to enable the creation of advanced projects using the Swift programing language. With this being said, I encourage all developers interested in making Machine Learning accessible to the anyone who works with the iOS apps and TVOS apps to contribute to this project. 
 
 To contribute an algorithm **not** currently available within the framework, please create an issue and state what algorithm you have implemented. Make sure that there are unit tests involved where applicable. Also, provide a brief overview of how to use your algorithm. You are also welcome to impelment algorithms within the **Roadmap** section (below). 
 
