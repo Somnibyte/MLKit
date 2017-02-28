@@ -96,7 +96,7 @@ To contribute to an already existant algorithm within the framework, please crea
 ### Week of Feb 27th
 |M|T|W|Th|F|
 |---|---|---|---|---|
-|Neural Network Documentation & BackPropagation Algorithm|BackPropagation Algorithm|Kohonen Algorithm, K Means++, More Documentation|TBD|
+|Neural Network Documentation & BackPropagation Algorithm|BackPropagation Algorithm|Kohonen Algorithm, K Means++, More Documentation|TBD|TBD
 
 ----------------------------------------------
 
