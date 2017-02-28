@@ -15,7 +15,7 @@ class RidgeRegressionTests: XCTestCase {
 
     func testFitGradientDescent() {
         // Obtain data from csv file
-        let path = Bundle(for: PolynomialRegressionTests.self).path(forResource: "kc_house_data", ofType: "csv")
+        let path = Bundle(for: RidgeRegressionTests.self).path(forResource: "kc_house_data", ofType: "csv")
         let csvUrl = NSURL(fileURLWithPath: path!)
         let file = try! String(contentsOf: csvUrl as URL, encoding: String.Encoding.utf8)
         let data = CSVReader(with: file)
@@ -46,7 +46,7 @@ class RidgeRegressionTests: XCTestCase {
 
     func testRSS() {
         // Obtain data from csv file
-        let path = Bundle(for: PolynomialRegressionTests.self).path(forResource: "kc_house_data", ofType: "csv")
+        let path = Bundle(for: RidgeRegressionTests.self).path(forResource: "kc_house_data", ofType: "csv")
         let csvUrl = NSURL(fileURLWithPath: path!)
         let file = try! String(contentsOf: csvUrl as URL, encoding: String.Encoding.utf8)
         let data = CSVReader(with: file)
@@ -80,7 +80,7 @@ class RidgeRegressionTests: XCTestCase {
     func testOneTimePrediction() {
 
         // Obtain data from csv file
-        let path = Bundle(for: PolynomialRegressionTests.self).path(forResource: "kc_house_data", ofType: "csv")
+        let path = Bundle(for: RidgeRegressionTests.self).path(forResource: "kc_house_data", ofType: "csv")
         let csvUrl = NSURL(fileURLWithPath: path!)
         let file = try! String(contentsOf: csvUrl as URL, encoding: String.Encoding.utf8)
         let data = CSVReader(with: file)
