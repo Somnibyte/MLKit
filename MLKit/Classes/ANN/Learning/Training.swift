@@ -16,6 +16,16 @@ public protocol Training {
 
 extension Training {
 
+
+    /**
+     The train method trains your Neural Network object. WARNING: Use this method only for Perceptron and Adaline architectures. 
+     The Backpropagation class has it's own train method. 
+
+     - parameter fncType: ActivationFunctionType enum case
+     - parameter value: A Float
+
+     - returns: A Float
+     */
     public mutating func train(network: NeuralNet) -> NeuralNet {
 
         var weightsComingIn: ValueArray<Float>! = ValueArray<Float>()
@@ -115,7 +125,14 @@ extension Training {
 
 
 
+    /**
+     The activationFunc method returns the appropriate output based on the function that is specified.
 
+     - parameter fncType: ActivationFunctionType enum case
+     - parameter value: A Float
+
+     - returns: A Float
+     */
     public func activationFunc(fncType: ActivationFunctionType, value: Float) throws -> Float {
 
         switch fncType {
@@ -132,6 +149,14 @@ extension Training {
         }
     }
 
+    /**
+     The derivativeFunc method returns the appropriate output based on the derivative of a function that is specified.
+
+     - parameter fncType: ActivationFunctionType enum case
+     - parameter value: A Float
+
+     - returns: A Float
+     */
     public func derivativeFunc(fncType: ActivationFunctionType, value: Float) throws -> Float {
 
         switch fncType {
@@ -257,6 +282,15 @@ extension Training {
 
     }
 
+
+
+    /**
+     The printTrainedNetwork method prints the results of a trained Neural Network object.
+
+     - parameter trainedNetwork: A trained Neural Network Object.
+     - parameter singleLayer: Boolean to indicate whether or not your Neural Network has multiple layers.
+
+     */
     public func printTrainedNetwork(trainedNetwork: NeuralNet, singleLayer: Bool) {
 
         if singleLayer {
