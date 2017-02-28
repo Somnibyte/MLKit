@@ -11,4 +11,5 @@ import Foundation
 
 public class Adaline: Training {
     // Keep Blank
+    // Utilizes Training Protocols 'train' method.
 }

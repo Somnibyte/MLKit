@@ -16,7 +16,7 @@ public class InputLayer: Layer, InputandOutputLayerMethods {
     fileprivate var _listOfNeurons: [Neuron]!
     fileprivate var _numberOfNueronsInLayer: Int!
 
-    public var listOfNeurons: [Neuron] {
+    public var listOfNeurons: [Neuron] { // List of neurons associated with the input layer
 
         get {
             return _listOfNeurons
@@ -27,7 +27,7 @@ public class InputLayer: Layer, InputandOutputLayerMethods {
         }
     }
 
-    public var numberOfNueronsInLayer: Int {
+    public var numberOfNueronsInLayer: Int { // Number of neurons in the input layer
 
         get {
             return _numberOfNueronsInLayer
@@ -71,6 +71,7 @@ public class InputLayer: Layer, InputandOutputLayerMethods {
     }
 
 
+    // See Layer Protocol Comment
     public func printLayer(layer: Layer) {
         print(" ~ [INPUT LAYER] ~")
 

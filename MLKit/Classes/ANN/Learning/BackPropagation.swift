@@ -9,7 +9,7 @@
 import Foundation
 import Upsurge
 
-open class BackPropagation: Training {
+public class BackPropagation: Training {
 
     var meanSquaredError: Float!
 
@@ -95,7 +95,7 @@ open class BackPropagation: Training {
                         // Sum of the weights combined with the inputs
                         for var layer_j in 0..<(numberOfNeuronsInLayer - 1) {
                             var hiddenWeightIn = neuron.weightsComingIn[layer_j]
-                            netValue += hiddenWeightIn * network.trainingSet[row,layer_j]
+                            netValue += hiddenWeightIn * network.trainingSet[row, layer_j]
                         }
 
                         // Activation function calculates the neurons output
@@ -104,8 +104,9 @@ open class BackPropagation: Training {
                         // Set the neurons output
                         neuron.outputValue = netValue
 
-                    }else{
+                    } else {
 
+                        // Bias
                         neuron.outputValue = 1.0
                     }
 
@@ -115,8 +116,8 @@ open class BackPropagation: Training {
                 // For each of the nuerons in the output layer ...
                 for var outLayer_i in 0..<network.outputLayer.numberOfNueronsInLayer {
 
-                    var netValue:Float = 0.0 // Sum of neurons outputs (with weights) from the previous (hidden) layer
-                    var netValueOut:Float = 0.0 // Final activation value
+                    var netValue: Float = 0.0 // Sum of neurons outputs (with weights) from the previous (hidden) layer
+                    var netValueOut: Float = 0.0 // Final activation value
 
                     // For each neuron in the hidden layer, calculate the netValue
                     for neuron in hiddenLayer.listOfNeurons {
@@ -125,7 +126,7 @@ open class BackPropagation: Training {
                     }
 
                     // Use the activation function to calculate the activation of the output neuron(s)
-                    netValueOut = try! activationFunc(fncType: network.activationFuncType, value: netValue)
+                    netValueOut = try! activationFunc(fncType: network.activationFuncTypeOutputLayer, value: netValue)
 
                     // Set the output neurons output/activation
                     network.outputLayer.listOfNeurons[outLayer_i].outputValue = netValueOut
@@ -174,18 +175,18 @@ open class BackPropagation: Training {
         var sensibility: Float = 0.0
 
 
-        // Calculate sensibility (error signal) for output layer 
+        // Calculate sensibility (error signal) for output layer
         for neuron in outputLayer {
             error = neuron.error
             netValue = neuron.outputValue
-            sensibility = try! derivativeFunc(fncType: network.activationFuncType, value: netValue) * error
+            sensibility = try! derivativeFunc(fncType: network.activationFuncTypeOutputLayer, value: netValue) * error
 
             // Set the neurons sensibility/error signal
             neuron.sensibility = sensibility
         }
 
 
-        // Calculate the sensibility for the hidden layer 
+        // Calculate the sensibility for the hidden layer
         for neuron in hiddenLayer {
 
             sensibility = 0.0
@@ -198,7 +199,7 @@ open class BackPropagation: Training {
 
                 var tempSensibility: Float = 0.0
 
-                var weight_i:Int = 0
+                var weight_i: Int = 0
 
                 for weight in listOfWeightsGoingOut {
 
@@ -234,7 +235,7 @@ open class BackPropagation: Training {
 
             if hiddenLayerInputWeights.count > 0 {
 
-                var hidden_i:Int = 0
+                var hidden_i: Int = 0
                 var newWeight: Float = 0.0
 
                 for var i in 0..<network.inputLayer.numberOfNueronsInLayer {
@@ -250,7 +251,7 @@ open class BackPropagation: Training {
 
         network.listOfHiddenLayers[0].listOfNeurons = hiddenLayer
 
-        return network 
+        return network
     }
 
 }

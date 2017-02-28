@@ -19,7 +19,7 @@ public class HiddenLayer: Layer {
     fileprivate var _listOfNeurons: [Neuron]!
     fileprivate var _numberOfNueronsInLayer: Int!
 
-    public var listOfNeurons: [Neuron] {
+    public var listOfNeurons: [Neuron] { // List of neurons associated with a particular hidden layer
 
         get {
             return _listOfNeurons
@@ -30,14 +30,14 @@ public class HiddenLayer: Layer {
         }
     }
 
-    public var numberOfNueronsInLayer: Int {
+    public var numberOfNueronsInLayer: Int { // Number of neurons in a particular hidden layer
 
         get {
             return _numberOfNueronsInLayer
         }
 
         set {
-            return _numberOfNueronsInLayer = newValue
+            return _numberOfNueronsInLayer = newValue + 1 // Don't forget BIAS
         }
 
     }
@@ -69,8 +69,8 @@ public class HiddenLayer: Layer {
                 var neuron = Neuron()
 
                 // Offsets
-                var limitIn: Int!
-                var limitOut: Int!
+                var limitIn: Int = 0
+                var limitOut: Int = 0
 
 
                 if i == 0 { // First hidden Layer will recieve the inputLayers number of neurons
@@ -78,8 +78,8 @@ public class HiddenLayer: Layer {
 
                     if numberOfHiddenLayers > 1 { // If we have more hidden layers, check for them.
                         limitOut = listOfHiddenLayers[i + 1].numberOfNueronsInLayer
-                    } else { // Otherwise set limitOut to the current number of neurons
-                        limitOut = listOfHiddenLayers[i].numberOfNueronsInLayer
+                    } else if numberOfHiddenLayers == 1 { // Otherwise set limitOut to the current number of neurons
+                        limitOut = outputLayer.numberOfNueronsInLayer
                     }
 
                 } else if i == numberOfHiddenLayers - 1 { // Last Hidden Layer
@@ -91,11 +91,19 @@ public class HiddenLayer: Layer {
                 }
 
 
-                for var k in 0..<limitIn {
-                    weightsComingIn.append(neuron.initializeNueron())
+                // Bias not connected
+                limitIn -= 1
+                limitOut -= 1
+
+
+                if j >= 1 {
+
+                    for var k in 0...limitIn {
+                        weightsComingIn.append(neuron.initializeNueron())
+                    }
                 }
 
-                for var k in 0..<limitOut {
+                for var k in 0...limitOut {
                     weightsGoingOut.append(neuron.initializeNueron())
                 }
 
@@ -117,6 +125,13 @@ public class HiddenLayer: Layer {
         return listOfHiddenLayers
     }
 
+
+    /**
+     The printLayer prints the weights of a list of hidden layer objects.
+
+     - parameter listOfHiddenLayers: A list of HiddenLayer objects.
+
+     */
     open func printLayer(listOfHiddenLayers: [HiddenLayer]) {
         print(" ~ [HIDDEN LAYER] ~")
 

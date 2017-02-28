@@ -81,6 +81,44 @@ class NeuralNetworkTests: XCTestCase {
         // Function to check if network output is same as target output is coming soon. For now, run test and look at console.
     }
 
+
+    func testBackPropagation() {
+
+        var net = NeuralNet()
+
+        net = net.initializeNet(numberOfInputNeurons: 2, numberOfHiddenLayers: 1, numberOfNeuronsInHiddenLayer: 3, numberOfOutputNeurons: 2)
+
+        print("---------------------BACKPROPAGATION INIT---------------------")
+
+        net.printNet()
+
+        var trainedNet = NeuralNet()
+
+        net.trainingSet = Matrix<Float>(rows: 10, columns: 3, elements: [1.0, 1.0, 0.73, 1.0, 1.0, 0.81, 1.0, 1.0, 0.86, 1.0, 1.0, 0.95, 1.0, 0.0, 0.45, 1.0, 1.0, 0.70, 1.0, 0.0, 0.51, 1.0, 1.0, 0.89, 1.0, 1.0, 0.79, 1.0, 0.0, 0.54])
+
+        net.targetOutputMatrix = Matrix<Float>(rows: 10, columns: 2, elements: [1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0])
+
+        net.maxEpochs = 1000
+
+        net.targetError = 0.002
+
+        net.learningRate = 0.1
+
+        net.trainingType = .BACKPROPAGATION
+
+        net.activationFuncType = .SIGLOG
+
+        net.activationFuncTypeOutputLayer = .LINEAR
+
+        trainedNet = try! net.trainNet(network: net)
+
+        trainedNet.printNet()
+
+        trainedNet.printTrainedNet(network: trainedNet)
+
+    }
+
+
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measure() {

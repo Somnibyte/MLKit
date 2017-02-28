@@ -1,3 +1,5 @@
+![](https://github.com/Somnibyte/MLKit/blob/master/MLKitSmallerLogo.png)
+
 # [WIP] MLKit (a.k.a Machine Learning Kit) 🤖
 MLKit is a simple machine learning framework written in Swift. Currently MLKit features machine learning algorithms that deal with the topic of regression, but the framework will expand over time with topics such as classification, clustering, recommender systems, and deep learning. The vision and goal of this framework is to provide developers with a toolkit to create products that can learn from data. MLKit is a side project of mine in order to make it easier for developers to implement machine learning algorithms on the go, and to familiarlize myself with machine learning concepts.
 
@@ -41,9 +43,22 @@ pod 'MachineLearningKit', '0.1.2'
 ## Development Schedule
 
 ### Week of Feb 20th
+
+* ✅ KMeans Clustering (Does not include KMeans++)
+* ✅ Single Layer Perceptron & Adaline ANN Architecture [`develop` branch]
+* ✅ Cocoapods 
+* ✅ Documentation on Polynomial, and Lasso Regression 
+* ✅ Code Refactoring  [`develop` branch]
+* ❌ Ridge Regression Documentation (Coming Soon) 
+* ❌ KMeans Documentation (Coming Soon) 
+* ❌ Complete ANN (BackPropagation, Time Complexity Improvements) [Pushed to next week] 
+
+----------------------------------------------
+
+### Week of Feb 27th
 |M|T|W|Th|F|
 |---|---|---|---|---|
-|K-Means Clustering (Prototype Currently in `develop` branch)|K-Means Clustering|K-Means Clustering (Now available 🎉 ,wiki coming soon)| Neural Network (Perceptron) [`develop` branch] |Neural Network (Perceptron & Adaline)  [`develop` branch] |
+|Neural Network Documentation & BackPropagation Algorithm|BackPropagation Algorithm & K-Means++|TBD|TBD|TBD|
 
 
 # License

@@ -15,8 +15,8 @@ enum MachineLearningError: Error {
     case invalidInput
 
 
-    var description:String{
-        switch(self){
+    var description: String {
+        switch(self) {
         case .lengthOfDataArrayNotEqual:
             return "No data was provided."
         case .modelHasNotBeenFit:

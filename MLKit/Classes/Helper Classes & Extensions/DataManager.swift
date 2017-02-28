@@ -16,8 +16,8 @@ open class MLDataManager {
         case incorrectFraction
         case unacceptableInput
 
-        var description:String{
-            switch(self){
+        var description: String {
+            switch(self) {
             case .noData:
                 return "No data was provided."
             case .incorrectFraction:

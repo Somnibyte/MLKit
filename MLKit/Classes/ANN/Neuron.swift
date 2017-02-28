@@ -54,7 +54,7 @@ open class Neuron {
         set {
             return _outputValue = newValue
         }
-        
+
     }
 
     var error: Float! { // List of output weights
@@ -68,7 +68,7 @@ open class Neuron {
         }
 
     }
-    
+
     var sensibility: Float! { // List of output weights
 
         get {

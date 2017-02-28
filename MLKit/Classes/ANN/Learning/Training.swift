@@ -176,8 +176,7 @@ extension Training {
     }
 
 
-
-    public func printTrainedNeteworkResult(trainedNetwork: NeuralNet) {
+    private func printMultiLayerNetworkResult(trainedNetwork: NeuralNet) {
 
         var rows = trainedNetwork.trainingSet.rows
         var columns = trainedNetwork.trainingSet.columns
@@ -200,6 +199,50 @@ extension Training {
             print("\n")
             var estimatedOutput = try! activationFunc(fncType: trainedNetwork.activationFuncType, value: netValue)
 
+            var colsOutput: Int = trainedNetwork.targetOutputMatrix.columns
+
+            var realOutput: Float = 0.0
+
+            for var k in 0..<colsOutput {
+                realOutput += trainedNetwork.targetOutputMatrix[i, k]
+            }
+
+
+            print(" NET OUTPUT: \(estimatedOutput)")
+            print(" REAL OUTPUT: \(realOutput)")
+
+            var error: Float = estimatedOutput - realOutput
+            print(" ERROR: \(error)")
+
+            print("------------------------------------")
+        }
+
+    }
+
+    private func printSingleLayerNetworkResult(trainedNetwork: NeuralNet) {
+
+        var rows = trainedNetwork.trainingSet.rows
+        var columns = trainedNetwork.trainingSet.columns
+
+        var weightsComingIn: ValueArray<Float>! = ValueArray<Float>()
+
+
+        for var i in 0..<rows {
+
+            var netValue: Float = 0
+
+            for var j in 0..<columns {
+                weightsComingIn = trainedNetwork.inputLayer.listOfNeurons[j].weightsComingIn
+                var inputWeight = weightsComingIn[0]
+                netValue += inputWeight * trainedNetwork.trainingSet[i, j]
+
+                print("\(trainedNetwork.trainingSet[i, j])")
+            }
+
+            print("\n")
+            var estimatedOutput = try! activationFunc(fncType: trainedNetwork.activationFuncType, value: netValue)
+
+
             print("NET OUTPUT: \(estimatedOutput) \t")
 
             print("REAL OUTPUT: \(trainedNetwork.targetOutputSet[i]) \t")
@@ -212,6 +255,15 @@ extension Training {
             print("------------------------------------")
         }
 
+    }
+
+    public func printTrainedNetwork(trainedNetwork: NeuralNet, singleLayer: Bool) {
+
+        if singleLayer {
+            printSingleLayerNetworkResult(trainedNetwork: trainedNetwork)
+        } else {
+            printMultiLayerNetworkResult(trainedNetwork: trainedNetwork)
+        }
 
     }
 

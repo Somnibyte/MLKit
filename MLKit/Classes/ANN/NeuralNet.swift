@@ -97,7 +97,7 @@ open class NeuralNet {
 
     }
 
-    fileprivate var _targetOutputSet: ValueArray<Float>! // The Target Output set
+    fileprivate var _targetOutputSet: ValueArray<Float>! // The Target Output set (Generally Used for Single Layer Perceptron & Adaline)
 
     public var targetOutputSet: ValueArray<Float> {
 
@@ -111,7 +111,7 @@ open class NeuralNet {
 
     }
 
-    fileprivate var _targetOutputMatrix: Matrix<Float>! // The Target Output Matrix 
+    fileprivate var _targetOutputMatrix: Matrix<Float>! // The Target Output Matrix
 
     public var targetOutputMatrix: Matrix<Float> {
 
@@ -203,6 +203,20 @@ open class NeuralNet {
         }
     }
 
+    fileprivate var _activationFuncTypeOfOuputLayer: ActivationFunctionType! // The Type of Activation Being Used for the Output Layer
+
+    public var activationFuncTypeOutputLayer: ActivationFunctionType {
+
+        get {
+            return _activationFuncTypeOfOuputLayer
+        }
+
+        set {
+            _activationFuncTypeOfOuputLayer = newValue
+        }
+    }
+
+
     fileprivate var _trainingType: TrainingType! // The Type of Training Being Used
 
     public var trainingType: TrainingType {
@@ -216,9 +230,9 @@ open class NeuralNet {
         }
     }
 
-    fileprivate var _errorMean: Float! // Stores the mean of the error between two or more neurons 
+    fileprivate var _errorMean: Float! // Stores the mean of the error between two or more neurons
 
-    public var errorMean:Float {
+    public var errorMean: Float {
 
         get {
             return _errorMean
@@ -232,7 +246,18 @@ open class NeuralNet {
 
     public init() { }
 
-    open func initializeNet(numberOfInputNeurons: Int, numberOfHiddenLayers: Int, numberOfNeuronsInHiddenLayer: Int, numberOfOutputNeurons: Int) -> NeuralNet {
+
+    /**
+     The initializeNet method allows you to initialize a Neural Net Object.
+
+     - parameter numberOfInputNeurons: Number of neurons for input layer.
+     - parameter numberOfHiddenLayers: Number of hidden layers. Default is 1. You cannot exceed 1 hidden layer. More on this in the docs.
+     - parameter numberOfNeuronsInHiddenLayer: Number of neurons in hidden layer.
+     - parameter  numberOfOutputNeurons: Numebr of output neurons.
+
+     - returns: A Neural Net Object
+     */
+    open func initializeNet(numberOfInputNeurons: Int, numberOfHiddenLayers: Int = 1, numberOfNeuronsInHiddenLayer: Int, numberOfOutputNeurons: Int) -> NeuralNet {
 
 
         // Initialize Input Layer
@@ -251,7 +276,6 @@ open class NeuralNet {
             listOfHiddenLayers.append(hiddenLayer)
 
         }
-
 
         // Initialize OuptutLayer
         outputLayer = OutputLayer()
@@ -278,6 +302,13 @@ open class NeuralNet {
     }
 
 
+    /**
+     The trainNet method trains the Neural Network with the methods available (PERCEPTRON, ADALINE, and BACKPROPAGATION).
+
+     - parameter network: A Neural Net Object.
+
+     - returns: A Neural Net Object
+     */
     open func trainNet(network: NeuralNet) throws -> NeuralNet {
 
         var trainedNetwork = NeuralNet()
@@ -296,12 +327,20 @@ open class NeuralNet {
             trainedNetwork = adaline.train(network: network)
             return trainedNetwork
 
+        case .BACKPROPAGATION:
+
+            var backpropagation = BackPropagation()
+            trainedNetwork = backpropagation.train(network: network)
+            return trainedNetwork
+
         default:
             throw MachineLearningError.invalidInput
         }
     }
 
-
+    /**
+     The printTrainedNet prints a Neural Net objects weights.
+     */
     open func printTrainedNet (network: NeuralNet) {
 
         print("---------------TRAINED NEURAL NETWORK RESULTS---------------")
@@ -310,13 +349,19 @@ open class NeuralNet {
         case .PERCEPTRON:
 
             var perceptron = Perceptron()
-            perceptron.printTrainedNeteworkResult(trainedNetwork: network)
+            perceptron.printTrainedNetwork(trainedNetwork: network, singleLayer: true)
             break
 
         case .ADALINE:
 
             var adaline = Adaline()
-            adaline.printTrainedNeteworkResult(trainedNetwork: network)
+            adaline.printTrainedNetwork(trainedNetwork: network, singleLayer: true)
+            break
+
+        case .BACKPROPAGATION:
+
+            var backpropagation = BackPropagation()
+            backpropagation.printTrainedNetwork(trainedNetwork: network, singleLayer: false)
             break
 
         default: break
@@ -325,9 +370,9 @@ open class NeuralNet {
 
     }
 
-
-
-
+    /**
+     The printTrainedNet prints a Neural Net objects weights (use for debugging and or checking weights).
+     */
     open func printNet() {
 
          print("---------------WEIGHTS FOR EACH LAYER---------------")
