@@ -29,10 +29,10 @@ pod 'MachineLearningKit', '0.1.3'
 
 ### TODO:
 
-- [] KMeans++ Implementation 
-- [] KMeans Clustering Documentation
-- [] Neural Network Documentation 
-- [] Ridge Regression Documentation 
+- [ ] KMeans++ Implementation 
+- [ ] KMeans Clustering Documentation
+- [ ] Neural Network Documentation 
+- [ ] Ridge Regression Documentation 
 
 
 ## Features (So Far)
@@ -59,6 +59,8 @@ pod 'MachineLearningKit', '0.1.3'
 * ✅ Cocoapods 
 * ✅ Documentation on Polynomial, and Lasso Regression 
 * ✅ Code Refactoring  [`develop` branch]
+
+
 ----------------------------------------------
 
 ### Week of Feb 27th
