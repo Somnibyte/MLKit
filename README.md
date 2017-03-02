@@ -82,21 +82,10 @@ To contribute to an already existant algorithm within the framework, please crea
 
 ## Development Schedule
 
-### Week of Feb 20th
-
-* ✅ KMeans Clustering (Does not include KMeans++)
-* ✅ Single Layer Perceptron & Adaline ANN Architecture [`develop` branch]
-* ✅ Cocoapods 
-* ✅ Documentation on Polynomial, and Lasso Regression 
-* ✅ Code Refactoring  [`develop` branch]
-
-
-----------------------------------------------
-
 ### Week of Feb 27th
 |M|T|W|Th|F|
 |---|---|---|---|---|
-|Neural Network Documentation & BackPropagation Algorithm|BackPropagation Algorithm|Kohonen Algorithm, K Means++, More Documentation|TBD|TBD
+|Neural Network Documentation & BackPropagation Algorithm|BackPropagation Algorithm|Kohonen Algorithm, K Means++, More Documentation|Kohonen Algorithm, Neural Network Tests, K-Means++ algorithm, K-Means Documentation|TBD
 
 ----------------------------------------------
 
