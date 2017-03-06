@@ -376,13 +376,6 @@ open class NeuralNet {
             trainedNetwork = backpropagation.train(network: network)
             return trainedNetwork
 
-
-        case .KOHONEN:
-
-            var kohonen = Kohonen()
-            trainedNetwork = kohonen.train(network: network)
-            return trainedNetwork
-
         default:
             throw MachineLearningError.invalidInput
         }
