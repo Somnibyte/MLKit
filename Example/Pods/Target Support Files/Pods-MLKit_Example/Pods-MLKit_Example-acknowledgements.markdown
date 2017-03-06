@@ -1,7 +1,7 @@
 # Acknowledgements
 This application makes use of the following third party libraries:
 
-## MLKit
+## MachineLearningKit
 
 Copyright (c) 2017 Guled Ahmed <guledahmed777@gmail.com>
 

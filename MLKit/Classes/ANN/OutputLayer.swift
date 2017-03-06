@@ -47,9 +47,9 @@ public class OutputLayer: Layer, InputandOutputLayerMethods {
     /**
      The initializeLayer method initializes an OutputLayer object by creating Neurons with random weights and then filling the listOfNeurons attribute with the correct number of Neurons specificed by the developer.
 
-     - parameter inputLayer: An OutputLayer Object
+     - parameter inputLayer: An OutputLayer Object.
 
-     - returns: An OutputLayer Object
+     - returns: An OutputLayer Object.
      */
     open func initializeLayer(outLayer: OutputLayer) -> OutputLayer {
 

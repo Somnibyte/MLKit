@@ -1,0 +1,6 @@
+framework module MachineLearningKit {
+  umbrella header "MachineLearningKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -15,6 +15,49 @@ import Upsurge
 
 open class NeuralNet {
 
+    /* Code that should not be used in production [Used in Test]*/
+    fileprivate var _validationSet: Matrix<Float>!
+
+    public var validationSet: Matrix<Float> {
+
+        get {
+            return _validationSet
+        }
+
+        set {
+            _validationSet = newValue
+        }
+    }
+    /* End of Code that should not be used in production */
+
+
+    fileprivate var _estimatedOutputAsArray: [Float] = [] // Estimated output after training
+
+    public var estimatedOutputAsArray: [Float] {
+
+        get {
+            return _estimatedOutputAsArray
+        }
+
+        set {
+            _estimatedOutputAsArray = newValue
+        }
+    }
+
+    fileprivate var _estimatedOutputAsMatrix: Matrix<Float>! // Estimated output after training as a Matrix Object
+
+    public var estimatedOutputAsMatrix: Matrix<Float> {
+
+        get {
+            return _estimatedOutputAsMatrix
+        }
+
+        set {
+            _estimatedOutputAsMatrix = newValue
+        }
+
+    }
+
     fileprivate var _inputLayer: InputLayer! // The Input Layer
 
     public var inputLayer: InputLayer {
@@ -255,7 +298,7 @@ open class NeuralNet {
      - parameter numberOfNeuronsInHiddenLayer: Number of neurons in hidden layer.
      - parameter  numberOfOutputNeurons: Numebr of output neurons.
 
-     - returns: A Neural Net Object
+     - returns: A Neural Net Object.
      */
     open func initializeNet(numberOfInputNeurons: Int, numberOfHiddenLayers: Int = 1, numberOfNeuronsInHiddenLayer: Int, numberOfOutputNeurons: Int) -> NeuralNet {
 
@@ -307,7 +350,7 @@ open class NeuralNet {
 
      - parameter network: A Neural Net Object.
 
-     - returns: A Neural Net Object
+     - returns: A Neural Net Object.
      */
     open func trainNet(network: NeuralNet) throws -> NeuralNet {
 
@@ -333,13 +376,20 @@ open class NeuralNet {
             trainedNetwork = backpropagation.train(network: network)
             return trainedNetwork
 
+
+        case .KOHONEN:
+
+            var kohonen = Kohonen()
+            trainedNetwork = kohonen.train(network: network)
+            return trainedNetwork
+
         default:
             throw MachineLearningError.invalidInput
         }
     }
 
     /**
-     The printTrainedNet prints a Neural Net objects weights.
+     The printTrainedNet prints a Neural Net objects weights. Should be used to evaluate the progress of your trained Neural Network.
      */
     open func printTrainedNet (network: NeuralNet) {
 
@@ -375,7 +425,7 @@ open class NeuralNet {
      */
     open func printNet() {
 
-         print("---------------WEIGHTS FOR EACH LAYER---------------")
+        print("---------------WEIGHTS FOR EACH LAYER---------------")
         inputLayer.printLayer(layer: inputLayer)
         print()
         hiddenLayer.printLayer(listOfHiddenLayers: listOfHiddenLayers)

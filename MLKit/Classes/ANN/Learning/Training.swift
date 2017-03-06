@@ -18,13 +18,13 @@ extension Training {
 
 
     /**
-     The train method trains your Neural Network object. WARNING: Use this method only for Perceptron and Adaline architectures. 
-     The Backpropagation class has it's own train method. 
+     The train method trains your Neural Network object. WARNING: Use this method only for Perceptron and Adaline architectures.
+     The Backpropagation class has it's own train method.
 
-     - parameter fncType: ActivationFunctionType enum case
-     - parameter value: A Float
+     - parameter fncType: ActivationFunctionType enum case.
+     - parameter value: A Float.
 
-     - returns: A Float
+     - returns: A Float.
      */
     public mutating func train(network: NeuralNet) -> NeuralNet {
 
@@ -123,8 +123,6 @@ extension Training {
 
     }
 
-
-
     /**
      The activationFunc method returns the appropriate output based on the function that is specified.
 
@@ -201,6 +199,7 @@ extension Training {
     }
 
 
+    // TODO: REVISE FOR GENERAL NEURAL NETWORK RESULT
     private func printMultiLayerNetworkResult(trainedNetwork: NeuralNet) {
 
         var rows = trainedNetwork.trainingSet.rows
@@ -229,9 +228,10 @@ extension Training {
             var realOutput: Float = 0.0
 
             for var k in 0..<colsOutput {
+
+                print(trainedNetwork.targetOutputMatrix[i, k])
                 realOutput += trainedNetwork.targetOutputMatrix[i, k]
             }
-
 
             print(" NET OUTPUT: \(estimatedOutput)")
             print(" REAL OUTPUT: \(realOutput)")
@@ -267,6 +267,8 @@ extension Training {
             print("\n")
             var estimatedOutput = try! activationFunc(fncType: trainedNetwork.activationFuncType, value: netValue)
 
+
+            trainedNetwork.estimatedOutputAsArray.append(estimatedOutput)
 
             print("NET OUTPUT: \(estimatedOutput) \t")
 

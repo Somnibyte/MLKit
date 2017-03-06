@@ -158,8 +158,14 @@ public class BackPropagation: Training {
     }
 
 
+    /**
+     The backpropagation method performs the backpropagation algorithm to a NeuralNet object. Note that, currently, this algorithm works with 1 hidden layer. At the moment you cannot exceed this amount.
 
+     - parameter network: A Neural Net Object.
+     - parameter row: Integer representing row of training data.
 
+     - returns: A Neural Net Object.
+     */
     private func backpropagation(network: NeuralNet, row: Int) -> NeuralNet {
 
 

@@ -85,7 +85,7 @@ To contribute to an already existant algorithm within the framework, please crea
 ### Week of Mar 6th
 |M|T|W|Th|F|
 |---|---|---|---|---|
-|Neural Network Documentation, K-Means Documentation, Kohonen Network, Decision Trees|TBD|TBD|TBD|TBD
+|Neural Network Documentation, K-Means Documentation, Decision Trees|Decision Trees|TBD|TBD|TBD
 
 ----------------------------------------------
 

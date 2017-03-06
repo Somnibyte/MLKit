@@ -1,11 +1,13 @@
 use_frameworks!
 
 target 'MLKit_Example' do
-  pod 'MLKit', :path => '../'
+  pod 'MachineLearningKit', :path => '../'
   pod 'Upsurge'
-
+  
   target 'MLKit_Tests' do
     inherit! :search_paths
+    pod 'Quick'
+    pod 'Nimble'
   end
   
   post_install do |installer|

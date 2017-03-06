@@ -43,9 +43,9 @@ public class InputLayer: Layer, InputandOutputLayerMethods {
     /**
      The initializeLayer method initializes an InputLayer object by creating Neurons with random weights and then filling the listOfNeurons attribute with the correct number of Neurons specificed by the developer.
 
-     - parameter inputLayer: An InputLayer Object
+     - parameter inputLayer: An InputLayer Object.
 
-     - returns: An InputLayer Object
+     - returns: An InputLayer Object.
      */
     open func initializeLayer(inputLayer: InputLayer) -> InputLayer {
 
