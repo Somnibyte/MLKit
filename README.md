@@ -82,10 +82,10 @@ To contribute to an already existant algorithm within the framework, please crea
 
 ## Development Schedule
 
-### Week of Feb 27th
+### Week of Mar 6th
 |M|T|W|Th|F|
 |---|---|---|---|---|
-|Neural Network Documentation & BackPropagation Algorithm|BackPropagation Algorithm|Kohonen Algorithm, K Means++, More Documentation|Kohonen Algorithm, Neural Network Tests, K-Means++ algorithm, K-Means Documentation|TBD
+|Neural Network Documentation, K-Means Documentation, Kohonen Network, Decision Trees|TBD|TBD|TBD|TBD
 
 ----------------------------------------------
 
