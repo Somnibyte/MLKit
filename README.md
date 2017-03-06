@@ -40,6 +40,7 @@ To contribute to an already existant algorithm within the framework, please crea
 - [x] [Polynomial Regression](https://github.com/Somnibyte/MLKit/wiki/Polynomial-Regression-Tutorial)
 - [x] [Lasso Regression] (https://github.com/Somnibyte/MLKit/wiki/Lasso-Regression-Tutorial)
 - [x] [Ridge Regression] (https://github.com/Somnibyte/MLKit/wiki/Ridge-Regression-Tutorial)
+- [x] [Neural Network AND logic Example](https://github.com/Somnibyte/MLKit/wiki/Neural-Network-AND-logic-Example)
 
 ----------------------------------------------
 
