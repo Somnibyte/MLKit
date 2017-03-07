@@ -16,18 +16,18 @@ public class BackPropagation: Training {
     open func train(network: NeuralNet) -> NeuralNet {
 
 
-        // Network (Xcode won't stop complaining about 'let' variable network
+        /// Network (Xcode won't stop complaining about 'let' variable network
         var network = network
 
-        // Set Initial Epoch
+        /// Set Initial Epoch
         var epoch: Int = 0
 
-        // Set MSE
+        /// Set MSE
         self.meanSquaredError = 1.0
 
         var rows = network.trainingSet.rows
 
-        // Start training
+        /// Start training
         while self.meanSquaredError > network.targetError {
 
             // Exit if done with training
@@ -99,7 +99,7 @@ public class BackPropagation: Training {
                         }
 
                         // Activation function calculates the neurons output
-                        netValueOut = try! activationFunc(fncType: network.activationFuncType, value: netValue)
+                        netValueOut = try! NNOperations.activationFunc(fncType: network.activationFuncType, value: netValue)
 
                         // Set the neurons output
                         neuron.outputValue = netValue
@@ -126,7 +126,7 @@ public class BackPropagation: Training {
                     }
 
                     // Use the activation function to calculate the activation of the output neuron(s)
-                    netValueOut = try! activationFunc(fncType: network.activationFuncTypeOutputLayer, value: netValue)
+                    netValueOut = try! NNOperations.activationFunc(fncType: network.activationFuncTypeOutputLayer, value: netValue)
 
                     // Set the output neurons output/activation
                     network.outputLayer.listOfNeurons[outLayer_i].outputValue = netValueOut
@@ -185,7 +185,7 @@ public class BackPropagation: Training {
         for neuron in outputLayer {
             error = neuron.error
             netValue = neuron.outputValue
-            sensibility = try! derivativeFunc(fncType: network.activationFuncTypeOutputLayer, value: netValue) * error
+            sensibility = try! NNOperations.derivativeFunc(fncType: network.activationFuncTypeOutputLayer, value: netValue) * error
 
             // Set the neurons sensibility/error signal
             neuron.sensibility = sensibility
@@ -213,7 +213,7 @@ public class BackPropagation: Training {
                     weight_i += 1
                 }
 
-                sensibility = try! derivativeFunc(fncType: network.activationFuncType, value: neuron.outputValue) * tempSensibility
+                sensibility = try! NNOperations.derivativeFunc(fncType: network.activationFuncType, value: neuron.outputValue) * tempSensibility
 
                 neuron.sensibility = sensibility
 

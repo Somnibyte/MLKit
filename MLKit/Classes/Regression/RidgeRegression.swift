@@ -15,6 +15,7 @@ open class RidgeRegression {
 
     fileprivate var _costFunctionResult: Float!
 
+    /// Represents the RSS value of your model.
     var costFunctionResult: Float {
 
         get {
@@ -28,6 +29,7 @@ open class RidgeRegression {
 
     fileprivate var _finalWeights: Matrix<Float>!
 
+    /// Represents the weights of your model after it has been trained.
     var finalWeights: Matrix<Float> {
 
         get {

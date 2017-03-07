@@ -19,7 +19,8 @@ public class HiddenLayer: Layer {
     fileprivate var _listOfNeurons: [Neuron]!
     fileprivate var _numberOfNueronsInLayer: Int!
 
-    public var listOfNeurons: [Neuron] { // List of neurons associated with a particular hidden layer
+    /// List of neurons associated with a particular hidden layer
+    public var listOfNeurons: [Neuron] {
 
         get {
             return _listOfNeurons
@@ -30,7 +31,8 @@ public class HiddenLayer: Layer {
         }
     }
 
-    public var numberOfNueronsInLayer: Int { // Number of neurons in a particular hidden layer
+    /// Number of neurons in a particular hidden layer
+    public var numberOfNueronsInLayer: Int {
 
         get {
             return _numberOfNueronsInLayer

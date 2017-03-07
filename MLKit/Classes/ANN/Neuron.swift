@@ -19,7 +19,8 @@ open class Neuron {
     fileprivate var _error: Float!
     fileprivate var _sensibility: Float!
 
-    var weightsComingIn: ValueArray<Float> { // List of input weights
+    /// List of input weights
+    public var weightsComingIn: ValueArray<Float> {
 
 
         get {
@@ -32,7 +33,8 @@ open class Neuron {
         }
     }
 
-    var weightsGoingOut: ValueArray<Float> { // List of output weights
+    /// List of output weights
+    public var weightsGoingOut: ValueArray<Float> {
 
         get {
             return _weightsGoingOut
@@ -44,8 +46,8 @@ open class Neuron {
 
     }
 
-
-    var outputValue: Float! { // List of output weights
+    /// List of output weights
+    public var outputValue: Float! {
 
         get {
             return _outputValue
@@ -57,7 +59,8 @@ open class Neuron {
 
     }
 
-    var error: Float! { // List of output weights
+    /// List of output weights
+    public var error: Float! {
 
         get {
             return _error
@@ -69,7 +72,8 @@ open class Neuron {
 
     }
 
-    var sensibility: Float! { // List of output weights
+    /// List of output weights
+    public var sensibility: Float! {
 
         get {
             return _sensibility

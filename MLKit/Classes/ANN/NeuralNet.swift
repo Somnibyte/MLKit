@@ -15,24 +15,9 @@ import Upsurge
 
 open class NeuralNet {
 
-    /* Code that should not be used in production [Used in Test]*/
-    fileprivate var _validationSet: Matrix<Float>!
+    fileprivate var _estimatedOutputAsArray: [Float] = []
 
-    public var validationSet: Matrix<Float> {
-
-        get {
-            return _validationSet
-        }
-
-        set {
-            _validationSet = newValue
-        }
-    }
-    /* End of Code that should not be used in production */
-
-
-    fileprivate var _estimatedOutputAsArray: [Float] = [] // Estimated output after training
-
+    /// Estimated output after training
     public var estimatedOutputAsArray: [Float] {
 
         get {
@@ -44,8 +29,10 @@ open class NeuralNet {
         }
     }
 
-    fileprivate var _estimatedOutputAsMatrix: Matrix<Float>! // Estimated output after training as a Matrix Object
 
+    fileprivate var _estimatedOutputAsMatrix: Matrix<Float>!
+
+    /// Estimated output after training as a Matrix Object
     public var estimatedOutputAsMatrix: Matrix<Float> {
 
         get {
@@ -58,8 +45,10 @@ open class NeuralNet {
 
     }
 
-    fileprivate var _inputLayer: InputLayer! // The Input Layer
 
+    fileprivate var _inputLayer: InputLayer!
+
+    /// The Input Layer
     public var inputLayer: InputLayer {
 
         get {
@@ -71,8 +60,10 @@ open class NeuralNet {
         }
     }
 
-    fileprivate var _hiddenLayer: HiddenLayer! // Hidden Layer
 
+    fileprivate var _hiddenLayer: HiddenLayer!
+
+    /// The Hidden Layer
     public var hiddenLayer: HiddenLayer {
 
         get {
@@ -84,8 +75,10 @@ open class NeuralNet {
         }
     }
 
-    fileprivate var _listOfHiddenLayers: [HiddenLayer]! // List of Hidden Layers
 
+    fileprivate var _listOfHiddenLayers: [HiddenLayer]!
+
+    /// List of Hidden Layers
     public var listOfHiddenLayers: [HiddenLayer] {
 
         get {
@@ -98,8 +91,10 @@ open class NeuralNet {
 
     }
 
-    fileprivate var _outputLayer: OutputLayer! // The Output Layer
 
+    fileprivate var _outputLayer: OutputLayer!
+
+    /// The Output Layer
     public var outputLayer: OutputLayer {
 
         get {
@@ -112,8 +107,10 @@ open class NeuralNet {
 
     }
 
-    fileprivate var _numberOfHiddenLayers: Int! // The Number of Hidden Layers
 
+    fileprivate var _numberOfHiddenLayers: Int!
+
+    /// The Number of Hidden Layers
     public var numberOfHiddenLayers: Int {
 
         get {
@@ -126,8 +123,9 @@ open class NeuralNet {
 
     }
 
-    fileprivate var _trainingSet: Matrix<Float>! // Your Training Set
+    fileprivate var _trainingSet: Matrix<Float>!
 
+    /// Your Training Set
     public var trainingSet: Matrix<Float> {
 
         get {
@@ -140,8 +138,10 @@ open class NeuralNet {
 
     }
 
-    fileprivate var _targetOutputSet: ValueArray<Float>! // The Target Output set (Generally Used for Single Layer Perceptron & Adaline)
 
+    fileprivate var _targetOutputSet: ValueArray<Float>!
+
+    /// The Target Output set (Generally Used for Single Layer Perceptron & Adaline)
     public var targetOutputSet: ValueArray<Float> {
 
         get {
@@ -154,8 +154,9 @@ open class NeuralNet {
 
     }
 
-    fileprivate var _targetOutputMatrix: Matrix<Float>! // The Target Output Matrix
+    fileprivate var _targetOutputMatrix: Matrix<Float>!
 
+    /// The Target Output Matrix
     public var targetOutputMatrix: Matrix<Float> {
 
         get {
@@ -168,8 +169,9 @@ open class NeuralNet {
 
     }
 
-    fileprivate var _maxEpochs: Int! // Max Epoch (Stopping condition for training)
+    fileprivate var _maxEpochs: Int!
 
+    /// Max Epoch (Stopping condition for training)
     public var maxEpochs: Int {
 
         get {
@@ -181,8 +183,10 @@ open class NeuralNet {
         }
     }
 
-    fileprivate var _learningRate: Float! // The Learning Rate
 
+    fileprivate var _learningRate: Float!
+
+    /// The Learning Rate
     public var learningRate: Float {
 
         get {
@@ -194,8 +198,9 @@ open class NeuralNet {
         }
     }
 
-    fileprivate var _targetError: Float! // The Target Error
+    fileprivate var _targetError: Float!
 
+    /// The Target Error
     public var targetError: Float {
 
         get {
@@ -207,8 +212,9 @@ open class NeuralNet {
         }
     }
 
-    fileprivate var _trainingError: Float! // The Training Error
+    fileprivate var _trainingError: Float!
 
+    /// The Training Error
     public var trainingError: Float {
 
         get {
@@ -220,8 +226,9 @@ open class NeuralNet {
         }
     }
 
-    fileprivate var _meanSquaredErrorList: [Float] = [] // A List of MSE values
+    fileprivate var _meanSquaredErrorList: [Float] = []
 
+    /// A List of MSE values
     public var meanSquaredErrorList: [Float] {
 
         get {
@@ -233,8 +240,9 @@ open class NeuralNet {
         }
     }
 
-    fileprivate var _activationFuncType: ActivationFunctionType! // The Type of Activation Function Being Used
+    fileprivate var _activationFuncType: ActivationFunctionType!
 
+    /// The Type of Activation Function Being Used
     public var activationFuncType: ActivationFunctionType {
 
         get {
@@ -246,8 +254,9 @@ open class NeuralNet {
         }
     }
 
-    fileprivate var _activationFuncTypeOfOuputLayer: ActivationFunctionType! // The Type of Activation Being Used for the Output Layer
+    fileprivate var _activationFuncTypeOfOuputLayer: ActivationFunctionType!
 
+    /// The Type of Activation Being Used for the Output Layer
     public var activationFuncTypeOutputLayer: ActivationFunctionType {
 
         get {
@@ -260,8 +269,9 @@ open class NeuralNet {
     }
 
 
-    fileprivate var _trainingType: TrainingType! // The Type of Training Being Used
+    fileprivate var _trainingType: TrainingType!
 
+    /// The Type of Training Being Used
     public var trainingType: TrainingType {
 
         get {
@@ -273,8 +283,9 @@ open class NeuralNet {
         }
     }
 
-    fileprivate var _errorMean: Float! // Stores the mean of the error between two or more neurons
+    fileprivate var _errorMean: Float!
 
+    /// Stores the mean of the error between two or more neurons
     public var errorMean: Float {
 
         get {
@@ -342,6 +353,104 @@ open class NeuralNet {
         newNeuralNetwork.numberOfHiddenLayers = numberOfHiddenLayers
 
         return newNeuralNetwork
+    }
+
+    public func forward(input:[Float]) -> [Float] {
+
+        return forwardProcess(network: self, input:input)
+    }
+
+
+    private func forwardProcess(network: NeuralNet, input: [Float]) -> [Float] {
+
+        var listOfHiddenLayers: [HiddenLayer] = []
+
+
+        // Obtain all hidden layers in the network
+        listOfHiddenLayers = network.listOfHiddenLayers
+
+        // Check if there are any hidden layers in the network
+        if listOfHiddenLayers.count > 0 {
+
+            var hiddenLayer_i = 0
+
+            // For each hidden layer ...
+            for hiddenLayer in listOfHiddenLayers {
+
+
+                // Obtain the number of neurons in the layer
+                var numberOfNeuronsInLayer = hiddenLayer.numberOfNueronsInLayer
+
+                // For each neuron ...
+                for neuron in hiddenLayer.listOfNeurons {
+
+                    var netValueOut: Float = 0.0 // Net Value (activation value)
+
+                    // If the neurons weights (coming into the neuron) are greater than 0 ...
+                    if neuron.weightsComingIn.count > 0 {
+
+                        var netValue: Float = 0.0 // Activation Value
+
+
+                        // Sum of the weights combined with the inputs
+                        for var layer_j in 0..<(numberOfNeuronsInLayer - 1) {
+                            var hiddenWeightIn = neuron.weightsComingIn[layer_j]
+                            netValue += hiddenWeightIn * input[layer_j]
+                        }
+
+                        // Activation function calculates the neurons output
+                        netValueOut = try! NNOperations.activationFunc(fncType: network.activationFuncType, value: netValue)
+
+
+                        // Set the neurons output
+                        neuron.outputValue = netValue
+
+                    } else {
+
+                        // Bias
+                        neuron.outputValue = 1.0
+                    }
+
+                }
+
+
+                // For each of the nuerons in the output layer ...
+                for var outLayer_i in 0..<network.outputLayer.numberOfNueronsInLayer {
+
+                    var netValue: Float = 0.0 // Sum of neurons outputs (with weights) from the previous (hidden) layer
+                    var netValueOut: Float = 0.0 // Final activation value
+
+                    // For each neuron in the hidden layer, calculate the netValue
+                    for neuron in hiddenLayer.listOfNeurons {
+                        var hiddenWeightOut = neuron.weightsGoingOut[outLayer_i]
+                        netValue += hiddenWeightOut * neuron.outputValue
+                    }
+
+                    // Use the activation function to calculate the activation of the output neuron(s)
+                    netValueOut = try! NNOperations.activationFunc(fncType: network.activationFuncTypeOutputLayer, value: netValue)
+
+                    print(netValueOut)
+
+                    // Set the output neurons output/activation
+                    network.outputLayer.listOfNeurons[outLayer_i].outputValue = netValueOut
+                    
+                }
+                
+                // Set the hidden layers of the network with the newly adjusted neurons
+                network.listOfHiddenLayers[hiddenLayer_i].listOfNeurons = hiddenLayer.listOfNeurons
+                
+                hiddenLayer_i += 1
+            }
+        }
+        
+        
+        var finalOutputSet:[Float] = []
+
+        for neuron in self.outputLayer.listOfNeurons {
+            finalOutputSet.append(neuron.outputValue)
+        }
+
+        return finalOutputSet
     }
 
 

@@ -55,7 +55,7 @@ extension Training {
 
 
                 // Estimate the error of our model
-                estimatedOutput = try! self.activationFunc(fncType: network.activationFuncType, value: netValue)
+                estimatedOutput = try! NNOperations.activationFunc(fncType: network.activationFuncType, value: netValue)
                 actualOutput = network.targetOutputSet[i]
 
                 error = actualOutput - estimatedOutput
@@ -84,8 +84,6 @@ extension Training {
 
         return network
     }
-
-
 
     private func teachNeuronOfLayer(numberOfInputNeurons: Int, line: Int, network: NeuralNet, netValue: Float, error: Float) -> [Neuron] {
 
@@ -116,89 +114,14 @@ extension Training {
         case .PERCEPTRON:
             return oldWeight + network.learningRate * error * trainSample
         case .ADALINE:
-            return oldWeight + network.learningRate * error * trainSample * (try! derivativeFunc(fncType: network.activationFuncType, value: netValue))
+            return oldWeight + network.learningRate * error * trainSample * (try! NNOperations.derivativeFunc(fncType: network.activationFuncType, value: netValue))
         default:
             throw MachineLearningError.invalidInput
         }
 
     }
 
-    /**
-     The activationFunc method returns the appropriate output based on the function that is specified.
-
-     - parameter fncType: ActivationFunctionType enum case
-     - parameter value: A Float
-
-     - returns: A Float
-     */
-    public func activationFunc(fncType: ActivationFunctionType, value: Float) throws -> Float {
-
-        switch fncType {
-        case .STEP:
-            return fncStep(val: value)
-        case .LINEAR:
-            return fncLinear(val: value)
-        case .SIGLOG:
-            return fncSigLog(val: value)
-        case .HYPERTAN:
-            return fncHyperTan(val: value)
-        default:
-            throw MachineLearningError.invalidInput
-        }
-    }
-
-    /**
-     The derivativeFunc method returns the appropriate output based on the derivative of a function that is specified.
-
-     - parameter fncType: ActivationFunctionType enum case
-     - parameter value: A Float
-
-     - returns: A Float
-     */
-    public func derivativeFunc(fncType: ActivationFunctionType, value: Float) throws -> Float {
-
-        switch fncType {
-        case .LINEAR:
-            return derivativeOfLinear(val: value)
-        case .SIGLOG:
-            return derivativeOfSigLog(val: value)
-        case .HYPERTAN:
-            return derivativeOfHyperTan(val: value)
-        default:
-            throw MachineLearningError.invalidInput
-        }
-    }
-
-
-    private func fncStep(val: Float) -> Float {
-        return val >= 0 ? 1.0 : 0.0
-    }
-
-    private func fncLinear(val: Float) -> Float {
-        return val
-    }
-
-    private func fncSigLog(val: Float) -> Float {
-        return 1.0 / (1.0 + exp(-val))
-    }
-
-    private func fncHyperTan(val: Float) -> Float {
-        return tanh(val)
-    }
-
-    private func derivativeOfLinear(val: Float) -> Float {
-        return 1.0
-    }
-
-    private func derivativeOfSigLog(val: Float) -> Float {
-        return val * (1.0 - val)
-    }
-
-    private func derivativeOfHyperTan(val: Float) -> Float {
-        return (1.0 / powf(cosh(val), 2.0))
-    }
-
-
+  
     // TODO: REVISE FOR GENERAL NEURAL NETWORK RESULT
     private func printMultiLayerNetworkResult(trainedNetwork: NeuralNet) {
 
@@ -221,7 +144,7 @@ extension Training {
             }
 
             print("\n")
-            var estimatedOutput = try! activationFunc(fncType: trainedNetwork.activationFuncType, value: netValue)
+            var estimatedOutput = try! NNOperations.activationFunc(fncType: trainedNetwork.activationFuncType, value: netValue)
 
             var colsOutput: Int = trainedNetwork.targetOutputMatrix.columns
 
@@ -265,7 +188,7 @@ extension Training {
             }
 
             print("\n")
-            var estimatedOutput = try! activationFunc(fncType: trainedNetwork.activationFuncType, value: netValue)
+            var estimatedOutput = try! NNOperations.activationFunc(fncType: trainedNetwork.activationFuncType, value: netValue)
 
 
             trainedNetwork.estimatedOutputAsArray.append(estimatedOutput)

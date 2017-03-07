@@ -9,11 +9,16 @@
 /* Begin PBXBuildFile section */
 		16C9F55B9FB2BEAF643302B4 /* Pods_MLKit_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8829C99A800D59865185C8D0 /* Pods_MLKit_Example.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
-		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		7D7064C9A3631B7752642915 /* Pods_MLKit_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F7E553BF29858564109C95C /* Pods_MLKit_Tests.framework */; };
+		9A2618FF1E6F1C5E006B9D6E /* GeneticSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2618FD1E6F1C4E006B9D6E /* GeneticSpec.swift */; };
+		9A5294461E6F22BA00506C2A /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9A5294451E6F22BA00506C2A /* GameScene.sks */; };
+		9A5294481E6F22C000506C2A /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5294471E6F22C000506C2A /* GameScene.swift */; };
+		9A52944A1E6F22C800506C2A /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5294491E6F22C800506C2A /* GameViewController.swift */; };
+		9A52944C1E6F232F00506C2A /* bird.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 9A52944B1E6F232F00506C2A /* bird.atlas */; };
+		9A5294501E6F44E200506C2A /* GeneticOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A52944F1E6F44E200506C2A /* GeneticOperations.swift */; };
 		9A54B3B81E5B5D6D0059B577 /* kc_house_data.csv in Resources */ = {isa = PBXBuildFile; fileRef = 9A54B3B71E5B5D6D0059B577 /* kc_house_data.csv */; };
 		9A92AE061E6DB958000DBC84 /* LassoRegressionSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A92AE051E6DB958000DBC84 /* LassoRegressionSpec.swift */; };
 		9A92AE081E6DB96B000DBC84 /* MLDataManagerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A92AE071E6DB96B000DBC84 /* MLDataManagerSpec.swift */; };
@@ -55,7 +60,6 @@
 		607FACD01AFB9204008FA782 /* MLKit_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MLKit_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		607FACD71AFB9204008FA782 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		607FACDA1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -64,7 +68,13 @@
 		65CE8F014155800F07E3652F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		6FE1BF7F8EF374CFB92CBB77 /* Pods-MLKit_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MLKit_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MLKit_Tests/Pods-MLKit_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		8829C99A800D59865185C8D0 /* Pods_MLKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MLKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A2618FD1E6F1C4E006B9D6E /* GeneticSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneticSpec.swift; sourceTree = "<group>"; };
 		9A4707A91E5C8F51002C2268 /* MLKit-PlayGround.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = "MLKit-PlayGround.playground"; path = "../MLKit-PlayGround.playground"; sourceTree = "<group>"; };
+		9A5294451E6F22BA00506C2A /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		9A5294471E6F22C000506C2A /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		9A5294491E6F22C800506C2A /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		9A52944B1E6F232F00506C2A /* bird.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = bird.atlas; sourceTree = "<group>"; };
+		9A52944F1E6F44E200506C2A /* GeneticOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneticOperations.swift; sourceTree = "<group>"; };
 		9A54B3B71E5B5D6D0059B577 /* kc_house_data.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = kc_house_data.csv; sourceTree = "<group>"; };
 		9A92AE051E6DB958000DBC84 /* LassoRegressionSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LassoRegressionSpec.swift; sourceTree = "<group>"; };
 		9A92AE071E6DB96B000DBC84 /* MLDataManagerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLDataManagerSpec.swift; sourceTree = "<group>"; };
@@ -143,8 +153,12 @@
 			isa = PBXGroup;
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
-				607FACD71AFB9204008FA782 /* ViewController.swift */,
+				9A5294451E6F22BA00506C2A /* GameScene.sks */,
+				9A52944F1E6F44E200506C2A /* GeneticOperations.swift */,
+				9A5294471E6F22C000506C2A /* GameScene.swift */,
+				9A5294491E6F22C800506C2A /* GameViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
+				9A52944B1E6F232F00506C2A /* bird.atlas */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
@@ -171,6 +185,7 @@
 				9A92AE0B1E6DB995000DBC84 /* SimpleLinearRegressionSpec.swift */,
 				9A92AE0D1E6DB9A4000DBC84 /* RidgeRegressionSpec.swift */,
 				9A92AE0F1E6DB9B1000DBC84 /* NeuralNetworkSpec.swift */,
+				9A2618FD1E6F1C4E006B9D6E /* GeneticSpec.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
 			path = Tests;
@@ -288,8 +303,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A5294461E6F22BA00506C2A /* GameScene.sks in Resources */,
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
+				9A52944C1E6F232F00506C2A /* bird.atlas in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -402,7 +419,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				9A5294481E6F22C000506C2A /* GameScene.swift in Sources */,
+				9A5294501E6F44E200506C2A /* GeneticOperations.swift in Sources */,
+				9A52944A1E6F22C800506C2A /* GameViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -417,6 +436,7 @@
 				9A92AE061E6DB958000DBC84 /* LassoRegressionSpec.swift in Sources */,
 				9A92AE081E6DB96B000DBC84 /* MLDataManagerSpec.swift in Sources */,
 				9A92AE101E6DB9B1000DBC84 /* NeuralNetworkSpec.swift in Sources */,
+				9A2618FF1E6F1C5E006B9D6E /* GeneticSpec.swift in Sources */,
 				9A92AE141E6DBD9A000DBC84 /* CSVReader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

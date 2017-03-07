@@ -10,7 +10,10 @@ import Foundation
 
 
 public enum TrainingType {
-    case PERCEPTRON // Perceptron Architecture
-    case ADALINE // Adaline Architecture
-    case BACKPROPAGATION // BackPropagation Method
+    /// Perceptron Architecture
+    case PERCEPTRON
+    /// Adaline Architecture
+    case ADALINE
+    /// BackPropagation Method
+    case BACKPROPAGATION
 }

@@ -16,7 +16,8 @@ public class InputLayer: Layer, InputandOutputLayerMethods {
     fileprivate var _listOfNeurons: [Neuron]!
     fileprivate var _numberOfNueronsInLayer: Int!
 
-    public var listOfNeurons: [Neuron] { // List of neurons associated with the input layer
+    /// List of neurons associated with the input layer
+    public var listOfNeurons: [Neuron] {
 
         get {
             return _listOfNeurons
@@ -27,7 +28,8 @@ public class InputLayer: Layer, InputandOutputLayerMethods {
         }
     }
 
-    public var numberOfNueronsInLayer: Int { // Number of neurons in the input layer
+    /// Number of neurons in the input layer
+    public var numberOfNueronsInLayer: Int { 
 
         get {
             return _numberOfNueronsInLayer

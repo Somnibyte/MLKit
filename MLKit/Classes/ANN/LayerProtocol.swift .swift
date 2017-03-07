@@ -14,9 +14,11 @@ import Upsurge
 
 public protocol Layer {
 
-    var listOfNeurons: [Neuron] { get set } // List of Neuron Object in a particular layer.
+    /// List of Neuron Object in a particular layer.
+    var listOfNeurons: [Neuron] { get set }
 
-    var numberOfNueronsInLayer: Int { get set } // Number of Neurons in a particular layer.
+    /// Number of Neurons in a particular layer.
+    var numberOfNueronsInLayer: Int { get set }
 
 }
 

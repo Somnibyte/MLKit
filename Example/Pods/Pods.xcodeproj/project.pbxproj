@@ -110,6 +110,10 @@
 		926F67C94121C19A959745138E5B42B6 /* NMBStringify.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A7F3D729C82E75AB35940B80EDE5960 /* NMBStringify.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		95062B66B78E7A91F499CAF32B18C968 /* MachineLearningKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5ECF49E5836E9754AAF942842CE1B960 /* MachineLearningKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		96154D504405D81853EF3326A10CA05C /* World.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D069980D480A434318340B49416C2C /* World.swift */; };
+		9A52944E1E6F3F9A00506C2A /* NNOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A52944D1E6F3F9A00506C2A /* NNOperations.swift */; };
+		9A58AEC01E6EF9C700F8098E /* Genome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A58AEBF1E6EF9C700F8098E /* Genome.swift */; };
+		9A58AEC21E6EFBCE00F8098E /* Population.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A58AEC11E6EFBCE00F8098E /* Population.swift */; };
+		9A58AEC41E6F050900F8098E /* BiologicalProcessManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A58AEC31E6F050900F8098E /* BiologicalProcessManager.swift */; };
 		9BFA19772871E480C917BED9089064B5 /* InputLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A74AD55688F2B5F116E39070DCA3E9E /* InputLayer.swift */; };
 		9D9155396F48333B854DBE586138EDBF /* NMBExpectation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60979E4BD68DB0DE4501D0BCC7234D91 /* NMBExpectation.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		9DEE516323CA07D6F7FE204294A2F7BA /* ComplexArraySlice.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB163EBF7C9440E868AC98AFF69EA4BF /* ComplexArraySlice.swift */; };
@@ -338,6 +342,10 @@
 		98C52913DD43FF732C4CB0156035175F /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9951688C60A46DD572589F5DACF0C4A5 /* Pods-MLKit_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MLKit_Example-umbrella.h"; sourceTree = "<group>"; };
 		99A3B4EC6DA19FEADCCDCA96CA327574 /* Span.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Span.swift; path = Source/ND/Span.swift; sourceTree = "<group>"; };
+		9A52944D1E6F3F9A00506C2A /* NNOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNOperations.swift; sourceTree = "<group>"; };
+		9A58AEBF1E6EF9C700F8098E /* Genome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Genome.swift; sourceTree = "<group>"; };
+		9A58AEC11E6EFBCE00F8098E /* Population.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Population.swift; sourceTree = "<group>"; };
+		9A58AEC31E6F050900F8098E /* BiologicalProcessManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BiologicalProcessManager.swift; sourceTree = "<group>"; };
 		9AEF9A30B4EAA4E623AC004398637120 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/MapKit.framework; sourceTree = DEVELOPER_DIR; };
 		9AFEA9F8BC40182E0A9DF50A192F260E /* Training.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Training.swift; sourceTree = "<group>"; };
 		9C13EEF6CE7B8665E06332AD77882466 /* 2DTensorSlice.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = 2DTensorSlice.swift; path = Source/2D/2DTensorSlice.swift; sourceTree = "<group>"; };
@@ -614,6 +622,7 @@
 				FB7EB32A26A0287BDCE2FCB9C92A8BCC /* Perceptron.swift */,
 				9AFEA9F8BC40182E0A9DF50A192F260E /* Training.swift */,
 				8DABD67583CADFE4E7FF7131895CCD7F /* TrainingTypes.swift */,
+				9A52944D1E6F3F9A00506C2A /* NNOperations.swift */,
 			);
 			path = Learning;
 			sourceTree = "<group>";
@@ -657,11 +666,22 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		9A58AEBE1E6EF5CD00F8098E /* Genetic Algorithms */ = {
+			isa = PBXGroup;
+			children = (
+				9A58AEBF1E6EF9C700F8098E /* Genome.swift */,
+				9A58AEC11E6EFBCE00F8098E /* Population.swift */,
+				9A58AEC31E6F050900F8098E /* BiologicalProcessManager.swift */,
+			);
+			path = "Genetic Algorithms";
+			sourceTree = "<group>";
+		};
 		A512737D7582230D837286D84DB627B9 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
 				1382DAC12CECE8DC2FB0678FBCA0EB32 /* CSVReader.swift */,
 				8CF66BE40EDA51766B665FD5737DE3A3 /* MLKit.h */,
+				9A58AEBE1E6EF5CD00F8098E /* Genetic Algorithms */,
 				AEE5E67ABDA9FB470558DD2A753D4E35 /* ANN */,
 				08F00C4E366A56C236BC6505598800E7 /* Helper Classes & Extensions */,
 				11869B46F14276B15A265B71F1DB0417 /* K Means Clustering */,
@@ -1104,11 +1124,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				1493B66D43391C138E9FCA6DDE7FC57B /* ActivationFunctionEnum.swift in Sources */,
+				9A52944E1E6F3F9A00506C2A /* NNOperations.swift in Sources */,
 				F4E559950E3FC232BA59C7752219901B /* Adaline.swift in Sources */,
 				0C8E230C0949ABF4337B0EB7390FB8DE /* BackPropagation.swift in Sources */,
 				1D68B9B5B1CA456C408D0DCB8D50C26D /* CSVReader.swift in Sources */,
+				9A58AEC41E6F050900F8098E /* BiologicalProcessManager.swift in Sources */,
 				8C43ADB0864AFACD435A1D6086E8A617 /* DataManager.swift in Sources */,
 				84BAB50235A7D3FB56E831C84EE2A397 /* Extensions.swift in Sources */,
+				9A58AEC21E6EFBCE00F8098E /* Population.swift in Sources */,
 				12541B3CF9B5FDE5319695EDB0B16986 /* HiddenLayer.swift in Sources */,
 				9BFA19772871E480C917BED9089064B5 /* InputLayer.swift in Sources */,
 				1690B6C8C9BE9B252B1E3069B24F5445 /* KMeans.swift in Sources */,
@@ -1122,6 +1145,7 @@
 				1F5C6BB58B38FA27334FD06015842EFD /* Perceptron.swift in Sources */,
 				3E8E5017C374597D9B21A4AAD08B10B2 /* PolynomialRegression.swift in Sources */,
 				A4102C54C1E9CCB1C343655FD2A691D6 /* RidgeRegression.swift in Sources */,
+				9A58AEC01E6EF9C700F8098E /* Genome.swift in Sources */,
 				7E29BE6DD98D18DB514C41E1FF7075D8 /* SimpleLinearRegression.swift in Sources */,
 				C15B08D3C254D52D1A67017105B1F230 /* Training.swift in Sources */,
 				AC366FD87202DA1FFC98181DB2D9C0E0 /* TrainingTypes.swift in Sources */,
