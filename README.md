@@ -13,8 +13,6 @@ MLKit is a simple machine learning framework written in Swift. Currently MLKit f
 
 ## Installation
 
-**Example Project Coming Soon!**
-
 MLKit is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
@@ -88,7 +86,7 @@ To contribute to an already existant algorithm within the framework, please crea
 ### Week of Mar 6th
 |M|T|W|Th|F|
 |---|---|---|---|---|
-|Neural Network Documentation, K-Means Documentation, Decision Trees|Genetic Algorithm|Genetic Algorithm + Neural Network Example|TBD|TBD
+|Neural Network Documentation, K-Means Documentation, Decision Trees|Genetic Algorithm|Genetic Algorithm + Neural Network Example|Flappy Bird Example|Flappy Bird Example Improvements & Genetic Algorithm Improvements 
 
 ----------------------------------------------
 
