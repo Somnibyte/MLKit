@@ -88,7 +88,7 @@ To contribute to an already existant algorithm within the framework, please crea
 ### Week of Mar 6th
 |M|T|W|Th|F|
 |---|---|---|---|---|
-|Neural Network Documentation, K-Means Documentation, Decision Trees|Decision Trees|TBD|TBD|TBD
+|Neural Network Documentation, K-Means Documentation, Decision Trees|Genetic Algorithm|Genetic Algorithm + Neural Network Example|TBD|TBD
 
 ----------------------------------------------
 
