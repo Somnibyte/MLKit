@@ -64,7 +64,7 @@ class GameViewController: UIViewController {
         // Create First Generation of Flappy Birds
         var generation1: [FlappyGenome] = []
 
-        for _ in 1...20 {
+        for _ in 1...10 {
 
             let brain = NeuralNet()
 

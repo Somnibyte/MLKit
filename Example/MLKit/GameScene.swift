@@ -296,7 +296,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
 
         // If we have hit the 20th bird, we need to move on to the next generation
-        if currentFlappy == 20 {
+        if currentFlappy == 10 {
 
             print("GENERATING NEW GEN!")
 
@@ -307,7 +307,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
             newGen += lastBestGen
 
-            while newGen.count < 20 {
+            while newGen.count < 10 {
 
                 // Select the best parents
                 let parents = PopulationManager.selectParents(genomes: flappyBirdGenerationContainer!)
