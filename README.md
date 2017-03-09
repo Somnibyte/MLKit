@@ -78,6 +78,7 @@ To contribute to an already existant algorithm within the framework, please crea
 - [x] Ridge Regression
 - [x] Neural Network (/w BackPropagation, Single Layer Perceptron, Multi-Layer Perceptron (1 Hidden Layer limit), and Single Layer Adaline
 - [x] K-Means Clustering 
+- [x] Genetic Algorithms 
 - [x] Allows for splitting your data into training, validation, and test sets.
 - [x] K-Fold Cross Validation & Ability to test various L2 penalties for Ridge Regression
 - [x] Single Layer Perceptron, Multi-Layer Perceptron, & Adaline ANN Architectures 
