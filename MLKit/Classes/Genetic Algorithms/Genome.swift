@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// Blueprint for a Genome. It is encouraged to inherit from this base class in order to accomodate for your needs.
+/// Blueprint for a Genome. It is encouraged that you create your own `generateFitness` method as there are several ways to assess fitness. You are required, on the other hand, to have a genotype representation and a fitness for every Genome. 
 public protocol Genome {
 
     /// Genotype representation of the genome.
