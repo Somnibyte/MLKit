@@ -7,7 +7,7 @@ MLKit is a simple machine learning framework written in Swift. Currently MLKit f
 [![License](https://img.shields.io/cocoapods/l/MLKit.svg?style=flat)](https://cocoapods.org/pods/MachineLearningKit)
 [![Platform](https://img.shields.io/cocoapods/p/MLKit.svg?style=flat)](https://cocoapods.org/pods/MachineLearningKit)
 
-[MachineLearningKit Reference](http://cocoadocs.org/docsets/MachineLearningKit/0.1.4/index.html)
+[MachineLearningKit Reference](http://cocoadocs.org/docsets/MachineLearningKit/0.1.5/)
 
 ## Requirements
 

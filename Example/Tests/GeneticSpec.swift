@@ -15,11 +15,27 @@ import Nimble
 
 class GeneticSpec: QuickSpec {
 
+
+    public struct FakeGenome: Genome {
+
+        var genotypeRepresentation: [Float]
+
+        var fitness: Float
+
+        public init(genotype: [Float]) {
+
+            self.genotypeRepresentation = genotype
+            self.fitness = 0
+        }
+
+    }
+
+
     override func spec() {
 
         it("Should be able to produce a unique genotype after swap mutation process.") {
 
-            let fakeGenome: Genome = Genome(genotype: [1.0, 2.0, 3.0])
+            var fakeGenome: FakeGenome = FakeGenome(genotype: [1.0, 2.0, 3.0])
 
             let oldGenotype = fakeGenome.genotypeRepresentation
 
@@ -32,7 +48,7 @@ class GeneticSpec: QuickSpec {
 
         it("Should be able to produce a unique genotype after insert mutation process. ") {
 
-            let fakeGenome: Genome = Genome(genotype: [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0])
+            var fakeGenome: FakeGenome = FakeGenome(genotype: [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0])
 
             let oldGenotype = fakeGenome.genotypeRepresentation
 
@@ -44,7 +60,7 @@ class GeneticSpec: QuickSpec {
 
         it("Should be able to produce a unique genotype after inverse mutation process. ") {
 
-            let fakeGenome: Genome = Genome(genotype: [1.0, 2.0, 3.0])
+            var fakeGenome: FakeGenome = FakeGenome(genotype: [1.0, 2.0, 3.0])
 
             let oldGenotype = fakeGenome.genotypeRepresentation
 
@@ -55,7 +71,7 @@ class GeneticSpec: QuickSpec {
 
         it("Should be able to produce a unique genotype after scramble mutation process. ") {
 
-            let fakeGenome: Genome = Genome(genotype: [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0])
+            var fakeGenome: FakeGenome = FakeGenome(genotype: [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0])
 
             let oldGenotype = fakeGenome.genotypeRepresentation
 

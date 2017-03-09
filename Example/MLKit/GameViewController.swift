@@ -37,11 +37,14 @@ extension SKNode {
 // Genome that represents a Flappy Bird
 public class FlappyGenome: Genome {
 
+    /// Genotype representation of the genome.
+    public var genotypeRepresentation: [Float]
+
+    public var fitness: Float = 0
+    
     public var brain: NeuralNet?
 
     public init(genotype: [Float], network: NeuralNet) {
-
-        super.init(genotype: genotype)
 
         self.genotypeRepresentation = genotype
         self.brain = network
@@ -64,7 +67,7 @@ class GameViewController: UIViewController {
         // Create First Generation of Flappy Birds
         var generation1: [FlappyGenome] = []
 
-        for _ in 1...10 {
+        for _ in 1...20 {
 
             let brain = NeuralNet()
 

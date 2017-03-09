@@ -34,6 +34,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     /// The pipe that is in front of the bird
     var currentPipe: Int = 0
 
+    var maxFitness: Float = 0
+
+    var maxBird: FlappyGenome?
+
     var lastBestGen: [FlappyGenome] = []
 
     // END of ADDITIONS
@@ -213,7 +217,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         goalArea.name = "GOAL"
         goalArea.fillColor = SKColor.red
         goalArea.position = pipeUp.position
-        goalArea.position.y += 230
+        goalArea.position.y += 270
         // END of ADDITIONS
 
         pipePair.addChild(pipeUp)
@@ -295,8 +299,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             lastBestGen = (flappyBirdGenerationContainer?.filter({$0.fitness >= 4}))!
         }
 
+
+        if (currentBird?.fitness)! > maxFitness {
+            maxFitness = (currentBird?.fitness)!
+            maxBird = currentBird
+        }
+
         // If we have hit the 20th bird, we need to move on to the next generation
-        if currentFlappy == 10 {
+        if currentFlappy == 20 {
 
             print("GENERATING NEW GEN!")
 
@@ -306,8 +316,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             var newGen: [FlappyGenome] = []
 
             newGen += lastBestGen
+            newGen.append(maxBird!)
 
-            while newGen.count < 10 {
+            while newGen.count < 20 {
 
                 // Select the best parents
                 let parents = PopulationManager.selectParents(genomes: flappyBirdGenerationContainer!)
@@ -406,7 +417,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let normalizedDistanceOfNextPipe = (distanceOfNextPipe - 3)/(725-3)
 
             // Bird Y position
-            let birdYPos = bird.position.y/CGFloat(800)
+            let birdYPos = bird.position.y/CGFloat(880)
 
             // Measure how close the bird is to the gap between the pipes
             let posToGap = pipes.children[0].children[2].position.y - bird.position.y
@@ -459,7 +470,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         if moving.speed > 0 {
 
-            if y >= 800 {
+            if y >= 880 {
                 moving.speed = 0
 
                 bird.physicsBody?.collisionBitMask = worldCategory
