@@ -12,6 +12,7 @@ import Foundation
 import Upsurge
 
 
+/// The Layer Protocol defines what attributes and methods a Layer Object must have.
 public protocol Layer {
 
     /// List of Neuron Object in a particular layer.
@@ -21,7 +22,6 @@ public protocol Layer {
     var numberOfNueronsInLayer: Int { get set }
 
 }
-
 
 public protocol InputandOutputLayerMethods {
 

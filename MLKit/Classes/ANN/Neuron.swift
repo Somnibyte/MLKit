@@ -10,7 +10,7 @@
 import Foundation
 import Upsurge
 
-
+/// The Neuron class defines a neuron to be used within a Layer object.
 open class Neuron {
 
     fileprivate var _weightsComingIn: ValueArray<Float>!

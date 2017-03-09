@@ -9,24 +9,47 @@
 import SpriteKit
 import MachineLearningKit
 
-class GameScene: SKScene, SKPhysicsContactDelegate{
-    let verticalPipeGap = 150.0
+class GameScene: SKScene, SKPhysicsContactDelegate {
 
-    var firstGenerationOfFlappyBirds:[FlappyGenome]?
-    var currentBird:FlappyGenome?
-    var bird:SKSpriteNode!
-    var skyColor:SKColor!
-    var pipeTextureUp:SKTexture!
-    var pipeTextureDown:SKTexture!
-    var movePipesAndRemove:SKAction!
-    var moving:SKNode!
-    var pipes:SKNode!
+    // ADDITIONS
+
+    /// Container for our Flappy Birds
+    var flappyBirdGenerationContainer: [FlappyGenome]?
+
+    /// The current genome
+    var currentBird: FlappyGenome?
+
+    /// The current flappy bird of the current generation (see 'generationCounter' variable)
+    var currentFlappy: Int = 0
+
+    /// Variable used to count the number of generations that have passed
+    var generationCounter = 1
+
+    /// Variable to keep track of the current time (this is used to determine fitness later)
+    var currentTime = NSDate()
+
+    /// The red square (our goal area)
+    var goalArea: SKShapeNode!
+
+    /// The pipe that is in front of the bird
+    var currentPipe: Int = 0
+
+    var lastBestGen: [FlappyGenome] = []
+
+    // END of ADDITIONS
+
+    let verticalPipeGap = 150.0
+    var bird: SKSpriteNode!
+    var skyColor: SKColor!
+    var pipeTextureUp: SKTexture!
+    var pipeTextureDown: SKTexture!
+    var movePipesAndRemove: SKAction!
+    var moving: SKNode!
+    var pipes: SKNode!
     var canRestart = Bool()
-    var scoreLabelNode:SKLabelNode!
+    var scoreLabelNode: SKLabelNode!
     var score = NSInteger()
-    var generationCounter = 0
-    var currentFlappy = 0
-    var currentDistanceFromaPipe = 0
+
 
 
     let birdCategory: UInt32 = 1 << 0
@@ -34,33 +57,32 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     let pipeCategory: UInt32 = 1 << 2
     let scoreCategory: UInt32 = 1 << 3
 
-    
+
     override func didMove(to view: SKView) {
 
-        print(firstGenerationOfFlappyBirds)
         canRestart = false
-        
+
         // setup physics
         self.physicsWorld.gravity = CGVector( dx: 0.0, dy: -5.0 )
         self.physicsWorld.contactDelegate = self
-        
+
         // setup background color
         skyColor = SKColor(red: 81.0/255.0, green: 192.0/255.0, blue: 201.0/255.0, alpha: 1.0)
         self.backgroundColor = skyColor
-        
+
         moving = SKNode()
         self.addChild(moving)
         pipes = SKNode()
         moving.addChild(pipes)
-        
+
         // ground
         let groundTexture = SKTexture(imageNamed: "land")
         groundTexture.filteringMode = .nearest // shorter form for SKTextureFilteringMode.Nearest
-        
+
         let moveGroundSprite = SKAction.moveBy(x: -groundTexture.size().width * 2.0, y: 0, duration: TimeInterval(0.02 * groundTexture.size().width * 2.0))
         let resetGroundSprite = SKAction.moveBy(x: groundTexture.size().width * 2.0, y: 0, duration: 0.0)
-        let moveGroundSpritesForever = SKAction.repeatForever(SKAction.sequence([moveGroundSprite,resetGroundSprite]))
-        
+        let moveGroundSpritesForever = SKAction.repeatForever(SKAction.sequence([moveGroundSprite, resetGroundSprite]))
+
         for i in 0 ..< 2 + Int(self.frame.size.width / ( groundTexture.size().width * 2 )) {
             let i = CGFloat(i)
             let sprite = SKSpriteNode(texture: groundTexture)
@@ -69,15 +91,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
             sprite.run(moveGroundSpritesForever)
             moving.addChild(sprite)
         }
-        
+
         // skyline
         let skyTexture = SKTexture(imageNamed: "sky")
         skyTexture.filteringMode = .nearest
-        
+
         let moveSkySprite = SKAction.moveBy(x: -skyTexture.size().width * 2.0, y: 0, duration: TimeInterval(0.1 * skyTexture.size().width * 2.0))
         let resetSkySprite = SKAction.moveBy(x: skyTexture.size().width * 2.0, y: 0, duration: 0.0)
-        let moveSkySpritesForever = SKAction.repeatForever(SKAction.sequence([moveSkySprite,resetSkySprite]))
-        
+        let moveSkySpritesForever = SKAction.repeatForever(SKAction.sequence([moveSkySprite, resetSkySprite]))
+
         for i in 0 ..< 2 + Int(self.frame.size.width / ( skyTexture.size().width * 2 )) {
             let i = CGFloat(i)
             let sprite = SKSpriteNode(texture: skyTexture)
@@ -87,51 +109,51 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
             sprite.run(moveSkySpritesForever)
             moving.addChild(sprite)
         }
-        
+
         // create the pipes textures
         pipeTextureUp = SKTexture(imageNamed: "PipeUp")
         pipeTextureUp.filteringMode = .nearest
         pipeTextureDown = SKTexture(imageNamed: "PipeDown")
         pipeTextureDown.filteringMode = .nearest
-        
+
         // create the pipes movement actions
         let distanceToMove = CGFloat(self.frame.size.width + 2.0 * pipeTextureUp.size().width)
         let movePipes = SKAction.moveBy(x: -distanceToMove, y:0.0, duration:TimeInterval(0.01 * distanceToMove))
         let removePipes = SKAction.removeFromParent()
         movePipesAndRemove = SKAction.sequence([movePipes, removePipes])
-        
+
         // spawn the pipes
         let spawn = SKAction.run(spawnPipes)
         let delay = SKAction.wait(forDuration: TimeInterval(2.0))
         let spawnThenDelay = SKAction.sequence([spawn, delay])
         let spawnThenDelayForever = SKAction.repeatForever(spawnThenDelay)
         self.run(spawnThenDelayForever)
-        
+
         // setup our bird
         let birdTexture1 = SKTexture(imageNamed: "bird-01")
         birdTexture1.filteringMode = .nearest
         let birdTexture2 = SKTexture(imageNamed: "bird-02")
         birdTexture2.filteringMode = .nearest
-        
+
         let anim = SKAction.animate(with: [birdTexture1, birdTexture2], timePerFrame: 0.2)
         let flap = SKAction.repeatForever(anim)
-        
+
         bird = SKSpriteNode(texture: birdTexture1)
         bird.setScale(2.0)
         bird.position = CGPoint(x: self.frame.size.width * 0.35, y:self.frame.size.height * 0.6)
         bird.run(flap)
-        
-        
+
+
         bird.physicsBody = SKPhysicsBody(circleOfRadius: bird.size.height / 2.0)
         bird.physicsBody?.isDynamic = true
         bird.physicsBody?.allowsRotation = false
-        
+
         bird.physicsBody?.categoryBitMask = birdCategory
         bird.physicsBody?.collisionBitMask = worldCategory | pipeCategory
         bird.physicsBody?.contactTestBitMask = worldCategory | pipeCategory
-        
+
         self.addChild(bird)
-        
+
         // create the ground
         let ground = SKNode()
         ground.position = CGPoint(x: 0, y: groundTexture.size().height)
@@ -139,7 +161,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         ground.physicsBody?.isDynamic = false
         ground.physicsBody?.categoryBitMask = worldCategory
         self.addChild(ground)
-        
+
         // Initialize label and create a label which holds the score
         score = 0
         scoreLabelNode = SKLabelNode(fontNamed:"MarkerFelt-Wide")
@@ -149,41 +171,54 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         self.addChild(scoreLabelNode)
 
 
-        // Set the current bird
-        currentBird = firstGenerationOfFlappyBirds?[currentFlappy]
 
+
+        // Set the current bird
+        currentBird = flappyBirdGenerationContainer?[currentFlappy]
 
     }
-    
+
     func spawnPipes() {
         let pipePair = SKNode()
         pipePair.position = CGPoint( x: self.frame.size.width + pipeTextureUp.size().width * 2, y: 0 )
         pipePair.zPosition = -10
-        
+
         let height = UInt32( self.frame.size.height / 4)
-        let y = Double(arc4random_uniform(height) + height);
-        
+        let y = Double(arc4random_uniform(height) + height)
+
         let pipeDown = SKSpriteNode(texture: pipeTextureDown)
+        pipeDown.name = "DOWN"
         pipeDown.setScale(2.0)
         pipeDown.position = CGPoint(x: 0.0, y: y + Double(pipeDown.size.height) + verticalPipeGap)
-        
-        
+
+
         pipeDown.physicsBody = SKPhysicsBody(rectangleOf: pipeDown.size)
         pipeDown.physicsBody?.isDynamic = false
         pipeDown.physicsBody?.categoryBitMask = pipeCategory
         pipeDown.physicsBody?.contactTestBitMask = birdCategory
         pipePair.addChild(pipeDown)
-        
+
         let pipeUp = SKSpriteNode(texture: pipeTextureUp)
         pipeUp.setScale(2.0)
         pipeUp.position = CGPoint(x: 0.0, y: y)
-        
+
         pipeUp.physicsBody = SKPhysicsBody(rectangleOf: pipeUp.size)
         pipeUp.physicsBody?.isDynamic = false
         pipeUp.physicsBody?.categoryBitMask = pipeCategory
         pipeUp.physicsBody?.contactTestBitMask = birdCategory
+
+
+        // ADDITIONS
+        goalArea = SKShapeNode(rectOf: CGSize(width: 10, height: 10))
+        goalArea.name = "GOAL"
+        goalArea.fillColor = SKColor.red
+        goalArea.position = pipeUp.position
+        goalArea.position.y += 230
+        // END of ADDITIONS
+
         pipePair.addChild(pipeUp)
-        
+        pipePair.addChild(goalArea)
+
         let contactNode = SKNode()
         contactNode.position = CGPoint( x: pipeDown.size.width + bird.size.width / 2, y: self.frame.midY )
         contactNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize( width: pipeUp.size.width, height: self.frame.size.height ))
@@ -191,36 +226,136 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         contactNode.physicsBody?.categoryBitMask = scoreCategory
         contactNode.physicsBody?.contactTestBitMask = birdCategory
         pipePair.addChild(contactNode)
-        
+
         pipePair.run(movePipesAndRemove)
         pipes.addChild(pipePair)
-        
+
     }
-    
-    func resetScene (){
+
+    func resetScene () {
+
+
         // Move bird to original position and reset velocity
         bird.position = CGPoint(x: self.frame.size.width / 2.5, y: self.frame.midY)
         bird.physicsBody?.velocity = CGVector( dx: 0, dy: 0 )
         bird.physicsBody?.collisionBitMask = worldCategory | pipeCategory
         bird.speed = 1.0
         bird.zRotation = 0.0
-        
+
         // Remove all existing pipes
         pipes.removeAllChildren()
-        
+
         // Reset _canRestart
         canRestart = false
-        
+
         // Reset score
         score = 0
         scoreLabelNode.text = String(score)
-        
+
         // Restart animation
         moving.speed = 1
+
+        // GENETIC ALGORITHM (DOWN BELOW)
+
+
+        // Calculate the amount of time it took until the AI lost.
+        let endDate: NSDate = NSDate()
+        let timeInterval: Double = endDate.timeIntervalSince(currentTime as Date)
+        currentTime = NSDate()
+
+        // Evaluate the current birds fitness
+        currentBird?.generateFitness(score: score, time: Float(timeInterval))
+
+        // Current generation, bird, and fitness of current bird information
+        print("--------------------------- \n")
+        print("GENERATION: \(generationCounter)")
+        print("BIRD COUNT: \(currentFlappy)")
+        print("FITNESS: \(currentBird?.fitness)")
+        print("--------------------------- \n")
+
+
+        /* DEBUGGING
+        if (currentBird?.fitness)! >= Float(7.0) {
+            print("-----BEST BIRD FOUND------")
+
+            currentBird?.brain?.inputLayer.printLayer(layer: (currentBird?.brain?.inputLayer)!)
+            currentBird?.brain?.hiddenLayer.printLayer(listOfHiddenLayers: (currentBird?.brain?.listOfHiddenLayers)!)
+            currentBird?.brain?.outputLayer.printLayer(layer: (currentBird?.brain?.outputLayer)!)
+
+        }
+        */
+
+        // Go to next flappy bird
+        currentFlappy += 1
+
+        // Filter out the worst birds after gen 6 (can be adjusted)
+        if generationCounter >= 3 {
+
+            // Experiment: Keep some of the last best birds and put them back into the population
+            lastBestGen = (flappyBirdGenerationContainer?.filter({$0.fitness >= 4}))!
+        }
+
+        // If we have hit the 20th bird, we need to move on to the next generation
+        if currentFlappy == 20 {
+
+            print("GENERATING NEW GEN!")
+
+            currentFlappy = 0
+
+            // New generation array
+            var newGen: [FlappyGenome] = []
+
+            newGen += lastBestGen
+
+            while newGen.count < 20 {
+
+                // Select the best parents
+                let parents = PopulationManager.selectParents(genomes: flappyBirdGenerationContainer!)
+
+                print("PARENT 1 FITNESS: \(parents.0.fitness)")
+                print("PARENT 2 FITNESS: \(parents.1.fitness)")
+
+                // Produce new flappy birds
+                var offspring = BiologicalProcessManager.onePointCrossover(crossOverRate: 0.5, parentOneGenotype: parents.0.genotypeRepresentation, parentTwoGenotype: parents.1.genotypeRepresentation)
+
+                // Mutate their genes
+                BiologicalProcessManager.inverseMutation(mutationRate: 0.5, genotype: &offspring.0)
+                BiologicalProcessManager.inverseMutation(mutationRate: 0.5, genotype: &offspring.1)
+
+                // Create a separate neural network for the birds based on their genes
+                let brainofOffspring1 = GeneticOperations.decode(genotype: offspring.0)
+
+                let brainofOffspring2 = GeneticOperations.decode(genotype: offspring.1)
+
+                let offspring1 = FlappyGenome(genotype: offspring.0, network: brainofOffspring1)
+
+                let offspring2 = FlappyGenome(genotype: offspring.1, network: brainofOffspring2)
+
+                // Add them to the new generation
+                newGen.append(offspring1)
+
+                newGen.append(offspring2)
+
+            }
+
+            generationCounter += 1
+
+            // Replace the old generation
+            flappyBirdGenerationContainer = newGen
+
+            // Set the current bird
+            currentBird = flappyBirdGenerationContainer?[currentFlappy]
+
+        } else {
+
+            // Set the current bird
+            currentBird = flappyBirdGenerationContainer?[currentFlappy]
+        }
+
     }
-    
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if moving.speed > 0  {
+        if moving.speed > 0 {
             for _ in touches { // do we need all touches?
                 bird.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
                 bird.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 30))
@@ -231,32 +366,149 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     }
 
 
+    // Chooses the closest pipe
+    func closestPipe(pipes: [SKNode]) -> Int {
+
+        var min = 0
+        var minDist = abs(pipes[0].position.x - bird.position.x)
+
+        for (var i, var pipe) in pipes.enumerated() {
+            if abs(pipe.position.x - minDist) < minDist {
+                minDist = abs(pipe.position.x - minDist)
+                min = i
+            }
+        }
+
+        return min
+    }
+
     override func update(_ currentTime: TimeInterval) {
+
+        checkIfOutOfBounds(bird.position.y)
+
         /* Called before each frame is rendered */
         let value = bird.physicsBody!.velocity.dy * ( bird.physicsBody!.velocity.dy < 0 ? 0.003 : 0.001 )
         bird.zRotation = min( max(-1, value), 0.5 )
 
+        // If the pipes are now visible...
         if pipes.children.count > 0 {
 
-            var distFromTopPipe = (pipes.children[0].children[0].position.y - bird.position.y)/533
-            var distFromBottomPipe = (bird.position.y - pipes.children[0].children[1].position.y)/533
-            var pipePos = (pipes.children[0].position.x - 1) / 1000 - 1
-            var birdPos = bird.position.x
+            // Check to see if the pipe in front has gone behind the bird
+            // if so, make the new pipe in front of the bird the target pipe
+            if pipes.children[currentPipe].position.x < bird.position.x {
+
+                currentPipe = closestPipe(pipes: pipes.children)
+            }
+
+            // Distance between next pipe and bird
+            let distanceOfNextPipe = abs(pipes.children[currentPipe].position.x - bird.position.x)
+
+            let normalizedDistanceOfNextPipe = (distanceOfNextPipe - 3)/(725-3)
+
+            // Bird Y position
+            let birdYPos = bird.position.y/CGFloat(800)
+
+            // Measure how close the bird is to the gap between the pipes
+            let posToGap = pipes.children[0].children[2].position.y - bird.position.y
 
 
-            if (currentBird?.network?.forward(input: [Float(distFromTopPipe),Float(distFromBottomPipe),Float(pipePos),Float(birdPos/birdPos)])[0])! >= Float(0.85) {
-                if moving.speed > 0  {
-                        bird.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
-                        bird.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 30))
-                } else if canRestart {
-                    self.resetScene()
+            let normalizedPosToGap = (posToGap - (-439))/(279 - (-439))
+
+            /*
+            print("======================== \n")
+            print(" DIST: \((finalDistanceOfNextPipe))")
+            print("PIPE POSITION: \(finalPosToGap)")
+            print("Bird POS Y: \(birdPos)")
+            print("======================== \n")
+            */
+
+
+            // Decision AI makes
+            let decision = (currentBird?.brain?.forward(input: [Float(1), Float(normalizedDistanceOfNextPipe), Float(normalizedPosToGap), Float(birdYPos)]))!
+
+            print("DEC: \(decision)")
+
+            // 0.95 was arbitrary, tweaking is recommended
+            if  decision[0] >= Float(0.95) {
+
+                if moving.speed > 0 {
+
+                       bird.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+                       bird.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 30))
+
                 }
+
+            } else {
+
+            }
+        }
+
+        if canRestart {
+
+            // If the game ends...
+            // record the current flappy birds fitness...
+            // then bring in the next flappy bird
+
+            self.resetScene()
+        }
+
+    }
+
+    // Checks if the bird is at the top of the screen
+    func checkIfOutOfBounds(_ y: CGFloat) {
+
+        if moving.speed > 0 {
+
+            if y >= 800 {
+                moving.speed = 0
+
+                bird.physicsBody?.collisionBitMask = worldCategory
+                bird.run(  SKAction.rotate(byAngle: CGFloat(M_PI) * CGFloat(bird.position.y) * 0.01, duration:1), completion: {self.bird.speed = 0 })
+
+
+                // Flash background if contact is detected
+                self.removeAction(forKey: "flash")
+                self.run(SKAction.sequence([SKAction.repeat(SKAction.sequence([SKAction.run({
+                    //self.backgroundColor = SKColor(red: 1, green: 0, blue: 0, alpha: 1.0)
+                }), SKAction.wait(forDuration: TimeInterval(0.05)), SKAction.run({
+                    self.backgroundColor = self.skyColor
+                }), SKAction.wait(forDuration: TimeInterval(0.05))]), count:4), SKAction.run({
+                    self.canRestart = true
+                })]), withKey: "flash")
             }
 
         }
 
     }
-    
+
     func didBegin(_ contact: SKPhysicsContact) {
-           }
+
+        if moving.speed > 0 {
+            if ( contact.bodyA.categoryBitMask & scoreCategory ) == scoreCategory || ( contact.bodyB.categoryBitMask & scoreCategory ) == scoreCategory {
+                // Bird has contact with score entity
+                score += 1
+                scoreLabelNode.text = String(score)
+
+                // Add a little visual feedback for the score increment
+                scoreLabelNode.run(SKAction.sequence([SKAction.scale(to: 1.5, duration:TimeInterval(0.1)), SKAction.scale(to: 1.0, duration:TimeInterval(0.1))]))
+            } else {
+
+                moving.speed = 0
+
+                bird.physicsBody?.collisionBitMask = worldCategory
+                bird.run(  SKAction.rotate(byAngle: CGFloat(M_PI) * CGFloat(bird.position.y) * 0.01, duration:1), completion: {self.bird.speed = 0 })
+
+
+                // Flash background if contact is detected
+                self.removeAction(forKey: "flash")
+                self.run(SKAction.sequence([SKAction.repeat(SKAction.sequence([SKAction.run({
+                    //self.backgroundColor = SKColor(red: 1, green: 0, blue: 0, alpha: 1.0)
+                }), SKAction.wait(forDuration: TimeInterval(0.05)), SKAction.run({
+                    self.backgroundColor = self.skyColor
+                }), SKAction.wait(forDuration: TimeInterval(0.05))]), count:4), SKAction.run({
+                    self.canRestart = true
+                })]), withKey: "flash")
+            }
+        }
+    }
 }

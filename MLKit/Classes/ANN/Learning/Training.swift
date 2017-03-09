@@ -121,7 +121,7 @@ extension Training {
 
     }
 
-  
+
     // TODO: REVISE FOR GENERAL NEURAL NETWORK RESULT
     private func printMultiLayerNetworkResult(trainedNetwork: NeuralNet) {
 

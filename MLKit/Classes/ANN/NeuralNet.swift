@@ -12,7 +12,7 @@
 import Foundation
 import Upsurge
 
-
+/// The NeuralNet class defines a artificial neural network. Note that you are only allowed to have 1 hidden layer.
 open class NeuralNet {
 
     fileprivate var _estimatedOutputAsArray: [Float] = []
@@ -355,7 +355,7 @@ open class NeuralNet {
         return newNeuralNetwork
     }
 
-    public func forward(input:[Float]) -> [Float] {
+    public func forward(input: [Float]) -> [Float] {
 
         return forwardProcess(network: self, input:input)
     }
@@ -429,22 +429,21 @@ open class NeuralNet {
                     // Use the activation function to calculate the activation of the output neuron(s)
                     netValueOut = try! NNOperations.activationFunc(fncType: network.activationFuncTypeOutputLayer, value: netValue)
 
-                    print(netValueOut)
 
                     // Set the output neurons output/activation
                     network.outputLayer.listOfNeurons[outLayer_i].outputValue = netValueOut
-                    
+
                 }
-                
+
                 // Set the hidden layers of the network with the newly adjusted neurons
                 network.listOfHiddenLayers[hiddenLayer_i].listOfNeurons = hiddenLayer.listOfNeurons
-                
+
                 hiddenLayer_i += 1
             }
         }
-        
-        
-        var finalOutputSet:[Float] = []
+
+
+        var finalOutputSet: [Float] = []
 
         for neuron in self.outputLayer.listOfNeurons {
             finalOutputSet.append(neuron.outputValue)

@@ -84,7 +84,7 @@ final class NNOperations {
     private static func derivativeOfHyperTan(val: Float) -> Float {
         return (1.0 / powf(cosh(val), 2.0))
     }
-    
+
 
 
 }

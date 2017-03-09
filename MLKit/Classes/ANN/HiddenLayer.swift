@@ -12,7 +12,7 @@
 import Foundation
 import Upsurge
 
-
+/// The HiddenLayer class represents the hidden layer of a NueralNet object.
 public class HiddenLayer: Layer {
 
 

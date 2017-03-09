@@ -9,38 +9,39 @@
 import Foundation
 
 /// Handles processes involving selection.
-open class PopulationManager<G: GenomeProtocol>{
+open class PopulationManager {
 
 
     /**
      The selectParents method selects two parents from the population to create an offspring.
 
-     - parameter genomes: An array of genomes. 
+     - parameter genomes: An array of genomes.
 
      - returns: A tuple consisted two genomes.
      */
-    open static func selectParents(genomes:[G]) -> (G,G){
+    open static func selectParents(genomes: [Genome]) -> (Genome, Genome) {
 
         var genomes = genomes
 
-        var tournament:[G] = []
+        var tournament: [Genome] = []
 
         // Create a "tournament" (an array of randomly selected genomes).
         for _ in 0..<genomes.count {
-            tournament.append(genomes[Int(arc4random_uniform(UInt32(genomes.count-1)))])
+            var randomIdx = Int(arc4random_uniform(UInt32(genomes.count-1)))
+            tournament.append(genomes[randomIdx])
         }
 
-        var firstBestGenome:G?
-        var secondBestGenome:G?
+        var firstBestGenome: Genome?
+        var secondBestGenome: Genome?
 
-        var maxFitness:Float = -10000
-        var indexOfBestGenome:Int = 0
+        var maxFitness: Float = -10000
+        var indexOfBestGenome: Int = 0
 
         // Find the first genome that has the best fitness thus far.
         // Save and remove that individual from the list of genomes
         for (var i, var genome) in genomes.enumerated() {
-            if genome.fitness! > maxFitness {
-                maxFitness = genome.fitness!
+            if genome.fitness > maxFitness {
+                maxFitness = genome.fitness as! Float
                 firstBestGenome = genome
                 indexOfBestGenome = i
             }
@@ -56,8 +57,8 @@ open class PopulationManager<G: GenomeProtocol>{
 
 
         for (var i, var genome) in genomes.enumerated() {
-            if genome.fitness! > maxFitness {
-                maxFitness = genome.fitness!
+            if genome.fitness > maxFitness {
+                maxFitness = genome.fitness
                 secondBestGenome = genome
                 indexOfBestGenome = i
             }
@@ -68,5 +69,5 @@ open class PopulationManager<G: GenomeProtocol>{
 
         return (firstBestGenome!, secondBestGenome!)
     }
-    
+
 }

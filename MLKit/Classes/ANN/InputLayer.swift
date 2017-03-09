@@ -10,6 +10,7 @@
 import Foundation
 import Upsurge
 
+/// The InputLayer class represents the input layer of a NueralNet object.
 public class InputLayer: Layer, InputandOutputLayerMethods {
 
 
@@ -29,7 +30,7 @@ public class InputLayer: Layer, InputandOutputLayerMethods {
     }
 
     /// Number of neurons in the input layer
-    public var numberOfNueronsInLayer: Int { 
+    public var numberOfNueronsInLayer: Int {
 
         get {
             return _numberOfNueronsInLayer
