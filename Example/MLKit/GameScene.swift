@@ -217,7 +217,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         goalArea.name = "GOAL"
         goalArea.fillColor = SKColor.red
         goalArea.position = pipeUp.position
-        goalArea.position.y += 270
+        goalArea.position.y += 230
         // END of ADDITIONS
 
         pipePair.addChild(pipeUp)
@@ -327,11 +327,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 print("PARENT 2 FITNESS: \(parents.1.fitness)")
 
                 // Produce new flappy birds
-                var offspring = BiologicalProcessManager.onePointCrossover(crossOverRate: 0.7, parentOneGenotype: parents.0.genotypeRepresentation, parentTwoGenotype: parents.1.genotypeRepresentation)
+                var offspring = BiologicalProcessManager.onePointCrossover(crossOverRate: 0.5, parentOneGenotype: parents.0.genotypeRepresentation, parentTwoGenotype: parents.1.genotypeRepresentation)
 
                 // Mutate their genes
-                BiologicalProcessManager.swapMutation(mutationRate: 0.5, genotype: &offspring.0)
-                BiologicalProcessManager.swapMutation(mutationRate: 0.5, genotype: &offspring.1)
+                BiologicalProcessManager.scrambleMutation(mutationRate: 0.5, genotype: &offspring.0)
+                BiologicalProcessManager.scrambleMutation(mutationRate: 0.5, genotype: &offspring.1)
 
 
                 // Create a separate neural network for the birds based on their genes
