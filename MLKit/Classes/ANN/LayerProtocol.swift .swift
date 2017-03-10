@@ -23,6 +23,8 @@ public protocol Layer {
 
 }
 
+
+/// Protcol for Layer Printing and Debugging Methods 
 public protocol InputandOutputLayerMethods {
 
     /**

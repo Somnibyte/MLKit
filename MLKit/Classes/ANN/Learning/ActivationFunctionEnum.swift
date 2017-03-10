@@ -9,6 +9,7 @@
 import Foundation
 
 
+/// The ActivationFunctionType enum represents the type of activation function your NueralNet object will use.
 public enum ActivationFunctionType {
     case STEP // Step Function
     case LINEAR // Linear Function

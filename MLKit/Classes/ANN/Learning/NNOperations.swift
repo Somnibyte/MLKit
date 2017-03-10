@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// The NNOperations (Nueral Network Operations) class has the objective of computing activation function values and the derivative of activation functions as well. 
 final class NNOperations {
 
     /**

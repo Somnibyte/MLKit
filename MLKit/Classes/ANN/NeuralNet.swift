@@ -355,6 +355,15 @@ open class NeuralNet {
         return newNeuralNetwork
     }
 
+
+
+    /**
+     The forward method allows a NeuralNet object to pass in inputs (corresponding to the number of input layers in your NueralNet Object) and recieve a list of output values (depends on the number of output layer neurons available).
+
+     - parameter input: An array of Float values. NOTE: Don't forget to make the first input value a '1' (this is your bias value).
+
+     - returns: A list of Float values corresponding to the output of your NeuralNet object.
+     */
     public func forward(input: [Float]) -> [Float] {
 
         return forwardProcess(network: self, input:input)
@@ -454,7 +463,7 @@ open class NeuralNet {
 
 
     /**
-     The trainNet method trains the Neural Network with the methods available (PERCEPTRON, ADALINE, and BACKPROPAGATION).
+     The trainNet method trains the Neural Network with the methods available (PERCEPTRON, ADALINE, and BACKPROPAGATION). It is advised that you use this method for supervised learning. 
 
      - parameter network: A Neural Net Object.
 

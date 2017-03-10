@@ -327,11 +327,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 print("PARENT 2 FITNESS: \(parents.1.fitness)")
 
                 // Produce new flappy birds
-                var offspring = BiologicalProcessManager.onePointCrossover(crossOverRate: 0.5, parentOneGenotype: parents.0.genotypeRepresentation, parentTwoGenotype: parents.1.genotypeRepresentation)
+                var offspring = BiologicalProcessManager.onePointCrossover(crossOverRate: 0.7, parentOneGenotype: parents.0.genotypeRepresentation, parentTwoGenotype: parents.1.genotypeRepresentation)
 
                 // Mutate their genes
-                BiologicalProcessManager.inverseMutation(mutationRate: 0.5, genotype: &offspring.0)
-                BiologicalProcessManager.inverseMutation(mutationRate: 0.5, genotype: &offspring.1)
+                BiologicalProcessManager.swapMutation(mutationRate: 0.5, genotype: &offspring.0)
+                BiologicalProcessManager.swapMutation(mutationRate: 0.5, genotype: &offspring.1)
+
 
                 // Create a separate neural network for the birds based on their genes
                 let brainofOffspring1 = GeneticOperations.decode(genotype: offspring.0)
@@ -437,7 +438,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             // Decision AI makes
             let decision = (currentBird?.brain?.forward(input: [Float(1), Float(normalizedDistanceOfNextPipe), Float(normalizedPosToGap), Float(birdYPos)]))!
 
-            print("DEC: \(decision)")
+            print("FLAPPY BIRD DECISION: \(decision)")
 
             // 0.95 was arbitrary, tweaking is recommended
             if  decision[0] >= Float(0.95) {
