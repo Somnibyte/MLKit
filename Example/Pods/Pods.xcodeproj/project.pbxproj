@@ -686,7 +686,6 @@
 				08F00C4E366A56C236BC6505598800E7 /* Helper Classes & Extensions */,
 				11869B46F14276B15A265B71F1DB0417 /* K Means Clustering */,
 				48F61B9C32C285621E2CB791F70F187A /* Regression */,
-				F8D4AB66C676D00374C36D8BB2918728 /* SOM */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -892,13 +891,6 @@
 				A512737D7582230D837286D84DB627B9 /* Classes */,
 			);
 			path = MLKit;
-			sourceTree = "<group>";
-		};
-		F8D4AB66C676D00374C36D8BB2918728 /* SOM */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = SOM;
 			sourceTree = "<group>";
 		};
 		FC789AF5844FCEF085DA24E590C6103E /* Frameworks */ = {
