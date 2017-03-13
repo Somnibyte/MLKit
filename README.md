@@ -57,10 +57,7 @@ To contribute to an already existant algorithm within the framework, please crea
 - [ ] KMeans++ Implementation 
 - [ ] KMeans Clustering Documentation
 - [ ] Neural Network Documentation 
-- [ ] Enable Neural Network class to allow for multiple hidden layers (currently 1 is only allowed)
 - [ ] Logistic Regression
-- [ ] Genetic Algorithms
-- [ ] Self Organizing Maps
 - [ ] Decision Trees 
 
 ### Future Releases:
@@ -68,6 +65,8 @@ To contribute to an already existant algorithm within the framework, please crea
 - [ ] Recurrent Neural Network 
 - [ ] Artificial Neural Network using Metal
 - [ ] Game Playing AI (MiniMax, Alpha-Beta Pruning)
+- [ ] Self Organizing Maps
+- [ ] Enable Neural Network class to allow for multiple hidden layers (currently 1 is only allowed)
 
 ----------------------------------------------
 ## Features (So Far)
@@ -94,10 +93,10 @@ To contribute to an already existant algorithm within the framework, please crea
 
 ## Development Schedule
 
-### Week of Mar 6th
+### Week of Mar 13th
 |M|T|W|Th|F|
 |---|---|---|---|---|
-|Neural Network Documentation, K-Means Documentation, Decision Trees|Genetic Algorithm|Genetic Algorithm + Neural Network Example|Flappy Bird Example|Flappy Bird Example Improvements & Genetic Algorithm Improvements 
+|Genetic Algorithm Documentation, Nueral Network Documentation|TBD|TBD|TBD|TBD
 
 ----------------------------------------------
 

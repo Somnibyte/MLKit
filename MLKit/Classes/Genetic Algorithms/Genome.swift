@@ -18,4 +18,3 @@ public protocol Genome {
     var fitness: Float { get set }
 
 }
-
