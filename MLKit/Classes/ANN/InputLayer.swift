@@ -11,7 +11,7 @@ import Foundation
 import Upsurge
 
 /// The InputLayer class represents the input layer of a NueralNet object.
-public class InputLayer: Layer, InputandOutputLayerMethods {
+public class InputLayer: Layer {
 
 
     fileprivate var _listOfNeurons: [Neuron]!

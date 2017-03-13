@@ -13,7 +13,7 @@ import Foundation
 import Upsurge
 
 /// The OutputLayer class represents the output layer of a NueralNet object.
-public class OutputLayer: Layer, InputandOutputLayerMethods {
+public class OutputLayer: Layer{
 
 
 

@@ -217,7 +217,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         goalArea.name = "GOAL"
         goalArea.fillColor = SKColor.red
         goalArea.position = pipeUp.position
-        goalArea.position.y += 230
+        goalArea.position.y += 250
         // END of ADDITIONS
 
         pipePair.addChild(pipeUp)

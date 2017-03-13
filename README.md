@@ -39,15 +39,12 @@ To contribute to an already existant algorithm within the framework, please crea
 - [x] [Lasso Regression] (https://github.com/Somnibyte/MLKit/wiki/Lasso-Regression-Tutorial)
 - [x] [Ridge Regression] (https://github.com/Somnibyte/MLKit/wiki/Ridge-Regression-Tutorial)
 - [x] [Neural Network AND logic Example](https://github.com/Somnibyte/MLKit/wiki/Neural-Network-AND-logic-Example)
-
+- [x] Flappy Bird Example Project Explanation (https://github.com/Somnibyte/MLKit/wiki/Genetic-Algorithm-(Flappy-Bird-Game-Explanation))
 
 ## Example Project 
 ![](https://github.com/Somnibyte/MLKit/blob/master/flappybirdai.gif)
 
 ⚠️️  The Flappy Bird Example Project is located in the `Example` folder. When you run the example you will see the fitness and the decisions that each Flappy Bird is making. The example project has comments to help with understanding how it was made. More improvements to the documentation for the example project and the genetic algorithm classes coming soon. 
-
-- [ ] Genetic Algorithm & Flappy Bird Example Explanation (**Coming Soon**) 
-
 
 
 ----------------------------------------------
