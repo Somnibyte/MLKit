@@ -33,6 +33,18 @@ class GeneticSpec: QuickSpec {
 
     override func spec() {
 
+        it("Should be able to produce a unique genotype after a one-point crossover process."){
+            // Create a population of two individuals 
+            var fakeGenome1: FakeGenome = FakeGenome(genotype: [1.0, 2.0, 3.0])
+            var fakeGenome2: FakeGenome = FakeGenome(genotype: [4.0, 5.0, 6.0])
+
+            var newGenomes = BiologicalProcessManager.onePointCrossover(crossOverRate: 1.0, parentOneGenotype: fakeGenome1.genotypeRepresentation , parentTwoGenotype: fakeGenome2.genotypeRepresentation)
+
+            expect(newGenomes.0).toNot(equal(fakeGenome1.genotypeRepresentation))
+            expect(newGenomes.1).toNot(equal(fakeGenome2.genotypeRepresentation))
+
+        }
+
         it("Should be able to produce a unique genotype after swap mutation process.") {
 
             var fakeGenome: FakeGenome = FakeGenome(genotype: [1.0, 2.0, 3.0])
