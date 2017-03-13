@@ -44,7 +44,7 @@ To contribute to an already existant algorithm within the framework, please crea
 ## Example Project 
 ![](https://github.com/Somnibyte/MLKit/blob/master/flappybirdai.gif)
 
-⚠️️  The Flappy Bird Example Project is located in the `Example` folder. When you run the example you will see the fitness and the decisions that each Flappy Bird is making. The example project has comments to help with understanding how it was made. More improvements to the documentation for the example project and the genetic algorithm classes coming soon. 
+⚠️️  The Flappy Bird Example Project is located in the `Example` folder. When you run the example you will see the fitness and the decisions that each Flappy Bird is making. The example project has comments to help with understanding how it was made. 
 
 
 ----------------------------------------------
