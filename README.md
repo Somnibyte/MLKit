@@ -40,6 +40,7 @@ To contribute to an already existant algorithm within the framework, please crea
 - [x] [Ridge Regression] (https://github.com/Somnibyte/MLKit/wiki/Ridge-Regression-Tutorial)
 - [x] [Neural Network AND logic Example](https://github.com/Somnibyte/MLKit/wiki/Neural-Network-AND-logic-Example)
 - [x] [Flappy Bird Example Project Explanation] (https://github.com/Somnibyte/MLKit/wiki/Genetic-Algorithm-(Flappy-Bird-Game-Explanation))
+- [x] [Genetic Algorithms](https://github.com/Somnibyte/MLKit/wiki/Genetic-Algorithm)
 
 ## Example Project 
 ![](https://github.com/Somnibyte/MLKit/blob/master/flappybirdai.gif)
