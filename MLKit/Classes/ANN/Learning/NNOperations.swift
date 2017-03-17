@@ -62,7 +62,7 @@ final class NNOperations {
 
 
 
-    // MARK: Private Methods 
+    // MARK: Activation Functions
     
     private static func fncStep(val: Float) -> Float {
         return val >= 0 ? 1.0 : 0.0
@@ -80,6 +80,20 @@ final class NNOperations {
         return tanh(val)
     }
 
+    private static func fncSoftSign(val: Float) -> Float {
+        return val / 1 + abs(val)
+    }
+
+    private static func fncSinusoid(val: Float) -> Float {
+        return sin(val)
+    }
+
+    private static func fncGuassian(val: Float) -> Float {
+        return exp(powf((-val), 2))
+    }
+
+
+    // MARK: Derivatives
     private static func derivativeOfLinear(val: Float) -> Float {
         return 1.0
     }
@@ -92,6 +106,17 @@ final class NNOperations {
         return (1.0 / powf(cosh(val), 2.0))
     }
 
+    private static func derivativeOfSoftSign(val: Float) -> Float {
+        return 1 / powf((1 + abs(val)), 2)
+    }
+
+    private static func derivativeOfSinusoid(val: Float) -> Float {
+        return cosf(val)
+    }
+
+    private static func derivativeOfGaussian(val: Float) -> Float {
+        return -2 * val * exp(powf((-val), 2))
+    }
 
 
 }
