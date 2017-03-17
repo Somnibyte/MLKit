@@ -415,6 +415,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             // Distance between next pipe and bird
             let distanceOfNextPipe = abs(pipes.children[currentPipe].position.x - bird.position.x)
 
+            let distanceFromBottomPipe = abs(pipes.children[currentPipe].children[1].position.y - bird.position.y)
+
+            let normalizedDistanceFromBottomPipe = (distanceFromBottomPipe - 5)/(708 - 5)
+
             let normalizedDistanceOfNextPipe = (distanceOfNextPipe - 3)/(725-3)
 
             // Bird Y position
@@ -436,7 +440,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
 
             // Decision AI makes
-            let decision = (currentBird?.brain?.forward(input: [Float(1), Float(normalizedDistanceOfNextPipe), Float(normalizedPosToGap), Float(birdYPos)]))!
+            let decision = (currentBird?.brain?.forward(input: [Float(1), Float(normalizedDistanceOfNextPipe), Float(normalizedPosToGap), Float(birdYPos), Float(normalizedDistanceFromBottomPipe)]))!
 
             print("FLAPPY BIRD DECISION: \(decision)")
 

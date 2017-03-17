@@ -198,8 +198,18 @@ open class MLDataManager {
     }
 
 
+    /**
+     The normalizeFeatures method calculates the l2 norm of your feature and output vectors.
+
+     - parameter features: Your feature vector.
+     - parameter output: Your output vector.
+
+     - returns: A matrix of your normalized data.
+     */
     open static func normalizeFeatures(_ features: [Array<Float>], output: Array<Float>) -> Matrix<Float> {
+
         let featureMatrixAndOutput = dataToMatrix(features, output: output)
+
         let normalizedFeatures = transpose(normalize(featureMatrixAndOutput.0))
 
         return normalizedFeatures

@@ -357,6 +357,8 @@ open class NeuralNet {
 
 
 
+    // MARK: - Public Methods 
+
     /**
      The forward method allows a NeuralNet object to pass in inputs (corresponding to the number of input layers in your NueralNet Object) and recieve a list of output values (depends on the number of output layer neurons available).
 
@@ -367,98 +369,6 @@ open class NeuralNet {
     public func forward(input: [Float]) -> [Float] {
 
         return forwardProcess(network: self, input:input)
-    }
-
-
-    private func forwardProcess(network: NeuralNet, input: [Float]) -> [Float] {
-
-        var listOfHiddenLayers: [HiddenLayer] = []
-
-
-        // Obtain all hidden layers in the network
-        listOfHiddenLayers = network.listOfHiddenLayers
-
-        // Check if there are any hidden layers in the network
-        if listOfHiddenLayers.count > 0 {
-
-            var hiddenLayer_i = 0
-
-            // For each hidden layer ...
-            for hiddenLayer in listOfHiddenLayers {
-
-
-                // Obtain the number of neurons in the layer
-                var numberOfNeuronsInLayer = hiddenLayer.numberOfNueronsInLayer
-
-                // For each neuron ...
-                for neuron in hiddenLayer.listOfNeurons {
-
-                    var netValueOut: Float = 0.0 // Net Value (activation value)
-
-                    // If the neurons weights (coming into the neuron) are greater than 0 ...
-                    if neuron.weightsComingIn.count > 0 {
-
-                        var netValue: Float = 0.0 // Activation Value
-
-
-                        // Sum of the weights combined with the inputs
-                        for var layer_j in 0..<(numberOfNeuronsInLayer - 1) {
-                            var hiddenWeightIn = neuron.weightsComingIn[layer_j]
-                            netValue += hiddenWeightIn * input[layer_j]
-                        }
-
-                        // Activation function calculates the neurons output
-                        netValueOut = try! NNOperations.activationFunc(fncType: network.activationFuncType, value: netValue)
-
-
-                        // Set the neurons output
-                        neuron.outputValue = netValue
-
-                    } else {
-
-                        // Bias
-                        neuron.outputValue = 1.0
-                    }
-
-                }
-
-
-                // For each of the nuerons in the output layer ...
-                for var outLayer_i in 0..<network.outputLayer.numberOfNueronsInLayer {
-
-                    var netValue: Float = 0.0 // Sum of neurons outputs (with weights) from the previous (hidden) layer
-                    var netValueOut: Float = 0.0 // Final activation value
-
-                    // For each neuron in the hidden layer, calculate the netValue
-                    for neuron in hiddenLayer.listOfNeurons {
-                        var hiddenWeightOut = neuron.weightsGoingOut[outLayer_i]
-                        netValue += hiddenWeightOut * neuron.outputValue
-                    }
-
-                    // Use the activation function to calculate the activation of the output neuron(s)
-                    netValueOut = try! NNOperations.activationFunc(fncType: network.activationFuncTypeOutputLayer, value: netValue)
-
-
-                    // Set the output neurons output/activation
-                    network.outputLayer.listOfNeurons[outLayer_i].outputValue = netValueOut
-
-                }
-
-                // Set the hidden layers of the network with the newly adjusted neurons
-                network.listOfHiddenLayers[hiddenLayer_i].listOfNeurons = hiddenLayer.listOfNeurons
-
-                hiddenLayer_i += 1
-            }
-        }
-
-
-        var finalOutputSet: [Float] = []
-
-        for neuron in self.outputLayer.listOfNeurons {
-            finalOutputSet.append(neuron.outputValue)
-        }
-
-        return finalOutputSet
     }
 
 
@@ -543,4 +453,99 @@ open class NeuralNet {
         outputLayer.printLayer(layer: outputLayer)
         print("\n")
     }
+
+
+    // MARK: - Private Methods 
+
+    private func forwardProcess(network: NeuralNet, input: [Float]) -> [Float] {
+
+        var listOfHiddenLayers: [HiddenLayer] = []
+
+
+        // Obtain all hidden layers in the network
+        listOfHiddenLayers = network.listOfHiddenLayers
+
+        // Check if there are any hidden layers in the network
+        if listOfHiddenLayers.count > 0 {
+
+            var hiddenLayer_i = 0
+
+            // For each hidden layer ...
+            for hiddenLayer in listOfHiddenLayers {
+
+
+                // Obtain the number of neurons in the layer
+                var numberOfNeuronsInLayer = hiddenLayer.numberOfNueronsInLayer
+
+                // For each neuron ...
+                for neuron in hiddenLayer.listOfNeurons {
+
+                    var netValueOut: Float = 0.0 // Net Value (activation value)
+
+                    // If the neurons weights (coming into the neuron) are greater than 0 ...
+                    if neuron.weightsComingIn.count > 0 {
+
+                        var netValue: Float = 0.0 // Activation Value
+
+
+                        // Sum of the weights combined with the inputs
+                        for var layer_j in 0..<(numberOfNeuronsInLayer - 1) {
+                            var hiddenWeightIn = neuron.weightsComingIn[layer_j]
+                            netValue += hiddenWeightIn * input[layer_j]
+                        }
+
+                        // Activation function calculates the neurons output
+                        netValueOut = try! NNOperations.activationFunc(fncType: network.activationFuncType, value: netValue)
+
+
+                        // Set the neurons output
+                        neuron.outputValue = netValue
+
+                    } else {
+
+                        // Bias
+                        neuron.outputValue = 1.0
+                    }
+
+                }
+
+
+                // For each of the nuerons in the output layer ...
+                for var outLayer_i in 0..<network.outputLayer.numberOfNueronsInLayer {
+
+                    var netValue: Float = 0.0 // Sum of neurons outputs (with weights) from the previous (hidden) layer
+                    var netValueOut: Float = 0.0 // Final activation value
+
+                    // For each neuron in the hidden layer, calculate the netValue
+                    for neuron in hiddenLayer.listOfNeurons {
+                        var hiddenWeightOut = neuron.weightsGoingOut[outLayer_i]
+                        netValue += hiddenWeightOut * neuron.outputValue
+                    }
+
+                    // Use the activation function to calculate the activation of the output neuron(s)
+                    netValueOut = try! NNOperations.activationFunc(fncType: network.activationFuncTypeOutputLayer, value: netValue)
+
+
+                    // Set the output neurons output/activation
+                    network.outputLayer.listOfNeurons[outLayer_i].outputValue = netValueOut
+                    
+                }
+                
+                // Set the hidden layers of the network with the newly adjusted neurons
+                network.listOfHiddenLayers[hiddenLayer_i].listOfNeurons = hiddenLayer.listOfNeurons
+                
+                hiddenLayer_i += 1
+            }
+        }
+        
+        
+        var finalOutputSet: [Float] = []
+        
+        for neuron in self.outputLayer.listOfNeurons {
+            finalOutputSet.append(neuron.outputValue)
+        }
+        
+        return finalOutputSet
+    }
+
 }

@@ -46,6 +46,8 @@ final class GeneticOperations {
             genotypeRepresentation = genotypeRepresentation + neuron.weightsGoingOut
         }
 
+        print(genotypeRepresentation.count)
+
         return genotypeRepresentation
     }
 
@@ -62,22 +64,23 @@ final class GeneticOperations {
         // Create a new NueralNet
         let brain = NeuralNet()
 
-        brain.initializeNet(numberOfInputNeurons: 3, numberOfHiddenLayers: 1, numberOfNeuronsInHiddenLayer: 4, numberOfOutputNeurons: 1)
+        brain.initializeNet(numberOfInputNeurons: 4, numberOfHiddenLayers: 1, numberOfNeuronsInHiddenLayer: 4, numberOfOutputNeurons: 1)
 
         brain.activationFuncType = .SIGLOG
 
         brain.activationFuncTypeOutputLayer = .SIGLOG
 
         // Convert genotype back to weights for each layer
-        let inputLayerWeights: [Float] = Array<Float>(genotype[0...3])
+        let inputLayerWeights: [Float] = Array<Float>(genotype[0...4])
 
         // First is bias neuron
-        let hiddenLayerWeightsComingInForNueron1: [Float] = Array<Float>(genotype[4...7])
-        let hiddenLayerWeightsComingInForNueron2: [Float] = Array<Float>(genotype[8...11])
-        let hiddenLayerWeightsComingInForNueron3: [Float] = Array<Float>(genotype[12...15])
-        let hiddenLayerWeightsComingInForNueron4: [Float] = Array<Float>(genotype[16...19])
-        let hiddenLayerWeightsGoingOut: [Float] = Array<Float>(genotype[20...24])
-        let outputLayerWeightGoingOut: Float = genotype[25]
+        let hiddenLayerWeightsComingInForNueron1: [Float] = Array<Float>(genotype[5...8])
+        let hiddenLayerWeightsComingInForNueron2: [Float] = Array<Float>(genotype[9...12])
+        let hiddenLayerWeightsComingInForNueron3: [Float] = Array<Float>(genotype[13...16])
+        let hiddenLayerWeightsComingInForNueron4: [Float] = Array<Float>(genotype[17...20])
+        let hiddenLayerWeightsComingInForNueron5: [Float] = Array<Float>(genotype[21...24])
+        let hiddenLayerWeightsGoingOut: [Float] = Array<Float>(genotype[25...29])
+        let outputLayerWeightGoingOut: Float = genotype[30]
 
         for (var i, var neuron) in brain.inputLayer.listOfNeurons.enumerated() {
 

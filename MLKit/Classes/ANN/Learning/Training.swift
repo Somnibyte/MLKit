@@ -18,6 +18,8 @@ public protocol Training {
 extension Training {
 
 
+    // MARK: - Public Methods 
+
     /**
      The train method trains your Neural Network object. WARNING: Use this method only for Perceptron and Adaline architectures.
      The Backpropagation class has it's own train method.
@@ -85,6 +87,27 @@ extension Training {
 
         return network
     }
+
+
+    /**
+     The printTrainedNetwork method prints the results of a trained Neural Network object.
+
+     - parameter trainedNetwork: A trained Neural Network Object.
+     - parameter singleLayer: Boolean to indicate whether or not your Neural Network has multiple layers.
+
+     */
+    public func printTrainedNetwork(trainedNetwork: NeuralNet, singleLayer: Bool) {
+
+        if singleLayer {
+            printSingleLayerNetworkResult(trainedNetwork: trainedNetwork)
+        } else {
+            printMultiLayerNetworkResult(trainedNetwork: trainedNetwork)
+        }
+        
+    }
+
+
+    // MARK: - Private Methods 
 
     private func teachNeuronOfLayer(numberOfInputNeurons: Int, line: Int, network: NeuralNet, netValue: Float, error: Float) -> [Neuron] {
 
@@ -209,22 +232,5 @@ extension Training {
     }
 
 
-
-    /**
-     The printTrainedNetwork method prints the results of a trained Neural Network object.
-
-     - parameter trainedNetwork: A trained Neural Network Object.
-     - parameter singleLayer: Boolean to indicate whether or not your Neural Network has multiple layers.
-
-     */
-    public func printTrainedNetwork(trainedNetwork: NeuralNet, singleLayer: Bool) {
-
-        if singleLayer {
-            printSingleLayerNetworkResult(trainedNetwork: trainedNetwork)
-        } else {
-            printMultiLayerNetworkResult(trainedNetwork: trainedNetwork)
-        }
-
-    }
 
 }

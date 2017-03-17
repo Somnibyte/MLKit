@@ -44,7 +44,15 @@ open class LassoRegression {
     }
 
 
+    /**
+     - parameter features: Your feature vector.
+     - parameter output: Your output vector.
+     - parameter initialWeights: Your initial arbitrary weights.
+     - parameter l1Penalty: An L1 Penalty value.
+     - parameter tolerance: Threshold for gradient descent process.
 
+     - returns:
+     */
     open func train(_ features: [Array<Float>], output: Array<Float>, initialWeights: Matrix<Float>, l1Penalty: Float, tolerance: Float) throws -> Matrix<Float> {
         // Error Handeling
 

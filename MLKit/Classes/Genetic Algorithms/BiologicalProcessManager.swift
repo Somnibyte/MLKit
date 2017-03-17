@@ -11,14 +11,7 @@ import Foundation
 /// Handles process involving crossover and mutation.
 open class BiologicalProcessManager {
 
-
-    /*************************************************************************
-       _____
-      / ___/______  ___ ___ ___ _  _____ ____
-     / /__/ __/ _ \(_-<(_-</ _ \ |/ / -_) __/
-     \___/_/  \___/___/___/\___/___/\__/_/
-
-    *************************************************************************/
+    // MARK: - Crossover Methods
 
     /**
      The onePointCrossover method performs the "one point" crossover operation.
@@ -55,13 +48,7 @@ open class BiologicalProcessManager {
     }
 
 
-    /*************************************************************************
-       __  ___     __       __  _
-      /  |/  /_ __/ /____ _/ /_(_)__  ___
-     / /|_/ / // / __/ _ `/ __/ / _ \/ _ \
-    /_/  /_/\_,_/\__/\_,_/\__/_/\___/_//_/
-
-     *************************************************************************/
+    // MARK: - Mutation Methods 
 
     /**
      The generateRandomIndexes generates random indexes.
