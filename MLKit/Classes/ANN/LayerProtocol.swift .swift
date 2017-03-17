@@ -30,7 +30,7 @@ extension Layer {
      - parameter layer: A layer object. The layer object must correspond with the layer you are working with. So if you call print layer using an InputLayer object, then you need to pass in an InputLayer.
 
      */
-    func printLayer(layer: Layer){
-        
+    func printLayer(layer: Layer) {
+
     }
 }

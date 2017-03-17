@@ -357,7 +357,7 @@ open class NeuralNet {
 
 
 
-    // MARK: - Public Methods 
+    // MARK: - Public Methods
 
     /**
      The forward method allows a NeuralNet object to pass in inputs (corresponding to the number of input layers in your NueralNet Object) and recieve a list of output values (depends on the number of output layer neurons available).
@@ -373,7 +373,7 @@ open class NeuralNet {
 
 
     /**
-     The trainNet method trains the Neural Network with the methods available (PERCEPTRON, ADALINE, and BACKPROPAGATION). It is advised that you use this method for supervised learning. 
+     The trainNet method trains the Neural Network with the methods available (PERCEPTRON, ADALINE, and BACKPROPAGATION). It is advised that you use this method for supervised learning.
 
      - parameter network: A Neural Net Object.
 
@@ -455,7 +455,7 @@ open class NeuralNet {
     }
 
 
-    // MARK: - Private Methods 
+    // MARK: - Private Methods
 
     private func forwardProcess(network: NeuralNet, input: [Float]) -> [Float] {
 
@@ -528,23 +528,23 @@ open class NeuralNet {
 
                     // Set the output neurons output/activation
                     network.outputLayer.listOfNeurons[outLayer_i].outputValue = netValueOut
-                    
+
                 }
-                
+
                 // Set the hidden layers of the network with the newly adjusted neurons
                 network.listOfHiddenLayers[hiddenLayer_i].listOfNeurons = hiddenLayer.listOfNeurons
-                
+
                 hiddenLayer_i += 1
             }
         }
-        
-        
+
+
         var finalOutputSet: [Float] = []
-        
+
         for neuron in self.outputLayer.listOfNeurons {
             finalOutputSet.append(neuron.outputValue)
         }
-        
+
         return finalOutputSet
     }
 

@@ -18,7 +18,7 @@ public protocol Training {
 extension Training {
 
 
-    // MARK: - Public Methods 
+    // MARK: - Public Methods
 
     /**
      The train method trains your Neural Network object. WARNING: Use this method only for Perceptron and Adaline architectures.
@@ -103,11 +103,11 @@ extension Training {
         } else {
             printMultiLayerNetworkResult(trainedNetwork: trainedNetwork)
         }
-        
+
     }
 
 
-    // MARK: - Private Methods 
+    // MARK: - Private Methods
 
     private func teachNeuronOfLayer(numberOfInputNeurons: Int, line: Int, network: NeuralNet, netValue: Float, error: Float) -> [Neuron] {
 

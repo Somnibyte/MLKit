@@ -48,7 +48,7 @@ open class BiologicalProcessManager {
     }
 
 
-    // MARK: - Mutation Methods 
+    // MARK: - Mutation Methods
 
     /**
      The generateRandomIndexes generates random indexes.
@@ -83,7 +83,7 @@ open class BiologicalProcessManager {
 
     /**
      The swapMutation method swaps genes of a Genome objects `genotypeRepresentation`.
-     
+
      - parameter mutationRate: Your mutation rate (should be between 0 and 1).
      - parameter genotype: The genotypeRepresentation array of a Genome object.
 
@@ -110,7 +110,7 @@ open class BiologicalProcessManager {
 
     /**
      The insertMutation method inserts random genes of a Genome objects `genotypeRepresentation` into random positions.
-     
+
      - parameter mutationRate: Your mutation rate (should be between 0 and 1).
      - parameter genotype: The genotypeRepresentation array of a Genome object.
 
@@ -137,7 +137,7 @@ open class BiologicalProcessManager {
 
     /**
      The scrambleMutation method shuffles a portion of the genes of a Genome object.
-     
+
      - parameter mutationRate: Your mutation rate (should be between 0 and 1).
      - parameter genotype: The genotypeRepresentation array of a Genome object.
 

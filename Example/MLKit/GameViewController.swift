@@ -41,7 +41,7 @@ public class FlappyGenome: Genome {
     public var genotypeRepresentation: [Float]
 
     public var fitness: Float = 0
-    
+
     public var brain: NeuralNet?
 
     public init(genotype: [Float], network: NeuralNet) {
