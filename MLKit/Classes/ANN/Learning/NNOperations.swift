@@ -33,6 +33,12 @@ final class NNOperations {
             return fncSigLog(val: value)
         case .HYPERTAN:
             return fncHyperTan(val: value)
+        case .SOFTSIGN:
+            return fncSoftSign(val: value)
+        case .SINUSOID:
+            return fncSinusoid(val: value)
+        case .GUASSIAN:
+            return fncGuassian(val: value)
         default:
             throw MachineLearningError.invalidInput
         }
@@ -55,6 +61,12 @@ final class NNOperations {
             return derivativeOfSigLog(val: value)
         case .HYPERTAN:
             return derivativeOfHyperTan(val: value)
+        case .SOFTSIGN:
+            return derivativeOfSoftSign(val: value)
+        case .SINUSOID:
+            return derivativeOfSinusoid(val: value)
+        case .GUASSIAN:
+            return derivativeOfGaussian(val: value)
         default:
             throw MachineLearningError.invalidInput
         }
