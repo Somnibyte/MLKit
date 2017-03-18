@@ -19,7 +19,6 @@ public class InputLayer: Layer {
 
     /// List of neurons associated with the input layer
     public var listOfNeurons: [Neuron] {
-
         get {
             return _listOfNeurons
         }
@@ -31,7 +30,6 @@ public class InputLayer: Layer {
 
     /// Number of neurons in the input layer
     public var numberOfNeuronsInLayer: Int {
-
         get {
             return _numberOfNeuronsInLayer
         }
@@ -39,7 +37,6 @@ public class InputLayer: Layer {
         set {
             return _numberOfNeuronsInLayer = newValue + 1 // Don't forget BIAS
         }
-
     }
 
 

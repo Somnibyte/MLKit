@@ -22,20 +22,19 @@ open class NeuralNet {
     public var estimatedOutputAsMatrix: Matrix<Float>!
     
     /// The Input Layer
-    public var inputLayer: InputLayer!
+    public var inputLayer: InputLayer
 
     /// The Hidden Layer
-    public var hiddenLayer: HiddenLayer!
+    public var hiddenLayer: HiddenLayer
 
     /// List of Hidden Layers
-    public var listOfHiddenLayers: [HiddenLayer]!
+    public var listOfHiddenLayers: [HiddenLayer] = []
 
     /// The Output Layer
-    public var outputLayer: OutputLayer!
+    public var outputLayer: OutputLayer
 
     /// The Number of Hidden Layers
-    public var numberOfHiddenLayers: Int!
-
+    public var numberOfHiddenLayers: Int
 
     /// Your Training Set
     public var trainingSet: Matrix<Float>!
@@ -84,7 +83,12 @@ open class NeuralNet {
 
      - returns: A Neural Net Object.
      */
-    public init() {}
+    public init() {
+        inputLayer = InputLayer()
+        hiddenLayer = HiddenLayer()
+        outputLayer = OutputLayer()
+        numberOfHiddenLayers = 0
+    }
     public init(numberOfInputNeurons: Int, numberOfHiddenLayers: Int = 1, numberOfNeuronsInHiddenLayer: Int, numberOfOutputNeurons: Int) {
         precondition(0 <= numberOfHiddenLayers && numberOfHiddenLayers <= 1, "At most one hidden layer is supported at this time")
 
@@ -93,8 +97,8 @@ open class NeuralNet {
         inputLayer.numberOfNeuronsInLayer = numberOfInputNeurons
 
         // Initialize Hidden Layer
-        listOfHiddenLayers = []
         hiddenLayer = HiddenLayer()
+        self.numberOfHiddenLayers = numberOfHiddenLayers
 
         for var i in 0..<numberOfHiddenLayers {
 
