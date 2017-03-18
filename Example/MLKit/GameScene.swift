@@ -384,7 +384,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         var min = 0
         var minDist = abs(pipes[0].position.x - bird.position.x)
 
-        for (var i, var pipe) in pipes.enumerated() {
+        for (i, pipe) in pipes.enumerated() {
             if abs(pipe.position.x - minDist) < minDist {
                 minDist = abs(pipe.position.x - minDist)
                 min = i

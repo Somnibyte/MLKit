@@ -39,7 +39,7 @@ open class PopulationManager {
 
         // Find the first genome that has the best fitness thus far.
         // Save and remove that individual from the list of genomes
-        for (var i, var genome) in genomes.enumerated() {
+        for (i, genome) in genomes.enumerated() {
             if genome.fitness > maxFitness {
                 maxFitness = genome.fitness as! Float
                 firstBestGenome = genome
@@ -56,7 +56,7 @@ open class PopulationManager {
         indexOfBestGenome = 0
 
 
-        for (var i, var genome) in genomes.enumerated() {
+        for (i, genome) in genomes.enumerated() {
             if genome.fitness > maxFitness {
                 maxFitness = genome.fitness
                 secondBestGenome = genome

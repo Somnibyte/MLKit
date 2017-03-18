@@ -15,7 +15,7 @@ public class InputLayer: Layer {
 
 
     fileprivate var _listOfNeurons: [Neuron]!
-    fileprivate var _numberOfNueronsInLayer: Int!
+    fileprivate var _numberOfNeuronsInLayer: Int!
 
     /// List of neurons associated with the input layer
     public var listOfNeurons: [Neuron] {
@@ -30,14 +30,14 @@ public class InputLayer: Layer {
     }
 
     /// Number of neurons in the input layer
-    public var numberOfNueronsInLayer: Int {
+    public var numberOfNeuronsInLayer: Int {
 
         get {
-            return _numberOfNueronsInLayer
+            return _numberOfNeuronsInLayer
         }
 
         set {
-            return _numberOfNueronsInLayer = newValue + 1 // Don't forget BIAS
+            return _numberOfNeuronsInLayer = newValue + 1 // Don't forget BIAS
         }
 
     }
@@ -55,11 +55,11 @@ public class InputLayer: Layer {
         var temporaryWeightsIn: [Float] = []
         var listOfNeurons: [Neuron] = []
 
-        for var i in 0..<inputLayer.numberOfNueronsInLayer {
+        for var i in 0..<inputLayer.numberOfNeuronsInLayer {
 
             var neuron = Neuron()
 
-            temporaryWeightsIn.append(neuron.initializeNueron())
+            temporaryWeightsIn.append(neuron.initializeNeuron())
 
             neuron.weightsComingIn = ValueArray<Float>(temporaryWeightsIn)
 

@@ -79,7 +79,7 @@ public class BackPropagation: Training {
 
 
                 // Obtain the number of neurons in the layer
-                var numberOfNeuronsInLayer = hiddenLayer.numberOfNueronsInLayer
+                var numberOfNeuronsInLayer = hiddenLayer.numberOfNeuronsInLayer
 
                 // For each neuron ...
                 for neuron in hiddenLayer.listOfNeurons {
@@ -114,7 +114,7 @@ public class BackPropagation: Training {
 
 
                 // For each of the nuerons in the output layer ...
-                for var outLayer_i in 0..<network.outputLayer.numberOfNueronsInLayer {
+                for var outLayer_i in 0..<network.outputLayer.numberOfNeuronsInLayer {
 
                     var netValue: Float = 0.0 // Sum of neurons outputs (with weights) from the previous (hidden) layer
                     var netValueOut: Float = 0.0 // Final activation value
@@ -126,7 +126,7 @@ public class BackPropagation: Training {
                     }
 
                     // Use the activation function to calculate the activation of the output neuron(s)
-                    netValueOut = try! NNOperations.activationFunc(fncType: network.activationFuncTypeOfOuputLayer, value: netValue)
+                    netValueOut = try! NNOperations.activationFunc(fncType: network.activationFuncTypeOfOutputLayer, value: netValue)
 
                     // Set the output neurons output/activation
                     network.outputLayer.listOfNeurons[outLayer_i].outputValue = netValueOut
@@ -142,7 +142,7 @@ public class BackPropagation: Training {
 
 
                 // Error Mean
-                var errorMean: Float = sumError / Float(network.outputLayer.numberOfNueronsInLayer)
+                var errorMean: Float = sumError / Float(network.outputLayer.numberOfNeuronsInLayer)
 
                 network.errorMean = errorMean
 
@@ -185,7 +185,7 @@ public class BackPropagation: Training {
         for neuron in outputLayer {
             error = neuron.error
             netValue = neuron.outputValue
-            sensibility = try! NNOperations.derivativeFunc(fncType: network.activationFuncTypeOfOuputLayer, value: netValue) * error
+            sensibility = try! NNOperations.derivativeFunc(fncType: network.activationFuncTypeOfOutputLayer, value: netValue) * error
 
             // Set the neurons sensibility/error signal
             neuron.sensibility = sensibility
@@ -222,7 +222,7 @@ public class BackPropagation: Training {
         }
 
         // fix weights (teach) [output layer to hidden layer]
-        for outLayer_i in 0..<network.outputLayer.numberOfNueronsInLayer {
+        for outLayer_i in 0..<network.outputLayer.numberOfNeuronsInLayer {
 
             for neuron in hiddenLayer {
 
@@ -244,7 +244,7 @@ public class BackPropagation: Training {
                 var hidden_i: Int = 0
                 var newWeight: Float = 0.0
 
-                for var i in 0..<network.inputLayer.numberOfNueronsInLayer {
+                for var i in 0..<network.inputLayer.numberOfNeuronsInLayer {
                     newWeight = hiddenLayerInputWeights[hidden_i] + (network.learningRate * neuron.sensibility * network.trainingSet[row, i])
 
                     neuron.weightsComingIn[hidden_i] = newWeight

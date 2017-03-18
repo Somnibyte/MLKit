@@ -18,7 +18,7 @@ public class OutputLayer: Layer {
 
 
     fileprivate var _listOfNeurons: [Neuron]!
-    fileprivate var _numberOfNueronsInLayer: Int!
+    fileprivate var _numberOfNeuronsInLayer: Int!
 
     /// List of neurons associated with the output layer
     public var listOfNeurons: [Neuron] {
@@ -33,14 +33,14 @@ public class OutputLayer: Layer {
     }
 
     /// Number of neurons in the output layer
-    public var numberOfNueronsInLayer: Int {
+    public var numberOfNeuronsInLayer: Int {
 
         get {
-            return _numberOfNueronsInLayer
+            return _numberOfNeuronsInLayer
         }
 
         set {
-            return _numberOfNueronsInLayer = newValue
+            return _numberOfNeuronsInLayer = newValue
         }
 
     }
@@ -58,11 +58,11 @@ public class OutputLayer: Layer {
         var temporaryWeightsOut: [Float] = []
         var listOfNeurons: [Neuron] = []
 
-        for var i in 0..<outLayer.numberOfNueronsInLayer {
+        for var i in 0..<outLayer.numberOfNeuronsInLayer {
 
             var neuron = Neuron()
 
-            temporaryWeightsOut.append(neuron.initializeNueron())
+            temporaryWeightsOut.append(neuron.initializeNeuron())
 
             neuron.weightsGoingOut = ValueArray<Float>(temporaryWeightsOut)
 

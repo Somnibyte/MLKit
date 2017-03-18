@@ -22,13 +22,8 @@ class NeuralNetworkSpec: QuickSpec {
             print("\n")
             print("XOR perceptron TEST \n")
 
-            var net = NeuralNet()
-
-            net = net.initializeNet(numberOfInputNeurons: 2, numberOfHiddenLayers: 0, numberOfNeuronsInHiddenLayer: 0, numberOfOutputNeurons: 1)
-
+            let net = NeuralNet(numberOfInputNeurons: 2, numberOfHiddenLayers: 0, numberOfNeuronsInHiddenLayer: 0, numberOfOutputNeurons: 1)
             net.printNet()
-
-            var trainedNet = NeuralNet()
 
             net.trainingSet = Matrix<Float>(rows: 4, columns: 3, elements: [1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0])
 
@@ -44,7 +39,7 @@ class NeuralNetworkSpec: QuickSpec {
 
             net.activationFuncType = ActivationFunctionType.step
 
-            trainedNet = try! net.trainNet(network: net)
+            let trainedNet = try! net.trainNet(network: net)
 
             trainedNet.printNet()
 
@@ -62,13 +57,10 @@ class NeuralNetworkSpec: QuickSpec {
 
         it("Should be able to run a simple example using a single layer Adaline architecture.") {
 
-            var net = NeuralNet()
-
-            net = net.initializeNet(numberOfInputNeurons: 3, numberOfHiddenLayers: 0, numberOfNeuronsInHiddenLayer: 0, numberOfOutputNeurons: 1)
+            let net = NeuralNet(numberOfInputNeurons: 3, numberOfHiddenLayers: 0, numberOfNeuronsInHiddenLayer: 0, numberOfOutputNeurons: 1)
 
             net.printNet()
 
-            var trainedNet = NeuralNet()
 
             net.trainingSet = Matrix<Float>(rows: 7, columns: 4, elements: [1.0, 0.98, 0.94, 0.95, 1.0, 0.60, 0.60, 0.85, 1.0, 0.35, 0.15, 0.15, 1.0, 0.25, 0.30, 0.98, 1.0, 0.75, 0.85, 0.91, 1.0, 0.43, 0.57, 0.87, 1.0, 0.05, 0.06, 0.01])
 
@@ -84,7 +76,7 @@ class NeuralNetworkSpec: QuickSpec {
 
             net.activationFuncType = ActivationFunctionType.linear
 
-            trainedNet = try! net.trainNet(network: net)
+            let trainedNet = try! net.trainNet(network: net)
 
             trainedNet.printNet()
 
@@ -110,9 +102,7 @@ class NeuralNetworkSpec: QuickSpec {
 
         it("Should be able to run a simple example using a BackPropagation architecture.") {
 
-            var net = NeuralNet()
-
-            net = net.initializeNet(numberOfInputNeurons: 2, numberOfHiddenLayers: 1, numberOfNeuronsInHiddenLayer: 3, numberOfOutputNeurons: 2)
+            let net = NeuralNet.init(numberOfInputNeurons: 2, numberOfHiddenLayers: 1, numberOfNeuronsInHiddenLayer: 3, numberOfOutputNeurons: 2)
 
             print("---------------------backpropagation INIT---------------------")
 
@@ -132,9 +122,10 @@ class NeuralNetworkSpec: QuickSpec {
 
             net.trainingType = .backpropagation
 
-            net.activationFuncType = .siglog
+            net.activationFuncType = ActivationFunctionType.siglog
 
-            net.activationFuncTypeOutputLayer = .linear
+            net.activationFuncTypeOfOutputLayer = .linear
+
 
             trainedNet = try! net.trainNet(network: net)
 

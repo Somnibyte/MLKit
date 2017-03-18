@@ -19,7 +19,7 @@ public protocol Layer {
     var listOfNeurons: [Neuron] { get set }
 
     /// Number of Neurons in a particular layer.
-    var numberOfNueronsInLayer: Int { get set }
+    var numberOfNeuronsInLayer: Int { get set }
 
 }
 

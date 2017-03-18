@@ -65,15 +65,13 @@ open class NeuralNet {
     public var activationFuncType: ActivationFunctionType!
 
     /// The Type of Activation Being Used for the Output Layer
-    public var activationFuncTypeOfOuputLayer: ActivationFunctionType!
+    public var activationFuncTypeOfOutputLayer: ActivationFunctionType!
 
     /// The Type of Training Being Used
     public var trainingType: TrainingType!
 
     /// Stores the mean of the error between two or more neurons
     public var errorMean: Float!
-
-    public init() { }
 
 
     /**
@@ -86,13 +84,13 @@ open class NeuralNet {
 
      - returns: A Neural Net Object.
      */
-    open func initializeNet(numberOfInputNeurons: Int, numberOfHiddenLayers: Int = 1, numberOfNeuronsInHiddenLayer: Int, numberOfOutputNeurons: Int) -> NeuralNet {
-
+    public init() {}
+    public init(numberOfInputNeurons: Int, numberOfHiddenLayers: Int = 1, numberOfNeuronsInHiddenLayer: Int, numberOfOutputNeurons: Int) {
+        precondition(0 <= numberOfHiddenLayers && numberOfHiddenLayers <= 1, "At most one hidden layer is supported at this time")
 
         // Initialize Input Layer
         inputLayer = InputLayer()
-        inputLayer.numberOfNueronsInLayer = numberOfInputNeurons
-
+        inputLayer.numberOfNeuronsInLayer = numberOfInputNeurons
 
         // Initialize Hidden Layer
         listOfHiddenLayers = []
@@ -101,33 +99,22 @@ open class NeuralNet {
         for var i in 0..<numberOfHiddenLayers {
 
             hiddenLayer = HiddenLayer()
-            hiddenLayer.numberOfNueronsInLayer = numberOfNeuronsInHiddenLayer
+            hiddenLayer.numberOfNeuronsInLayer = numberOfNeuronsInHiddenLayer
             listOfHiddenLayers.append(hiddenLayer)
 
         }
 
         // Initialize OuptutLayer
         outputLayer = OutputLayer()
-        outputLayer.numberOfNueronsInLayer = numberOfOutputNeurons
+        outputLayer.numberOfNeuronsInLayer = numberOfOutputNeurons
 
         inputLayer = inputLayer.initializeLayer(inputLayer: inputLayer)
 
         if numberOfHiddenLayers > 0 {
-
             listOfHiddenLayers = hiddenLayer.initializeLayer(hiddenLayer: hiddenLayer, listOfHiddenLayers: listOfHiddenLayers, inputLayer: inputLayer, outputLayer: outputLayer)
         }
 
         outputLayer = outputLayer.initializeLayer(outLayer: outputLayer)
-
-        // Create Neural Network
-        var newNeuralNetwork = NeuralNet()
-        newNeuralNetwork.inputLayer = inputLayer
-        newNeuralNetwork.outputLayer = outputLayer
-        newNeuralNetwork.hiddenLayer = hiddenLayer
-        newNeuralNetwork.listOfHiddenLayers = listOfHiddenLayers
-        newNeuralNetwork.numberOfHiddenLayers = numberOfHiddenLayers
-
-        return newNeuralNetwork
     }
 
 
@@ -142,7 +129,6 @@ open class NeuralNet {
      - returns: A list of Float values corresponding to the output of your NeuralNet object.
      */
     public func forward(input: [Float]) -> [Float] {
-
         return forwardProcess(network: self, input:input)
     }
 
@@ -156,7 +142,7 @@ open class NeuralNet {
      */
     open func trainNet(network: NeuralNet) throws -> NeuralNet {
 
-        var trainedNetwork = NeuralNet()
+        let trainedNetwork: NeuralNet
 
         switch network.trainingType! {
 
@@ -186,7 +172,7 @@ open class NeuralNet {
     /**
      The printTrainedNet prints a Neural Net objects weights. Should be used to evaluate the progress of your trained Neural Network.
      */
-    open func printTrainedNet (network: NeuralNet) {
+    open func printTrainedNet(network: NeuralNet) {
 
         print("---------------TRAINED NEURAL NETWORK RESULTS---------------")
         switch network.trainingType! {
@@ -228,88 +214,74 @@ open class NeuralNet {
         print("\n")
     }
 
-
     // MARK: - Private Methods
-
     private func forwardProcess(network: NeuralNet, input: [Float]) -> [Float] {
 
         var listOfHiddenLayers: [HiddenLayer] = []
 
-
         // Obtain all hidden layers in the network
         listOfHiddenLayers = network.listOfHiddenLayers
 
-        // Check if there are any hidden layers in the network
-        if listOfHiddenLayers.count > 0 {
+        // For each hidden layer ...
+        for (hiddenLayer_i, hiddenLayer) in listOfHiddenLayers.enumerated() {
 
-            var hiddenLayer_i = 0
+            // Obtain the number of neurons in the layer
+            var numberOfNeuronsInLayer = hiddenLayer.numberOfNeuronsInLayer
 
-            // For each hidden layer ...
-            for hiddenLayer in listOfHiddenLayers {
+            // For each neuron ...
+            for neuron in hiddenLayer.listOfNeurons {
 
+                var netValueOut: Float = 0.0 // Net Value (activation value)
 
-                // Obtain the number of neurons in the layer
-                var numberOfNeuronsInLayer = hiddenLayer.numberOfNueronsInLayer
+                // If the neurons weights (coming into the neuron) are greater than 0 ...
+                if neuron.weightsComingIn.count > 0 {
 
-                // For each neuron ...
-                for neuron in hiddenLayer.listOfNeurons {
+                    var netValue: Float = 0.0 // Activation Value
 
-                    var netValueOut: Float = 0.0 // Net Value (activation value)
-
-                    // If the neurons weights (coming into the neuron) are greater than 0 ...
-                    if neuron.weightsComingIn.count > 0 {
-
-                        var netValue: Float = 0.0 // Activation Value
-
-
-                        // Sum of the weights combined with the inputs
-                        for var layer_j in 0..<(numberOfNeuronsInLayer - 1) {
-                            var hiddenWeightIn = neuron.weightsComingIn[layer_j]
-                            netValue += hiddenWeightIn * input[layer_j]
-                        }
-
-                        // Activation function calculates the neurons output
-                        netValueOut = try! NNOperations.activationFunc(fncType: network.activationFuncType, value: netValue)
-
-
-                        // Set the neurons output
-                        neuron.outputValue = netValue
-
-                    } else {
-
-                        // Bias
-                        neuron.outputValue = 1.0
+                    // Sum of the weights combined with the inputs
+                    for var layer_j in 0..<(numberOfNeuronsInLayer - 1) {
+                        var hiddenWeightIn = neuron.weightsComingIn[layer_j]
+                        netValue += hiddenWeightIn * input[layer_j]
                     }
 
+                    // Activation function calculates the neurons output
+                    netValueOut = try! NNOperations.activationFunc(fncType: network.activationFuncType, value: netValue)
+
+
+                    // Set the neurons output
+                    neuron.outputValue = netValue
+
+                } else {
+
+                    // Bias
+                    neuron.outputValue = 1.0
                 }
 
-
-                // For each of the nuerons in the output layer ...
-                for var outLayer_i in 0..<network.outputLayer.numberOfNueronsInLayer {
-
-                    var netValue: Float = 0.0 // Sum of neurons outputs (with weights) from the previous (hidden) layer
-                    var netValueOut: Float = 0.0 // Final activation value
-
-                    // For each neuron in the hidden layer, calculate the netValue
-                    for neuron in hiddenLayer.listOfNeurons {
-                        var hiddenWeightOut = neuron.weightsGoingOut[outLayer_i]
-                        netValue += hiddenWeightOut * neuron.outputValue
-                    }
-
-                    // Use the activation function to calculate the activation of the output neuron(s)
-                    netValueOut = try! NNOperations.activationFunc(fncType: network.activationFuncTypeOfOuputLayer, value: netValue)
-
-
-                    // Set the output neurons output/activation
-                    network.outputLayer.listOfNeurons[outLayer_i].outputValue = netValueOut
-
-                }
-
-                // Set the hidden layers of the network with the newly adjusted neurons
-                network.listOfHiddenLayers[hiddenLayer_i].listOfNeurons = hiddenLayer.listOfNeurons
-
-                hiddenLayer_i += 1
             }
+
+            // For each of the nuerons in the output layer ...
+            for var outLayer_i in 0..<network.outputLayer.numberOfNeuronsInLayer {
+
+                var netValue: Float = 0.0 // Sum of neurons outputs (with weights) from the previous (hidden) layer
+                var netValueOut: Float = 0.0 // Final activation value
+
+                // For each neuron in the hidden layer, calculate the netValue
+                for neuron in hiddenLayer.listOfNeurons {
+                    var hiddenWeightOut = neuron.weightsGoingOut[outLayer_i]
+                    netValue += hiddenWeightOut * neuron.outputValue
+                }
+
+                // Use the activation function to calculate the activation of the output neuron(s)
+                netValueOut = try! NNOperations.activationFunc(fncType: network.activationFuncTypeOfOutputLayer, value: netValue)
+
+
+                // Set the output neurons output/activation
+                network.outputLayer.listOfNeurons[outLayer_i].outputValue = netValueOut
+
+            }
+
+            // Set the hidden layers of the network with the newly adjusted neurons
+            network.listOfHiddenLayers[hiddenLayer_i].listOfNeurons = hiddenLayer.listOfNeurons
         }
 
 

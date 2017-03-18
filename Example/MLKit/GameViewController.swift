@@ -69,13 +69,11 @@ class GameViewController: UIViewController {
 
         for _ in 1...20 {
 
-            let brain = NeuralNet()
-
-            brain.initializeNet(numberOfInputNeurons: 4, numberOfHiddenLayers: 1, numberOfNeuronsInHiddenLayer: 4, numberOfOutputNeurons: 1)
+            let brain = NeuralNet(numberOfInputNeurons: 4, numberOfHiddenLayers: 1, numberOfNeuronsInHiddenLayer: 4, numberOfOutputNeurons: 1)
 
             brain.activationFuncType = .siglog
 
-            brain.activationFuncTypeOfOuputLayer = .siglog
+            brain.activationFuncTypeOfOutputLayer = .siglog
 
             let newBird = FlappyGenome(genotype: GeneticOperations.encode(network: brain), network: brain)
 

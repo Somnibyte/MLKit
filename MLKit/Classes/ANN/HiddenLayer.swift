@@ -17,7 +17,7 @@ public class HiddenLayer: Layer {
 
 
     fileprivate var _listOfNeurons: [Neuron]!
-    fileprivate var _numberOfNueronsInLayer: Int!
+    fileprivate var _numberOfNeuronsInLayer: Int!
 
     /// List of neurons associated with a particular hidden layer
     public var listOfNeurons: [Neuron] {
@@ -32,14 +32,14 @@ public class HiddenLayer: Layer {
     }
 
     /// Number of neurons in a particular hidden layer
-    public var numberOfNueronsInLayer: Int {
+    public var numberOfNeuronsInLayer: Int {
 
         get {
-            return _numberOfNueronsInLayer
+            return _numberOfNeuronsInLayer
         }
 
         set {
-            return _numberOfNueronsInLayer = newValue + 1 // Don't forget BIAS
+            return _numberOfNeuronsInLayer = newValue + 1 // Don't forget BIAS
         }
 
     }
@@ -65,7 +65,7 @@ public class HiddenLayer: Layer {
         var numberOfHiddenLayers = listOfHiddenLayers.count
 
         for var i in 0..<numberOfHiddenLayers {
-            for var j in 0..<hiddenLayer.numberOfNueronsInLayer {
+            for var j in 0..<hiddenLayer.numberOfNeuronsInLayer {
 
                 // Initialize Neuron
                 var neuron = Neuron()
@@ -76,20 +76,20 @@ public class HiddenLayer: Layer {
 
 
                 if i == 0 { // First hidden Layer will recieve the inputLayers number of neurons
-                    limitIn = inputLayer.numberOfNueronsInLayer
+                    limitIn = inputLayer.numberOfNeuronsInLayer
 
                     if numberOfHiddenLayers > 1 { // If we have more hidden layers, check for them.
-                        limitOut = listOfHiddenLayers[i + 1].numberOfNueronsInLayer
+                        limitOut = listOfHiddenLayers[i + 1].numberOfNeuronsInLayer
                     } else if numberOfHiddenLayers == 1 { // Otherwise set limitOut to the current number of neurons
-                        limitOut = outputLayer.numberOfNueronsInLayer
+                        limitOut = outputLayer.numberOfNeuronsInLayer
                     }
 
                 } else if i == numberOfHiddenLayers - 1 { // Last Hidden Layer
-                    limitIn =  listOfHiddenLayers[i - 1].numberOfNueronsInLayer // # of neurons from previous layer
-                    limitOut = outputLayer.numberOfNueronsInLayer // # of neurons from the output layer
+                    limitIn =  listOfHiddenLayers[i - 1].numberOfNeuronsInLayer // # of neurons from previous layer
+                    limitOut = outputLayer.numberOfNeuronsInLayer // # of neurons from the output layer
                 } else { // We are in the middle hidden layers
-                    limitIn =  listOfHiddenLayers[i - 1].numberOfNueronsInLayer // # of neurons from previous hidden layer
-                    limitOut = listOfHiddenLayers[i + 1].numberOfNueronsInLayer// # of neurons of successor hidden layer
+                    limitIn =  listOfHiddenLayers[i - 1].numberOfNeuronsInLayer // # of neurons from previous hidden layer
+                    limitOut = listOfHiddenLayers[i + 1].numberOfNeuronsInLayer// # of neurons of successor hidden layer
                 }
 
 
@@ -101,12 +101,12 @@ public class HiddenLayer: Layer {
                 if j >= 1 {
 
                     for var k in 0...limitIn {
-                        weightsComingIn.append(neuron.initializeNueron())
+                        weightsComingIn.append(neuron.initializeNeuron())
                     }
                 }
 
                 for var k in 0...limitOut {
-                    weightsGoingOut.append(neuron.initializeNueron())
+                    weightsGoingOut.append(neuron.initializeNeuron())
                 }
 
                 neuron.weightsComingIn = ValueArray<Float>(weightsComingIn)
