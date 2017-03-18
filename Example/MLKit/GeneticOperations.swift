@@ -66,9 +66,9 @@ final class GeneticOperations {
 
         brain.initializeNet(numberOfInputNeurons: 4, numberOfHiddenLayers: 1, numberOfNeuronsInHiddenLayer: 4, numberOfOutputNeurons: 1)
 
-        brain.activationFuncType = .SIGLOG
+        brain.activationFuncType = .siglog
 
-        brain.activationFuncTypeOutputLayer = .SIGLOG
+        brain.activationFuncTypeOfOuputLayer = .siglog
 
         // Convert genotype back to weights for each layer
         let inputLayerWeights: [Float] = Array<Float>(genotype[0...4])

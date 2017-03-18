@@ -135,9 +135,9 @@ extension Training {
     private func updateWeight(trainingType: TrainingType, oldWeight: Float, network: NeuralNet, error: Float, trainSample: Float, netValue: Float) throws -> Float {
 
         switch trainingType {
-        case .PERCEPTRON:
+        case .perceptron:
             return oldWeight + network.learningRate * error * trainSample
-        case .ADALINE:
+        case .adaline:
             return oldWeight + network.learningRate * error * trainSample * (try! NNOperations.derivativeFunc(fncType: network.activationFuncType, value: netValue))
         default:
             throw MachineLearningError.invalidInput

@@ -126,7 +126,7 @@ public class BackPropagation: Training {
                     }
 
                     // Use the activation function to calculate the activation of the output neuron(s)
-                    netValueOut = try! NNOperations.activationFunc(fncType: network.activationFuncTypeOutputLayer, value: netValue)
+                    netValueOut = try! NNOperations.activationFunc(fncType: network.activationFuncTypeOfOuputLayer, value: netValue)
 
                     // Set the output neurons output/activation
                     network.outputLayer.listOfNeurons[outLayer_i].outputValue = netValueOut
@@ -185,7 +185,7 @@ public class BackPropagation: Training {
         for neuron in outputLayer {
             error = neuron.error
             netValue = neuron.outputValue
-            sensibility = try! NNOperations.derivativeFunc(fncType: network.activationFuncTypeOutputLayer, value: netValue) * error
+            sensibility = try! NNOperations.derivativeFunc(fncType: network.activationFuncTypeOfOuputLayer, value: netValue) * error
 
             // Set the neurons sensibility/error signal
             neuron.sensibility = sensibility

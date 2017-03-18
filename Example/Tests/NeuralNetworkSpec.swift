@@ -20,7 +20,7 @@ class NeuralNetworkSpec: QuickSpec {
         it("Should be able to run a simple XOR example using a single layer Perceptron architecture.") {
 
             print("\n")
-            print("XOR PERCEPTRON TEST \n")
+            print("XOR perceptron TEST \n")
 
             var net = NeuralNet()
 
@@ -40,9 +40,9 @@ class NeuralNetworkSpec: QuickSpec {
 
             net.learningRate = 1.0
 
-            net.trainingType = TrainingType.PERCEPTRON
+            net.trainingType = TrainingType.perceptron
 
-            net.activationFuncType = ActivationFunctionType.STEP
+            net.activationFuncType = ActivationFunctionType.step
 
             trainedNet = try! net.trainNet(network: net)
 
@@ -80,9 +80,9 @@ class NeuralNetworkSpec: QuickSpec {
 
             net.learningRate = 0.5
 
-            net.trainingType = TrainingType.ADALINE
+            net.trainingType = TrainingType.adaline
 
-            net.activationFuncType = ActivationFunctionType.LINEAR
+            net.activationFuncType = ActivationFunctionType.linear
 
             trainedNet = try! net.trainNet(network: net)
 
@@ -114,7 +114,7 @@ class NeuralNetworkSpec: QuickSpec {
 
             net = net.initializeNet(numberOfInputNeurons: 2, numberOfHiddenLayers: 1, numberOfNeuronsInHiddenLayer: 3, numberOfOutputNeurons: 2)
 
-            print("---------------------BACKPROPAGATION INIT---------------------")
+            print("---------------------backpropagation INIT---------------------")
 
             net.printNet()
 
@@ -130,11 +130,11 @@ class NeuralNetworkSpec: QuickSpec {
 
             net.learningRate = 0.1
 
-            net.trainingType = .BACKPROPAGATION
+            net.trainingType = .backpropagation
 
-            net.activationFuncType = .SIGLOG
+            net.activationFuncType = .siglog
 
-            net.activationFuncTypeOutputLayer = .LINEAR
+            net.activationFuncTypeOutputLayer = .linear
 
             trainedNet = try! net.trainNet(network: net)
 

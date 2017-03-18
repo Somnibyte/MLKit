@@ -15,288 +15,63 @@ import Upsurge
 /// The NeuralNet class defines a artificial neural network. Note that you are only allowed to have 1 hidden layer.
 open class NeuralNet {
 
-    fileprivate var _estimatedOutputAsArray: [Float] = []
+    public var estimatedOutputAsArray: [Float] = []
 
-    /// Estimated output after training
-    public var estimatedOutputAsArray: [Float] {
-
-        get {
-            return _estimatedOutputAsArray
-        }
-
-        set {
-            _estimatedOutputAsArray = newValue
-        }
-    }
-
-
-    fileprivate var _estimatedOutputAsMatrix: Matrix<Float>!
 
     /// Estimated output after training as a Matrix Object
-    public var estimatedOutputAsMatrix: Matrix<Float> {
-
-        get {
-            return _estimatedOutputAsMatrix
-        }
-
-        set {
-            _estimatedOutputAsMatrix = newValue
-        }
-
-    }
-
-
-    fileprivate var _inputLayer: InputLayer!
-
+    public var estimatedOutputAsMatrix: Matrix<Float>!
+    
     /// The Input Layer
-    public var inputLayer: InputLayer {
-
-        get {
-            return _inputLayer
-        }
-
-        set {
-            _inputLayer = newValue
-        }
-    }
-
-
-    fileprivate var _hiddenLayer: HiddenLayer!
+    public var inputLayer: InputLayer!
 
     /// The Hidden Layer
-    public var hiddenLayer: HiddenLayer {
-
-        get {
-            return _hiddenLayer
-        }
-
-        set {
-            _hiddenLayer = newValue
-        }
-    }
-
-
-    fileprivate var _listOfHiddenLayers: [HiddenLayer]!
+    public var hiddenLayer: HiddenLayer!
 
     /// List of Hidden Layers
-    public var listOfHiddenLayers: [HiddenLayer] {
-
-        get {
-            return _listOfHiddenLayers
-        }
-
-        set {
-            _listOfHiddenLayers = newValue
-        }
-
-    }
-
-
-    fileprivate var _outputLayer: OutputLayer!
+    public var listOfHiddenLayers: [HiddenLayer]!
 
     /// The Output Layer
-    public var outputLayer: OutputLayer {
-
-        get {
-            return _outputLayer
-        }
-
-        set {
-            _outputLayer = newValue
-        }
-
-    }
-
-
-    fileprivate var _numberOfHiddenLayers: Int!
+    public var outputLayer: OutputLayer!
 
     /// The Number of Hidden Layers
-    public var numberOfHiddenLayers: Int {
+    public var numberOfHiddenLayers: Int!
 
-        get {
-            return _numberOfHiddenLayers
-        }
-
-        set {
-            _numberOfHiddenLayers = newValue
-        }
-
-    }
-
-    fileprivate var _trainingSet: Matrix<Float>!
 
     /// Your Training Set
-    public var trainingSet: Matrix<Float> {
-
-        get {
-            return _trainingSet
-        }
-
-        set {
-            _trainingSet = newValue
-        }
-
-    }
-
-
-    fileprivate var _targetOutputSet: ValueArray<Float>!
+    public var trainingSet: Matrix<Float>!
 
     /// The Target Output set (Generally Used for Single Layer Perceptron & Adaline)
-    public var targetOutputSet: ValueArray<Float> {
-
-        get {
-            return _targetOutputSet
-        }
-
-        set {
-            _targetOutputSet = newValue
-        }
-
-    }
-
-    fileprivate var _targetOutputMatrix: Matrix<Float>!
+    public var targetOutputSet: ValueArray<Float>!
 
     /// The Target Output Matrix
-    public var targetOutputMatrix: Matrix<Float> {
-
-        get {
-            return _targetOutputMatrix
-        }
-
-        set {
-            _targetOutputMatrix = newValue
-        }
-
-    }
-
-    fileprivate var _maxEpochs: Int!
+    public var targetOutputMatrix: Matrix<Float>!
 
     /// Max Epoch (Stopping condition for training)
-    public var maxEpochs: Int {
-
-        get {
-            return _maxEpochs
-        }
-
-        set {
-            _maxEpochs = newValue
-        }
-    }
-
-
-    fileprivate var _learningRate: Float!
+    public var maxEpochs: Int!
 
     /// The Learning Rate
-    public var learningRate: Float {
-
-        get {
-            return _learningRate
-        }
-
-        set {
-            _learningRate = newValue
-        }
-    }
-
-    fileprivate var _targetError: Float!
+    public var learningRate: Float!
 
     /// The Target Error
-    public var targetError: Float {
-
-        get {
-            return _targetError
-        }
-
-        set {
-            _targetError = newValue
-        }
-    }
-
-    fileprivate var _trainingError: Float!
+    public var targetError: Float!
 
     /// The Training Error
-    public var trainingError: Float {
-
-        get {
-            return _trainingError
-        }
-
-        set {
-            _trainingError = newValue
-        }
-    }
-
-    fileprivate var _meanSquaredErrorList: [Float] = []
+    public var trainingError: Float!
 
     /// A List of MSE values
-    public var meanSquaredErrorList: [Float] {
-
-        get {
-            return _meanSquaredErrorList
-        }
-
-        set {
-            _meanSquaredErrorList = newValue
-        }
-    }
-
-    fileprivate var _activationFuncType: ActivationFunctionType!
+    public var meanSquaredErrorList: [Float] = []
 
     /// The Type of Activation Function Being Used
-    public var activationFuncType: ActivationFunctionType {
-
-        get {
-            return _activationFuncType
-        }
-
-        set {
-            _activationFuncType = newValue
-        }
-    }
-
-    fileprivate var _activationFuncTypeOfOuputLayer: ActivationFunctionType!
+    public var activationFuncType: ActivationFunctionType!
 
     /// The Type of Activation Being Used for the Output Layer
-    public var activationFuncTypeOutputLayer: ActivationFunctionType {
-
-        get {
-            return _activationFuncTypeOfOuputLayer
-        }
-
-        set {
-            _activationFuncTypeOfOuputLayer = newValue
-        }
-    }
-
-
-    fileprivate var _trainingType: TrainingType!
+    public var activationFuncTypeOfOuputLayer: ActivationFunctionType!
 
     /// The Type of Training Being Used
-    public var trainingType: TrainingType {
-
-        get {
-            return _trainingType
-        }
-
-        set {
-            _trainingType = newValue
-        }
-    }
-
-    fileprivate var _errorMean: Float!
+    public var trainingType: TrainingType!
 
     /// Stores the mean of the error between two or more neurons
-    public var errorMean: Float {
-
-        get {
-            return _errorMean
-        }
-
-        set {
-            _errorMean = newValue
-        }
-    }
-
+    public var errorMean: Float!
 
     public init() { }
 
@@ -373,7 +148,7 @@ open class NeuralNet {
 
 
     /**
-     The trainNet method trains the Neural Network with the methods available (PERCEPTRON, ADALINE, and BACKPROPAGATION). It is advised that you use this method for supervised learning.
+     The trainNet method trains the Neural Network with the methods available (perceptron, adaline, and backpropagation). It is advised that you use this method for supervised learning.
 
      - parameter network: A Neural Net Object.
 
@@ -383,21 +158,21 @@ open class NeuralNet {
 
         var trainedNetwork = NeuralNet()
 
-        switch network.trainingType {
+        switch network.trainingType! {
 
-        case .PERCEPTRON:
+        case .perceptron:
 
             var perceptron = Perceptron()
             trainedNetwork = perceptron.train(network: network)
             return trainedNetwork
 
-        case .ADALINE:
+        case .adaline:
 
             var adaline = Adaline()
             trainedNetwork = adaline.train(network: network)
             return trainedNetwork
 
-        case .BACKPROPAGATION:
+        case .backpropagation:
 
             var backpropagation = BackPropagation()
             trainedNetwork = backpropagation.train(network: network)
@@ -414,21 +189,20 @@ open class NeuralNet {
     open func printTrainedNet (network: NeuralNet) {
 
         print("---------------TRAINED NEURAL NETWORK RESULTS---------------")
-        switch network.trainingType {
-
-        case .PERCEPTRON:
+        switch network.trainingType! {
+        case .perceptron:
 
             var perceptron = Perceptron()
             perceptron.printTrainedNetwork(trainedNetwork: network, singleLayer: true)
             break
 
-        case .ADALINE:
+        case .adaline:
 
             var adaline = Adaline()
             adaline.printTrainedNetwork(trainedNetwork: network, singleLayer: true)
             break
 
-        case .BACKPROPAGATION:
+        case .backpropagation:
 
             var backpropagation = BackPropagation()
             backpropagation.printTrainedNetwork(trainedNetwork: network, singleLayer: false)
@@ -523,7 +297,7 @@ open class NeuralNet {
                     }
 
                     // Use the activation function to calculate the activation of the output neuron(s)
-                    netValueOut = try! NNOperations.activationFunc(fncType: network.activationFuncTypeOutputLayer, value: netValue)
+                    netValueOut = try! NNOperations.activationFunc(fncType: network.activationFuncTypeOfOuputLayer, value: netValue)
 
 
                     // Set the output neurons output/activation
