@@ -12,11 +12,11 @@ import Upsurge
 
 /// The Training Protocol defines the methods used for training a NeuralNet Object. Note that the `train` method used in this protocol's extension is used only for Neural Network architectures such as Adaline and Perceptron. There is no backpropagation method within the Training method. The Backpropagation class utilizes the Training protocol in order to implement methods that pertain to printing/debugging values. The Backpropagation algorithm has it's own 'train' method. The way the Adaline and Perceptron architecture's perform weight updates and training are completely different from the techniques found in Backpropagation which is why I have separated them.
 public protocol Training {
+    func train(network: NeuralNet) -> NeuralNet
 
 }
 
 extension Training {
-
 
     // MARK: - Public Methods
 
@@ -29,7 +29,7 @@ extension Training {
 
      - returns: A Float.
      */
-    public mutating func train(network: NeuralNet) -> NeuralNet {
+    public func train(network: NeuralNet) -> NeuralNet {
 
         var weightsComingIn: ValueArray<Float>! = ValueArray<Float>()
 

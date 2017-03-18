@@ -44,7 +44,6 @@ public class BackPropagation: Training {
                 sumErrors += network.errorMean
             }
 
-
             self.meanSquaredError = sumErrors / Float(rows)
 
             print(self.meanSquaredError)
@@ -69,88 +68,77 @@ public class BackPropagation: Training {
         var actualOutput: Float = 0.0
         var sumError: Float = 0.0
 
-        // Check if there are any hidden layers in the network
-        if listOfHiddenLayers.count > 0 {
+        // For each hidden layer ...
+        for (hiddenLayer_i, hiddenLayer) in listOfHiddenLayers.enumerated() {
 
-            var hiddenLayer_i = 0
+            // Obtain the number of neurons in the layer
+            var numberOfNeuronsInLayer = hiddenLayer.numberOfNeuronsInLayer
 
-            // For each hidden layer ...
-            for hiddenLayer in listOfHiddenLayers {
+            // For each neuron ...
+            for neuron in hiddenLayer.listOfNeurons {
 
+                var netValueOut: Float = 0.0 // Net Value (activation value)
 
-                // Obtain the number of neurons in the layer
-                var numberOfNeuronsInLayer = hiddenLayer.numberOfNeuronsInLayer
+                // If the neurons weights (coming into the neuron) are greater than 0 ...
+                if neuron.weightsComingIn.count > 0 {
 
-                // For each neuron ...
-                for neuron in hiddenLayer.listOfNeurons {
-
-                    var netValueOut: Float = 0.0 // Net Value (activation value)
-
-                    // If the neurons weights (coming into the neuron) are greater than 0 ...
-                    if neuron.weightsComingIn.count > 0 {
-
-                        var netValue: Float = 0.0 // Activation Value
+                    var netValue: Float = 0.0 // Activation Value
 
 
-                        // Sum of the weights combined with the inputs
-                        for var layer_j in 0..<(numberOfNeuronsInLayer - 1) {
-                            var hiddenWeightIn = neuron.weightsComingIn[layer_j]
-                            netValue += hiddenWeightIn * network.trainingSet[row, layer_j]
-                        }
-
-                        // Activation function calculates the neurons output
-                        netValueOut = try! NNOperations.activationFunc(fncType: network.activationFuncType, value: netValue)
-
-                        // Set the neurons output
-                        neuron.outputValue = netValue
-
-                    } else {
-
-                        // Bias
-                        neuron.outputValue = 1.0
+                    // Sum of the weights combined with the inputs
+                    for var layer_j in 0..<(numberOfNeuronsInLayer - 1) {
+                        var hiddenWeightIn = neuron.weightsComingIn[layer_j]
+                        netValue += hiddenWeightIn * network.trainingSet[row, layer_j]
                     }
 
+                    // Activation function calculates the neurons output
+                    netValueOut = try! NNOperations.activationFunc(fncType: network.activationFuncType, value: netValue)
+
+                    // Set the neurons output
+                    neuron.outputValue = netValue
+
+                } else {
+                    // Bias
+                    neuron.outputValue = 1.0
                 }
 
-
-                // For each of the nuerons in the output layer ...
-                for var outLayer_i in 0..<network.outputLayer.numberOfNeuronsInLayer {
-
-                    var netValue: Float = 0.0 // Sum of neurons outputs (with weights) from the previous (hidden) layer
-                    var netValueOut: Float = 0.0 // Final activation value
-
-                    // For each neuron in the hidden layer, calculate the netValue
-                    for neuron in hiddenLayer.listOfNeurons {
-                        var hiddenWeightOut = neuron.weightsGoingOut[outLayer_i]
-                        netValue += hiddenWeightOut * neuron.outputValue
-                    }
-
-                    // Use the activation function to calculate the activation of the output neuron(s)
-                    netValueOut = try! NNOperations.activationFunc(fncType: network.activationFuncTypeOfOutputLayer, value: netValue)
-
-                    // Set the output neurons output/activation
-                    network.outputLayer.listOfNeurons[outLayer_i].outputValue = netValueOut
-
-
-                    // Error Calculation
-                    estimatedOutput = netValueOut
-                    actualOutput = network.targetOutputMatrix[row, outLayer_i]
-                    var error = actualOutput - estimatedOutput
-                    network.outputLayer.listOfNeurons[outLayer_i].error = error
-                    sumError += pow(error, 2.0)
-                }
-
-
-                // Error Mean
-                var errorMean: Float = sumError / Float(network.outputLayer.numberOfNeuronsInLayer)
-
-                network.errorMean = errorMean
-
-                // Set the hidden layers of the network with the newly adjusted neurons
-                network.listOfHiddenLayers[hiddenLayer_i].listOfNeurons = hiddenLayer.listOfNeurons
-
-                hiddenLayer_i += 1
             }
+
+
+            // For each of the nuerons in the output layer ...
+            for var outLayer_i in 0..<network.outputLayer.numberOfNeuronsInLayer {
+
+                var netValue: Float = 0.0 // Sum of neurons outputs (with weights) from the previous (hidden) layer
+                var netValueOut: Float = 0.0 // Final activation value
+
+                // For each neuron in the hidden layer, calculate the netValue
+                for neuron in hiddenLayer.listOfNeurons {
+                    var hiddenWeightOut = neuron.weightsGoingOut[outLayer_i]
+                    netValue += hiddenWeightOut * neuron.outputValue
+                }
+
+                // Use the activation function to calculate the activation of the output neuron(s)
+                netValueOut = try! NNOperations.activationFunc(fncType: network.activationFuncTypeOfOutputLayer, value: netValue)
+
+                // Set the output neurons output/activation
+                network.outputLayer.listOfNeurons[outLayer_i].outputValue = netValueOut
+
+
+                // Error Calculation
+                estimatedOutput = netValueOut
+                actualOutput = network.targetOutputMatrix[row, outLayer_i]
+                var error = actualOutput - estimatedOutput
+                network.outputLayer.listOfNeurons[outLayer_i].error = error
+                sumError += pow(error, 2.0)
+            }
+
+            // Error Mean
+            var errorMean: Float = sumError / Float(network.outputLayer.numberOfNeuronsInLayer)
+
+            network.errorMean = errorMean
+
+            // Set the hidden layers of the network with the newly adjusted neurons
+            network.listOfHiddenLayers[hiddenLayer_i].listOfNeurons = hiddenLayer.listOfNeurons
         }
 
 

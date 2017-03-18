@@ -39,7 +39,7 @@ class NeuralNetworkSpec: QuickSpec {
 
             net.activationFuncType = ActivationFunctionType.step
 
-            let trainedNet = try! net.trainNet(network: net)
+            let trainedNet = try! net.trainNet()
 
             trainedNet.printNet()
 
@@ -76,7 +76,7 @@ class NeuralNetworkSpec: QuickSpec {
 
             net.activationFuncType = ActivationFunctionType.linear
 
-            let trainedNet = try! net.trainNet(network: net)
+            let trainedNet = try! net.trainNet()
 
             trainedNet.printNet()
 
@@ -108,7 +108,6 @@ class NeuralNetworkSpec: QuickSpec {
 
             net.printNet()
 
-            var trainedNet = NeuralNet()
 
             net.trainingSet = Matrix<Float>(rows: 10, columns: 3, elements: [1.0, 1.0, 0.73, 1.0, 1.0, 0.81, 1.0, 1.0, 0.86, 1.0, 1.0, 0.95, 1.0, 0.0, 0.45, 1.0, 1.0, 0.70, 1.0, 0.0, 0.51, 1.0, 1.0, 0.89, 1.0, 1.0, 0.79, 1.0, 0.0, 0.54])
 
@@ -127,7 +126,7 @@ class NeuralNetworkSpec: QuickSpec {
             net.activationFuncTypeOfOutputLayer = .linear
 
 
-            trainedNet = try! net.trainNet(network: net)
+            let trainedNet = try! net.trainNet()
 
             trainedNet.printNet()
 

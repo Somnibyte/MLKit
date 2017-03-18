@@ -89,6 +89,7 @@ open class NeuralNet {
         outputLayer = OutputLayer()
         numberOfHiddenLayers = 0
     }
+
     public init(numberOfInputNeurons: Int, numberOfHiddenLayers: Int = 1, numberOfNeuronsInHiddenLayer: Int, numberOfOutputNeurons: Int) {
         precondition(0 <= numberOfHiddenLayers && numberOfHiddenLayers <= 1, "At most one hidden layer is supported at this time")
 
@@ -121,8 +122,6 @@ open class NeuralNet {
         outputLayer = outputLayer.initializeLayer(outLayer: outputLayer)
     }
 
-
-
     // MARK: - Public Methods
 
     /**
@@ -144,33 +143,8 @@ open class NeuralNet {
 
      - returns: A Neural Net Object.
      */
-    open func trainNet(network: NeuralNet) throws -> NeuralNet {
-
-        let trainedNetwork: NeuralNet
-
-        switch network.trainingType! {
-
-        case .perceptron:
-
-            var perceptron = Perceptron()
-            trainedNetwork = perceptron.train(network: network)
-            return trainedNetwork
-
-        case .adaline:
-
-            var adaline = Adaline()
-            trainedNetwork = adaline.train(network: network)
-            return trainedNetwork
-
-        case .backpropagation:
-
-            var backpropagation = BackPropagation()
-            trainedNetwork = backpropagation.train(network: network)
-            return trainedNetwork
-
-        default:
-            throw MachineLearningError.invalidInput
-        }
+    open func trainNet() throws -> NeuralNet {
+        return self.trainingType.trainingFunction.train(network: self)
     }
 
     /**

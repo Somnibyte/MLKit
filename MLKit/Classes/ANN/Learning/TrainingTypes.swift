@@ -17,3 +17,16 @@ public enum TrainingType {
     /// BackPropagation Method
     case backpropagation
 }
+
+public extension TrainingType {
+    var trainingFunction: Training {
+        switch self {
+        case .perceptron:
+            return Perceptron()
+        case .adaline:
+            return Adaline()
+        case .backpropagation:
+            return BackPropagation()
+        }
+    }
+}
