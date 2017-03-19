@@ -101,12 +101,10 @@ open class NeuralNet {
         hiddenLayer = HiddenLayer()
         self.numberOfHiddenLayers = numberOfHiddenLayers
 
-        for var i in 0..<numberOfHiddenLayers {
-
+        for i in 0..<numberOfHiddenLayers {
             hiddenLayer = HiddenLayer()
             hiddenLayer.numberOfNeuronsInLayer = numberOfNeuronsInHiddenLayer
             listOfHiddenLayers.append(hiddenLayer)
-
         }
 
         // Initialize OuptutLayer
@@ -211,29 +209,26 @@ open class NeuralNet {
 
                 var netValueOut: Float = 0.0 // Net Value (activation value)
 
-                // If the neurons weights (coming into the neuron) are greater than 0 ...
-                if neuron.weightsComingIn.count > 0 {
-
-                    var netValue: Float = 0.0 // Activation Value
-
-                    // Sum of the weights combined with the inputs
-                    for var layer_j in 0..<(numberOfNeuronsInLayer - 1) {
-                        var hiddenWeightIn = neuron.weightsComingIn[layer_j]
-                        netValue += hiddenWeightIn * input[layer_j]
-                    }
-
-                    // Activation function calculates the neurons output
-                    netValueOut = try! NNOperations.activationFunc(fncType: network.activationFuncType, value: netValue)
-
-
-                    // Set the neurons output
-                    neuron.outputValue = netValue
-
-                } else {
-
+                if neuron.weightsComingIn.count <= 0 {
                     // Bias
                     neuron.outputValue = 1.0
+                    continue
                 }
+
+                var netValue: Float = 0.0 // Activation Value
+
+                // Sum of the weights combined with the inputs
+                for layer_j in 0..<(numberOfNeuronsInLayer - 1) {
+                    var hiddenWeightIn = neuron.weightsComingIn[layer_j]
+                    netValue += hiddenWeightIn * input[layer_j]
+                }
+
+                // Activation function calculates the neurons output
+                netValueOut = try! NNOperations.activationFunc(fncType: network.activationFuncType, value: netValue)
+
+
+                // Set the neurons output
+                neuron.outputValue = netValue
 
             }
 

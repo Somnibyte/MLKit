@@ -37,20 +37,19 @@ extension Training {
         var columns = network.trainingSet.columns
 
 
-        var epochs: Int = 0
         var error: Float = 0.0
         var meanSquaredError: Float = 0.0
 
-        while epochs < network.maxEpochs {
+        for epochs in 0..<network.maxEpochs {
 
             var estimatedOutput: Float!
             var actualOutput: Float!
 
-            for var i in 0..<rows {
+            for i in 0..<rows {
 
                 var netValue: Float = 0
 
-                for var j in 0..<columns {
+                for j in 0..<columns {
                     weightsComingIn = network.inputLayer.listOfNeurons[j].weightsComingIn
                     var inputWeight = weightsComingIn[0]
                     netValue += inputWeight * network.trainingSet[i, j]
@@ -76,14 +75,10 @@ extension Training {
 
             meanSquaredError = powf(actualOutput - estimatedOutput, 2.0)
             network.meanSquaredErrorList.append(meanSquaredError)
-
-            epochs += 1
-
         }
 
 
         network.trainingError = error
-
 
         return network
     }
@@ -155,11 +150,11 @@ extension Training {
         var weightsComingIn: ValueArray<Float>! = ValueArray<Float>()
 
 
-        for var i in 0..<rows {
+        for i in 0..<rows {
 
             var netValue: Float = 0
 
-            for var j in 0..<columns {
+            for j in 0..<columns {
                 weightsComingIn = trainedNetwork.inputLayer.listOfNeurons[j].weightsComingIn
                 var inputWeight = weightsComingIn[0]
                 netValue += inputWeight * trainedNetwork.trainingSet[i, j]
@@ -199,11 +194,11 @@ extension Training {
         var weightsComingIn: ValueArray<Float>! = ValueArray<Float>()
 
 
-        for var i in 0..<rows {
+        for i in 0..<rows {
 
             var netValue: Float = 0
 
-            for var j in 0..<columns {
+            for j in 0..<columns {
                 weightsComingIn = trainedNetwork.inputLayer.listOfNeurons[j].weightsComingIn
                 var inputWeight = weightsComingIn[0]
                 netValue += inputWeight * trainedNetwork.trainingSet[i, j]
@@ -230,7 +225,4 @@ extension Training {
         }
 
     }
-
-
-
 }

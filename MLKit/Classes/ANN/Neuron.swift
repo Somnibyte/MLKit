@@ -13,77 +13,20 @@ import Upsurge
 /// The Neuron class defines a neuron to be used within a Layer object.
 open class Neuron {
 
-    fileprivate var _weightsComingIn: ValueArray<Float>!
-    fileprivate var _weightsGoingOut: ValueArray<Float>!
-    fileprivate var _outputValue: Float!
-    fileprivate var _error: Float!
-    fileprivate var _sensibility: Float!
-
     /// List of input weights
-    public var weightsComingIn: ValueArray<Float> {
-
-
-        get {
-            return _weightsComingIn
-        }
-
-
-        set {
-            return _weightsComingIn = newValue
-        }
-    }
+    public var weightsComingIn: ValueArray<Float>!
 
     /// List of output weights
-    public var weightsGoingOut: ValueArray<Float> {
-
-        get {
-            return _weightsGoingOut
-        }
-
-        set {
-            return _weightsGoingOut = newValue
-        }
-
-    }
+    public var weightsGoingOut: ValueArray<Float>!
 
     /// List of output weights
-    public var outputValue: Float! {
-
-        get {
-            return _outputValue
-        }
-
-        set {
-            return _outputValue = newValue
-        }
-
-    }
+    public var outputValue: Float!
 
     /// List of output weights
-    public var error: Float! {
-
-        get {
-            return _error
-        }
-
-        set {
-            return _error = newValue
-        }
-
-    }
+    public var error: Float!
 
     /// List of output weights
-    public var sensibility: Float! {
-
-        get {
-            return _sensibility
-        }
-
-        set {
-            return _sensibility = newValue
-        }
-
-    }
+    public var sensibility: Float!
 
 
     /**
