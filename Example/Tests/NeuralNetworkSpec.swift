@@ -21,7 +21,7 @@ class NeuralNetworkSpec: QuickSpec {
             print("\n")
             print("XOR perceptron TEST \n")
 
-            var net = NeuralNet(numberOfInputNeurons: 2, numberOfHiddenLayers: 0, numberOfNeuronsInHiddenLayer: 0, numberOfOutputNeurons: 1)
+            let net = NeuralNet(numberOfInputNeurons: 2, hiddenLayers: [], numberOfOutputNeurons: 1)
             net.printNet()
 
             net.trainingSet = Matrix<Float>(rows: 4, columns: 3, elements: [1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0])
@@ -56,7 +56,7 @@ class NeuralNetworkSpec: QuickSpec {
 
         it("Should be able to run a simple example using a single layer Adaline architecture.") {
 
-            var net = NeuralNet(numberOfInputNeurons: 3, numberOfHiddenLayers: 0, numberOfNeuronsInHiddenLayer: 0, numberOfOutputNeurons: 1)
+            var net = NeuralNet(numberOfInputNeurons: 3, hiddenLayers: [], numberOfOutputNeurons: 1)
 
             net.printNet()
 
@@ -98,7 +98,7 @@ class NeuralNetworkSpec: QuickSpec {
 
         it("Should be able to run a simple example using a BackPropagation architecture.") {
 
-            var net = NeuralNet.init(numberOfInputNeurons: 2, numberOfHiddenLayers: 1, numberOfNeuronsInHiddenLayer: 3, numberOfOutputNeurons: 2)
+            var net = NeuralNet.init(numberOfInputNeurons: 2, hiddenLayers: [3], numberOfOutputNeurons: 2)
 
             print("---------------------backpropagation INIT---------------------")
 
@@ -151,7 +151,7 @@ class NeuralNetworkSpec: QuickSpec {
             print("\n")
             print("XOR perceptron TEST multiple hidden layers \n")
 
-            let net = NeuralNet(numberOfInputNeurons: 2, numberOfHiddenLayers: 2, numberOfNeuronsInHiddenLayer: 0, numberOfOutputNeurons: 1)
+            let net = NeuralNet(numberOfInputNeurons: 2, hiddenLayers: [2, 2], numberOfOutputNeurons: 1)
             net.printNet()
 
             net.trainingSet = Matrix<Float>(rows: 4, columns: 3, elements: [1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0])

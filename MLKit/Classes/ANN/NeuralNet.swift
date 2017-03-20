@@ -83,18 +83,18 @@ public class NeuralNet {
         numberOfHiddenLayers = 0
     }
 
-    public init(numberOfInputNeurons: Int, numberOfHiddenLayers: Int = 1, numberOfNeuronsInHiddenLayer: Int, numberOfOutputNeurons: Int) {
+    public init(numberOfInputNeurons: Int, hiddenLayers: [Int], numberOfOutputNeurons: Int) {
 
         // Initialize Input Layer
         inputLayer = InputLayer()
         inputLayer.numberOfNeuronsInLayer = numberOfInputNeurons
 
         // Initialize Hidden Layers
-        self.numberOfHiddenLayers = numberOfHiddenLayers
+        self.numberOfHiddenLayers = hiddenLayers.count
 
         for i in 0..<numberOfHiddenLayers {
             var hiddenLayer = HiddenLayer()
-            hiddenLayer.numberOfNeuronsInLayer = numberOfNeuronsInHiddenLayer
+            hiddenLayer.numberOfNeuronsInLayer = hiddenLayers[i]
             listOfHiddenLayers.append(hiddenLayer)
         }
 
