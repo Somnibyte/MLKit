@@ -35,7 +35,7 @@ open class NeuralNet {
     public var numberOfHiddenLayers: Int
 
     /// Your Training Set
-    public var trainingSet: Matrix<Float>!
+    public var trainingSet: Matrix<Float>?
 
     /// The Target Output set (Generally Used for Single Layer Perceptron & Adaline)
     public var targetOutputSet: ValueArray<Float>!

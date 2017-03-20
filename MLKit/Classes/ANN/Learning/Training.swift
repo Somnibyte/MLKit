@@ -29,11 +29,14 @@ extension Training {
      - returns: A Float.
      */
     public func train(network: NeuralNet) -> NeuralNet {
+        guard let trainingSet = network.trainingSet else {
+            fatalError("cannot train without training set")
+        }
 
         var weightsComingIn: ValueArray<Float>! = ValueArray<Float>()
 
-        var rows = network.trainingSet.rows
-        var columns = network.trainingSet.columns
+        var rows = trainingSet.rows
+        var columns = trainingSet.columns
 
         var error: Float = 0.0
         var meanSquaredError: Float = 0.0
@@ -50,7 +53,7 @@ extension Training {
                 for j in 0..<columns {
                     weightsComingIn = network.inputLayer.listOfNeurons[j].weightsComingIn
                     var inputWeight = weightsComingIn[0]
-                    netValue += inputWeight * network.trainingSet[i, j]
+                    netValue += inputWeight * trainingSet[i, j]
                 }
 
                 // Estimate the error of our model
@@ -108,7 +111,7 @@ extension Training {
             inputWeightsInOld = network.inputLayer.listOfNeurons[j].weightsComingIn
             var oldWeight = inputWeightsInOld[0]
 
-            inputWeightsInNew.append(try! updateWeight(trainingType: network.trainingType, oldWeight: oldWeight, network: network, error: error, trainSample: network.trainingSet[line, j], netValue: netValue))
+            inputWeightsInNew.append(try! updateWeight(trainingType: network.trainingType, oldWeight: oldWeight, network: network, error: error, trainSample: network.trainingSet![line, j], netValue: netValue))
 
             var newNeuron = Neuron()
             newNeuron.weightsComingIn = ValueArray(inputWeightsInNew)
@@ -136,8 +139,8 @@ extension Training {
     // TODO: REVISE FOR GENERAL NEURAL NETWORK RESULT
     private func printMultiLayerNetworkResult(trainedNetwork: NeuralNet) {
 
-        var rows = trainedNetwork.trainingSet.rows
-        var columns = trainedNetwork.trainingSet.columns
+        var rows = trainedNetwork.trainingSet!.rows
+        var columns = trainedNetwork.trainingSet!.columns
 
         var weightsComingIn: ValueArray<Float>! = ValueArray<Float>()
 
@@ -179,8 +182,8 @@ extension Training {
 
     private func printSingleLayerNetworkResult(trainedNetwork: NeuralNet) {
 
-        var rows = trainedNetwork.trainingSet.rows
-        var columns = trainedNetwork.trainingSet.columns
+        var rows = trainedNetwork.trainingSet!.rows
+        var columns = trainedNetwork.trainingSet!.columns
 
         var weightsComingIn: ValueArray<Float>! = ValueArray<Float>()
 

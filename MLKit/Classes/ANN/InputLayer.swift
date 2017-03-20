@@ -11,7 +11,7 @@ import Foundation
 import Upsurge
 
 /// The InputLayer class represents the input layer of a NueralNet object.
-public class InputLayer: Layer {
+public class InputLayer: Layer, CustomStringConvertible {
 
     fileprivate var _listOfNeurons: [Neuron]!
     fileprivate var _numberOfNeuronsInLayer: Int!
@@ -66,6 +66,21 @@ public class InputLayer: Layer {
         inputLayer.listOfNeurons = listOfNeurons
 
         return inputLayer
+    }
+
+    public var description: String {
+
+        let header = " ~ [INPUT LAYER] ~"
+
+        var n: Int = 1
+
+        var neuronStrings = ""
+        for neuron in self.listOfNeurons {
+            neuronStrings += "Neuron # \(n) :\n"
+            neuronStrings += "Input Weights of Neuron \(n): \(neuron.weightsComingIn)\n"
+            n += 1
+        }
+        return header + "\n" + neuronStrings
     }
 
     // See Layer Protocol Comment
