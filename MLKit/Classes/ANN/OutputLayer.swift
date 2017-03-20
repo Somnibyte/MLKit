@@ -14,8 +14,8 @@ import Upsurge
 /// The OutputLayer class represents the output layer of a NueralNet object.
 public class OutputLayer: Layer {
 
-    fileprivate var _listOfNeurons: [Neuron]!
-    fileprivate var _numberOfNeuronsInLayer: Int!
+    fileprivate var _listOfNeurons: [Neuron]
+    fileprivate var _numberOfNeuronsInLayer: Int
 
     /// List of neurons associated with the output layer
     public var listOfNeurons: [Neuron] {
@@ -49,12 +49,13 @@ public class OutputLayer: Layer {
 
      - returns: An OutputLayer Object.
      */
-    open func initializeLayer(outLayer: OutputLayer) -> OutputLayer {
+    init(numberOfNeuronsInLayer: Int) {
 
         var temporaryWeightsOut: [Float] = []
         var listOfNeurons: [Neuron] = []
+        _numberOfNeuronsInLayer = numberOfNeuronsInLayer
 
-        for var i in 0..<outLayer.numberOfNeuronsInLayer {
+        for var i in 0..<numberOfNeuronsInLayer {
 
             var neuron = Neuron()
 
@@ -67,9 +68,7 @@ public class OutputLayer: Layer {
             temporaryWeightsOut = []
         }
 
-        outLayer.listOfNeurons = listOfNeurons
-
-        return outLayer
+        _listOfNeurons = listOfNeurons
     }
 
     // See Layer Protocol Comment

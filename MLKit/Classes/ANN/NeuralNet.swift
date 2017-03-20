@@ -80,15 +80,18 @@ public class NeuralNet {
      - returns: A Neural Net Object.
      */
     public init() {
-        inputLayer = InputLayer()
-        outputLayer = OutputLayer()
+        inputLayer = InputLayer(numberOfNeuronsInLayer: 0)
+        outputLayer = OutputLayer(numberOfNeuronsInLayer: 0)
     }
 
     public init(numberOfInputNeurons: Int, hiddenLayers: [Int], numberOfOutputNeurons: Int) {
 
         // Initialize Input Layer
-        inputLayer = InputLayer()
-        inputLayer.numberOfNeuronsInLayer = numberOfInputNeurons
+        inputLayer = InputLayer(numberOfNeuronsInLayer: numberOfInputNeurons)
+
+
+        // Initialize OuptutLayer
+        outputLayer = OutputLayer(numberOfNeuronsInLayer: numberOfOutputNeurons)
 
         // Initialize Hidden Layers
         for i in 0..<hiddenLayers.count {
@@ -96,18 +99,10 @@ public class NeuralNet {
             hiddenLayer.numberOfNeuronsInLayer = hiddenLayers[i]
             listOfHiddenLayers.append(hiddenLayer)
         }
-
-        // Initialize OuptutLayer
-        outputLayer = OutputLayer()
-        outputLayer.numberOfNeuronsInLayer = numberOfOutputNeurons
-
-        inputLayer = inputLayer.initializeLayer(inputLayer: inputLayer)
-
         for hiddenLayer in listOfHiddenLayers {
             listOfHiddenLayers = hiddenLayer.initializeLayer(inputLayer: inputLayer, listOfHiddenLayers: listOfHiddenLayers, outputLayer: outputLayer)
         }
 
-        outputLayer = outputLayer.initializeLayer(outLayer: outputLayer)
     }
 
     // MARK: - Public Methods

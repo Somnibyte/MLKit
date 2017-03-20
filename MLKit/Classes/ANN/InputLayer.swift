@@ -13,8 +13,8 @@ import Upsurge
 /// The InputLayer class represents the input layer of a NueralNet object.
 public class InputLayer: Layer, CustomStringConvertible {
 
-    fileprivate var _listOfNeurons: [Neuron]!
-    fileprivate var _numberOfNeuronsInLayer: Int!
+    fileprivate var _listOfNeurons: [Neuron]
+    fileprivate var _numberOfNeuronsInLayer: Int
 
     /// List of neurons associated with the input layer
     public var listOfNeurons: [Neuron] {
@@ -45,13 +45,13 @@ public class InputLayer: Layer, CustomStringConvertible {
 
      - returns: An InputLayer Object.
      */
-    public func initializeLayer(inputLayer: InputLayer) -> InputLayer {
-        var inputLayer = inputLayer
+    init(numberOfNeuronsInLayer: Int) {
 
         var temporaryWeightsIn: [Float] = []
         var listOfNeurons: [Neuron] = []
+        _numberOfNeuronsInLayer = numberOfNeuronsInLayer
 
-        for var i in 0..<inputLayer.numberOfNeuronsInLayer {
+        for var i in 0..<numberOfNeuronsInLayer {
 
             var neuron = Neuron()
 
@@ -64,9 +64,8 @@ public class InputLayer: Layer, CustomStringConvertible {
             temporaryWeightsIn = []
         }
 
-        inputLayer.listOfNeurons = listOfNeurons
+        _listOfNeurons = listOfNeurons
 
-        return inputLayer
     }
 
     public var description: String {
