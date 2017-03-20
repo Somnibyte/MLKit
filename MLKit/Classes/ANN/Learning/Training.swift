@@ -66,8 +66,8 @@ extension Training {
                 // Weight adjustment if error is not satisfactory
                 if abs(error) > network.targetError {
 
-                    var inputLayer = InputLayer()
-                    inputLayer.listOfNeurons = teachNeuronOfLayer(numberOfInputNeurons: columns, line: i, network: network, netValue: netValue, error: error)
+                    let neurons = teachNeuronOfLayer(numberOfInputNeurons: columns, line: i, network: network, netValue: netValue, error: error)
+                    var inputLayer = InputLayer(neurons: neurons)
 
                     network.inputLayer = inputLayer
                 }

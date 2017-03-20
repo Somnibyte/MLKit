@@ -65,7 +65,11 @@ public class InputLayer: Layer, CustomStringConvertible {
         }
 
         _listOfNeurons = listOfNeurons
+    }
 
+    init(neurons: [Neuron]) {
+        _listOfNeurons = neurons
+        _numberOfNeuronsInLayer = neurons.count
     }
 
     public var description: String {
