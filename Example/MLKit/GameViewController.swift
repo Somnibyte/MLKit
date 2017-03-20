@@ -66,7 +66,7 @@ class GameViewController: UIViewController {
 
         for _ in 1...20 {
 
-            let brain = NeuralNet(numberOfInputNeurons: 4, numberOfHiddenLayers: 1, numberOfNeuronsInHiddenLayer: 4, numberOfOutputNeurons: 1)
+            var brain = NeuralNet(numberOfInputNeurons: 4, numberOfHiddenLayers: 1, numberOfNeuronsInHiddenLayer: 4, numberOfOutputNeurons: 1)
 
             brain.activationFuncType = .siglog
 

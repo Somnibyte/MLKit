@@ -29,6 +29,7 @@ extension Training {
      - returns: A Float.
      */
     public func train(network: NeuralNet) -> NeuralNet {
+        var network = network
         guard let trainingSet = network.trainingSet else {
             fatalError("cannot train without training set")
         }
@@ -151,9 +152,9 @@ extension Training {
             for j in 0..<columns {
                 weightsComingIn = trainedNetwork.inputLayer.listOfNeurons[j].weightsComingIn
                 var inputWeight = weightsComingIn[0]
-                netValue += inputWeight * trainedNetwork.trainingSet[i, j]
+                netValue += inputWeight * trainedNetwork.trainingSet![i, j]
 
-                print("\(trainedNetwork.trainingSet[i, j])")
+                print("\(trainedNetwork.trainingSet![i, j])")
             }
 
             print("\n")
@@ -181,6 +182,7 @@ extension Training {
     }
 
     private func printSingleLayerNetworkResult(trainedNetwork: NeuralNet) {
+        var trainedNetwork = trainedNetwork
 
         var rows = trainedNetwork.trainingSet!.rows
         var columns = trainedNetwork.trainingSet!.columns
@@ -194,9 +196,9 @@ extension Training {
             for j in 0..<columns {
                 weightsComingIn = trainedNetwork.inputLayer.listOfNeurons[j].weightsComingIn
                 var inputWeight = weightsComingIn[0]
-                netValue += inputWeight * trainedNetwork.trainingSet[i, j]
+                netValue += inputWeight * trainedNetwork.trainingSet![i, j]
 
-                print("\(trainedNetwork.trainingSet[i, j])")
+                print("\(trainedNetwork.trainingSet![i, j])")
             }
 
             print("\n")

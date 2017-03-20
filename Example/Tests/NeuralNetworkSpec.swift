@@ -21,7 +21,7 @@ class NeuralNetworkSpec: QuickSpec {
             print("\n")
             print("XOR perceptron TEST \n")
 
-            let net = NeuralNet(numberOfInputNeurons: 2, numberOfHiddenLayers: 0, numberOfNeuronsInHiddenLayer: 0, numberOfOutputNeurons: 1)
+            var net = NeuralNet(numberOfInputNeurons: 2, numberOfHiddenLayers: 0, numberOfNeuronsInHiddenLayer: 0, numberOfOutputNeurons: 1)
             net.printNet()
 
             net.trainingSet = Matrix<Float>(rows: 4, columns: 3, elements: [1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0])
@@ -56,7 +56,7 @@ class NeuralNetworkSpec: QuickSpec {
 
         it("Should be able to run a simple example using a single layer Adaline architecture.") {
 
-            let net = NeuralNet(numberOfInputNeurons: 3, numberOfHiddenLayers: 0, numberOfNeuronsInHiddenLayer: 0, numberOfOutputNeurons: 1)
+            var net = NeuralNet(numberOfInputNeurons: 3, numberOfHiddenLayers: 0, numberOfNeuronsInHiddenLayer: 0, numberOfOutputNeurons: 1)
 
             net.printNet()
 
@@ -98,7 +98,7 @@ class NeuralNetworkSpec: QuickSpec {
 
         it("Should be able to run a simple example using a BackPropagation architecture.") {
 
-            let net = NeuralNet.init(numberOfInputNeurons: 2, numberOfHiddenLayers: 1, numberOfNeuronsInHiddenLayer: 3, numberOfOutputNeurons: 2)
+            var net = NeuralNet.init(numberOfInputNeurons: 2, numberOfHiddenLayers: 1, numberOfNeuronsInHiddenLayer: 3, numberOfOutputNeurons: 2)
 
             print("---------------------backpropagation INIT---------------------")
 
@@ -143,6 +143,44 @@ class NeuralNetworkSpec: QuickSpec {
             trainedNet.printNet()
 
             trainedNet.printTrainedNet(network: trainedNet)
+
+        }
+
+        it("Should be able to run a simple XOR example using a single layer Perceptron architecture with multiple hidden layers.") {
+
+            print("\n")
+            print("XOR perceptron TEST multiple hidden layers \n")
+
+            let net = NeuralNet(numberOfInputNeurons: 2, numberOfHiddenLayers: 2, numberOfNeuronsInHiddenLayer: 0, numberOfOutputNeurons: 1)
+            net.printNet()
+
+            net.trainingSet = Matrix<Float>(rows: 4, columns: 3, elements: [1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0])
+
+            net.targetOutputSet = ValueArray<Float>([0.0, 0.0, 0.0, 1.0])
+
+            net.maxEpochs = 10
+
+            net.targetError = 0.002
+
+            net.learningRate = 1.0
+
+            net.trainingType = TrainingType.perceptron
+
+            net.activationFuncType = ActivationFunctionType.step
+
+            let trainedNet = try! net.trainNet()
+
+            trainedNet.printNet()
+
+            trainedNet.printTrainedNet(network: trainedNet)
+
+            var actualOutput: [Float] = []
+
+            for val in trainedNet.targetOutputSet {
+                actualOutput.append(val)
+            }
+
+            expect(trainedNet.estimatedOutputAsArray).to(equal(actualOutput))
 
         }
 

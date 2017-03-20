@@ -45,7 +45,8 @@ public class InputLayer: Layer, CustomStringConvertible {
 
      - returns: An InputLayer Object.
      */
-    open func initializeLayer(inputLayer: InputLayer) -> InputLayer {
+    public func initializeLayer(inputLayer: InputLayer) -> InputLayer {
+        var inputLayer = inputLayer
 
         var temporaryWeightsIn: [Float] = []
         var listOfNeurons: [Neuron] = []

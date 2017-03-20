@@ -12,7 +12,7 @@ import Foundation
 import Upsurge
 
 /// The NeuralNet class defines a artificial neural network. Note that you are only allowed to have 1 hidden layer.
-open class NeuralNet {
+public class NeuralNet {
 
     public var estimatedOutputAsArray: [Float] = []
 
@@ -21,9 +21,6 @@ open class NeuralNet {
 
     /// The Input Layer
     public var inputLayer: InputLayer
-
-    /// The Hidden Layer
-    public var hiddenLayer: HiddenLayer
 
     /// List of Hidden Layers
     public var listOfHiddenLayers: [HiddenLayer] = []
@@ -82,24 +79,21 @@ open class NeuralNet {
      */
     public init() {
         inputLayer = InputLayer()
-        hiddenLayer = HiddenLayer()
         outputLayer = OutputLayer()
         numberOfHiddenLayers = 0
     }
 
     public init(numberOfInputNeurons: Int, numberOfHiddenLayers: Int = 1, numberOfNeuronsInHiddenLayer: Int, numberOfOutputNeurons: Int) {
-        precondition(0 <= numberOfHiddenLayers && numberOfHiddenLayers <= 1, "At most one hidden layer is supported at this time")
 
         // Initialize Input Layer
         inputLayer = InputLayer()
         inputLayer.numberOfNeuronsInLayer = numberOfInputNeurons
 
-        // Initialize Hidden Layer
-        hiddenLayer = HiddenLayer()
+        // Initialize Hidden Layers
         self.numberOfHiddenLayers = numberOfHiddenLayers
 
         for i in 0..<numberOfHiddenLayers {
-            hiddenLayer = HiddenLayer()
+            var hiddenLayer = HiddenLayer()
             hiddenLayer.numberOfNeuronsInLayer = numberOfNeuronsInHiddenLayer
             listOfHiddenLayers.append(hiddenLayer)
         }
@@ -110,7 +104,7 @@ open class NeuralNet {
 
         inputLayer = inputLayer.initializeLayer(inputLayer: inputLayer)
 
-        if numberOfHiddenLayers > 0 {
+        for hiddenLayer in listOfHiddenLayers {
             listOfHiddenLayers = hiddenLayer.initializeLayer(hiddenLayer: hiddenLayer, listOfHiddenLayers: listOfHiddenLayers, inputLayer: inputLayer, outputLayer: outputLayer)
         }
 
@@ -137,14 +131,14 @@ open class NeuralNet {
 
      - returns: A Neural Net Object.
      */
-    open func trainNet() throws -> NeuralNet {
+    public func trainNet() throws -> NeuralNet {
         return self.trainingType.trainingFunction.train(network: self)
     }
 
     /**
      The printTrainedNet prints a Neural Net objects weights. Should be used to evaluate the progress of your trained Neural Network.
      */
-    open func printTrainedNet(network: NeuralNet) {
+    public func printTrainedNet(network: NeuralNet) {
 
         print("---------------TRAINED NEURAL NETWORK RESULTS---------------")
         switch network.trainingType! {
@@ -175,12 +169,14 @@ open class NeuralNet {
     /**
      The printTrainedNet prints a Neural Net objects weights (use for debugging and or checking weights).
      */
-    open func printNet() {
+    public func printNet() {
 
         print("---------------WEIGHTS FOR EACH LAYER---------------")
         inputLayer.printLayer(layer: inputLayer)
         print()
-        hiddenLayer.printLayer(listOfHiddenLayers: listOfHiddenLayers)
+        for hiddenLayer in listOfHiddenLayers {
+            hiddenLayer.printLayer(listOfHiddenLayers: listOfHiddenLayers)
+        }
         print()
         outputLayer.printLayer(layer: outputLayer)
         print("\n")
