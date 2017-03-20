@@ -8,7 +8,6 @@
 // Architecture of the code inspired by Fábio M. Soares and Alan M.F Souza's implementation of a Neural Network -
 // in their book Neural Network Programming in Java.
 
-
 import Foundation
 import Upsurge
 
@@ -17,10 +16,9 @@ open class NeuralNet {
 
     public var estimatedOutputAsArray: [Float] = []
 
-
     /// Estimated output after training as a Matrix Object
     public var estimatedOutputAsMatrix: Matrix<Float>!
-    
+
     /// The Input Layer
     public var inputLayer: InputLayer
 
@@ -71,7 +69,6 @@ open class NeuralNet {
 
     /// Stores the mean of the error between two or more neurons
     public var errorMean: Float!
-
 
     /**
      The initializeNet method allows you to initialize a Neural Net Object.
@@ -132,7 +129,6 @@ open class NeuralNet {
     public func forward(input: [Float]) -> [Float] {
         return forwardProcess(network: self, input:input)
     }
-
 
     /**
      The trainNet method trains the Neural Network with the methods available (perceptron, adaline, and backpropagation). It is advised that you use this method for supervised learning.
@@ -226,7 +222,6 @@ open class NeuralNet {
                 // Activation function calculates the neurons output
                 netValueOut = try! NNOperations.activationFunc(fncType: network.activationFuncType, value: netValue)
 
-
                 // Set the neurons output
                 neuron.outputValue = netValue
 
@@ -247,7 +242,6 @@ open class NeuralNet {
                 // Use the activation function to calculate the activation of the output neuron(s)
                 netValueOut = try! NNOperations.activationFunc(fncType: network.activationFuncTypeOfOutputLayer, value: netValue)
 
-
                 // Set the output neurons output/activation
                 network.outputLayer.listOfNeurons[outLayer_i].outputValue = netValueOut
 
@@ -256,7 +250,6 @@ open class NeuralNet {
             // Set the hidden layers of the network with the newly adjusted neurons
             network.listOfHiddenLayers[hiddenLayer_i].listOfNeurons = hiddenLayer.listOfNeurons
         }
-
 
         var finalOutputSet: [Float] = []
 

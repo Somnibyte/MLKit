@@ -12,7 +12,6 @@ import MachineLearningKit
 import Quick
 import Nimble
 
-
 class RidgeRegressionSpec: QuickSpec {
 
     let estimatedWeights: ValueArray<Float> = [-0.201522, 263.089]

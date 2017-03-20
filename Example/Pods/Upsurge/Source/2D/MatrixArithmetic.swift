@@ -157,12 +157,10 @@ public func *<MR: QuadraticType>(lhs: Double, rhs: MR) -> Matrix<Double> where M
     return results
 }
 
-
 postfix operator ′
 public postfix func ′<M: QuadraticType>(value: M) -> Matrix<Double> where M.Element == Double {
     return transpose(value)
 }
-
 
 // MARK: - Float
 
@@ -217,7 +215,6 @@ public func normalize<M: QuadraticType>(_ x: M) -> Matrix<Float> where M.Element
     for i in (0..<inputMatrix .columns) {
         let length = Int32(inputMatrix .column(i).count)
         let vector = ValueArray(inputMatrix.column(i))
-
 
         // Calculate l2-norm
         let two_norm = cblas_snrm2(length, vector.pointer, Int32(1))

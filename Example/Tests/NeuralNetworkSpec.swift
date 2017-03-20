@@ -12,7 +12,6 @@ import MachineLearningKit
 import Quick
 import Nimble
 
-
 class NeuralNetworkSpec: QuickSpec {
 
     override func spec() {
@@ -61,7 +60,6 @@ class NeuralNetworkSpec: QuickSpec {
 
             net.printNet()
 
-
             net.trainingSet = Matrix<Float>(rows: 7, columns: 4, elements: [1.0, 0.98, 0.94, 0.95, 1.0, 0.60, 0.60, 0.85, 1.0, 0.35, 0.15, 0.15, 1.0, 0.25, 0.30, 0.98, 1.0, 0.75, 0.85, 0.91, 1.0, 0.43, 0.57, 0.87, 1.0, 0.05, 0.06, 0.01])
 
             net.targetOutputSet = ValueArray<Float>([0.80, 0.59, 0.23, 0.45, 0.74, 0.63, 0.10])
@@ -89,7 +87,6 @@ class NeuralNetworkSpec: QuickSpec {
 
             }
 
-
             var estimatedOutputAsDouble: [Double] = []
 
             for val in trainedNet.estimatedOutputAsArray {
@@ -99,7 +96,6 @@ class NeuralNetworkSpec: QuickSpec {
             expect(estimatedOutputAsDouble).to(beCloseTo(actualOutput as [Double], within:1.0))
         }
 
-
         it("Should be able to run a simple example using a BackPropagation architecture.") {
 
             let net = NeuralNet.init(numberOfInputNeurons: 2, numberOfHiddenLayers: 1, numberOfNeuronsInHiddenLayer: 3, numberOfOutputNeurons: 2)
@@ -107,7 +103,6 @@ class NeuralNetworkSpec: QuickSpec {
             print("---------------------backpropagation INIT---------------------")
 
             net.printNet()
-
 
             net.trainingSet = Matrix<Float>(rows: 10, columns: 3, elements: [1.0, 1.0, 0.73, 1.0, 1.0, 0.81, 1.0, 1.0, 0.86, 1.0, 1.0, 0.95, 1.0, 0.0, 0.45, 1.0, 1.0, 0.70, 1.0, 0.0, 0.51, 1.0, 1.0, 0.89, 1.0, 1.0, 0.79, 1.0, 0.0, 0.54])
 
@@ -125,13 +120,11 @@ class NeuralNetworkSpec: QuickSpec {
 
             net.activationFuncTypeOfOutputLayer = .linear
 
-
             let trainedNet = try! net.trainNet()
 
             trainedNet.printNet()
 
             trainedNet.printTrainedNet(network: trainedNet)
-
 
         }
 

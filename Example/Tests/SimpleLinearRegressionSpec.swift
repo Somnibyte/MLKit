@@ -12,7 +12,6 @@ import MachineLearningKit
 import Quick
 import Nimble
 
-
 class SimpleLinearRegressionSpec: QuickSpec {
 
     let dataset: Array<Float> = [0, 1, 2, 3, 4]

@@ -73,7 +73,6 @@ open class PolynomialLinearRegression {
             }
         }
 
-
         // Main ML Algorithm
         var converged = false
         var predictions: ValueArray<Float>!
@@ -178,15 +177,12 @@ open class PolynomialLinearRegression {
         return predictions.elements
     }
 
-
-
     func getFeatureDerivative(_ errors: ValueArray<Float>, feature: ValueArraySlice<Float>) -> Float {
 
         let derivative = 2 * (errors • feature)
 
         return derivative
     }
-
 
     /**
      The getWeightsAsMatrix function returns your weights.

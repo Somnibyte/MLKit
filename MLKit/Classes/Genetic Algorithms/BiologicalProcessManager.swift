@@ -34,7 +34,6 @@ open class BiologicalProcessManager {
 
             var newGenotypeForChild2 = parentTwoGenotype[0..<pivot] + parentOneGenotype[pivot...parentTwoGenotype.count-1]
 
-
             var child1Genotype = Array<Float>(newGenotypeForChild1)
 
             var child2Genotype = Array<Float>(newGenotypeForChild2)
@@ -46,7 +45,6 @@ open class BiologicalProcessManager {
             return (parentOneGenotype, parentTwoGenotype)
         }
     }
-
 
     // MARK: - Mutation Methods
 
@@ -61,7 +59,6 @@ open class BiologicalProcessManager {
     private static func generateRandomIndexes(genotypeCount: Int) -> (Int, Int) {
         var randomIndexOne = Int(arc4random_uniform(UInt32(genotypeCount)))
         var randomIndexTwo = Int(arc4random_uniform(UInt32(genotypeCount)))
-
 
         if randomIndexOne == randomIndexTwo {
 
@@ -79,7 +76,6 @@ open class BiologicalProcessManager {
 
         return (randomIndexOne, randomIndexTwo)
     }
-
 
     /**
      The swapMutation method swaps genes of a Genome objects `genotypeRepresentation`.
@@ -150,7 +146,6 @@ open class BiologicalProcessManager {
 
             var randomIdx = generateRandomIndexes(genotypeCount: genotype.count - 1)
 
-
             if randomIdx.0 > randomIdx.1 {
 
                 var subset = genotype[randomIdx.1...randomIdx.0].shuffle()
@@ -166,7 +161,6 @@ open class BiologicalProcessManager {
         }
 
     }
-
 
     /**
      The inverseMutation method shuffles a portion of the genes of a Genome object.
@@ -196,6 +190,5 @@ open class BiologicalProcessManager {
         }
 
     }
-
 
 }

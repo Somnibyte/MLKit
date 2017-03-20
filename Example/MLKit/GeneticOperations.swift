@@ -10,10 +10,8 @@ import Foundation
 import MachineLearningKit
 import Upsurge
 
-
 /// The GeneticOperations class manages encoding genes into weights for the neural network and decoding neural network weights into genes. These methods are not provided in the framework itself, rather it was for the game example.
 final class GeneticOperations {
-
 
     /**
      The encode method converts a NueralNet object to an array of floats by taking the weights of each layer and placing them into an array.
@@ -50,7 +48,6 @@ final class GeneticOperations {
 
         return genotypeRepresentation
     }
-
 
     /**
      The decode method converts a genotype back to a NeuralNet object by taking each value from the genotype and mapping them to a neuron in a particular layer.

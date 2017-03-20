@@ -8,13 +8,11 @@
 // Architecture of the code inspired by Fábio M. Soares and Alan M.F Souza's implementation of a Neural Network -
 // in their book Neural Network Programming in Java.
 
-
 import Foundation
 import Upsurge
 
 /// The HiddenLayer class represents the hidden layer of a NueralNet object.
 public class HiddenLayer: Layer {
-
 
     fileprivate var _listOfNeurons: [Neuron]!
     fileprivate var _numberOfNeuronsInLayer: Int!
@@ -44,7 +42,6 @@ public class HiddenLayer: Layer {
 
     }
 
-
     /**
      The initializeLayer method initializes an HiddenLayer object by creating Neurons with random weights and then filling the listOfNeurons attribute with the correct number of Neurons specificed by the developer.
 
@@ -56,7 +53,6 @@ public class HiddenLayer: Layer {
      - returns: An InputLayer Object.
      */
     open func initializeLayer(hiddenLayer: HiddenLayer, listOfHiddenLayers: [HiddenLayer], inputLayer: InputLayer, outputLayer: OutputLayer) -> [HiddenLayer] {
-
 
         var weightsComingIn: [Float] = []
         var weightsGoingOut: [Float] = []
@@ -73,7 +69,6 @@ public class HiddenLayer: Layer {
                 // Offsets
                 var limitIn: Int = 0
                 var limitOut: Int = 0
-
 
                 if i == 0 { // First hidden Layer will recieve the inputLayers number of neurons
                     limitIn = inputLayer.numberOfNeuronsInLayer
@@ -92,11 +87,9 @@ public class HiddenLayer: Layer {
                     limitOut = listOfHiddenLayers[i + 1].numberOfNeuronsInLayer// # of neurons of successor hidden layer
                 }
 
-
                 // Bias not connected
                 limitIn -= 1
                 limitOut -= 1
-
 
                 if j >= 1 {
 
@@ -127,7 +120,6 @@ public class HiddenLayer: Layer {
         return listOfHiddenLayers
     }
 
-
     /**
      The printLayer prints the weights of a list of hidden layer objects.
 
@@ -154,7 +146,6 @@ public class HiddenLayer: Layer {
 
             h += 1
         }
-
 
     }
 }

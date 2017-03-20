@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 public class Perceptron: Training {
     // Keep Blank
     // Utilizes Training Protocols 'train' method.

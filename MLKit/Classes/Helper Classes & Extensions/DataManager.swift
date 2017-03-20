@@ -41,7 +41,6 @@ open class MLDataManager {
         return totalSum / totalAmountOfData
     }
 
-
     /**
      The dataToMatrix method takes an array of features (which contain your data of a specific feature), along with your observations/output
      and turns your features into a Matrix of type Float and your output into an array in order to be processed by machine learning algorithms
@@ -196,7 +195,6 @@ open class MLDataManager {
 
         return features
     }
-
 
     /**
      The normalizeFeatures method calculates the l2 norm of your feature and output vectors.

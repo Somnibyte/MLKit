@@ -11,8 +11,6 @@ import Foundation
 /// The NNOperations (Nueral Network Operations) class has the objective of computing activation function values and the derivative of activation functions as well.
 final class NNOperations {
 
-
-
     // MARK: - Public Methods
     /**
      The activationFunc method returns the appropriate output based on the function that is specified.
@@ -72,8 +70,6 @@ final class NNOperations {
         }
     }
 
-
-
     // MARK: Activation Functions
 
     private static func fncStep(val: Float) -> Float {
@@ -104,7 +100,6 @@ final class NNOperations {
         return exp(powf((-val), 2))
     }
 
-
     // MARK: Derivatives
     private static func derivativeOfLinear(val: Float) -> Float {
         return 1.0
@@ -129,6 +124,5 @@ final class NNOperations {
     private static func derivativeOfGaussian(val: Float) -> Float {
         return -2 * val * exp(powf((-val), 2))
     }
-
 
 }

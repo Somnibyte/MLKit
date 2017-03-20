@@ -8,12 +8,10 @@
 
 import Foundation
 
-
 enum MachineLearningError: Error {
     case lengthOfDataArrayNotEqual
     case modelHasNotBeenFit
     case invalidInput
-
 
     var description: String {
         switch(self) {

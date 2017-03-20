@@ -9,9 +9,7 @@
 import Foundation
 import Upsurge
 
-
 open class RidgeRegression {
-
 
     fileprivate var _costFunctionResult: Float!
 
@@ -41,11 +39,9 @@ open class RidgeRegression {
         }
     }
 
-
     public init() {
         costFunctionResult  = 0.0
     }
-
 
     /**
      The fit method fits/trains your model and returns your regression coefficients/weights. The methods applies gradient descent
@@ -77,14 +73,12 @@ open class RidgeRegression {
             }
         }
 
-
         // Main ML Algorithm
         var predictions: ValueArray<Float>!
         var errors: ValueArray<Float> = ValueArray<Float>()
         let weights = initialWeights
         var derivative = Float(0.0)
         var iterations = Float(0.0)
-
 
         // Convert the users array of features and output into matrices and vectors
         let featureMatrixAndOutput = MLDataManager.dataToMatrix(features, output: output)
@@ -122,7 +116,6 @@ open class RidgeRegression {
 
         return weights
     }
-
 
     /**
      The RSS method computes the residual sum of squares or the cost function of your model.
@@ -187,9 +180,7 @@ open class RidgeRegression {
         return predictions.elements
     }
 
-
     func getFeatureDerivative(_ errors: ValueArray<Float>, feature: ValueArraySlice<Float>, weight: Float, l2Penalty: Float, featureIsConstant: Bool) -> Float {
-
 
         var derivative = Float(0)
 
@@ -204,7 +195,6 @@ open class RidgeRegression {
 
         return derivative
     }
-
 
     func kFoldCrossValidation(_ k: Float, l2Penalty: Float, features: [Array<Float>], output: Array<Float>, stepSize: Float) -> Float {
 
@@ -262,8 +252,6 @@ open class RidgeRegression {
         return totalError/k
     }
 
-
-
     open func lowestAverageValidationError(_ features: [Array<Float>], output: Array<Float>, listOfTestL2Penalties: [Float], k: Float=10, stepSize: Float = 0.1) throws  -> Float {
 
         // Error Handeling
@@ -282,7 +270,6 @@ open class RidgeRegression {
             }
         }
 
-
         var min: [Float] = [0, 0]
 
         for (i, l2Penalty) in listOfTestL2Penalties.enumerated() {
@@ -296,7 +283,6 @@ open class RidgeRegression {
                 min[1] = l2Penalty
             }
         }
-
 
         return min[1]
     }

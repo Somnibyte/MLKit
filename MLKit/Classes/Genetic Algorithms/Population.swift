@@ -11,7 +11,6 @@ import Foundation
 /// Handles processes involving selection.
 open class PopulationManager {
 
-
     /**
      The selectParents method selects two parents from the population to create an offspring.
 
@@ -49,12 +48,10 @@ open class PopulationManager {
 
         genomes.remove(at: indexOfBestGenome)
 
-
         // Now look for the second best genome in the population
 
         maxFitness = -10000
         indexOfBestGenome = 0
-
 
         for (i, genome) in genomes.enumerated() {
             if genome.fitness > maxFitness {
@@ -65,7 +62,6 @@ open class PopulationManager {
         }
 
         genomes.remove(at: indexOfBestGenome)
-
 
         return (firstBestGenome!, secondBestGenome!)
     }

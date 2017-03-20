@@ -13,7 +13,6 @@ import Upsurge
 /// The InputLayer class represents the input layer of a NueralNet object.
 public class InputLayer: Layer {
 
-
     fileprivate var _listOfNeurons: [Neuron]!
     fileprivate var _numberOfNeuronsInLayer: Int!
 
@@ -38,7 +37,6 @@ public class InputLayer: Layer {
             return _numberOfNeuronsInLayer = newValue + 1 // Don't forget BIAS
         }
     }
-
 
     /**
      The initializeLayer method initializes an InputLayer object by creating Neurons with random weights and then filling the listOfNeurons attribute with the correct number of Neurons specificed by the developer.
@@ -69,7 +67,6 @@ public class InputLayer: Layer {
 
         return inputLayer
     }
-
 
     // See Layer Protocol Comment
     public func printLayer(layer: Layer) {

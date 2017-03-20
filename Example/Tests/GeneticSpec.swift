@@ -12,9 +12,7 @@ import MachineLearningKit
 import Quick
 import Nimble
 
-
 class GeneticSpec: QuickSpec {
-
 
     public struct FakeGenome: Genome {
 
@@ -29,7 +27,6 @@ class GeneticSpec: QuickSpec {
         }
 
     }
-
 
     override func spec() {
 
@@ -53,10 +50,8 @@ class GeneticSpec: QuickSpec {
 
             BiologicalProcessManager.swapMutation(mutationRate: 1.0, genotype: &fakeGenome.genotypeRepresentation )
 
-
             expect(oldGenotype).toNot(equal(fakeGenome.genotypeRepresentation))
         }
-
 
         it("Should be able to produce a unique genotype after insert mutation process. ") {
 
@@ -68,7 +63,6 @@ class GeneticSpec: QuickSpec {
 
             expect(oldGenotype).toNot(equal(fakeGenome.genotypeRepresentation))
         }
-
 
         it("Should be able to produce a unique genotype after inverse mutation process. ") {
 
@@ -91,8 +85,6 @@ class GeneticSpec: QuickSpec {
 
             expect(oldGenotype).toNot(equal(fakeGenome.genotypeRepresentation))
         }
-
-
 
     }
 

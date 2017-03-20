@@ -15,7 +15,6 @@ public class BackPropagation: Training {
 
     open func train(network: NeuralNet) -> NeuralNet {
 
-
         /// Network (Xcode won't stop complaining about 'let' variable network
         var network = network
 
@@ -60,7 +59,6 @@ public class BackPropagation: Training {
 
         var listOfHiddenLayers: [HiddenLayer] = []
 
-
         // Obtain all hidden layers in the network
         listOfHiddenLayers = network.listOfHiddenLayers
 
@@ -84,7 +82,6 @@ public class BackPropagation: Training {
 
                     var netValue: Float = 0.0 // Activation Value
 
-
                     // Sum of the weights combined with the inputs
                     for var layer_j in 0..<(numberOfNeuronsInLayer - 1) {
                         var hiddenWeightIn = neuron.weightsComingIn[layer_j]
@@ -104,7 +101,6 @@ public class BackPropagation: Training {
 
             }
 
-
             // For each of the nuerons in the output layer ...
             for var outLayer_i in 0..<network.outputLayer.numberOfNeuronsInLayer {
 
@@ -123,7 +119,6 @@ public class BackPropagation: Training {
                 // Set the output neurons output/activation
                 network.outputLayer.listOfNeurons[outLayer_i].outputValue = netValueOut
 
-
                 // Error Calculation
                 estimatedOutput = netValueOut
                 actualOutput = network.targetOutputMatrix[row, outLayer_i]
@@ -141,10 +136,8 @@ public class BackPropagation: Training {
             network.listOfHiddenLayers[hiddenLayer_i].listOfNeurons = hiddenLayer.listOfNeurons
         }
 
-
         return network
     }
-
 
     /**
      The backpropagation method performs the backpropagation algorithm to a NeuralNet object. Note that, currently, this algorithm works with 1 hidden layer. At the moment you cannot exceed this amount.
@@ -156,18 +149,15 @@ public class BackPropagation: Training {
      */
     private func backpropagation(network: NeuralNet, row: Int) -> NeuralNet {
 
-
         var outputLayer: [Neuron] = []
         outputLayer = network.outputLayer.listOfNeurons
 
         var hiddenLayer: [Neuron] = []
         hiddenLayer = network.listOfHiddenLayers[0].listOfNeurons
 
-
         var error: Float = 0.0
         var netValue: Float = 0.0
         var sensibility: Float = 0.0
-
 
         // Calculate sensibility (error signal) for output layer
         for neuron in outputLayer {
@@ -178,7 +168,6 @@ public class BackPropagation: Training {
             // Set the neurons sensibility/error signal
             neuron.sensibility = sensibility
         }
-
 
         // Calculate the sensibility for the hidden layer
         for neuron in hiddenLayer {
@@ -220,7 +209,6 @@ public class BackPropagation: Training {
 
         }
 
-
         //fix weights (teach) [hidden layer to input layer]
         for neuron in hiddenLayer {
 
@@ -237,10 +225,7 @@ public class BackPropagation: Training {
 
                     neuron.weightsComingIn[hidden_i] = newWeight
                 }
-
-
             }
-
         }
 
         network.listOfHiddenLayers[0].listOfNeurons = hiddenLayer

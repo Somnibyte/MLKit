@@ -64,8 +64,6 @@ open class SimpleLinearRegression {
         }
     }
 
-
-
     public init() {
         slope = 0.0
         intercept = 0.0
@@ -269,14 +267,11 @@ open class SimpleLinearRegression {
         return predictionsFromTrainingData
     }
 
-
     /**
      The getRegressionCoefficients function returns your slope and intercept.
     */
     open func getRegressionCoefficients() -> (Float, Float) {
         return (self.slope, self.intercept)
     }
-
-
 
 }

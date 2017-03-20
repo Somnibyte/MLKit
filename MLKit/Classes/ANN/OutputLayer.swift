@@ -8,14 +8,11 @@
 // Architecture of the code inspired by Fábio M. Soares and Alan M.F Souza's implementation of a Neural Network -
 // in their book Neural Network Programming in Java.
 
-
 import Foundation
 import Upsurge
 
 /// The OutputLayer class represents the output layer of a NueralNet object.
 public class OutputLayer: Layer {
-
-
 
     fileprivate var _listOfNeurons: [Neuron]!
     fileprivate var _numberOfNeuronsInLayer: Int!
@@ -44,7 +41,6 @@ public class OutputLayer: Layer {
         }
 
     }
-
 
     /**
      The initializeLayer method initializes an OutputLayer object by creating Neurons with random weights and then filling the listOfNeurons attribute with the correct number of Neurons specificed by the developer.

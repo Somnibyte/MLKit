@@ -31,7 +31,6 @@ extension SKNode {
     }
 }
 
-
 // ADDITIONS
 
 // Genome that represents a Flappy Bird
@@ -59,10 +58,8 @@ public class FlappyGenome: Genome {
 
 class GameViewController: UIViewController {
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
-
 
         // Create First Generation of Flappy Birds
         var generation1: [FlappyGenome] = []
@@ -79,7 +76,6 @@ class GameViewController: UIViewController {
 
             generation1.append(newBird)
         }
-
 
         if let scene = GameScene.unarchiveFromFile("GameScene") as? GameScene {
 
@@ -118,6 +114,5 @@ class GameViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Release any cached data, images, etc that aren't in use.
     }
-
 
 }

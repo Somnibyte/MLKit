@@ -94,7 +94,6 @@ public func logb<M: LinearType>(_ x: M) -> ValueArray<Double> where M.Element ==
     return results
 }
 
-
 // MARK: - Float
 
 /// Exponentiation
