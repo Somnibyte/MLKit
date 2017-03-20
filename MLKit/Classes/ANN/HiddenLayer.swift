@@ -45,14 +45,13 @@ public class HiddenLayer: Layer {
     /**
      The initializeLayer method initializes an HiddenLayer object by creating Neurons with random weights and then filling the listOfNeurons attribute with the correct number of Neurons specificed by the developer.
 
-     - parameter hiddenLayer: A HiddenLayer object.
      - parameter listOfHiddenLayers: A list of HiddenLayer objects.
      - parameter inputLayer: The input layer (InputLayer Object).
      - paramter outputLayer: The output layer (OutputLayer Object).
 
      - returns: An InputLayer Object.
      */
-    open func initializeLayer(hiddenLayer: HiddenLayer, listOfHiddenLayers: [HiddenLayer], inputLayer: InputLayer, outputLayer: OutputLayer) -> [HiddenLayer] {
+    open func initializeLayer(inputLayer: InputLayer, listOfHiddenLayers: [HiddenLayer], outputLayer: OutputLayer) -> [HiddenLayer] {
 
         var weightsComingIn: [Float] = []
         var weightsGoingOut: [Float] = []
@@ -61,7 +60,7 @@ public class HiddenLayer: Layer {
         var numberOfHiddenLayers = listOfHiddenLayers.count
 
         for var i in 0..<numberOfHiddenLayers {
-            for var j in 0..<hiddenLayer.numberOfNeuronsInLayer {
+            for var j in 0..<self.numberOfNeuronsInLayer {
 
                 // Initialize Neuron
                 var neuron = Neuron()

@@ -29,7 +29,9 @@ public class NeuralNet {
     public var outputLayer: OutputLayer
 
     /// The Number of Hidden Layers
-    public var numberOfHiddenLayers: Int
+    public var numberOfHiddenLayers: Int {
+        return listOfHiddenLayers.count
+    }
 
     /// Your Training Set
     public var trainingSet: Matrix<Float>?
@@ -80,7 +82,6 @@ public class NeuralNet {
     public init() {
         inputLayer = InputLayer()
         outputLayer = OutputLayer()
-        numberOfHiddenLayers = 0
     }
 
     public init(numberOfInputNeurons: Int, hiddenLayers: [Int], numberOfOutputNeurons: Int) {
@@ -90,9 +91,7 @@ public class NeuralNet {
         inputLayer.numberOfNeuronsInLayer = numberOfInputNeurons
 
         // Initialize Hidden Layers
-        self.numberOfHiddenLayers = hiddenLayers.count
-
-        for i in 0..<numberOfHiddenLayers {
+        for i in 0..<hiddenLayers.count {
             var hiddenLayer = HiddenLayer()
             hiddenLayer.numberOfNeuronsInLayer = hiddenLayers[i]
             listOfHiddenLayers.append(hiddenLayer)
@@ -105,7 +104,7 @@ public class NeuralNet {
         inputLayer = inputLayer.initializeLayer(inputLayer: inputLayer)
 
         for hiddenLayer in listOfHiddenLayers {
-            listOfHiddenLayers = hiddenLayer.initializeLayer(hiddenLayer: hiddenLayer, listOfHiddenLayers: listOfHiddenLayers, inputLayer: inputLayer, outputLayer: outputLayer)
+            listOfHiddenLayers = hiddenLayer.initializeLayer(inputLayer: inputLayer, listOfHiddenLayers: listOfHiddenLayers, outputLayer: outputLayer)
         }
 
         outputLayer = outputLayer.initializeLayer(outLayer: outputLayer)

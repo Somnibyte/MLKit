@@ -56,7 +56,7 @@ class NeuralNetworkSpec: QuickSpec {
 
         it("Should be able to run a simple example using a single layer Adaline architecture.") {
 
-            var net = NeuralNet(numberOfInputNeurons: 3, hiddenLayers: [], numberOfOutputNeurons: 1)
+            let net = NeuralNet(numberOfInputNeurons: 3, hiddenLayers: [], numberOfOutputNeurons: 1)
 
             net.printNet()
 
@@ -98,7 +98,7 @@ class NeuralNetworkSpec: QuickSpec {
 
         it("Should be able to run a simple example using a BackPropagation architecture.") {
 
-            var net = NeuralNet.init(numberOfInputNeurons: 2, hiddenLayers: [3], numberOfOutputNeurons: 2)
+            let net = NeuralNet.init(numberOfInputNeurons: 2, hiddenLayers: [3], numberOfOutputNeurons: 2)
 
             print("---------------------backpropagation INIT---------------------")
 
