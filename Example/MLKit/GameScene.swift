@@ -330,9 +330,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 var offspring = BiologicalProcessManager.onePointCrossover(crossOverRate: 0.5, parentOneGenotype: parents.0.genotypeRepresentation, parentTwoGenotype: parents.1.genotypeRepresentation)
 
                 // Mutate their genes
-                BiologicalProcessManager.scrambleMutation(mutationRate: 0.5, genotype: &offspring.0)
-                BiologicalProcessManager.scrambleMutation(mutationRate: 0.5, genotype: &offspring.1)
-
+                BiologicalProcessManager.inverseMutation(mutationRate: 0.7, genotype: &offspring.0)
+                BiologicalProcessManager.inverseMutation(mutationRate: 0.7, genotype: &offspring.1)
 
                 // Create a separate neural network for the birds based on their genes
                 let brainofOffspring1 = GeneticOperations.decode(genotype: offspring.0)
@@ -445,7 +444,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             print("FLAPPY BIRD DECISION: \(decision)")
 
             // 0.95 was arbitrary, tweaking is recommended
-            if  decision[0] >= Float(0.95) {
+            if  decision[0] >= Float(0.89) {
 
                 if moving.speed > 0 {
 

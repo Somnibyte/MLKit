@@ -16,17 +16,17 @@ open class BiologicalProcessManager {
     /**
      The onePointCrossover method performs the "one point" crossover operation.
 
-     - parameter crossOverRate: Your crossover rate (should be between 0 and 1).
+     - parameter crossoverRate: Your crossover rate (should be between 0 and 1).
      - parameter parentOne: Parent represented as a Genome Object.
      - parameter parentTwo: Parent represented as a Genome Object.
 
-     - returns: The mean of the array
+     - returns: Two genotype representations. Depending on the crossover rate, you either get the parents genomes back or the new child genomes.
      */
-    open static func onePointCrossover(crossOverRate: Float, parentOneGenotype: [Float], parentTwoGenotype: [Float]) -> ([Float], [Float]) {
+    open static func onePointCrossover(crossoverRate: Float, parentOneGenotype: [Float], parentTwoGenotype: [Float]) -> ([Float], [Float]) {
 
         var randomProbability: Float = Float(arc4random()) / Float(UINT32_MAX)
 
-        if randomProbability < crossOverRate {
+        if randomProbability < crossoverRate {
 
             var pivot: Int = Int(arc4random_uniform(UInt32(parentOneGenotype.count)))
 

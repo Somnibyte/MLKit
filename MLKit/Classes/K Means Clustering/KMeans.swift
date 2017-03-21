@@ -11,12 +11,20 @@ import Upsurge
 
 open class KMeans {
 
+    /// The centroids of your K-Means model
     fileprivate var centroids: Matrix<Float>!
 
+    /// Represents the number of clusters
     fileprivate var k: Int!
+
+    /// A boolean that indicates whether K-Means++ will be applied as the initialization method
     fileprivate var smartInit: Bool!
+
+    /// The dataset of your model
     fileprivate var dataset: Matrix<Float>!
+
     fileprivate var associationArr: [Int]!
+
     fileprivate var dimension: Int!
 
     public init(dataset: [[Float]], k: Int) {
