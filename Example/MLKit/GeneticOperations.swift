@@ -23,28 +23,27 @@ final class GeneticOperations {
     public static func encode(network: NeuralNet) -> [Float] {
 
         let inputLayerNeurons = network.inputLayer.listOfNeurons
-        let hiddenLayerNeurons = network.listOfHiddenLayers[0].listOfNeurons
         let outputLayerNeurons = network.outputLayer.listOfNeurons
 
         var genotypeRepresentation: [Float] = []
 
         for neuron in inputLayerNeurons {
-            genotypeRepresentation = genotypeRepresentation + neuron.weightsComingIn
+            genotypeRepresentation += neuron.weightsComingIn
         }
 
-        for neuron in hiddenLayerNeurons {
-            genotypeRepresentation = genotypeRepresentation + neuron.weightsComingIn
-        }
+        for hiddenLayer in network.listOfHiddenLayers {
+            for neuron in hiddenLayer.listOfNeurons {
+                genotypeRepresentation += neuron.weightsComingIn
+            }
 
-        for neuron in hiddenLayerNeurons {
-            genotypeRepresentation = genotypeRepresentation + neuron.weightsGoingOut
+            for neuron in hiddenLayer.listOfNeurons {
+                genotypeRepresentation += neuron.weightsGoingOut
+            }
         }
 
         for neuron in outputLayerNeurons {
-            genotypeRepresentation = genotypeRepresentation + neuron.weightsGoingOut
+            genotypeRepresentation += neuron.weightsGoingOut
         }
-
-        print(genotypeRepresentation.count)
 
         return genotypeRepresentation
     }
@@ -59,7 +58,7 @@ final class GeneticOperations {
     public static func decode(genotype: [Float]) -> NeuralNet {
 
         // Create a new NueralNet
-        let brain = NeuralNet(numberOfInputNeurons: 4, hiddenLayers: [4], numberOfOutputNeurons: 1)
+        let brain = NeuralNet(numberOfInputNeurons: 5, hiddenLayers: [4], numberOfOutputNeurons: 1)
 
         brain.activationFuncType = .siglog
 
@@ -82,24 +81,27 @@ final class GeneticOperations {
             neuron.weightsComingIn = ValueArray<Float>([inputLayerWeights[i]])
         }
 
-        for (i, neuron) in brain.listOfHiddenLayers[0].listOfNeurons.enumerated() {
+        for hiddenLayer in brain.listOfHiddenLayers {
+            for (i, neuron) in hiddenLayer.listOfNeurons.enumerated() {
 
-            if i == 0 {
-                continue
-            } else if i == 1 {
-                neuron.weightsComingIn = ValueArray<Float>(hiddenLayerWeightsComingInForNeuron1)
-            } else if i == 2 {
-                neuron.weightsComingIn = ValueArray<Float>(hiddenLayerWeightsComingInForNeuron2)
-            } else if i == 3 {
-                neuron.weightsComingIn = ValueArray<Float>(hiddenLayerWeightsComingInForNeuron3)
-            } else if i == 4 {
-                neuron.weightsComingIn = ValueArray<Float>(hiddenLayerWeightsComingInForNeuron4)
+                if i == 0 {
+                    continue
+                } else if i == 1 {
+                    neuron.weightsComingIn = ValueArray<Float>(hiddenLayerWeightsComingInForNeuron1)
+                } else if i == 2 {
+                    neuron.weightsComingIn = ValueArray<Float>(hiddenLayerWeightsComingInForNeuron2)
+                } else if i == 3 {
+                    neuron.weightsComingIn = ValueArray<Float>(hiddenLayerWeightsComingInForNeuron3)
+                } else if i == 4 {
+                    neuron.weightsComingIn = ValueArray<Float>(hiddenLayerWeightsComingInForNeuron4)
+                }
             }
-        }
 
-        for (i, neuron) in brain.listOfHiddenLayers[0].listOfNeurons.enumerated() {
+            for (i, neuron) in hiddenLayer.listOfNeurons.enumerated() {
 
-            neuron.weightsGoingOut = ValueArray<Float>([hiddenLayerWeightsGoingOut[i]])
+                neuron.weightsGoingOut = ValueArray<Float>([hiddenLayerWeightsGoingOut[i]])
+
+            }
 
         }
 

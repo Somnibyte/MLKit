@@ -91,14 +91,10 @@ public class InputLayer: Layer, CustomStringConvertible {
     public func printLayer(layer: Layer) {
         print(" ~ [INPUT LAYER] ~")
 
-        var n: Int = 1
-
-        for neuron in layer.listOfNeurons {
+        for (n, neuron) in layer.listOfNeurons.enumerated() {
             print("Neuron # \(n) :")
             print("Input Weights of Neuron \(n): \(neuron.weightsComingIn)")
-            n += 1
         }
 
     }
-
 }

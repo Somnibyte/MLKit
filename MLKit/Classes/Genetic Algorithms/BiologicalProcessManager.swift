@@ -97,10 +97,6 @@ open class BiologicalProcessManager {
             genotype[randomIdx.0] = genotype[randomIdx.1]
 
             genotype[randomIdx.1] = temp
-
-        } else {
-
-            return
         }
     }
 
@@ -124,10 +120,6 @@ open class BiologicalProcessManager {
             genotype.remove(at: randomIdx.1)
 
             genotype.insert(temp, at: randomIdx.0 + 1)
-
-        } else {
-
-            return
         }
     }
 
@@ -147,19 +139,13 @@ open class BiologicalProcessManager {
             var randomIdx = generateRandomIndexes(genotypeCount: genotype.count - 1)
 
             if randomIdx.0 > randomIdx.1 {
-
                 var subset = genotype[randomIdx.1...randomIdx.0].shuffle()
 
             } else {
 
                 var subset = genotype[randomIdx.0...randomIdx.1].shuffle()
             }
-
-        } else {
-
-            return
         }
-
     }
 
     /**
@@ -184,9 +170,6 @@ open class BiologicalProcessManager {
                 genotype[randomIdx.0...randomIdx.1].reverse()
 
             }
-
-        } else {
-            return
         }
 
     }
