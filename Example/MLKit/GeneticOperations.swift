@@ -85,15 +85,15 @@ final class GeneticOperations {
             for (i, neuron) in hiddenLayer.listOfNeurons.enumerated() {
 
                 if i == 0 {
-                    continue
-                } else if i == 1 {
                     neuron.weightsComingIn = ValueArray<Float>(hiddenLayerWeightsComingInForNeuron1)
-                } else if i == 2 {
+                } else if i == 1 {
                     neuron.weightsComingIn = ValueArray<Float>(hiddenLayerWeightsComingInForNeuron2)
-                } else if i == 3 {
+                } else if i == 2 {
                     neuron.weightsComingIn = ValueArray<Float>(hiddenLayerWeightsComingInForNeuron3)
-                } else if i == 4 {
+                } else if i == 3 {
                     neuron.weightsComingIn = ValueArray<Float>(hiddenLayerWeightsComingInForNeuron4)
+                } else if i == 4 {
+                    neuron.weightsComingIn = ValueArray<Float>(hiddenLayerWeightsComingInForNeuron5)
                 }
             }
 
