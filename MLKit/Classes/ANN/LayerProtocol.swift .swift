@@ -7,10 +7,8 @@
 // Architecture of the code inspired by Fábio M. Soares and Alan M.F Souza's implementation of a Neural Network -
 // in their book Neural Network Programming in Java.
 
-
 import Foundation
 import Upsurge
-
 
 /// The Layer Protocol defines what attributes and methods a Layer Object must have.
 public protocol Layer {
@@ -19,7 +17,7 @@ public protocol Layer {
     var listOfNeurons: [Neuron] { get set }
 
     /// Number of Neurons in a particular layer.
-    var numberOfNueronsInLayer: Int { get set }
+    var numberOfNeuronsInLayer: Int { get set }
 
 }
 

@@ -11,9 +11,22 @@ import Foundation
 /// The TrainingType enum represents the type of neural network architecture you are using.
 public enum TrainingType {
     /// Perceptron Architecture
-    case PERCEPTRON
+    case perceptron
     /// Adaline Architecture
-    case ADALINE
+    case adaline
     /// BackPropagation Method
-    case BACKPROPAGATION
+    case backpropagation
+}
+
+public extension TrainingType {
+    var trainingFunction: Training {
+        switch self {
+        case .perceptron:
+            return Perceptron()
+        case .adaline:
+            return Adaline()
+        case .backpropagation:
+            return BackPropagation()
+        }
+    }
 }

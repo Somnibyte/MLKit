@@ -87,7 +87,6 @@ public protocol MutableTensorType: TensorType {
     mutating func withUnsafeMutablePointer<R>(_ body: (UnsafeMutablePointer<Element>) throws -> R) rethrows -> R
 }
 
-
 public extension MutableTensorType {
     /// Assign all values of a TensorType to this tensor.
     ///

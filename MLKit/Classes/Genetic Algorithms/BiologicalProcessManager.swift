@@ -34,7 +34,6 @@ open class BiologicalProcessManager {
 
             var newGenotypeForChild2 = parentTwoGenotype[0..<pivot] + parentOneGenotype[pivot...parentTwoGenotype.count-1]
 
-
             var child1Genotype = Array<Float>(newGenotypeForChild1)
 
             var child2Genotype = Array<Float>(newGenotypeForChild2)
@@ -46,7 +45,6 @@ open class BiologicalProcessManager {
             return (parentOneGenotype, parentTwoGenotype)
         }
     }
-
 
     // MARK: - Mutation Methods
 
@@ -61,7 +59,6 @@ open class BiologicalProcessManager {
     private static func generateRandomIndexes(genotypeCount: Int) -> (Int, Int) {
         var randomIndexOne = Int(arc4random_uniform(UInt32(genotypeCount)))
         var randomIndexTwo = Int(arc4random_uniform(UInt32(genotypeCount)))
-
 
         if randomIndexOne == randomIndexTwo {
 
@@ -79,7 +76,6 @@ open class BiologicalProcessManager {
 
         return (randomIndexOne, randomIndexTwo)
     }
-
 
     /**
      The swapMutation method swaps genes of a Genome objects `genotypeRepresentation`.
@@ -101,10 +97,6 @@ open class BiologicalProcessManager {
             genotype[randomIdx.0] = genotype[randomIdx.1]
 
             genotype[randomIdx.1] = temp
-
-        } else {
-
-            return
         }
     }
 
@@ -128,10 +120,6 @@ open class BiologicalProcessManager {
             genotype.remove(at: randomIdx.1)
 
             genotype.insert(temp, at: randomIdx.0 + 1)
-
-        } else {
-
-            return
         }
     }
 
@@ -150,23 +138,15 @@ open class BiologicalProcessManager {
 
             var randomIdx = generateRandomIndexes(genotypeCount: genotype.count - 1)
 
-
             if randomIdx.0 > randomIdx.1 {
-
                 var subset = genotype[randomIdx.1...randomIdx.0].shuffle()
 
             } else {
 
                 var subset = genotype[randomIdx.0...randomIdx.1].shuffle()
             }
-
-        } else {
-
-            return
         }
-
     }
-
 
     /**
      The inverseMutation method shuffles a portion of the genes of a Genome object.
@@ -190,12 +170,8 @@ open class BiologicalProcessManager {
                 genotype[randomIdx.0...randomIdx.1].reverse()
 
             }
-
-        } else {
-            return
         }
 
     }
-
 
 }

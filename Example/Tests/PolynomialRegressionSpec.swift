@@ -12,7 +12,6 @@ import MachineLearningKit
 import Quick
 import Nimble
 
-
 class PolynomialRegressionSpec: QuickSpec {
 
     var weights: Matrix<Float>!
@@ -69,7 +68,6 @@ class PolynomialRegressionSpec: QuickSpec {
 
             expect(self.quickPrediction).toEventually(beCloseTo(self.estimatedPrediction, within: 1))
         }
-
 
     }
 

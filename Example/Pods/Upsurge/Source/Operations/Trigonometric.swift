@@ -135,7 +135,6 @@ func deg2rad<M: LinearType>(_ x: M) -> ValueArray<Double> where M.Element == Dou
     return results
 }
 
-
 // MARK: - Float
 
 /// Sine-Cosine

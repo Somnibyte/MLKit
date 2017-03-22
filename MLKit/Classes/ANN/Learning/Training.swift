@@ -9,14 +9,13 @@
 import Foundation
 import Upsurge
 
-
 /// The Training Protocol defines the methods used for training a NeuralNet Object. Note that the `train` method used in this protocol's extension is used only for Neural Network architectures such as Adaline and Perceptron. There is no backpropagation method within the Training method. The Backpropagation class utilizes the Training protocol in order to implement methods that pertain to printing/debugging values. The Backpropagation algorithm has it's own 'train' method. The way the Adaline and Perceptron architecture's perform weight updates and training are completely different from the techniques found in Backpropagation which is why I have separated them.
 public protocol Training {
+    func train(network: NeuralNet) -> NeuralNet
 
 }
 
 extension Training {
-
 
     // MARK: - Public Methods
 
@@ -29,33 +28,30 @@ extension Training {
 
      - returns: A Float.
      */
-    public mutating func train(network: NeuralNet) -> NeuralNet {
+    public func train(network: NeuralNet) -> NeuralNet {
 
         var weightsComingIn: ValueArray<Float>! = ValueArray<Float>()
 
         var rows = network.trainingSet.rows
         var columns = network.trainingSet.columns
 
-
-        var epochs: Int = 0
         var error: Float = 0.0
         var meanSquaredError: Float = 0.0
 
-        while epochs < network.maxEpochs {
+        for epochs in 0..<network.maxEpochs {
 
             var estimatedOutput: Float!
             var actualOutput: Float!
 
-            for var i in 0..<rows {
+            for i in 0..<rows {
 
                 var netValue: Float = 0
 
-                for var j in 0..<columns {
+                for j in 0..<columns {
                     weightsComingIn = network.inputLayer.listOfNeurons[j].weightsComingIn
                     var inputWeight = weightsComingIn[0]
                     netValue += inputWeight * network.trainingSet[i, j]
                 }
-
 
                 // Estimate the error of our model
                 estimatedOutput = try! NNOperations.activationFunc(fncType: network.activationFuncType, value: netValue)
@@ -66,8 +62,8 @@ extension Training {
                 // Weight adjustment if error is not satisfactory
                 if abs(error) > network.targetError {
 
-                    var inputLayer = InputLayer()
-                    inputLayer.listOfNeurons = teachNeuronOfLayer(numberOfInputNeurons: columns, line: i, network: network, netValue: netValue, error: error)
+                    let neurons = teachNeuronOfLayer(numberOfInputNeurons: columns, line: i, network: network, netValue: netValue, error: error)
+                    var inputLayer = InputLayer(neurons: neurons)
 
                     network.inputLayer = inputLayer
                 }
@@ -76,18 +72,12 @@ extension Training {
 
             meanSquaredError = powf(actualOutput - estimatedOutput, 2.0)
             network.meanSquaredErrorList.append(meanSquaredError)
-
-            epochs += 1
-
         }
-
 
         network.trainingError = error
 
-
         return network
     }
-
 
     /**
      The printTrainedNetwork method prints the results of a trained Neural Network object.
@@ -105,7 +95,6 @@ extension Training {
         }
 
     }
-
 
     // MARK: - Private Methods
 
@@ -131,20 +120,18 @@ extension Training {
         return listOfNeurons
     }
 
-
     private func updateWeight(trainingType: TrainingType, oldWeight: Float, network: NeuralNet, error: Float, trainSample: Float, netValue: Float) throws -> Float {
 
         switch trainingType {
-        case .PERCEPTRON:
+        case .perceptron:
             return oldWeight + network.learningRate * error * trainSample
-        case .ADALINE:
+        case .adaline:
             return oldWeight + network.learningRate * error * trainSample * (try! NNOperations.derivativeFunc(fncType: network.activationFuncType, value: netValue))
         default:
             throw MachineLearningError.invalidInput
         }
 
     }
-
 
     // TODO: REVISE FOR GENERAL NEURAL NETWORK RESULT
     private func printMultiLayerNetworkResult(trainedNetwork: NeuralNet) {
@@ -154,12 +141,11 @@ extension Training {
 
         var weightsComingIn: ValueArray<Float>! = ValueArray<Float>()
 
-
-        for var i in 0..<rows {
+        for i in 0..<rows {
 
             var netValue: Float = 0
 
-            for var j in 0..<columns {
+            for j in 0..<columns {
                 weightsComingIn = trainedNetwork.inputLayer.listOfNeurons[j].weightsComingIn
                 var inputWeight = weightsComingIn[0]
                 netValue += inputWeight * trainedNetwork.trainingSet[i, j]
@@ -192,18 +178,18 @@ extension Training {
     }
 
     private func printSingleLayerNetworkResult(trainedNetwork: NeuralNet) {
+        var trainedNetwork = trainedNetwork
 
         var rows = trainedNetwork.trainingSet.rows
         var columns = trainedNetwork.trainingSet.columns
 
         var weightsComingIn: ValueArray<Float>! = ValueArray<Float>()
 
-
-        for var i in 0..<rows {
+        for i in 0..<rows {
 
             var netValue: Float = 0
 
-            for var j in 0..<columns {
+            for j in 0..<columns {
                 weightsComingIn = trainedNetwork.inputLayer.listOfNeurons[j].weightsComingIn
                 var inputWeight = weightsComingIn[0]
                 netValue += inputWeight * trainedNetwork.trainingSet[i, j]
@@ -213,7 +199,6 @@ extension Training {
 
             print("\n")
             var estimatedOutput = try! NNOperations.activationFunc(fncType: trainedNetwork.activationFuncType, value: netValue)
-
 
             trainedNetwork.estimatedOutputAsArray.append(estimatedOutput)
 
@@ -225,12 +210,8 @@ extension Training {
 
             print("ERROR: \(error) \t")
 
-
             print("------------------------------------")
         }
 
     }
-
-
-
 }

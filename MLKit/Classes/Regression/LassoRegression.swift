@@ -43,7 +43,6 @@ open class LassoRegression {
         costFunctionResult = 0.0
     }
 
-
     /**
      - parameter features: Your feature vector.
      - parameter output: Your output vector.
@@ -69,7 +68,6 @@ open class LassoRegression {
                 throw MachineLearningError.lengthOfDataArrayNotEqual
             }
         }
-
 
         // Convert the users array of features and output into matrices and vectors
         let featureMatrixAndOutput = MLDataManager.dataToMatrix(features, output: output)
@@ -106,8 +104,6 @@ open class LassoRegression {
         return initialWeights
     }
 
-
-
     func lassoCoordinateDescentStep(_ i: Int, featureMatrix: Matrix<Float>, output: Array<Float>, weights: Matrix<Float>, l1Penalty: Float) -> Float {
 
         // Compute predictions
@@ -133,7 +129,6 @@ open class LassoRegression {
 
         return newWeight
     }
-
 
     /**
      The RSS method computes the residual sum of squares or the cost function of your model.
@@ -197,7 +192,6 @@ open class LassoRegression {
 
         return predictions.elements
     }
-
 
     /**
      The getWeightsAsValueArray function returns a value array that contains your weights.

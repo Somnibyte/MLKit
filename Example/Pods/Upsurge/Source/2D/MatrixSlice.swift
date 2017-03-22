@@ -20,7 +20,6 @@
 
 import Foundation
 
-
 open class MatrixSlice<T: Value>: MutableQuadraticType, CustomStringConvertible, Equatable {
     public typealias Index = (Int, Int)
     public typealias Slice = MatrixSlice<Element>

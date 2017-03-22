@@ -12,7 +12,6 @@ import MachineLearningKit
 import Quick
 import Nimble
 
-
 class MLDataManagerSpec: QuickSpec {
 
     let data: [Float] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]

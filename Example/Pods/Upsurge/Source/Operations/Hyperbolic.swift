@@ -94,7 +94,6 @@ public func atanh<C: LinearType>(_ x: C) -> ValueArray<Double> where C.Element =
     return results
 }
 
-
 // MARK: - Float
 
 /// Hyperbolic Sine

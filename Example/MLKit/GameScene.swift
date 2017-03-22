@@ -54,13 +54,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var scoreLabelNode: SKLabelNode!
     var score = NSInteger()
 
-
-
     let birdCategory: UInt32 = 1 << 0
     let worldCategory: UInt32 = 1 << 1
     let pipeCategory: UInt32 = 1 << 2
     let scoreCategory: UInt32 = 1 << 3
-
 
     override func didMove(to view: SKView) {
 
@@ -147,7 +144,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         bird.position = CGPoint(x: self.frame.size.width * 0.35, y:self.frame.size.height * 0.6)
         bird.run(flap)
 
-
         bird.physicsBody = SKPhysicsBody(circleOfRadius: bird.size.height / 2.0)
         bird.physicsBody?.isDynamic = true
         bird.physicsBody?.allowsRotation = false
@@ -174,9 +170,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         scoreLabelNode.text = String(score)
         self.addChild(scoreLabelNode)
 
-
-
-
         // Set the current bird
         currentBird = flappyBirdGenerationContainer?[currentFlappy]
 
@@ -195,7 +188,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         pipeDown.setScale(2.0)
         pipeDown.position = CGPoint(x: 0.0, y: y + Double(pipeDown.size.height) + verticalPipeGap)
 
-
         pipeDown.physicsBody = SKPhysicsBody(rectangleOf: pipeDown.size)
         pipeDown.physicsBody?.isDynamic = false
         pipeDown.physicsBody?.categoryBitMask = pipeCategory
@@ -210,7 +202,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         pipeUp.physicsBody?.isDynamic = false
         pipeUp.physicsBody?.categoryBitMask = pipeCategory
         pipeUp.physicsBody?.contactTestBitMask = birdCategory
-
 
         // ADDITIONS
         goalArea = SKShapeNode(rectOf: CGSize(width: 10, height: 10))
@@ -238,7 +229,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     func resetScene () {
 
-
         // Move bird to original position and reset velocity
         bird.position = CGPoint(x: self.frame.size.width / 2.5, y: self.frame.midY)
         bird.physicsBody?.velocity = CGVector( dx: 0, dy: 0 )
@@ -261,7 +251,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         // GENETIC ALGORITHM (DOWN BELOW)
 
-
         // Calculate the amount of time it took until the AI lost.
         let endDate: NSDate = NSDate()
         let timeInterval: Double = endDate.timeIntervalSince(currentTime as Date)
@@ -276,7 +265,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         print("BIRD COUNT: \(currentFlappy)")
         print("FITNESS: \(currentBird?.fitness)")
         print("--------------------------- \n")
-
 
         /* DEBUGGING
         if (currentBird?.fitness)! >= Float(7.0) {
@@ -298,7 +286,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             // Experiment: Keep some of the last best birds and put them back into the population
             lastBestGen = (flappyBirdGenerationContainer?.filter({$0.fitness >= 4}))!
         }
-
 
         if (currentBird?.fitness)! > maxFitness {
             maxFitness = (currentBird?.fitness)!
@@ -330,6 +317,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 var offspring = BiologicalProcessManager.onePointCrossover(crossOverRate: 0.5, parentOneGenotype: parents.0.genotypeRepresentation, parentTwoGenotype: parents.1.genotypeRepresentation)
 
                 // Mutate their genes
+
                 BiologicalProcessManager.inverseMutation(mutationRate: 0.7, genotype: &offspring.0)
                 BiologicalProcessManager.inverseMutation(mutationRate: 0.7, genotype: &offspring.1)
 
@@ -376,14 +364,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
 
-
     // Chooses the closest pipe
     func closestPipe(pipes: [SKNode]) -> Int {
 
         var min = 0
         var minDist = abs(pipes[0].position.x - bird.position.x)
 
-        for (var i, var pipe) in pipes.enumerated() {
+        for (i, pipe) in pipes.enumerated() {
             if abs(pipe.position.x - minDist) < minDist {
                 minDist = abs(pipe.position.x - minDist)
                 min = i
@@ -426,7 +413,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             // Measure how close the bird is to the gap between the pipes
             let posToGap = pipes.children[0].children[2].position.y - bird.position.y
 
-
             let normalizedPosToGap = (posToGap - (-439))/(279 - (-439))
 
             /*
@@ -436,7 +422,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             print("Bird POS Y: \(birdPos)")
             print("======================== \n")
             */
-
 
             // Decision AI makes
             let decision = (currentBird?.brain?.forward(input: [Float(1), Float(normalizedDistanceOfNextPipe), Float(normalizedPosToGap), Float(birdYPos), Float(normalizedDistanceFromBottomPipe)]))!
@@ -480,7 +465,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 bird.physicsBody?.collisionBitMask = worldCategory
                 bird.run(  SKAction.rotate(byAngle: CGFloat(M_PI) * CGFloat(bird.position.y) * 0.01, duration:1), completion: {self.bird.speed = 0 })
 
-
                 // Flash background if contact is detected
                 self.removeAction(forKey: "flash")
                 self.run(SKAction.sequence([SKAction.repeat(SKAction.sequence([SKAction.run({
@@ -512,7 +496,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
                 bird.physicsBody?.collisionBitMask = worldCategory
                 bird.run(  SKAction.rotate(byAngle: CGFloat(M_PI) * CGFloat(bird.position.y) * 0.01, duration:1), completion: {self.bird.speed = 0 })
-
 
                 // Flash background if contact is detected
                 self.removeAction(forKey: "flash")

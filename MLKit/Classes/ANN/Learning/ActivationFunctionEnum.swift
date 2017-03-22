@@ -8,14 +8,13 @@
 
 import Foundation
 
-
 /// The ActivationFunctionType enum represents the type of activation function your NueralNet object will use.
 public enum ActivationFunctionType {
-    case STEP /// Step Activation Function
-    case LINEAR /// Linear Activation Function
-    case SIGLOG /// SigLog Activation Function
-    case HYPERTAN /// HypterTan Activation Function
-    case SOFTSIGN /// SoftSign Activation Function
-    case SINUSOID /// Sinusoid Activation Function
-    case GUASSIAN /// Sinusoid Activation Function
+    case step /// Step Activation Function
+    case linear /// Linear Activation Function
+    case siglog /// SigLog Activation Function
+    case hypertan /// HypterTan Activation Function
+    case softsign /// SoftSign Activation Function
+    case sinusoid /// Sinusoid Activation Function
+    case gaussian /// Sinusoid Activation Function
 }

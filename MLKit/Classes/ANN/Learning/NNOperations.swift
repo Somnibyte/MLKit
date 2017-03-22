@@ -11,8 +11,6 @@ import Foundation
 /// The NNOperations (Nueral Network Operations) class has the objective of computing activation function values and the derivative of activation functions as well.
 final class NNOperations {
 
-
-
     // MARK: - Public Methods
     /**
      The activationFunc method returns the appropriate output based on the function that is specified.
@@ -25,19 +23,19 @@ final class NNOperations {
     public static func activationFunc(fncType: ActivationFunctionType, value: Float) throws -> Float {
 
         switch fncType {
-        case .STEP:
+        case .step:
             return fncStep(val: value)
-        case .LINEAR:
+        case .linear:
             return fncLinear(val: value)
-        case .SIGLOG:
+        case .siglog:
             return fncSigLog(val: value)
-        case .HYPERTAN:
+        case .hypertan:
             return fncHyperTan(val: value)
-        case .SOFTSIGN:
+        case .softsign:
             return fncSoftSign(val: value)
-        case .SINUSOID:
+        case .sinusoid:
             return fncSinusoid(val: value)
-        case .GUASSIAN:
+        case .gaussian:
             return fncGuassian(val: value)
         default:
             throw MachineLearningError.invalidInput
@@ -55,24 +53,22 @@ final class NNOperations {
     public static func derivativeFunc(fncType: ActivationFunctionType, value: Float) throws -> Float {
 
         switch fncType {
-        case .LINEAR:
+        case .linear:
             return derivativeOfLinear(val: value)
-        case .SIGLOG:
+        case .siglog:
             return derivativeOfSigLog(val: value)
-        case .HYPERTAN:
+        case .hypertan:
             return derivativeOfHyperTan(val: value)
-        case .SOFTSIGN:
+        case .softsign:
             return derivativeOfSoftSign(val: value)
-        case .SINUSOID:
+        case .sinusoid:
             return derivativeOfSinusoid(val: value)
-        case .GUASSIAN:
+        case .gaussian:
             return derivativeOfGaussian(val: value)
         default:
             throw MachineLearningError.invalidInput
         }
     }
-
-
 
     // MARK: Activation Functions
 
@@ -104,7 +100,6 @@ final class NNOperations {
         return exp(powf((-val), 2))
     }
 
-
     // MARK: Derivatives
     private static func derivativeOfLinear(val: Float) -> Float {
         return 1.0
@@ -129,6 +124,5 @@ final class NNOperations {
     private static func derivativeOfGaussian(val: Float) -> Float {
         return -2 * val * exp(powf((-val), 2))
     }
-
 
 }

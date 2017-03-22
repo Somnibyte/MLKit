@@ -43,8 +43,6 @@ open class KMeans {
 
     }
 
-
-
     /**
      The randomCentroidInit method returns clusters that have been chosen randomly from the dataset itself.
     */
@@ -72,7 +70,6 @@ open class KMeans {
         var comparison: Matrix<Float>!
 
         var distances: [Float] = Array(repeatElement(0.0, count: k))
-
 
         while true {
 
@@ -104,7 +101,6 @@ open class KMeans {
             // Reset the clusters
             trainingCentroids = Matrix(rows: k, columns: dataset.columns, repeatedValue: 0.0)
 
-
             // Move the centroids
 
             for var i in associationArr {
@@ -131,7 +127,6 @@ open class KMeans {
 
                 finalDifference = (finalDifference > distance) ? finalDifference:distance
 
-
             }
 
             if finalDifference < 1 {
@@ -143,9 +138,6 @@ open class KMeans {
         self.centroids = trainingCentroids
     }
 
-
-
-
     /**
      obtainCentroids
 
@@ -154,6 +146,5 @@ open class KMeans {
     open func obtainCentroids() -> Matrix<Float> {
         return self.centroids
     }
-
 
 }

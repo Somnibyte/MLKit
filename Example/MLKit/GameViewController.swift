@@ -31,7 +31,6 @@ extension SKNode {
     }
 }
 
-
 // ADDITIONS
 
 // Genome that represents a Flappy Bird
@@ -59,29 +58,24 @@ public class FlappyGenome: Genome {
 
 class GameViewController: UIViewController {
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
-
 
         // Create First Generation of Flappy Birds
         var generation1: [FlappyGenome] = []
 
         for _ in 1...20 {
 
-            let brain = NeuralNet()
+            let brain = NeuralNet(numberOfInputNeurons: 5, hiddenLayers: [4], numberOfOutputNeurons: 1)
 
-            brain.initializeNet(numberOfInputNeurons: 4, numberOfHiddenLayers: 1, numberOfNeuronsInHiddenLayer: 4, numberOfOutputNeurons: 1)
+            brain.activationFuncType = .siglog
 
-            brain.activationFuncType = .SIGLOG
-
-            brain.activationFuncTypeOutputLayer = .SIGLOG
+            brain.activationFuncTypeOfOutputLayer = .siglog
 
             let newBird = FlappyGenome(genotype: GeneticOperations.encode(network: brain), network: brain)
 
             generation1.append(newBird)
         }
-
 
         if let scene = GameScene.unarchiveFromFile("GameScene") as? GameScene {
 
@@ -120,6 +114,5 @@ class GameViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Release any cached data, images, etc that aren't in use.
     }
-
 
 }

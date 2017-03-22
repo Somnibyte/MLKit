@@ -12,9 +12,7 @@ import MachineLearningKit
 import Quick
 import Nimble
 
-
 class LassorRegressionSpec: QuickSpec {
-
 
     var weights: Matrix<Float>!
     let estimatedFinalWeights: ValueArray<Float> = [21624964.0, 63157280.0, 0.0]

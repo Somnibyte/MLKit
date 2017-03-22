@@ -112,7 +112,6 @@ public func /(a: Double, x: Complex<Double>) -> Complex<Double> {
     return Complex<Double>(real: a*x.real / xMagSq, imag: -a*x.imag / xMagSq)
 }
 
-
 // MARK: - Float
 
 public func +(lhs: Complex<Float>, rhs: Complex<Float>) -> Complex<Float> {
