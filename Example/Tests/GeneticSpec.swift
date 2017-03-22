@@ -35,7 +35,7 @@ class GeneticSpec: QuickSpec {
             let fakeGenome1: FakeGenome = FakeGenome(genotype: [1.0, 2.0, 3.0])
             let fakeGenome2: FakeGenome = FakeGenome(genotype: [4.0, 5.0, 6.0])
 
-            let newGenomes = BiologicalProcessManager.onePointCrossover(crossOverRate: 1.0, parentOneGenotype: fakeGenome1.genotypeRepresentation, parentTwoGenotype: fakeGenome2.genotypeRepresentation)
+            let newGenomes = BiologicalProcessManager.onePointCrossover(crossoverRate: 1.0, parentOneGenotype: fakeGenome1.genotypeRepresentation, parentTwoGenotype: fakeGenome2.genotypeRepresentation)
 
             expect(newGenomes.0).toNot(equal(fakeGenome1.genotypeRepresentation))
             expect(newGenomes.1).toNot(equal(fakeGenome2.genotypeRepresentation))

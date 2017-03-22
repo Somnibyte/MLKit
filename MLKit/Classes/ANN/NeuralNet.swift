@@ -32,7 +32,6 @@ public class NeuralNet {
     public var numberOfHiddenLayers: Int {
         return listOfHiddenLayers.count
     }
-
     /// Your Training Set
     public var trainingSet: Matrix<Float>
 
@@ -93,7 +92,7 @@ public class NeuralNet {
         trainingSet = Matrix.init(rows: 0, columns: 0)
         estimatedOutputAsMatrix = Matrix.init(rows: 0, columns: 0)
         targetOutputMatrix = Matrix.init(rows: 0, columns: 0)
-        
+
         // Initialize Input Layer
         inputLayer = InputLayer(numberOfNeuronsInLayer: numberOfInputNeurons)
 

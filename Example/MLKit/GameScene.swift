@@ -314,7 +314,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 print("PARENT 2 FITNESS: \(parents.1.fitness)")
 
                 // Produce new flappy birds
-                var offspring = BiologicalProcessManager.onePointCrossover(crossOverRate: 0.5, parentOneGenotype: parents.0.genotypeRepresentation, parentTwoGenotype: parents.1.genotypeRepresentation)
+                var offspring = BiologicalProcessManager.onePointCrossover(crossoverRate: 0.5, parentOneGenotype: parents.0.genotypeRepresentation, parentTwoGenotype: parents.1.genotypeRepresentation)
 
                 // Mutate their genes
 

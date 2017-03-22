@@ -34,7 +34,7 @@ public class InputLayer: Layer, CustomStringConvertible {
         }
 
         set {
-            return _numberOfNeuronsInLayer = newValue + 1 // Don't forget BIAS
+            return _numberOfNeuronsInLayer = newValue
         }
     }
 
@@ -49,9 +49,9 @@ public class InputLayer: Layer, CustomStringConvertible {
 
         var temporaryWeightsIn: [Float] = []
         var listOfNeurons: [Neuron] = []
-        _numberOfNeuronsInLayer = numberOfNeuronsInLayer
+        _numberOfNeuronsInLayer = numberOfNeuronsInLayer + 1 // Bias Added
 
-        for var i in 0..<numberOfNeuronsInLayer {
+        for var i in 0..<(numberOfNeuronsInLayer+1) { // Bias Added
 
             var neuron = Neuron()
 

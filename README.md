@@ -91,10 +91,10 @@ To contribute to an already existant algorithm within the framework, please crea
 
 ## Development Schedule
 
-### Week of Mar 13th
+### Week of Mar 20th
 |M|T|W|Th|F|
 |---|---|---|---|---|
-|Genetic Algorithm Documentation, Nueral Network Documentation|TBD|TBD|TBD|TBD
+|-|-|Documentation|K-Means++|TBD
 
 ----------------------------------------------
 
