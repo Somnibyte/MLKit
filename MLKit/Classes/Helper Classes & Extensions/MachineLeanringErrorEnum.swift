@@ -9,9 +9,17 @@
 import Foundation
 
 enum MachineLearningError: Error {
+
+    /// Not enough data or no data was provided to a particular method
     case lengthOfDataArrayNotEqual
+
+    /// The model was not fit on any data
     case modelHasNotBeenFit
+
+    /// A method took invalid data as a parameter.
     case invalidInput
+
+    /// Description for MachineLearningError enum
 
     var description: String {
         switch(self) {

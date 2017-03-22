@@ -15,6 +15,7 @@ public class BackPropagation: Training {
 
     open func train(network: NeuralNet) -> NeuralNet {
 
+
         /// Network (Xcode won't stop complaining about 'let' variable network
         var network = network
 
@@ -199,8 +200,10 @@ public class BackPropagation: Training {
 
         }
 
+
         // fix weights (teach) [output layer to hidden layer]
         for outLayer_i in 0..<network.outputLayer.numberOfNeuronsInLayer {
+
 
             for neuron in hiddenLayer {
 
@@ -210,7 +213,8 @@ public class BackPropagation: Training {
 
         }
 
-        //fix weights (teach) [hidden layer to input layer]
+        //fix weights (teach) [from hidden layer to input layer]
+
         for neuron in hiddenLayer {
 
             var hiddenLayerInputWeights: ValueArray<Float> = ValueArray<Float>()
