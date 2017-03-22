@@ -17,7 +17,7 @@ public class NeuralNet {
     public var estimatedOutputAsArray: [Float] = []
 
     /// Estimated output after training as a Matrix Object
-    public var estimatedOutputAsMatrix: Matrix<Float>!
+    public var estimatedOutputAsMatrix: Matrix<Float>
 
     /// The Input Layer
     public var inputLayer: InputLayer
@@ -34,13 +34,13 @@ public class NeuralNet {
     }
 
     /// Your Training Set
-    public var trainingSet: Matrix<Float>?
+    public var trainingSet: Matrix<Float>
 
     /// The Target Output set (Generally Used for Single Layer Perceptron & Adaline)
-    public var targetOutputSet: ValueArray<Float>!
+    public var targetOutputSet: ValueArray<Float> = []
 
     /// The Target Output Matrix
-    public var targetOutputMatrix: Matrix<Float>!
+    public var targetOutputMatrix: Matrix<Float>
 
     /// Max Epoch (Stopping condition for training)
     public var maxEpochs: Int!
@@ -69,23 +69,31 @@ public class NeuralNet {
     /// Stores the mean of the error between two or more neurons
     public var errorMean: Float!
 
+    public init() {
+        inputLayer = InputLayer(numberOfNeuronsInLayer: 0)
+        outputLayer = OutputLayer(numberOfNeuronsInLayer: 0)
+        trainingSet = Matrix.init(rows: 0, columns: 0)
+        estimatedOutputAsMatrix = Matrix.init(rows: 0, columns: 0)
+        targetOutputMatrix = Matrix.init(rows: 0, columns: 0)
+    }
+
     /**
      The initializeNet method allows you to initialize a Neural Net Object.
 
      - parameter numberOfInputNeurons: Number of neurons for input layer.
-     - parameter numberOfHiddenLayers: Number of hidden layers. Default is 1. You cannot exceed 1 hidden layer. More on this in the docs.
-     - parameter numberOfNeuronsInHiddenLayer: Number of neurons in hidden layer.
+     - parameter hiddenLayers: A list of the number of neurons in each hidden layer.
      - parameter  numberOfOutputNeurons: Numebr of output neurons.
 
      - returns: A Neural Net Object.
      */
-    public init() {
-        inputLayer = InputLayer(numberOfNeuronsInLayer: 0)
-        outputLayer = OutputLayer(numberOfNeuronsInLayer: 0)
-    }
-
     public init(numberOfInputNeurons: Int, hiddenLayers: [Int], numberOfOutputNeurons: Int) {
 
+        inputLayer = InputLayer(numberOfNeuronsInLayer: 0)
+        outputLayer = OutputLayer(numberOfNeuronsInLayer: 0)
+        trainingSet = Matrix.init(rows: 0, columns: 0)
+        estimatedOutputAsMatrix = Matrix.init(rows: 0, columns: 0)
+        targetOutputMatrix = Matrix.init(rows: 0, columns: 0)
+        
         // Initialize Input Layer
         inputLayer = InputLayer(numberOfNeuronsInLayer: numberOfInputNeurons)
 

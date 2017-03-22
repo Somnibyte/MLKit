@@ -14,9 +14,6 @@ public class BackPropagation: Training {
     var meanSquaredError: Float!
 
     open func train(network: NeuralNet) -> NeuralNet {
-        guard let trainingSet = network.trainingSet else {
-            fatalError("cannot train without training set")
-        }
 
         /// Network (Xcode won't stop complaining about 'let' variable network
         var network = network
@@ -27,7 +24,7 @@ public class BackPropagation: Training {
         /// Set MSE
         self.meanSquaredError = 1.0
 
-        var rows = trainingSet.rows
+        var rows = network.trainingSet.rows
 
         /// Start training
         while self.meanSquaredError > network.targetError {
@@ -89,7 +86,7 @@ public class BackPropagation: Training {
                     // Sum of the weights combined with the inputs
                     for var layer_j in 0..<(numberOfNeuronsInLayer - 1) {
                         var hiddenWeightIn = neuron.weightsComingIn[layer_j]
-                        netValue += hiddenWeightIn * network.trainingSet![row, layer_j]
+                        netValue += hiddenWeightIn * network.trainingSet[row, layer_j]
                     }
 
                     // Activation function calculates the neurons output
@@ -225,7 +222,7 @@ public class BackPropagation: Training {
                 var newWeight: Float = 0.0
 
                 for var i in 0..<network.inputLayer.numberOfNeuronsInLayer {
-                    newWeight = hiddenLayerInputWeights[hidden_i] + (network.learningRate * neuron.sensibility * network.trainingSet![row, i])
+                    newWeight = hiddenLayerInputWeights[hidden_i] + (network.learningRate * neuron.sensibility * network.trainingSet[row, i])
 
                     neuron.weightsComingIn[hidden_i] = newWeight
                 }
