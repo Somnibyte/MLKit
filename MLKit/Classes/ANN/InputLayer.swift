@@ -39,11 +39,10 @@ public class InputLayer: Layer, CustomStringConvertible {
     }
 
     /**
-     The initializeLayer method initializes an InputLayer object by creating Neurons with random weights and then filling the listOfNeurons attribute with the correct number of Neurons specificed by the developer.
+     Input Layer Init
 
-     - parameter inputLayer: An InputLayer Object.
+     - parameter numberOfNeuronsInLayer: The number of neurons for the input layer.
 
-     - returns: An InputLayer Object.
      */
     init(numberOfNeuronsInLayer: Int) {
 
@@ -72,6 +71,9 @@ public class InputLayer: Layer, CustomStringConvertible {
         _numberOfNeuronsInLayer = neurons.count
     }
 
+    /**
+     The description variable prints the input layers neurons.
+     */
     public var description: String {
 
         let header = " ~ [INPUT LAYER] ~"
@@ -87,14 +89,4 @@ public class InputLayer: Layer, CustomStringConvertible {
         return header + "\n" + neuronStrings
     }
 
-    // See Layer Protocol Comment
-    public func printLayer(layer: Layer) {
-        print(" ~ [INPUT LAYER] ~")
-
-        for (n, neuron) in layer.listOfNeurons.enumerated() {
-            print("Neuron # \(n) :")
-            print("Input Weights of Neuron \(n): \(neuron.weightsComingIn)")
-        }
-
-    }
 }

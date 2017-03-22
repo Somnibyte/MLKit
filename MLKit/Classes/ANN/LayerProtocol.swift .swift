@@ -20,15 +20,3 @@ public protocol Layer {
     var numberOfNeuronsInLayer: Int { get set }
 
 }
-
-extension Layer {
-    /**
-     The printLayer method prints out the values of the incoming and outgoing weights in each nueron within the `layer` object.
-
-     - parameter layer: A layer object. The layer object must correspond with the layer you are working with. So if you call print layer using an InputLayer object, then you need to pass in an InputLayer.
-
-     */
-    func printLayer(layer: Layer) {
-
-    }
-}

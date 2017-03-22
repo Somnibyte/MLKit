@@ -77,13 +77,12 @@ public class NeuralNet {
     }
 
     /**
-     The initializeNet method allows you to initialize a Neural Net Object.
+     Neural Net Init
 
      - parameter numberOfInputNeurons: Number of neurons for input layer.
      - parameter hiddenLayers: A list of the number of neurons in each hidden layer.
-     - parameter  numberOfOutputNeurons: Numebr of output neurons.
+     - parameter  numberOfOutputNeurons: Number of output neurons.
 
-     - returns: A Neural Net Object.
      */
     public init(numberOfInputNeurons: Int, hiddenLayers: [Int], numberOfOutputNeurons: Int) {
 
@@ -106,6 +105,7 @@ public class NeuralNet {
             hiddenLayer.numberOfNeuronsInLayer = hiddenLayers[i]
             listOfHiddenLayers.append(hiddenLayer)
         }
+
         for hiddenLayer in listOfHiddenLayers {
             listOfHiddenLayers = hiddenLayer.initializeLayer(inputLayer: inputLayer, listOfHiddenLayers: listOfHiddenLayers, outputLayer: outputLayer)
         }
@@ -173,13 +173,12 @@ public class NeuralNet {
     public func printNet() {
 
         print("---------------WEIGHTS FOR EACH LAYER---------------")
-        inputLayer.printLayer(layer: inputLayer)
+        print(inputLayer.description)
         print()
         for hiddenLayer in listOfHiddenLayers {
             hiddenLayer.printLayer(listOfHiddenLayers: listOfHiddenLayers)
         }
-        print()
-        outputLayer.printLayer(layer: outputLayer)
+        print(outputLayer.description)
         print("\n")
     }
 

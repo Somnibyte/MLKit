@@ -34,10 +34,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     /// The pipe that is in front of the bird
     var currentPipe: Int = 0
 
+    /// The fitness of the best bird
     var maxFitness: Float = 0
 
+    /// The best bird (from any generation)
     var maxBird: FlappyGenome?
 
+    /// The best birds from the previous generation
     var lastBestGen: [FlappyGenome] = []
 
     // END of ADDITIONS
