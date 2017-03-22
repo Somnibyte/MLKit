@@ -58,7 +58,7 @@ final class GeneticOperations {
     public static func decode(genotype: [Float]) -> NeuralNet {
 
         // Create a new NueralNet
-        let brain = NeuralNet(numberOfInputNeurons: 5, hiddenLayers: [4], numberOfOutputNeurons: 1)
+        let brain = NeuralNet(numberOfInputNeurons: 4, hiddenLayers: [4], numberOfOutputNeurons: 1)
 
         brain.activationFuncType = .siglog
 

@@ -11,7 +11,7 @@
 import Foundation
 import Upsurge
 
-/// The NeuralNet class defines a artificial neural network. Note that you are only allowed to have 1 hidden layer.
+/// The NeuralNet class defines a artificial neural network.
 public class NeuralNet {
 
     public var estimatedOutputAsArray: [Float] = []
