@@ -320,9 +320,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 BiologicalProcessManager.scrambleMutation(mutationRate: 0.5, genotype: &offspring.0)
                 BiologicalProcessManager.scrambleMutation(mutationRate: 0.5, genotype: &offspring.1)
 
-                if offspring.0.count == 26 {
-                    print("derp")
-                }
                 // Create a separate neural network for the birds based on their genes
                 let brainofOffspring1 = GeneticOperations.decode(genotype: offspring.0)
 
