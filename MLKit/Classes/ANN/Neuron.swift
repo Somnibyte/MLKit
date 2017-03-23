@@ -19,13 +19,13 @@ open class Neuron {
     /// List of output weights
     public var weightsGoingOut: ValueArray<Float>!
 
-    /// List of output weights
+    /// Activation value
     public var outputValue: Float!
 
-    /// List of output weights
+    /// Error value
     public var error: Float!
 
-    /// List of output weights
+    /// Sensibility value
     public var sensibility: Float!
 
     /**

@@ -54,7 +54,7 @@ public class BackPropagation: Training {
         return network
     }
 
-    // TODO: Add ability for more hidden layers (currently allows for only 1 hidden layer)
+    // TODO: Add ability for more hidden layers (currently applies back propagation for neural net that has 1 hidden layer)
     // TODO: Use Matrix Operations rather than loops for performance.
     private func forward(network: NeuralNet, row: Int) -> NeuralNet {
         var network = network
