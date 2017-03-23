@@ -77,8 +77,6 @@ open class BiologicalProcessManager {
         return (randomIndexOne, randomIndexTwo)
     }
 
-
-
     /**
      The bitFlipMutation method flips the bits of a genotype (genotype must only contain the numbers 0 and 1).
 
