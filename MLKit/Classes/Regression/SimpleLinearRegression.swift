@@ -255,7 +255,7 @@ open class SimpleLinearRegression {
         return yHat
     }
 
-    func getTrainingDataPredictions (_ inputFeature: Array<Float>, slope: Float, intercept: Float) -> Array<Float> {
+    private func getTrainingDataPredictions (_ inputFeature: Array<Float>, slope: Float, intercept: Float) -> Array<Float> {
 
         var predictionsFromTrainingData = Array<Float>()
 
