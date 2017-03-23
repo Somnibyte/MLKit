@@ -42,6 +42,18 @@ class GeneticSpec: QuickSpec {
 
         }
 
+
+        it("Should be able to produce a unique genotype after bit flip mutaiton process.") {
+
+            var fakeGenome: FakeGenome = FakeGenome(genotype: [1.0, 0.0, 1.0])
+
+            let oldGenotype = fakeGenome.genotypeRepresentation
+
+            BiologicalProcessManager.bitFlipMutation(mutationRate: 1.0, genotype: &fakeGenome.genotypeRepresentation)
+
+            expect(oldGenotype).toNot(equal(fakeGenome.genotypeRepresentation))
+         }
+
         it("Should be able to produce a unique genotype after swap mutation process.") {
 
             var fakeGenome: FakeGenome = FakeGenome(genotype: [1.0, 2.0, 3.0])

@@ -180,7 +180,7 @@ open class RidgeRegression {
         return predictions.elements
     }
 
-    func getFeatureDerivative(_ errors: ValueArray<Float>, feature: ValueArraySlice<Float>, weight: Float, l2Penalty: Float, featureIsConstant: Bool) -> Float {
+    private func getFeatureDerivative(_ errors: ValueArray<Float>, feature: ValueArraySlice<Float>, weight: Float, l2Penalty: Float, featureIsConstant: Bool) -> Float {
 
         var derivative = Float(0)
 

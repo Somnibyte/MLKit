@@ -177,7 +177,7 @@ open class PolynomialLinearRegression {
         return predictions.elements
     }
 
-    func getFeatureDerivative(_ errors: ValueArray<Float>, feature: ValueArraySlice<Float>) -> Float {
+    private func getFeatureDerivative(_ errors: ValueArray<Float>, feature: ValueArraySlice<Float>) -> Float {
 
         let derivative = 2 * (errors • feature)
 

@@ -104,7 +104,7 @@ open class LassoRegression {
         return initialWeights
     }
 
-    func lassoCoordinateDescentStep(_ i: Int, featureMatrix: Matrix<Float>, output: Array<Float>, weights: Matrix<Float>, l1Penalty: Float) -> Float {
+    private func lassoCoordinateDescentStep(_ i: Int, featureMatrix: Matrix<Float>, output: Array<Float>, weights: Matrix<Float>, l1Penalty: Float) -> Float {
 
         // Compute predictions
         let predictions = predictEntireMatrixOfFeatures(featureMatrix, yourWeights: weights)

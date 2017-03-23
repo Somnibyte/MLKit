@@ -77,6 +77,31 @@ open class BiologicalProcessManager {
         return (randomIndexOne, randomIndexTwo)
     }
 
+
+
+    /**
+     The bitFlipMutation method flips the bits of a genotype (genotype must only contain the numbers 0 and 1).
+
+     - parameter mutationRate: Your mutation rate (should be between 0 and 1).
+     - parameter genotype: The genotypeRepresentation array of a Genome object.
+
+    */
+    open static func bitFlipMutation(mutationRate: Float, genotype:inout [Float]) {
+
+        var randomProbability: Float = Float(arc4random()) / Float(UINT32_MAX)
+
+        if randomProbability < mutationRate {
+
+            for (i, gene) in genotype.enumerated() {
+                if gene == 0 {
+                    genotype[i] = 1
+                } else {
+                    genotype[i] = 0
+                }
+            }
+        }
+    }
+
     /**
      The swapMutation method swaps genes of a Genome objects `genotypeRepresentation`.
 
