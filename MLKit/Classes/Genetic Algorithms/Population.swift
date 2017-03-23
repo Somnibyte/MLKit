@@ -16,7 +16,7 @@ open class PopulationManager {
 
      - parameter genomes: An array of genomes.
 
-     - returns: A tuple consisted two genomes.
+     - returns: A tuple consisted of two genomes.
      */
     open static func selectParents(genomes: [Genome]) -> (Genome, Genome) {
 

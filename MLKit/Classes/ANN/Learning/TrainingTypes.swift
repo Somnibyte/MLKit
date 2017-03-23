@@ -19,6 +19,8 @@ public enum TrainingType {
 }
 
 public extension TrainingType {
+
+    /// Represents the Neural Network architecture your Neural Net object is using. trainingFunction returns the appropriate Neural Network Architecture Object (perceptron, adaline, or backpropagation)
     var trainingFunction: Training {
         switch self {
         case .perceptron:
