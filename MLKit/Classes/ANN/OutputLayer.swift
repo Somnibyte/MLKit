@@ -45,8 +45,7 @@ public class OutputLayer: Layer {
     /**
      Output Layer Init
 
-     - parameter numberOfNeuronsInLayer: The number of neurons for the output layer.
-
+     - parameter numberOfNeuronsInLayer: The number of neurons for the output layer. Note that the bias has already been included for you.
      */
     init(numberOfNeuronsInLayer: Int) {
 

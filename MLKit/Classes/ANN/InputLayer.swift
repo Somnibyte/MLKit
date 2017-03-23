@@ -39,9 +39,9 @@ public class InputLayer: Layer, CustomStringConvertible {
     }
 
     /**
-     Input Layer Init
+     Input Layer Init.
 
-     - parameter numberOfNeuronsInLayer: The number of neurons for the input layer.
+     - parameter numberOfNeuronsInLayer: The number of neurons for the input layer. Note that the bias has already been included for you.
 
      */
     init(numberOfNeuronsInLayer: Int) {
