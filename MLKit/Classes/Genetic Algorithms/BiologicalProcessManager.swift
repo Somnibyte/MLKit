@@ -79,6 +79,7 @@ open class BiologicalProcessManager {
 
     /**
      The bitFlipMutation method flips the bits of a genotype (genotype must only contain the numbers 0 and 1).
+     The genotype representation is altered directly, nothing will be returned.
 
      - parameter mutationRate: Your mutation rate (should be between 0 and 1).
      - parameter genotype: The genotypeRepresentation array of a Genome object.
@@ -102,6 +103,7 @@ open class BiologicalProcessManager {
 
     /**
      The swapMutation method swaps genes of a Genome objects `genotypeRepresentation`.
+     The genotype representation is altered directly, nothing will be returned.
 
      - parameter mutationRate: Your mutation rate (should be between 0 and 1).
      - parameter genotype: The genotypeRepresentation array of a Genome object.
@@ -125,6 +127,7 @@ open class BiologicalProcessManager {
 
     /**
      The insertMutation method inserts random genes of a Genome objects `genotypeRepresentation` into random positions.
+     The genotype representation is altered directly, nothing will be returned.
 
      - parameter mutationRate: Your mutation rate (should be between 0 and 1).
      - parameter genotype: The genotypeRepresentation array of a Genome object.
@@ -148,6 +151,7 @@ open class BiologicalProcessManager {
 
     /**
      The scrambleMutation method shuffles a portion of the genes of a Genome object.
+     The genotype representation is altered directly, nothing will be returned.
 
      - parameter mutationRate: Your mutation rate (should be between 0 and 1).
      - parameter genotype: The genotypeRepresentation array of a Genome object.
@@ -173,6 +177,7 @@ open class BiologicalProcessManager {
 
     /**
      The inverseMutation method shuffles a portion of the genes of a Genome object.
+     The genotype representation is altered directly, nothing will be returned. 
 
      - parameter genotype: The genotypeRepresentation array of a Genome object.
 
