@@ -26,7 +26,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var generationCounter = 1
 
     /// Variable to keep track of the current time (this is used to determine fitness later)
-    var currentTime = NSDate()
+    var currentTimeForFlappyBird = NSDate()
 
     /// The red square (our goal area)
     var goalArea: SKShapeNode!
@@ -42,6 +42,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     /// The best birds from the previous generation
     var lastBestGen: [FlappyGenome] = []
+
+    /// SKLabel 
+    var generationLabel: SKLabelNode!
+    var fitnessLabel:SKLabelNode!
+
+
 
     // END of ADDITIONS
 
@@ -173,6 +179,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         scoreLabelNode.text = String(score)
         self.addChild(scoreLabelNode)
 
+
+        generationLabel = SKLabelNode(fontNamed:"MarkerFelt-Wide")
+        generationLabel.position = CGPoint( x: self.frame.midX - 150.0, y: 3 * self.frame.size.height / 4 + 140.0 )
+        generationLabel.zPosition = 100
+        generationLabel.text = "Gen: 1"
+        self.addChild(generationLabel)
+
+        fitnessLabel = SKLabelNode(fontNamed:"MarkerFelt-Wide")
+        fitnessLabel.position = CGPoint( x: self.frame.midX + 110.0, y: 3 * self.frame.size.height / 4 + 140.0 )
+        fitnessLabel.zPosition = 100
+        fitnessLabel.text = "Fitness: 0"
+        self.addChild(fitnessLabel)
+
         // Set the current bird
         currentBird = flappyBirdGenerationContainer?[currentFlappy]
 
@@ -256,8 +275,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         // Calculate the amount of time it took until the AI lost.
         let endDate: NSDate = NSDate()
-        let timeInterval: Double = endDate.timeIntervalSince(currentTime as Date)
-        currentTime = NSDate()
+        let timeInterval: Double = endDate.timeIntervalSince(currentTimeForFlappyBird as Date)
+        currentTimeForFlappyBird = NSDate()
 
         // Evaluate the current birds fitness
         currentBird?.generateFitness(score: score, time: Float(timeInterval))
@@ -267,6 +286,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         print("GENERATION: \(generationCounter)")
         print("BIRD COUNT: \(currentFlappy)")
         print("FITNESS: \(currentBird?.fitness)")
+        self.generationLabel.text = "Gen: \(self.generationCounter)"
         print("--------------------------- \n")
 
         /* DEBUGGING
@@ -296,7 +316,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
 
         // If we have hit the 20th bird, we need to move on to the next generation
-        if currentFlappy == 10 {
+        if currentFlappy == 20 {
 
             print("GENERATING NEW GEN!")
 
@@ -308,7 +328,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             newGen += lastBestGen
             newGen.append(maxBird!)
 
-            while newGen.count < 10 {
+            while newGen.count < 20 {
 
                 // Select the best parents
                 let parents = PopulationManager.selectParents(genomes: flappyBirdGenerationContainer!)
@@ -384,6 +404,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
 
     override func update(_ currentTime: TimeInterval) {
+
+        let endDate: NSDate = NSDate()
+        let timeInterval: Double = endDate.timeIntervalSince(currentTimeForFlappyBird as Date)
+        self.fitnessLabel.text = "Fitness: \(NSString(format: "%.2f", timeInterval))"
 
         checkIfOutOfBounds(bird.position.y)
 
