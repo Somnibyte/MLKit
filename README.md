@@ -53,6 +53,7 @@ To contribute to an already existant algorithm within the framework, please crea
 
 ### Roadmap:
 
+- [ ] [Issue #2](https://github.com/Somnibyte/MLKit/issues/2)
 - [ ] KMeans++ Implementation 
 - [ ] KMeans Clustering Documentation
 - [ ] Neural Network Documentation 
@@ -65,7 +66,6 @@ To contribute to an already existant algorithm within the framework, please crea
 - [ ] Artificial Neural Network using Metal
 - [ ] Game Playing AI (MiniMax, Alpha-Beta Pruning)
 - [ ] Self Organizing Maps
-- [ ] Enable Neural Network class to allow for multiple hidden layers (currently 1 is only allowed)
 
 ----------------------------------------------
 ## Features (So Far)
@@ -92,10 +92,7 @@ To contribute to an already existant algorithm within the framework, please crea
 
 ## Development Schedule
 
-### Week of Mar 20th
-|M|T|W|Th|F|
-|---|---|---|---|---|
-|-|-|Documentation|K-Means++|TBD
+TBD 
 
 ----------------------------------------------
 
