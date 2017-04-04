@@ -32,6 +32,8 @@ open class Neuron {
      The initializeNeuron method initializes a neuron with a random Float value.
     */
     open func initializeNeuron() -> Float {
+
+        
         return Float(arc4random()) / Float(UINT32_MAX)
     }
 
