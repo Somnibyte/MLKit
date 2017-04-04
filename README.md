@@ -92,7 +92,10 @@ To contribute to an already existant algorithm within the framework, please crea
 
 ## Development Schedule
 
-TBD 
+### Week of April 3rd
+|M|T|W|Th|F|
+|---|---|---|---|---|
+|Neural Network Revision ([Checkout Neural-Network-Revision](https://github.com/Somnibyte/MLKit/tree/neural-network-revision))||Neural Network Revision ([Checkout Neural-Network-Revision](https://github.com/Somnibyte/MLKit/tree/neural-network-revision))|TBD|TBD
 
 ----------------------------------------------
 
