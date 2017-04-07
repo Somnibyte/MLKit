@@ -51,6 +51,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     /// Best score (regardless of generation)
     var bestScore: Int = 0
+
+    /// Label that displays the best score (bestScore attribute)
     var bestScoreLabel: SKLabelNode!
 
 
@@ -319,7 +321,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if generationCounter >= 3 {
 
             // Experiment: Keep some of the last best birds and put them back into the population
-            lastBestGen = (flappyBirdGenerationContainer?.filter({$0.fitness >= 9.0}))!
+            lastBestGen = (flappyBirdGenerationContainer?.filter({$0.fitness >= 7.0}))!
         }
 
         if (currentBird?.fitness)! > maxFitness {
@@ -352,8 +354,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 var offspring = BiologicalProcessManager.onePointCrossover(crossoverRate: 0.5, parentOneGenotype: parents.0.genotypeRepresentation, parentTwoGenotype: parents.1.genotypeRepresentation)
 
                 // Mutate their genes
-                BiologicalProcessManager.scrambleMutation(mutationRate: 0.7, genotype: &offspring.0)
-                BiologicalProcessManager.scrambleMutation(mutationRate: 0.7, genotype: &offspring.1)
+                BiologicalProcessManager.inverseMutation(mutationRate: 0.7, genotype: &offspring.0)
+                BiologicalProcessManager.inverseMutation(mutationRate: 0.7, genotype: &offspring.1)
 
 
                 // Create a separate neural network for the birds based on their genes
