@@ -8,7 +8,7 @@
 
 import SpriteKit
 import MachineLearningKit
-
+/*
 class GameScene: SKScene, SKPhysicsContactDelegate {
 
     // ADDITIONS
@@ -43,7 +43,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     /// The best birds from the previous generation
     var lastBestGen: [FlappyGenome] = []
 
-    /// SKLabel 
+    /// SKLabel
     var generationLabel: SKLabelNode!
     var fitnessLabel:SKLabelNode!
 
@@ -537,3 +537,4 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
 }
+ */

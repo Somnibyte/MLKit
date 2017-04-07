@@ -2,8 +2,8 @@
 
 import UIKit
 import Upsurge
-
-
+import MachineLearningKit
+/* Already implemented in MachineLearningKit
 extension Collection {
     /// Return a copy of `self` with its elements shuffled
     func shuffle() -> [Iterator.Element] {
@@ -161,7 +161,7 @@ class Layer {
 
     // TODO: Make private method
     func generateRandomBiases() -> Matrix<Float> {
-        
+
         var biasValues: [Float] = []
 
         for i in 0..<layerSize!.columns {
@@ -215,7 +215,7 @@ class Layer {
 
 
 
-// Feed Forward Implementation 
+// Feed Forward Implementation
 class NeuralNetwork {
 
     public var layers: [Layer] = []
@@ -289,7 +289,7 @@ class NeuralNetwork {
         // Output Layer Delta
         var delta = layers.last?.produceOuputError(cost: outputError)
 
-        // Set the change in weights and bias for the last layer 
+        // Set the change in weights and bias for the last layer
         self.layers.last?.Δb = delta
 
         var activationValuesforTheSecondToLastLayer = layers[layers.count-2].activationValues
@@ -354,4 +354,4 @@ print(nn.feedforward(input: input3))
 print(nn.feedforward(input: input4))
 */
 
-
+*/

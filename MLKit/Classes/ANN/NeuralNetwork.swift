@@ -10,23 +10,8 @@ import Foundation
 import Upsurge
 
 
-
-/// Data structure the helps with neural network I/O.
-struct InputDataType {
-
-    /// Array of tuples (x,y) where x is your training data and y is your output data.
-    var data: [(input: [Float], target:[Float])]
-
-    /// Number of elements in 'data' attribute. 
-    var lengthOfTrainingData: Int {
-        get {
-            return data.count
-        }
-    }
-}
-
 // Feed Forward Implementation
-class NeuralNetwork {
+open class NeuralNetwork {
 
     /// The Layers that the NeuralNetwork object contains.
     public var layers: [Layer] = []
@@ -35,35 +20,35 @@ class NeuralNetwork {
     public var numberOfLayers: Int?
 
     /// The 'inputLayerSize' represents the number of neurons the input layer will have and the 'outputLayerSize' represents the number of output neurons the output layer will have.
-    public var networkSize: (inputLayerSize:Int, outputLayerSize:Int)?
+    public var networkSize: (inputLayerSize: Int, outputLayerSize: Int)?
 
-    init(size:(Int, Int)){
+    public init(size: (Int, Int)) {
 
         self.networkSize = size
 
     }
 
     /**
-     The addLayer method adds a new Layer to the NeuralNetwork object. 
-     
-     - parameter layer: Layer object. 
+     The addLayer method adds a new Layer to the NeuralNetwork object.
+
+     - parameter layer: Layer object.
     */
-    func addLayer(layer: Layer){
+    public func addLayer(layer: Layer) {
 
         self.layers.append(layer)
     }
 
     /**
      Given an input Matrix, the feedforward method will pass the input through the network producing a Matrix corresponding to the output of the Neural Network. The input Matrix must be of size (n, 1) (n rows and 1 column).
-     
+
      - parameter input: Matrix of size (n, 1) (n rows and 1 column).
     */
-    public func feedforward(input:Matrix<Float>) -> Matrix<Float> {
+    public func feedforward(input: Matrix<Float>) -> Matrix<Float> {
 
         var a = input
 
         for l in layers {
-            a = l.forward(activation: a)
+            a = l.forward(input: a)
         }
 
         return a
@@ -73,15 +58,15 @@ class NeuralNetwork {
     /**
      The SGD method (Stochastic Gradient Descent) trains the neural network using mini-batch stochastic
      gradient descent.
-     
-     - parameter trainingData: InputDataType object. 
+
+     - parameter trainingData: InputDataType object.
      - parameter epochs: Number of epochs.
-     - parameter miniBatchSize: Batch size. 
-     - parameter eta: Learning rate. 
+     - parameter miniBatchSize: Batch size.
+     - parameter eta: Learning rate.
      - parameter testData: InputDataType object. Optional.
 
     */
-    public func SGD(trainingData: InputDataType, epochs: Int, miniBatchSize: Int, eta: Float, testData: InputDataType? = nil){
+    public func SGD(trainingData: InputDataType, epochs: Int, miniBatchSize: Int, eta: Float, testData: InputDataType? = nil) {
 
         for i in 0..<epochs {
             var shuffledData = trainingData.data.shuffle()
@@ -97,14 +82,14 @@ class NeuralNetwork {
     }
 
 
-    /** 
+    /**
      The updateMiniBatch method updates the network's weights and biases by applying
      gradient descent using backpropagation to a single mini batch.
-     
-     - parameter miniBatch: InputDataType object. 
+
+     - parameter miniBatch: InputDataType object.
      - parameter eta: Learning Rate.
     */
-    public func updateMiniBatch(miniBatch: InputDataType, eta: Float){
+    public func updateMiniBatch(miniBatch: InputDataType, eta: Float) {
 
 
         for batch in miniBatch.data {
@@ -123,13 +108,13 @@ class NeuralNetwork {
     }
 
     /**
-     The backpropagate method performs the backpropagation algorithm. 
-     
-     - parameter input: Training data. 
-     - parameter target: Target data. 
+     The backpropagate method performs the backpropagation algorithm.
+
+     - parameter input: Training data.
+     - parameter target: Target data.
 
     */
-    public func backpropagate(input: Matrix<Float>, target: Matrix<Float>){
+    public func backpropagate(input: Matrix<Float>, target: Matrix<Float>) {
 
         // Feedforward
         let feedForwardOutput = feedforward(input: input)
@@ -151,8 +136,7 @@ class NeuralNetwork {
         for i in (0..<layers.count-1).reversed() {
             delta = layers[i].propagateError(previousLayerDelta: delta!, nextLayer: layers[i+1])
         }
-        
-    }
-    
-}
 
+    }
+
+}

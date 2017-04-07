@@ -95,6 +95,8 @@
 		931A3BED40D559A81F5167CFAB56D3A5 /* CSVReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622324B170D9D4EAB905996D74DBC373 /* CSVReader.swift */; };
 		96154D504405D81853EF3326A10CA05C /* World.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D069980D480A434318340B49416C2C /* World.swift */; };
 		962A1AAA808E92DC65244AFE9501295C /* ValueArraySlice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D06F6EACA4C3A8FB660F983B8C2500 /* ValueArraySlice.swift */; };
+		9A0D99CE1E97D26500FC7F1B /* InputDataType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0D99CD1E97D26500FC7F1B /* InputDataType.swift */; };
+		9A1965C81E97C47200FAED31 /* ActivationFunctionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1965C71E97C47200FAED31 /* ActivationFunctionType.swift */; };
 		9A77E7AD1E96E26600C4D8BA /* NeuralNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A77E7AC1E96E26600C4D8BA /* NeuralNetwork.swift */; };
 		9A77E7AF1E96E31B00C4D8BA /* Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A77E7AE1E96E31B00C4D8BA /* Layer.swift */; };
 		9B10C0FDE7497E14ECCD735C0D13ECBC /* MatrixSlice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674822B4E356741B78B38B007C88BB9C /* MatrixSlice.swift */; };
@@ -328,6 +330,8 @@
 		99460984C73229E22633921A1D4DD6DF /* Population.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Population.swift; sourceTree = "<group>"; };
 		9951688C60A46DD572589F5DACF0C4A5 /* Pods-MLKit_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MLKit_Example-umbrella.h"; sourceTree = "<group>"; };
 		99A3B4EC6DA19FEADCCDCA96CA327574 /* Span.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Span.swift; path = Source/ND/Span.swift; sourceTree = "<group>"; };
+		9A0D99CD1E97D26500FC7F1B /* InputDataType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputDataType.swift; sourceTree = "<group>"; };
+		9A1965C71E97C47200FAED31 /* ActivationFunctionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivationFunctionType.swift; sourceTree = "<group>"; };
 		9A77E7AC1E96E26600C4D8BA /* NeuralNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NeuralNetwork.swift; sourceTree = "<group>"; };
 		9A77E7AE1E96E31B00C4D8BA /* Layer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layer.swift; sourceTree = "<group>"; };
 		9AEF9A30B4EAA4E623AC004398637120 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/MapKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -521,6 +525,8 @@
 			children = (
 				9A77E7AC1E96E26600C4D8BA /* NeuralNetwork.swift */,
 				9A77E7AE1E96E31B00C4D8BA /* Layer.swift */,
+				9A1965C71E97C47200FAED31 /* ActivationFunctionType.swift */,
+				9A0D99CD1E97D26500FC7F1B /* InputDataType.swift */,
 			);
 			path = ANN;
 			sourceTree = "<group>";
@@ -1177,8 +1183,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				76DE9965F967C929E23496C9190552D7 /* BiologicalProcessManager.swift in Sources */,
+				9A1965C81E97C47200FAED31 /* ActivationFunctionType.swift in Sources */,
 				931A3BED40D559A81F5167CFAB56D3A5 /* CSVReader.swift in Sources */,
 				F1C3DA1C185CA6C61174BC255E9372F6 /* DataManager.swift in Sources */,
+				9A0D99CE1E97D26500FC7F1B /* InputDataType.swift in Sources */,
 				FFB35D2F31B5E9604B9972940367F2E7 /* Extensions.swift in Sources */,
 				9E89BAB7963E6327D38AA493C3FD856A /* Genome.swift in Sources */,
 				70121880DD090476FF2D85A257F7644C /* KMeans.swift in Sources */,
