@@ -49,6 +49,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var fitnessLabel: SKLabelNode!
 
 
+    /// Best score (regardless of generation)
+    var bestScore: Int = 0
+    var bestScoreLabel: SKLabelNode!
+
 
     // END of ADDITIONS
 
@@ -181,6 +185,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(scoreLabelNode)
 
 
+        bestScore = 0
+        bestScoreLabel = SKLabelNode(fontNamed:"MarkerFelt-Wide")
+        bestScoreLabel.position = CGPoint( x: self.frame.midX - 120.0, y: 3 * self.frame.size.height / 4 + 110.0 )
+        bestScoreLabel.zPosition = 100
+        bestScoreLabel.text = "bestScore: \(self.bestScore)"
+        self.addChild(bestScoreLabel)
+
         generationLabel = SKLabelNode(fontNamed:"MarkerFelt-Wide")
         generationLabel.position = CGPoint( x: self.frame.midX - 150.0, y: 3 * self.frame.size.height / 4 + 140.0 )
         generationLabel.zPosition = 100
@@ -308,7 +319,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if generationCounter >= 3 {
 
             // Experiment: Keep some of the last best birds and put them back into the population
-            lastBestGen = (flappyBirdGenerationContainer?.filter({$0.fitness >= 4}))!
+            lastBestGen = (flappyBirdGenerationContainer?.filter({$0.fitness >= 9.0}))!
         }
 
         if (currentBird?.fitness)! > maxFitness {
@@ -341,9 +352,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 var offspring = BiologicalProcessManager.onePointCrossover(crossoverRate: 0.5, parentOneGenotype: parents.0.genotypeRepresentation, parentTwoGenotype: parents.1.genotypeRepresentation)
 
                 // Mutate their genes
+                BiologicalProcessManager.scrambleMutation(mutationRate: 0.7, genotype: &offspring.0)
+                BiologicalProcessManager.scrambleMutation(mutationRate: 0.7, genotype: &offspring.1)
 
-                BiologicalProcessManager.inverseMutation(mutationRate: 0.7, genotype: &offspring.0)
-                BiologicalProcessManager.inverseMutation(mutationRate: 0.7, genotype: &offspring.1)
 
                 // Create a separate neural network for the birds based on their genes
                 let brainofOffspring1 = GeneticOperations.decode(genotype: offspring.0)
@@ -367,12 +378,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             flappyBirdGenerationContainer = newGen
 
             // Set the current bird
-            currentBird = flappyBirdGenerationContainer?[currentFlappy]
+            if (flappyBirdGenerationContainer?.count)! > currentFlappy {
+                print("OK!")
+                currentBird = flappyBirdGenerationContainer?[currentFlappy]
+            } else {
+                print("NOPE!!!!")
+                currentBird = maxBird
+            }
 
         } else {
 
             // Set the current bird
-            currentBird = flappyBirdGenerationContainer?[currentFlappy]
+            if (flappyBirdGenerationContainer?.count)! > currentFlappy {
+                print("SUPER OK")
+                currentBird = flappyBirdGenerationContainer?[currentFlappy]
+            }
+
         }
 
     }
@@ -516,6 +537,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 // Bird has contact with score entity
                 score += 1
                 scoreLabelNode.text = String(score)
+
+                // Update best score label
+                if score > bestScore {
+                    bestScore = score
+                    bestScoreLabel.text = "Best Score: \(self.bestScore)"
+                }
 
                 // Add a little visual feedback for the score increment
                 scoreLabelNode.run(SKAction.sequence([SKAction.scale(to: 1.5, duration:TimeInterval(0.1)), SKAction.scale(to: 1.0, duration:TimeInterval(0.1))]))

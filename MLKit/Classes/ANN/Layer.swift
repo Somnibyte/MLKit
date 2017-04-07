@@ -35,7 +35,7 @@ open class Layer {
     /// Matrix representing the amount of change for the bias value of each particular neuron in the layer. The matrix is used to update the biases of a layer (the biases within a particular layers neurons are subtracted from this change during stochastic gradient descent algorithm).
     public var Δb: Matrix<Float>?
 
-    /// The activationType represents the activation function that this particular layer will use.
+    /// The activationType represents the activation function that this particular layer will use. This enumeration will allow you to choose activation functions (and their derivatives) in an organized manner.
     public var activationType: ActivationFunctionType?
 
 
@@ -152,6 +152,7 @@ open class Layer {
         self.bias = self.bias! - changedBiases
     }
 
+    /// Generates random bias values for a particular Layer object.
     private func generateRandomBiases() -> Matrix<Float> {
 
         var biasValues: [Float] = []
@@ -164,6 +165,7 @@ open class Layer {
         return Matrix<Float>(rows: (layerSize?.outgoingSynapsesForEachNeuron)!, columns: 1, elements: ValueArray<Float>(biasValues))
     }
 
+    /// Generates random weight values for a particular Layer object.
     private func generateRandomWeights() -> Matrix<Float> {
         var weightValues: [Float] = []
 

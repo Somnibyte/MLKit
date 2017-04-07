@@ -21,6 +21,8 @@ public enum ActivationFunctionType {
 
     /**
      The activate method returns an activation function.
+
+     - returns: A method that takes in a Float as a parameter and returns a Float.
     */
     func activate() -> (_:Float) -> Float {
         switch self {
@@ -44,9 +46,10 @@ public enum ActivationFunctionType {
         }
     }
 
-
     /**
      The activate method returns the derivative of the activation function a Layer object is using.
+
+     - returns: A method that taeks in a Float as a parameter and returns a Float.
     */
     func derivative() -> (_:Float) -> Float {
         switch self {
@@ -123,7 +126,7 @@ public enum ActivationFunctionType {
         return -2 * val * exp(powf((-val), 2))
     }
 
-    // Error Method
+    /// Simply a method to satisfy the switch statements located in the activate and derivative methods. The method simply returns -1 which indicates that an error has occurred (A non-existant enum was discovered).
     private func error(val: Float) -> Float {
         return -1
     }

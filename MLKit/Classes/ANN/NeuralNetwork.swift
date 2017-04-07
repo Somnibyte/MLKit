@@ -22,6 +22,10 @@ open class NeuralNetwork {
     /// The 'inputLayerSize' represents the number of neurons the input layer will have and the 'outputLayerSize' represents the number of output neurons the output layer will have.
     public var networkSize: (inputLayerSize: Int, outputLayerSize: Int)?
 
+
+    /**
+     - parameter size: See networkSize doc (attribute above).
+    */
     public init(size: (Int, Int)) {
 
         self.networkSize = size
