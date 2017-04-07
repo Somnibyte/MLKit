@@ -1,7 +1,9 @@
 ![](https://github.com/Somnibyte/MLKit/blob/master/MLKitSmallerLogo.png)
 
-# [WIP] MLKit (a.k.a Machine Learning Kit) 🤖
+# MLKit (a.k.a Machine Learning Kit) 🤖
 MLKit is a simple machine learning framework written in Swift. Currently MLKit features machine learning algorithms that deal with the topic of regression, but the framework will expand over time with topics such as classification, clustering, recommender systems, and deep learning. The vision and goal of this framework is to provide developers with a toolkit to create products that can learn from data. MLKit is a side project of mine in order to make it easier for developers to implement machine learning algorithms on the go, and to familiarlize myself with machine learning concepts.
+
+*This project is under active development and is not ready for use in commercial or personal projects.*
 
 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/josephmisiti/awesome-machine-learning)
 [![Version](https://img.shields.io/cocoapods/v/MLKit.svg?style=flat)](https://cocoapods.org/pods/MachineLearningKit)
@@ -95,7 +97,7 @@ To contribute to an already existant algorithm within the framework, please crea
 ### Week of April 3rd
 |M|T|W|Th|F|
 |---|---|---|---|---|
-|Neural Network Revision ([Checkout Neural-Network-Revision](https://github.com/Somnibyte/MLKit/tree/neural-network-revision))||Neural Network Revision ([Checkout Neural-Network-Revision](https://github.com/Somnibyte/MLKit/tree/neural-network-revision))|TBD|TBD
+|Neural Network Revision ([Checkout Neural-Network-Revision](https://github.com/Somnibyte/MLKit/tree/neural-network-revision))|Neural Network Revision ([Checkout Neural-Network-Revision](https://github.com/Somnibyte/MLKit/tree/neural-network-revision))|Neural Network Revision ([Checkout Neural-Network-Revision](https://github.com/Somnibyte/MLKit/tree/neural-network-revision))|Neural Network Revision ([Checkout Neural-Network-Revision](https://github.com/Somnibyte/MLKit/tree/neural-network-revision))|Neural Network Revision ([Checkout Neural-Network-Revision](https://github.com/Somnibyte/MLKit/tree/neural-network-revision))
 
 ----------------------------------------------
 
