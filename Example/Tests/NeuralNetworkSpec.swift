@@ -16,7 +16,7 @@ class NeuralNetworkSpec: QuickSpec {
 
     override func spec() {
 
-        it(" ") {
+        it("Should be able to run a simple AND example. ") {
 
 
         }

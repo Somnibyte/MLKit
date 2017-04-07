@@ -8,7 +8,8 @@
 
 import SpriteKit
 import MachineLearningKit
-/*
+import Upsurge
+
 class GameScene: SKScene, SKPhysicsContactDelegate {
 
     // ADDITIONS
@@ -45,7 +46,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     /// SKLabel
     var generationLabel: SKLabelNode!
-    var fitnessLabel:SKLabelNode!
+    var fitnessLabel: SKLabelNode!
 
 
 
@@ -451,12 +452,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             */
 
             // Decision AI makes
-            let decision = (currentBird?.brain?.forward(input: [Float(1), Float(normalizedDistanceOfNextPipe), Float(normalizedPosToGap), Float(birdYPos), Float(normalizedDistanceFromBottomPipe)]))!
+            let input = Matrix<Float>(rows: 4, columns: 1, elements: [Float(normalizedDistanceOfNextPipe), Float(normalizedPosToGap), Float(birdYPos), Float(normalizedDistanceFromBottomPipe)])
+            let decision = currentBird?.brain?.feedforward(input: input)
 
             print("FLAPPY BIRD DECISION: \(decision)")
 
             // 0.95 was arbitrary, tweaking is recommended
-            if  decision[0] >= Float(0.89) {
+            if  (decision?.elements[0])! >= Float(0.5) {
 
                 if moving.speed > 0 {
 
@@ -537,4 +539,3 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
 }
- */

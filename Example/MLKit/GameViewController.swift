@@ -10,7 +10,7 @@ import UIKit
 import SpriteKit
 import MachineLearningKit
 import Upsurge
-/*
+
 extension SKNode {
     class func unarchiveFromFile(_ file: String) -> SKNode? {
 
@@ -41,9 +41,9 @@ public class FlappyGenome: Genome {
 
     public var fitness: Float = 0
 
-    public var brain: NeuralNet?
+    public var brain: NeuralNetwork?
 
-    public init(genotype: [Float], network: NeuralNet) {
+    public init(genotype: [Float], network: NeuralNetwork) {
 
         self.genotypeRepresentation = genotype
         self.brain = network
@@ -67,11 +67,9 @@ class GameViewController: UIViewController {
         for _ in 1...20 {
 
             // Bias already included
-            let brain = NeuralNet(numberOfInputNeurons: 4, hiddenLayers: [4], numberOfOutputNeurons: 1)
-
-            brain.activationFuncType = .siglog
-
-            brain.activationFuncTypeOfOutputLayer = .siglog
+            let brain = NeuralNetwork(size: (4, 1))
+            brain.addLayer(layer: Layer(size: (4, 4), activationType: .siglog))
+            brain.addLayer(layer: Layer(size: (4, 1), activationType: .siglog))
 
             let newBird = FlappyGenome(genotype: GeneticOperations.encode(network: brain), network: brain)
 
@@ -117,4 +115,3 @@ class GameViewController: UIViewController {
     }
 
 }
- */
