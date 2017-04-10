@@ -42,7 +42,7 @@ To contribute to an already existant algorithm within the framework, please crea
 - [x] [Lasso Regression](https://github.com/Somnibyte/MLKit/wiki/Lasso-Regression-Tutorial)
 - [x] [Ridge Regression](https://github.com/Somnibyte/MLKit/wiki/Ridge-Regression-Tutorial)
 - [x] [Neural Network AND logic Example](https://github.com/Somnibyte/MLKit/wiki/Neural-Network-AND-logic-Example)
-- [x] [Flappy Bird Example Project Explanation](https://github.com/Somnibyte/MLKit/wiki/Genetic-Algorithm-(Flappy-Bird-Game-Explanation))
+- [x] [Flappy Bird Example Project Explanation](https://github.com/Somnibyte/MLKit/wiki/Genetic-Algorithm-(Flappy-Bird-Game-Explanation)) (*Deprecated* ~ Will be updated soon using new Neural Network class)
 - [x] [Genetic Algorithms](https://github.com/Somnibyte/MLKit/wiki/Genetic-Algorithm)
 
 ## Example Project 
@@ -55,7 +55,7 @@ To contribute to an already existant algorithm within the framework, please crea
 
 ### Roadmap:
 
-- [ ] [Issue #2](https://github.com/Somnibyte/MLKit/issues/2)
+- [x] [Issue #2](https://github.com/Somnibyte/MLKit/issues/2)
 - [ ] KMeans++ Implementation 
 - [ ] KMeans Clustering Documentation
 - [ ] Neural Network Documentation 
@@ -76,7 +76,7 @@ To contribute to an already existant algorithm within the framework, please crea
 - [x] Simple Linear Regression (Allows for 1 feature set)
 - [x] Polynomial Regression (Allows for multiple features)
 - [x] Ridge Regression
-- [x] Neural Network (/w BackPropagation, Single Layer Perceptron, Multi-Layer Perceptron (1 Hidden Layer limit), and Single Layer Adaline
+- [x] Multi-Layer Feed Forward Neural Network 
 - [x] K-Means Clustering 
 - [x] Genetic Algorithms 
 - [x] Allows for splitting your data into training, validation, and test sets.
@@ -94,10 +94,10 @@ To contribute to an already existant algorithm within the framework, please crea
 
 ## Development Schedule
 
-### Week of April 3rd
+### Week of April 10rd
 |M|T|W|Th|F|
 |---|---|---|---|---|
-|Neural Network Revision ([Checkout Neural-Network-Revision](https://github.com/Somnibyte/MLKit/tree/neural-network-revision))|Neural Network Revision ([Checkout Neural-Network-Revision](https://github.com/Somnibyte/MLKit/tree/neural-network-revision))|Neural Network Revision ([Checkout Neural-Network-Revision](https://github.com/Somnibyte/MLKit/tree/neural-network-revision))|Neural Network Revision ([Checkout Neural-Network-Revision](https://github.com/Somnibyte/MLKit/tree/neural-network-revision))|Neural Network Revision ([Checkout Neural-Network-Revision](https://github.com/Somnibyte/MLKit/tree/neural-network-revision))
+|||||
 
 ----------------------------------------------
 
