@@ -48,9 +48,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var generationLabel: SKLabelNode!
     var fitnessLabel: SKLabelNode!
 
+    let groundTexture = SKTexture(imageNamed: "land")
 
     /// Best score (regardless of generation)
     var bestScore: Int = 0
+
 
     /// Label that displays the best score (bestScore attribute)
     var bestScoreLabel: SKLabelNode!
@@ -93,7 +95,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         moving.addChild(pipes)
 
         // ground
-        let groundTexture = SKTexture(imageNamed: "land")
+
         groundTexture.filteringMode = .nearest // shorter form for SKTextureFilteringMode.Nearest
 
         let moveGroundSprite = SKAction.moveBy(x: -groundTexture.size().width * 2.0, y: 0, duration: TimeInterval(0.02 * groundTexture.size().width * 2.0))
@@ -207,7 +209,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(fitnessLabel)
 
         // Set the current bird
-        currentBird = flappyBirdGenerationContainer?[currentFlappy]
+        if let generation = flappyBirdGenerationContainer {
+            currentBird = generation[currentFlappy]
+        }
 
     }
 
@@ -293,22 +297,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         currentTimeForFlappyBird = NSDate()
 
         // Evaluate the current birds fitness
-        currentBird?.generateFitness(score: score, time: Float(timeInterval))
-
-        // Current generation, bird, and fitness of current bird information
-        print("--------------------------- \n")
-        print("GENERATION: \(generationCounter)")
-        print("BIRD COUNT: \(currentFlappy)")
-        print("FITNESS: \(currentBird?.fitness)")
-        self.generationLabel.text = "Gen: \(self.generationCounter)"
-        print("--------------------------- \n")
-
-        // Go to next flappy bird
-        currentFlappy += 1
-
-        // Filter out the worst birds after gen 6 (can be adjusted)
-
         if let bird = currentBird {
+            bird.generateFitness(score: score, time: Float(timeInterval))
+
+            // Current generation, bird, and fitness of current bird information
+            print("--------------------------- \n")
+            print("GENERATION: \(generationCounter)")
+            print("BIRD COUNT: \(currentFlappy)")
+            print("FITNESS: \(bird.fitness)")
+            self.generationLabel.text = "Gen: \(self.generationCounter)"
+            print("--------------------------- \n")
+
             if bird.fitness >= 9.0 {
                 print("FOUND RARE BIRD")
                 print(bird.brain?.layers[0].weights)
@@ -318,10 +317,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         }
 
-        if generationCounter >= 3 {
+        // Go to next flappy bird
+        currentFlappy += 1
 
+        if let generation = flappyBirdGenerationContainer {
             // Experiment: Keep some of the last best birds and put them back into the population
-            lastBestGen = (flappyBirdGenerationContainer?.filter({$0.fitness >= 7.0}))!
+            lastBestGen = generation.filter({$0.fitness >= 6.0})
+
+            if lastBestGen.count > 10 {
+                // We want to make room for unique birds
+                lastBestGen = Array<FlappyGenome>(lastBestGen[0...6])
+            }
         }
 
         if let bird = currentBird {
@@ -341,8 +347,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             // New generation array
             var newGen: [FlappyGenome] = []
 
-            newGen += lastBestGen
-            newGen.append(maxBird!)
+            newGen = lastBestGen
+
+            if let bestBird = maxBird {
+                flappyBirdGenerationContainer?.append(bestBird)
+            }
 
             while newGen.count < 20 {
 
@@ -382,17 +391,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             flappyBirdGenerationContainer = newGen
 
             // Set the current bird
-            if (flappyBirdGenerationContainer?.count)! > currentFlappy {
-                currentBird = flappyBirdGenerationContainer?[currentFlappy]
-            } else {
-                currentBird = maxBird
+
+            if let generation = flappyBirdGenerationContainer {
+                if generation.count > currentFlappy{
+                    currentBird = generation[currentFlappy]
+                }else{
+                    if let bestBird = maxBird {
+                        currentBird = maxBird
+                    }
+                }
             }
 
         } else {
 
             // Set the current bird
-            if (flappyBirdGenerationContainer?.count)! > currentFlappy {
-                currentBird = flappyBirdGenerationContainer?[currentFlappy]
+            if let generation = flappyBirdGenerationContainer {
+                if generation.count > currentFlappy {
+                    currentBird = generation[currentFlappy]
+                }
+            }else{
+                currentBird = maxBird
             }
 
         }
@@ -402,8 +420,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if moving.speed > 0 {
             for _ in touches { // do we need all touches?
-                bird.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
-                bird.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 30))
+
             }
         } else if canRestart {
             self.resetScene()
@@ -457,6 +474,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
             let normalizedDistanceOfNextPipe = (distanceOfNextPipe - 3)/(725-3)
 
+            let distanceFromTheGround = abs(self.bird.position.y - self.moving.children[1].position.y)
+
+            let normalizedDistanceFromTheGround = (distanceFromTheGround - 135)/(840-135)
+
+            let distanceFromTheSky = abs(880 - self.bird.position.y)
+
+            let normalizedDistanceFromTheSky = distanceFromTheSky/632
+
+
+
             // Bird Y position
             let birdYPos = bird.position.y/CGFloat(880)
 
@@ -465,25 +492,31 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
             let normalizedPosToGap = (posToGap - (-439))/(279 - (-439))
 
-            // Decision AI makes
-            let input = Matrix<Float>(rows: 4, columns: 1, elements: [Float(normalizedDistanceOfNextPipe), Float(normalizedPosToGap), Float(birdYPos), Float(normalizedDistanceFromBottomPipe)])
-            let decision = currentBird?.brain?.feedforward(input: input)
+            if let flappyBird = currentBird {
 
-            print("FLAPPY BIRD DECISION: \(decision)")
+                // Decision AI makes
+                let input = Matrix<Float>(rows: 6, columns: 1, elements: [Float(normalizedDistanceOfNextPipe), Float(normalizedPosToGap), Float(birdYPos), Float(normalizedDistanceFromBottomPipe), Float(normalizedDistanceFromTheGround), Float(normalizedDistanceFromTheSky)])
+                let potentialDescision = flappyBird.brain?.feedforward(input: input)
 
-            // 0.95 was arbitrary, tweaking is recommended
-            if  (decision?.elements[0])! >= Float(0.5) {
 
-                if moving.speed > 0 {
+                if let decision = potentialDescision {
 
-                       bird.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
-                       bird.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 30))
+                    print("FLAPPY BIRD DECISION: \(decision)")
 
+                    if  (decision.elements[0]) >= Float(0.5) {
+
+                        if moving.speed > 0 {
+
+                            bird.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+                            bird.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 30))
+
+                        }
+                        
+                    }
                 }
 
-            } else {
-
             }
+
         }
 
         if canRestart {

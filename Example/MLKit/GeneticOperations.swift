@@ -33,7 +33,6 @@ final class GeneticOperations {
             genotypeRepresentation += Array<Float>(layer.bias!.elements)
         }
 
-
         return genotypeRepresentation
     }
 
@@ -47,14 +46,14 @@ final class GeneticOperations {
     public static func decode(genotype: [Float]) -> NeuralNetwork {
 
         // Create a new NueralNet
-        let brain = NeuralNetwork(size: (4, 1))
-        brain.addLayer(layer: Layer(size: (4, 4), activationType: .siglog))
-        brain.addLayer(layer: Layer(size: (4, 1), activationType: .siglog))
+        let brain = NeuralNetwork(size: (6, 1))
+        brain.addLayer(layer: Layer(size: (6, 12), activationType: .siglog))
+        brain.addLayer(layer: Layer(size: (12, 1), activationType: .siglog))
 
-        brain.layers[0].weights = Matrix<Float>(rows: 4, columns: 4, elements: ValueArray<Float>(Array<Float>(genotype[0...15])))
-        brain.layers[0].bias = Matrix<Float>(rows: 4, columns: 1, elements: ValueArray<Float>(Array<Float>(genotype[20...23])))
-        brain.layers[1].weights = Matrix<Float>(rows: 1, columns: 4, elements: ValueArray<Float>(Array<Float>(genotype[16...19])))
-        brain.layers[1].bias = Matrix<Float>(rows: 1, columns: 1, elements: ValueArray<Float>([genotype[24]]))
+        brain.layers[0].weights = Matrix<Float>(rows: 12, columns: 6, elements: ValueArray<Float>(Array<Float>(genotype[0...71])))
+        brain.layers[0].bias = Matrix<Float>(rows: 12, columns: 1, elements: ValueArray<Float>(Array<Float>(genotype[72...83])))
+        brain.layers[1].weights = Matrix<Float>(rows: 1, columns: 12, elements: ValueArray<Float>(Array<Float>(genotype[84...95])))
+        brain.layers[1].bias = Matrix<Float>(rows: 1, columns: 1, elements: ValueArray<Float>([genotype[96]]))
 
         return brain
     }
