@@ -303,30 +303,32 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.generationLabel.text = "Gen: \(self.generationCounter)"
         print("--------------------------- \n")
 
-        /* DEBUGGING
-        if (currentBird?.fitness)! >= Float(7.0) {
-            print("-----BEST BIRD FOUND------")
-
-            currentBird?.brain?.inputLayer.printLayer(layer: (currentBird?.brain?.inputLayer)!)
-            currentBird?.brain?.hiddenLayer.printLayer(listOfHiddenLayers: (currentBird?.brain?.listOfHiddenLayers)!)
-            currentBird?.brain?.outputLayer.printLayer(layer: (currentBird?.brain?.outputLayer)!)
-
-        }
-        */
-
         // Go to next flappy bird
         currentFlappy += 1
 
         // Filter out the worst birds after gen 6 (can be adjusted)
+
+        if let bird = currentBird {
+            if bird.fitness >= 9.0 {
+                print("FOUND RARE BIRD")
+                print(bird.brain?.layers[0].weights)
+                print(bird.brain?.layers[1].weights)
+                print(bird.brain?.layers[0].bias)
+                print(bird.brain?.layers[1].bias)
+            }
+        }
+
         if generationCounter >= 3 {
 
             // Experiment: Keep some of the last best birds and put them back into the population
             lastBestGen = (flappyBirdGenerationContainer?.filter({$0.fitness >= 7.0}))!
         }
 
-        if (currentBird?.fitness)! > maxFitness {
-            maxFitness = (currentBird?.fitness)!
-            maxBird = currentBird
+        if let bird = currentBird {
+            if bird.fitness > maxFitness {
+                maxFitness = bird.fitness
+                maxBird = bird
+            }
         }
 
         // If we have hit the 20th bird, we need to move on to the next generation
@@ -381,10 +383,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
             // Set the current bird
             if (flappyBirdGenerationContainer?.count)! > currentFlappy {
-                print("OK!")
                 currentBird = flappyBirdGenerationContainer?[currentFlappy]
             } else {
-                print("NOPE!!!!")
                 currentBird = maxBird
             }
 
@@ -392,7 +392,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
             // Set the current bird
             if (flappyBirdGenerationContainer?.count)! > currentFlappy {
-                print("SUPER OK")
                 currentBird = flappyBirdGenerationContainer?[currentFlappy]
             }
 
@@ -465,14 +464,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let posToGap = pipes.children[0].children[2].position.y - bird.position.y
 
             let normalizedPosToGap = (posToGap - (-439))/(279 - (-439))
-
-            /*
-            print("======================== \n")
-            print(" DIST: \((finalDistanceOfNextPipe))")
-            print("PIPE POSITION: \(finalPosToGap)")
-            print("Bird POS Y: \(birdPos)")
-            print("======================== \n")
-            */
 
             // Decision AI makes
             let input = Matrix<Float>(rows: 4, columns: 1, elements: [Float(normalizedDistanceOfNextPipe), Float(normalizedPosToGap), Float(birdYPos), Float(normalizedDistanceFromBottomPipe)])

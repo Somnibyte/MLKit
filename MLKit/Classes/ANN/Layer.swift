@@ -56,6 +56,42 @@ open class Layer {
 
 
     /**
+     Manipulate the weights values of a particular Layer object.
+     
+     - parameter newWeights: Weights as a matrix. Shape (rows and columns) must be equivalent to the weights of the Layer object being manipulated.
+
+    */
+    public func editWeights(newWeights:Matrix<Float>) throws{
+
+        if let currentWeights = self.weights {
+            if newWeights.rows != currentWeights.rows && newWeights.columns != currentWeights.columns {
+                throw MachineLearningError.invalidInput
+            }
+        }
+
+        self.weights = newWeights
+    }
+
+
+    /**
+     Manipulate the bias values of a particular Layer object.
+
+     - parameter newBias: Bias as a matrix. Shape (rows and columns) must be equivalent to the bias of the Layer object being manipulated.
+
+     */
+    public func editBias(newBias:Matrix<Float>) throws{
+
+        if let currentBias = self.bias {
+            if newBias.rows != currentBias.rows && newBias.columns != currentBias.columns {
+                throw MachineLearningError.invalidInput
+            }
+        }
+
+        self.bias = newBias
+    }
+
+
+    /**
      The forward method passes input into the layers neurons and produces an output matrix. The method saves the input into the Layer objects 'input' atrribute. The method also saves the activation and net value of each neuron into the 'activationValues' and 'zValues' attributes.
 
      - parameter input: Matrix of input values. EX: If the shape of your layer is (2,1), your input should be of shape (2,1).
