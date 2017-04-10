@@ -460,10 +460,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
             // Check to see if the pipe in front has gone behind the bird
             // if so, make the new pipe in front of the bird the target pipe
-            if pipes.children[currentPipe].position.x < bird.position.x {
+            if pipes.children.count > 1 {
+                if pipes.children[currentPipe].position.x < bird.position.x {
 
-                currentPipe = closestPipe(pipes: pipes.children)
+                    currentPipe = closestPipe(pipes: pipes.children)
+                }
             }
+
+            if pipes.children.count == 1 {
+                if pipes.children[0].position.x < bird.position.x {
+
+                    currentPipe = 0
+                }
+            }
+
 
             // Distance between next pipe and bird
             let distanceOfNextPipe = abs(pipes.children[currentPipe].position.x - bird.position.x)
