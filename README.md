@@ -20,7 +20,7 @@ MLKit is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'MachineLearningKit', '0.1.6'
+pod 'MachineLearningKit', '0.1.7'
 ```
 
 

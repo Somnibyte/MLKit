@@ -103,7 +103,7 @@ open class Layer {
         var a = input
 
         self.input = input
-
+        
         a = (self.weights! * a)
 
         a = Matrix<Float>(rows: a.rows, columns: a.columns, elements: a.elements + self.bias!.elements)
