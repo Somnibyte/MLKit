@@ -16,7 +16,7 @@ MLKit is a simple machine learning framework written in Swift. Currently MLKit f
 
 ## Installation
 
-** New Cocoapods version coming soon, in the meanwhile follow the instructions below: **
+**New Cocoapods version coming soon, in the meanwhile follow the instructions below:**
 
 #### Without Cocoapods
 1. Download the repository.
