@@ -16,13 +16,12 @@ MLKit is a simple machine learning framework written in Swift. Currently MLKit f
 
 ## Installation
 
-MLKit is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+** New Cocoapods version coming soon, in the meanwhile follow the instructions below: **
 
-```ruby
-pod 'MachineLearningKit', '0.1.7'
-```
-
+#### Without Cocoapods
+1. Download the repository.
+2. `cd [Project_Path_Goes_Here]/Example` 
+3. `pod install`
 
 ----------------------------------------------
 
