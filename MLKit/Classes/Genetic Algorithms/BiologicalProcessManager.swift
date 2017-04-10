@@ -177,7 +177,7 @@ open class BiologicalProcessManager {
 
     /**
      The inverseMutation method shuffles a portion of the genes of a Genome object.
-     The genotype representation is altered directly, nothing will be returned. 
+     The genotype representation is altered directly, nothing will be returned.
 
      - parameter genotype: The genotypeRepresentation array of a Genome object.
 

@@ -8,6 +8,7 @@
 
 import SpriteKit
 import MachineLearningKit
+import Upsurge
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
 
@@ -26,7 +27,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var generationCounter = 1
 
     /// Variable to keep track of the current time (this is used to determine fitness later)
-    var currentTime = NSDate()
+    var currentTimeForFlappyBird = NSDate()
 
     /// The red square (our goal area)
     var goalArea: SKShapeNode!
@@ -42,6 +43,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     /// The best birds from the previous generation
     var lastBestGen: [FlappyGenome] = []
+
+    /// SKLabel
+    var generationLabel: SKLabelNode!
+    var fitnessLabel: SKLabelNode!
+
+
+    /// Best score (regardless of generation)
+    var bestScore: Int = 0
+
+    /// Label that displays the best score (bestScore attribute)
+    var bestScoreLabel: SKLabelNode!
+
 
     // END of ADDITIONS
 
@@ -173,6 +186,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         scoreLabelNode.text = String(score)
         self.addChild(scoreLabelNode)
 
+
+        bestScore = 0
+        bestScoreLabel = SKLabelNode(fontNamed:"MarkerFelt-Wide")
+        bestScoreLabel.position = CGPoint( x: self.frame.midX - 120.0, y: 3 * self.frame.size.height / 4 + 110.0 )
+        bestScoreLabel.zPosition = 100
+        bestScoreLabel.text = "bestScore: \(self.bestScore)"
+        self.addChild(bestScoreLabel)
+
+        generationLabel = SKLabelNode(fontNamed:"MarkerFelt-Wide")
+        generationLabel.position = CGPoint( x: self.frame.midX - 150.0, y: 3 * self.frame.size.height / 4 + 140.0 )
+        generationLabel.zPosition = 100
+        generationLabel.text = "Gen: 1"
+        self.addChild(generationLabel)
+
+        fitnessLabel = SKLabelNode(fontNamed:"MarkerFelt-Wide")
+        fitnessLabel.position = CGPoint( x: self.frame.midX + 110.0, y: 3 * self.frame.size.height / 4 + 140.0 )
+        fitnessLabel.zPosition = 100
+        fitnessLabel.text = "Fitness: 0"
+        self.addChild(fitnessLabel)
+
         // Set the current bird
         currentBird = flappyBirdGenerationContainer?[currentFlappy]
 
@@ -256,8 +289,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         // Calculate the amount of time it took until the AI lost.
         let endDate: NSDate = NSDate()
-        let timeInterval: Double = endDate.timeIntervalSince(currentTime as Date)
-        currentTime = NSDate()
+        let timeInterval: Double = endDate.timeIntervalSince(currentTimeForFlappyBird as Date)
+        currentTimeForFlappyBird = NSDate()
 
         // Evaluate the current birds fitness
         currentBird?.generateFitness(score: score, time: Float(timeInterval))
@@ -267,36 +300,39 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         print("GENERATION: \(generationCounter)")
         print("BIRD COUNT: \(currentFlappy)")
         print("FITNESS: \(currentBird?.fitness)")
+        self.generationLabel.text = "Gen: \(self.generationCounter)"
         print("--------------------------- \n")
-
-        /* DEBUGGING
-        if (currentBird?.fitness)! >= Float(7.0) {
-            print("-----BEST BIRD FOUND------")
-
-            currentBird?.brain?.inputLayer.printLayer(layer: (currentBird?.brain?.inputLayer)!)
-            currentBird?.brain?.hiddenLayer.printLayer(listOfHiddenLayers: (currentBird?.brain?.listOfHiddenLayers)!)
-            currentBird?.brain?.outputLayer.printLayer(layer: (currentBird?.brain?.outputLayer)!)
-
-        }
-        */
 
         // Go to next flappy bird
         currentFlappy += 1
 
         // Filter out the worst birds after gen 6 (can be adjusted)
+
+        if let bird = currentBird {
+            if bird.fitness >= 9.0 {
+                print("FOUND RARE BIRD")
+                print(bird.brain?.layers[0].weights)
+                print(bird.brain?.layers[1].weights)
+                print(bird.brain?.layers[0].bias)
+                print(bird.brain?.layers[1].bias)
+            }
+        }
+
         if generationCounter >= 3 {
 
             // Experiment: Keep some of the last best birds and put them back into the population
-            lastBestGen = (flappyBirdGenerationContainer?.filter({$0.fitness >= 4}))!
+            lastBestGen = (flappyBirdGenerationContainer?.filter({$0.fitness >= 7.0}))!
         }
 
-        if (currentBird?.fitness)! > maxFitness {
-            maxFitness = (currentBird?.fitness)!
-            maxBird = currentBird
+        if let bird = currentBird {
+            if bird.fitness > maxFitness {
+                maxFitness = bird.fitness
+                maxBird = bird
+            }
         }
 
         // If we have hit the 20th bird, we need to move on to the next generation
-        if currentFlappy == 10 {
+        if currentFlappy == 20 {
 
             print("GENERATING NEW GEN!")
 
@@ -308,7 +344,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             newGen += lastBestGen
             newGen.append(maxBird!)
 
-            while newGen.count < 10 {
+            while newGen.count < 20 {
 
                 // Select the best parents
                 let parents = PopulationManager.selectParents(genomes: flappyBirdGenerationContainer!)
@@ -320,9 +356,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 var offspring = BiologicalProcessManager.onePointCrossover(crossoverRate: 0.5, parentOneGenotype: parents.0.genotypeRepresentation, parentTwoGenotype: parents.1.genotypeRepresentation)
 
                 // Mutate their genes
-
                 BiologicalProcessManager.inverseMutation(mutationRate: 0.7, genotype: &offspring.0)
                 BiologicalProcessManager.inverseMutation(mutationRate: 0.7, genotype: &offspring.1)
+
 
                 // Create a separate neural network for the birds based on their genes
                 let brainofOffspring1 = GeneticOperations.decode(genotype: offspring.0)
@@ -346,12 +382,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             flappyBirdGenerationContainer = newGen
 
             // Set the current bird
-            currentBird = flappyBirdGenerationContainer?[currentFlappy]
+            if (flappyBirdGenerationContainer?.count)! > currentFlappy {
+                currentBird = flappyBirdGenerationContainer?[currentFlappy]
+            } else {
+                currentBird = maxBird
+            }
 
         } else {
 
             // Set the current bird
-            currentBird = flappyBirdGenerationContainer?[currentFlappy]
+            if (flappyBirdGenerationContainer?.count)! > currentFlappy {
+                currentBird = flappyBirdGenerationContainer?[currentFlappy]
+            }
+
         }
 
     }
@@ -384,6 +427,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
 
     override func update(_ currentTime: TimeInterval) {
+
+        let endDate: NSDate = NSDate()
+        let timeInterval: Double = endDate.timeIntervalSince(currentTimeForFlappyBird as Date)
+        self.fitnessLabel.text = "Fitness: \(NSString(format: "%.2f", timeInterval))"
 
         checkIfOutOfBounds(bird.position.y)
 
@@ -418,21 +465,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
             let normalizedPosToGap = (posToGap - (-439))/(279 - (-439))
 
-            /*
-            print("======================== \n")
-            print(" DIST: \((finalDistanceOfNextPipe))")
-            print("PIPE POSITION: \(finalPosToGap)")
-            print("Bird POS Y: \(birdPos)")
-            print("======================== \n")
-            */
-
             // Decision AI makes
-            let decision = (currentBird?.brain?.forward(input: [Float(1), Float(normalizedDistanceOfNextPipe), Float(normalizedPosToGap), Float(birdYPos), Float(normalizedDistanceFromBottomPipe)]))!
+            let input = Matrix<Float>(rows: 4, columns: 1, elements: [Float(normalizedDistanceOfNextPipe), Float(normalizedPosToGap), Float(birdYPos), Float(normalizedDistanceFromBottomPipe)])
+            let decision = currentBird?.brain?.feedforward(input: input)
 
             print("FLAPPY BIRD DECISION: \(decision)")
 
             // 0.95 was arbitrary, tweaking is recommended
-            if  decision[0] >= Float(0.89) {
+            if  (decision?.elements[0])! >= Float(0.5) {
 
                 if moving.speed > 0 {
 
@@ -490,6 +530,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 // Bird has contact with score entity
                 score += 1
                 scoreLabelNode.text = String(score)
+
+                // Update best score label
+                if score > bestScore {
+                    bestScore = score
+                    bestScoreLabel.text = "Best Score: \(self.bestScore)"
+                }
 
                 // Add a little visual feedback for the score increment
                 scoreLabelNode.run(SKAction.sequence([SKAction.scale(to: 1.5, duration:TimeInterval(0.1)), SKAction.scale(to: 1.0, duration:TimeInterval(0.1))]))
