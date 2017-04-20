@@ -94,9 +94,8 @@ To contribute to an already existant algorithm within the framework, please crea
 
 ### Week of April 24rd
 |M|T|W|Th|F|
-|TBD|---|---|---|---|
-|||||
-
+|---|---|---|---|---|
+|TBD||||
 ----------------------------------------------
 
 # License
