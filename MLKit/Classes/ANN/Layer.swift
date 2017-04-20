@@ -43,7 +43,7 @@ open class Layer {
 
         self.layerSize = size
 
-        self.bias = generateRandomBiases()
+        self.bias = Matrix<Float>(rows: size.outgoingSynapsesForEachNeuron, columns: 1, elements: ValueArray<Float>(count: size.outgoingSynapsesForEachNeuron, repeatedValue: 1.0))
 
         self.weights = generateRandomWeights()
 
@@ -57,11 +57,11 @@ open class Layer {
 
     /**
      Manipulate the weights values of a particular Layer object.
-     
+
      - parameter newWeights: Weights as a matrix. Shape (rows and columns) must be equivalent to the weights of the Layer object being manipulated.
 
-    */
-    public func editWeights(newWeights:Matrix<Float>) throws{
+     */
+    public func editWeights(newWeights: Matrix<Float>) throws {
 
         if let currentWeights = self.weights {
             if newWeights.rows != currentWeights.rows && newWeights.columns != currentWeights.columns {
@@ -79,7 +79,7 @@ open class Layer {
      - parameter newBias: Bias as a matrix. Shape (rows and columns) must be equivalent to the bias of the Layer object being manipulated.
 
      */
-    public func editBias(newBias:Matrix<Float>) throws{
+    public func editBias(newBias: Matrix<Float>) throws {
 
         if let currentBias = self.bias {
             if newBias.rows != currentBias.rows && newBias.columns != currentBias.columns {
@@ -97,13 +97,13 @@ open class Layer {
      - parameter input: Matrix of input values. EX: If the shape of your layer is (2,1), your input should be of shape (2,1).
 
      - returns: Output in the form of a matrix (Activation values).
-    */
+     */
     public func forward(input: Matrix<Float>) -> Matrix<Float> {
 
         var a = input
 
         self.input = input
-        
+
         a = (self.weights! * a)
 
         a = Matrix<Float>(rows: a.rows, columns: a.columns, elements: a.elements + self.bias!.elements)
@@ -123,7 +123,7 @@ open class Layer {
      - parameter cost: The cost represents the subtraction of the expected output by the target output.
 
      - returns: The delta/signal of the last layer.
-    */
+     */
     public func produceOuputError(cost: Matrix<Float>) -> Matrix<Float> {
 
         var z = self.zValues
@@ -143,7 +143,7 @@ open class Layer {
      - parameter nextLayer: The next layer (Layer object).
 
      - returns: A Matrix containing the error signal of the previous layer.
-    */
+     */
     public func propagateError(previousLayerDelta: Matrix<Float>, nextLayer: Layer) -> Matrix <Float> {
 
         // Compute the current layers δ value.
@@ -174,7 +174,7 @@ open class Layer {
      - parameter miniBatchSize: Mini-Batch size.
      - parameter eta: Learning rate.
 
-    */
+     */
     public func updateWeights(miniBatchSize: Int, eta: Float) {
 
         var learningRate = eta/Float(miniBatchSize)
@@ -188,8 +188,8 @@ open class Layer {
         self.bias = self.bias! - changedBiases
     }
 
-    /// Generates random bias values for a particular Layer object.
-    private func generateRandomBiases() -> Matrix<Float> {
+    /// Generates random bias values for a particular Layer object. Note: When you instantiate a layer, the bias values are all 1 by default.
+    public func generateRandomBiases() -> Matrix<Float> {
 
         var biasValues: [Float] = []
 

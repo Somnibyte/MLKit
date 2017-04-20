@@ -393,9 +393,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             // Set the current bird
 
             if let generation = flappyBirdGenerationContainer {
-                if generation.count > currentFlappy{
+                if generation.count > currentFlappy {
                     currentBird = generation[currentFlappy]
-                }else{
+                } else {
                     if let bestBird = maxBird {
                         currentBird = maxBird
                     }
@@ -409,7 +409,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 if generation.count > currentFlappy {
                     currentBird = generation[currentFlappy]
                 }
-            }else{
+            } else {
                 currentBird = maxBird
             }
 
@@ -521,7 +521,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                             bird.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 30))
 
                         }
-                        
+
                     }
                 }
 

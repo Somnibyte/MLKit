@@ -92,9 +92,9 @@ To contribute to an already existant algorithm within the framework, please crea
 
 ## Development Schedule
 
-### Week of April 10rd
+### Week of April 24rd
 |M|T|W|Th|F|
-|---|---|---|---|---|
+|TBD|---|---|---|---|
 |||||
 
 ----------------------------------------------
@@ -102,7 +102,7 @@ To contribute to an already existant algorithm within the framework, please crea
 # License
 MIT License
 
-Copyright (c) 2016 Guled Ahmed
+Copyright (c) 2017 Guled Ahmed
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
