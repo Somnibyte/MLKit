@@ -55,7 +55,6 @@ To contribute to an already existant algorithm within the framework, please crea
 
 ### Roadmap:
 
-- [x] [Issue #2](https://github.com/Somnibyte/MLKit/issues/2)
 - [ ] KMeans++ Implementation 
 - [ ] KMeans Clustering Documentation
 - [ ] Neural Network Documentation 
@@ -94,11 +93,8 @@ To contribute to an already existant algorithm within the framework, please crea
 
 ## Development Schedule
 
-### Week of April 24rd
-|M|T|W|Th|F|
-|---|---|---|---|---|
-|TBD||||
-----------------------------------------------
+### Week of August 28th
+TBD 
 
 # License
 MIT License
