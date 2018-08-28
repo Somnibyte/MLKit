@@ -1,9 +1,9 @@
 PODS:
-  - MachineLearningKit (0.1.7):
+  - MachineLearningKit (0.1.8):
     - Upsurge
-  - Nimble (6.0.1)
-  - Quick (1.1.0)
-  - Upsurge (0.8.0)
+  - Nimble (7.1.3)
+  - Quick (1.3.1)
+  - Upsurge (0.10.2)
 
 DEPENDENCIES:
   - MachineLearningKit (from `../`)
@@ -11,16 +11,22 @@ DEPENDENCIES:
   - Quick
   - Upsurge
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Nimble
+    - Quick
+    - Upsurge
+
 EXTERNAL SOURCES:
   MachineLearningKit:
-    :path: ../
+    :path: "../"
 
 SPEC CHECKSUMS:
-  MachineLearningKit: 040457b6d6afce606454c16008b954f3952a0d32
-  Nimble: 1527fd1bd2b4cf0636251a36bc8ab37e81da8347
-  Quick: dafc587e21eed9f4cab3249b9f9015b0b7a7f71d
-  Upsurge: 614412863a3b5470b31636a004654b6ef3a34f47
+  MachineLearningKit: 24cf37aed754e3fab2b5c0c823e3e82a0063f905
+  Nimble: 2839b01d1b31f6a6a7777a221f0d91cf52e8e27b
+  Quick: d17304d58d0d169dd0bd1c6e5c28e3318de32a1a
+  Upsurge: 5866beadc3da27f91c5df4ac795deb3f3238d678
 
-PODFILE CHECKSUM: 6efa57e13fa4fabb331b61a3a84a43c047bb3113
+PODFILE CHECKSUM: 6f086d02cdc4ed10abc56279cba6e00448c35830
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.5.3

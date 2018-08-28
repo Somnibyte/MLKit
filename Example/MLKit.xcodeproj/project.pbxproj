@@ -8,17 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		16C9F55B9FB2BEAF643302B4 /* Pods_MLKit_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8829C99A800D59865185C8D0 /* Pods_MLKit_Example.framework */; };
-		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
-		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
-		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
-		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		7D7064C9A3631B7752642915 /* Pods_MLKit_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F7E553BF29858564109C95C /* Pods_MLKit_Tests.framework */; };
 		9A2618FF1E6F1C5E006B9D6E /* GeneticSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2618FD1E6F1C4E006B9D6E /* GeneticSpec.swift */; };
-		9A5294461E6F22BA00506C2A /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9A5294451E6F22BA00506C2A /* GameScene.sks */; };
-		9A5294481E6F22C000506C2A /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5294471E6F22C000506C2A /* GameScene.swift */; };
-		9A52944A1E6F22C800506C2A /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5294491E6F22C800506C2A /* GameViewController.swift */; };
-		9A52944C1E6F232F00506C2A /* bird.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 9A52944B1E6F232F00506C2A /* bird.atlas */; };
-		9A5294501E6F44E200506C2A /* GeneticOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A52944F1E6F44E200506C2A /* GeneticOperations.swift */; };
 		9A54B3B81E5B5D6D0059B577 /* kc_house_data.csv in Resources */ = {isa = PBXBuildFile; fileRef = 9A54B3B71E5B5D6D0059B577 /* kc_house_data.csv */; };
 		9A92AE061E6DB958000DBC84 /* LassoRegressionSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A92AE051E6DB958000DBC84 /* LassoRegressionSpec.swift */; };
 		9A92AE081E6DB96B000DBC84 /* MLDataManagerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A92AE071E6DB96B000DBC84 /* MLDataManagerSpec.swift */; };
@@ -27,6 +18,15 @@
 		9A92AE0E1E6DB9A4000DBC84 /* RidgeRegressionSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A92AE0D1E6DB9A4000DBC84 /* RidgeRegressionSpec.swift */; };
 		9A92AE101E6DB9B1000DBC84 /* NeuralNetworkSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A92AE0F1E6DB9B1000DBC84 /* NeuralNetworkSpec.swift */; };
 		9A92AE141E6DBD9A000DBC84 /* CSVReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A92AE131E6DBD9A000DBC84 /* CSVReader.swift */; };
+		E163E7B221352514002310EB /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E163E79921352514002310EB /* GameViewController.swift */; };
+		E163E7B521352514002310EB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E163E79E21352514002310EB /* Images.xcassets */; };
+		E163E7B621352514002310EB /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = E163E79F21352514002310EB /* GameScene.sks */; };
+		E163E7B721352514002310EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E163E7A021352514002310EB /* AppDelegate.swift */; };
+		E163E7B821352514002310EB /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E163E7A121352514002310EB /* GameScene.swift */; };
+		E163E7B921352514002310EB /* GeneticOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E163E7A221352514002310EB /* GeneticOperations.swift */; };
+		E163E7CA21352561002310EB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E163E7C521352561002310EB /* LaunchScreen.xib */; };
+		E163E7CB21352561002310EB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E163E7C721352561002310EB /* Main.storyboard */; };
+		E163E7CC21352561002310EB /* bird.atlas in Resources */ = {isa = PBXBuildFile; fileRef = E163E7C921352561002310EB /* bird.atlas */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,23 +58,12 @@
 		4F7E553BF29858564109C95C /* Pods_MLKit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MLKit_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		533ED56CBC06E518D99EE4BE /* Pods-MLKit_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MLKit_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MLKit_Example/Pods-MLKit_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* MLKit_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MLKit_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		607FACDA1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* MLKit_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MLKit_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65CE8F014155800F07E3652F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		6FE1BF7F8EF374CFB92CBB77 /* Pods-MLKit_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MLKit_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MLKit_Tests/Pods-MLKit_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		8829C99A800D59865185C8D0 /* Pods_MLKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MLKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A2618FD1E6F1C4E006B9D6E /* GeneticSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneticSpec.swift; sourceTree = "<group>"; };
-		9A4707A91E5C8F51002C2268 /* MLKit-PlayGround.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = "MLKit-PlayGround.playground"; path = "../MLKit-PlayGround.playground"; sourceTree = "<group>"; };
-		9A5294451E6F22BA00506C2A /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		9A5294471E6F22C000506C2A /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
-		9A5294491E6F22C800506C2A /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
-		9A52944B1E6F232F00506C2A /* bird.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = bird.atlas; sourceTree = "<group>"; };
-		9A52944F1E6F44E200506C2A /* GeneticOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneticOperations.swift; sourceTree = "<group>"; };
 		9A54B3B71E5B5D6D0059B577 /* kc_house_data.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = kc_house_data.csv; sourceTree = "<group>"; };
 		9A92AE051E6DB958000DBC84 /* LassoRegressionSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LassoRegressionSpec.swift; sourceTree = "<group>"; };
 		9A92AE071E6DB96B000DBC84 /* MLDataManagerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLDataManagerSpec.swift; sourceTree = "<group>"; };
@@ -84,7 +73,17 @@
 		9A92AE0F1E6DB9B1000DBC84 /* NeuralNetworkSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NeuralNetworkSpec.swift; sourceTree = "<group>"; };
 		9A92AE131E6DBD9A000DBC84 /* CSVReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSVReader.swift; sourceTree = "<group>"; };
 		AD54BBE1B07E33FF3F5DD543 /* Pods-MLKit_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MLKit_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-MLKit_Example/Pods-MLKit_Example.release.xcconfig"; sourceTree = "<group>"; };
-		BCFC43680C2D8165DD3A9F1E /* MachineLearningKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = MachineLearningKit.podspec; path = ../MachineLearningKit.podspec; sourceTree = "<group>"; };
+		BCFC43680C2D8165DD3A9F1E /* MachineLearningKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = MachineLearningKit.podspec; path = ../MachineLearningKit.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		E163E79921352514002310EB /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		E163E79E21352514002310EB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		E163E79F21352514002310EB /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		E163E7A021352514002310EB /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E163E7A121352514002310EB /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		E163E7A221352514002310EB /* GeneticOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneticOperations.swift; sourceTree = "<group>"; };
+		E163E7A321352514002310EB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E163E7C621352561002310EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		E163E7C821352561002310EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
+		E163E7C921352561002310EB /* bird.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = bird.atlas; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,9 +129,10 @@
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
-				9A4707A91E5C8F51002C2268 /* MLKit-PlayGround.playground */,
-				607FACF51AFB993E008FA782 /* Podspec Metadata */,
-				607FACD21AFB9204008FA782 /* Example for MLKit */,
+				1C1CAD4BD2BE393928F7BE50 /* LICENSE */,
+				BCFC43680C2D8165DD3A9F1E /* MachineLearningKit.podspec */,
+				65CE8F014155800F07E3652F /* README.md */,
+				E163E79721352514002310EB /* MLKit */,
 				607FACE81AFB9204008FA782 /* Tests */,
 				607FACD11AFB9204008FA782 /* Products */,
 				2BB0D1DA9E4FBF6A18F70F15 /* Pods */,
@@ -149,65 +149,46 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		607FACD21AFB9204008FA782 /* Example for MLKit */ = {
-			isa = PBXGroup;
-			children = (
-				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
-				9A5294451E6F22BA00506C2A /* GameScene.sks */,
-				9A52944F1E6F44E200506C2A /* GeneticOperations.swift */,
-				9A5294471E6F22C000506C2A /* GameScene.swift */,
-				9A5294491E6F22C800506C2A /* GameViewController.swift */,
-				607FACD91AFB9204008FA782 /* Main.storyboard */,
-				9A52944B1E6F232F00506C2A /* bird.atlas */,
-				607FACDC1AFB9204008FA782 /* Images.xcassets */,
-				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
-				607FACD31AFB9204008FA782 /* Supporting Files */,
-			);
-			name = "Example for MLKit";
-			path = MLKit;
-			sourceTree = "<group>";
-		};
-		607FACD31AFB9204008FA782 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				607FACD41AFB9204008FA782 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				9A92AE131E6DBD9A000DBC84 /* CSVReader.swift */,
+				9A2618FD1E6F1C4E006B9D6E /* GeneticSpec.swift */,
+				607FACEA1AFB9204008FA782 /* Info.plist */,
+				9A54B3B71E5B5D6D0059B577 /* kc_house_data.csv */,
 				9A92AE051E6DB958000DBC84 /* LassoRegressionSpec.swift */,
 				9A92AE071E6DB96B000DBC84 /* MLDataManagerSpec.swift */,
-				9A92AE091E6DB984000DBC84 /* PolynomialRegressionSpec.swift */,
-				9A92AE0B1E6DB995000DBC84 /* SimpleLinearRegressionSpec.swift */,
-				9A92AE0D1E6DB9A4000DBC84 /* RidgeRegressionSpec.swift */,
 				9A92AE0F1E6DB9B1000DBC84 /* NeuralNetworkSpec.swift */,
-				9A2618FD1E6F1C4E006B9D6E /* GeneticSpec.swift */,
-				607FACE91AFB9204008FA782 /* Supporting Files */,
+				9A92AE091E6DB984000DBC84 /* PolynomialRegressionSpec.swift */,
+				9A92AE0D1E6DB9A4000DBC84 /* RidgeRegressionSpec.swift */,
+				9A92AE0B1E6DB995000DBC84 /* SimpleLinearRegressionSpec.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
 		};
-		607FACE91AFB9204008FA782 /* Supporting Files */ = {
+		E163E79721352514002310EB /* MLKit */ = {
 			isa = PBXGroup;
 			children = (
-				9A54B3B71E5B5D6D0059B577 /* kc_house_data.csv */,
-				607FACEA1AFB9204008FA782 /* Info.plist */,
+				E163E7A021352514002310EB /* AppDelegate.swift */,
+				E163E7C421352561002310EB /* Base.lproj */,
+				E163E7C921352561002310EB /* bird.atlas */,
+				E163E79F21352514002310EB /* GameScene.sks */,
+				E163E7A121352514002310EB /* GameScene.swift */,
+				E163E79921352514002310EB /* GameViewController.swift */,
+				E163E7A221352514002310EB /* GeneticOperations.swift */,
+				E163E79E21352514002310EB /* Images.xcassets */,
+				E163E7A321352514002310EB /* Info.plist */,
 			);
-			name = "Supporting Files";
+			path = MLKit;
 			sourceTree = "<group>";
 		};
-		607FACF51AFB993E008FA782 /* Podspec Metadata */ = {
+		E163E7C421352561002310EB /* Base.lproj */ = {
 			isa = PBXGroup;
 			children = (
-				BCFC43680C2D8165DD3A9F1E /* MachineLearningKit.podspec */,
-				65CE8F014155800F07E3652F /* README.md */,
-				1C1CAD4BD2BE393928F7BE50 /* LICENSE */,
+				E163E7C521352561002310EB /* LaunchScreen.xib */,
+				E163E7C721352561002310EB /* Main.storyboard */,
 			);
-			name = "Podspec Metadata";
+			path = Base.lproj;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,7 +203,6 @@
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
 				B2A28970539C0F840B7FC745 /* [CP] Embed Pods Frameworks */,
-				3A8A5DE2CE9B29776BD52FBD /* [CP] Copy Pods Resources */,
 				9A4707BB1E5C8FCB002C2268 /* Embed Frameworks */,
 			);
 			buildRules = (
@@ -243,7 +223,6 @@
 				607FACE21AFB9204008FA782 /* Frameworks */,
 				607FACE31AFB9204008FA782 /* Resources */,
 				24A3EFCC92C196B1ED88B40B /* [CP] Embed Pods Frameworks */,
-				E0D9FAAD7A176A48DE5B1E39 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -262,18 +241,18 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = CocoaPods;
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						LastSwiftMigration = 0820;
+						LastSwiftMigration = 0940;
 						ProvisioningStyle = Automatic;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = DZV4MYF2U6;
-						LastSwiftMigration = 0820;
+						LastSwiftMigration = 0940;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
 				};
@@ -302,11 +281,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A5294461E6F22BA00506C2A /* GameScene.sks in Resources */,
-				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
-				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
-				9A52944C1E6F232F00506C2A /* bird.atlas in Resources */,
-				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
+				E163E7CB21352561002310EB /* Main.storyboard in Resources */,
+				E163E7B521352514002310EB /* Images.xcassets in Resources */,
+				E163E7B621352514002310EB /* GameScene.sks in Resources */,
+				E163E7CA21352561002310EB /* LaunchScreen.xib in Resources */,
+				E163E7CC21352561002310EB /* bird.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,28 +306,18 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-MLKit_Tests/Pods-MLKit_Tests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
+				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MLKit_Tests/Pods-MLKit_Tests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		3A8A5DE2CE9B29776BD52FBD /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MLKit_Example/Pods-MLKit_Example-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B2A28970539C0F840B7FC745 /* [CP] Embed Pods Frameworks */ = {
@@ -357,9 +326,14 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-MLKit_Example/Pods-MLKit_Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/MachineLearningKit/MachineLearningKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Upsurge/Upsurge.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MachineLearningKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Upsurge.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -372,13 +346,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MLKit_Tests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CBF04E3B88BDFD9CA04873B6 /* [CP] Check Pods Manifest.lock */ = {
@@ -387,28 +364,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MLKit_Example-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		E0D9FAAD7A176A48DE5B1E39 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MLKit_Tests/Pods-MLKit_Tests-resources.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -418,10 +383,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A5294481E6F22C000506C2A /* GameScene.swift in Sources */,
-				9A5294501E6F44E200506C2A /* GeneticOperations.swift in Sources */,
-				9A52944A1E6F22C800506C2A /* GameViewController.swift in Sources */,
-				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				E163E7B821352514002310EB /* GameScene.swift in Sources */,
+				E163E7B921352514002310EB /* GeneticOperations.swift in Sources */,
+				E163E7B721352514002310EB /* AppDelegate.swift in Sources */,
+				E163E7B221352514002310EB /* GameViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,20 +416,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		607FACD91AFB9204008FA782 /* Main.storyboard */ = {
+		E163E7C521352561002310EB /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				607FACDA1AFB9204008FA782 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		607FACDE1AFB9204008FA782 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				607FACDF1AFB9204008FA782 /* Base */,
+				E163E7C621352561002310EB /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		E163E7C721352561002310EB /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E163E7C821352561002310EB /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -478,14 +443,22 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -509,7 +482,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -525,14 +498,22 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -549,7 +530,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -562,6 +543,7 @@
 			baseConfigurationReference = 533ED56CBC06E518D99EE4BE /* Pods-MLKit_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = MLKit/Info.plist;
@@ -570,7 +552,8 @@
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -579,6 +562,7 @@
 			baseConfigurationReference = AD54BBE1B07E33FF3F5DD543 /* Pods-MLKit_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = MLKit/Info.plist;
@@ -587,7 +571,7 @@
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -595,9 +579,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0A3DE73AE01ACF9939D79E62 /* Pods-MLKit_Tests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = DZV4MYF2U6;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(SDKROOT)/System/Library/Frameworks",
 					"$(inherited)",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -609,7 +594,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MLKit_Example.app/MLKit_Example";
 			};
 			name = Debug;
@@ -618,9 +603,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6FE1BF7F8EF374CFB92CBB77 /* Pods-MLKit_Tests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = DZV4MYF2U6;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(SDKROOT)/System/Library/Frameworks",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = Tests/Info.plist;
@@ -628,7 +614,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MLKit_Example.app/MLKit_Example";
 			};
 			name = Release;

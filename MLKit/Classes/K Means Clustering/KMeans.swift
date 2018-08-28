@@ -76,16 +76,16 @@ open class KMeans {
             // Obtain the previous clusters
             comparison = trainingCentroids
 
-            for var i in 0..<dataset.count {
+            for i in 0..<dataset.count {
 
                 var smallestDistance = Float.infinity
                 var idx = 0
-                for var i in (0...k-1) {
+                for i in (0...k-1) {
 
                     // Calculate the distance between a centroid and a given point
-                    var difference = dataset.row(idx) - trainingCentroids.row(i)
-                    var squared = difference * difference
-                    var reduced = squared.reduce(0, +)
+                    let difference = dataset.row(idx) - trainingCentroids.row(i)
+                    let squared = difference * difference
+                    let reduced = squared.reduce(0, +)
 
                     distances[i] = sqrtf(reduced)
 
@@ -103,27 +103,27 @@ open class KMeans {
 
             // Move the centroids
 
-            for var i in associationArr {
+            for i in associationArr {
                 var currentCentroid = trainingCentroids.row(associationArr[i])
                 currentCentroid += dataset.row(i)
             }
 
-            for var i in (0...k-1) {
-                var currentCentroid = trainingCentroids.row(i)
-                currentCentroid.map({ $0/Float(dataset.count) })
+            for i in (0...k-1) {
+                let currentCentroid = trainingCentroids.row(i)
+                _ = currentCentroid.map({ $0/Float(dataset.count) })
             }
 
             var finalDifference = Float(0)
 
-            for var i in (0...k-1) {
+            for i in (0...k-1) {
 
-                var difference = comparison.row(i) - trainingCentroids.row(i)
+                let difference = comparison.row(i) - trainingCentroids.row(i)
 
-                difference.map({$0 * $0})
+                _ = difference.map({$0 * $0})
 
-                var aggregate = difference.reduce(0, +)
+                let aggregate = difference.reduce(0, +)
 
-                var distance = sqrtf(aggregate)
+                let distance = sqrtf(aggregate)
 
                 finalDifference = (finalDifference > distance) ? finalDifference:distance
 

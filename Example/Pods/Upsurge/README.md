@@ -1,7 +1,5 @@
 # Upsurge
 
-[![Build Status](https://travis-ci.org/aleph7/Upsurge.svg?branch=master)](https://travis-ci.org/aleph7/Upsurge)
-
 Upsurge is a math utilities library. It provides support for linear operations on vectors and matrices, and slicing of higher-dimensional tensors. It relies on [Accelerate](https://developer.apple.com/library/mac/documentation/Accelerate/Reference/AccelerateFWRef/index.html#//apple_ref/doc/uid/TP40009465), which is a framework that provides high-performance functions for matrix math, digital signal processing, and image manipulation by harnessing [SIMD](http://en.wikipedia.org/wiki/SIMD) instructions available in modern CPUs.
 
 Upsurge is a fork of [Surge](https://github.com/mattt/Surge) which was abandoned for a while. Upsurge supports tensors and has better support for matrices and arrays. It provides a custom `ValueArray` class as an alternative to Swift's built-in `Array`. It being a `class` instead of a `struct` means that you can manage when and if it gets copied, making memory management more explicit. This also allows defining the `+=` operator to mean addition instead of concatenation.
@@ -17,8 +15,19 @@ Upsurge is a fork of [Surge](https://github.com/mattt/Surge) which was abandoned
 
 ## Installation
 
-Upsurge supports both CocoaPods (`pod 'Upsurge'`) and Carthage (`github "aleph7/Upsurge"`). 
+Upsurge supports both CocoaPods (`pod 'Upsurge'`) and Carthage (`github "aleph7/Upsurge"`).  For macOS apps you can use the Swift Package Manager to install Upsurge by adding the proper description to your Package.swift file:
 
+```swift
+import PackageDescription
+
+let package = Package(
+    name: "YOUR_PROJECT_NAME",
+    targets: [],
+    dependencies: [
+        .Package(url: "https://github.com/aleph7/Upsurge.git", Version(0,8,.max)),
+    ]
+)
+```
 
 ## Usage
 
@@ -86,6 +95,25 @@ let B = inv(A) * C // [2.0, 1.0]′
 let r = A*B - C    // zero   
 ```
 
+### Tiling
+A block  `Matrix`  can be formed by repeating a 1-D `ValueArray` or 2-D `Matrix`  **mxn** times.
+
+```swift
+import Upsurge
+
+let a = ValueArray = [1.0, 2.0]
+// Tile source array 2 times in each directon,
+// returning a 2X4 block matrix
+let A = a.tile(2, 2)
+
+let B = Matrix<Double>([
+    [1.0,  2.0],
+    [3.0,  4.0]
+)]
+// Tile source matrix 2 times in each directon,
+// returning a 4x4 block matrix
+let r = B.tile(2, 2)
+```
 
 ### Tensors
 
