@@ -18,13 +18,14 @@
 		9A92AE0E1E6DB9A4000DBC84 /* RidgeRegressionSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A92AE0D1E6DB9A4000DBC84 /* RidgeRegressionSpec.swift */; };
 		9A92AE101E6DB9B1000DBC84 /* NeuralNetworkSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A92AE0F1E6DB9B1000DBC84 /* NeuralNetworkSpec.swift */; };
 		9A92AE141E6DBD9A000DBC84 /* CSVReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A92AE131E6DBD9A000DBC84 /* CSVReader.swift */; };
+		E10B1DC72135EE7A0076E94D /* LaunchImage.png in Resources */ = {isa = PBXBuildFile; fileRef = E10B1DC62135EE7A0076E94D /* LaunchImage.png */; };
+		E10B1DCA2135EEEF0076E94D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E10B1DC82135EEEE0076E94D /* LaunchScreen.storyboard */; };
 		E163E7B221352514002310EB /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E163E79921352514002310EB /* GameViewController.swift */; };
 		E163E7B521352514002310EB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E163E79E21352514002310EB /* Images.xcassets */; };
 		E163E7B621352514002310EB /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = E163E79F21352514002310EB /* GameScene.sks */; };
 		E163E7B721352514002310EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E163E7A021352514002310EB /* AppDelegate.swift */; };
 		E163E7B821352514002310EB /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E163E7A121352514002310EB /* GameScene.swift */; };
 		E163E7B921352514002310EB /* GeneticOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E163E7A221352514002310EB /* GeneticOperations.swift */; };
-		E163E7CA21352561002310EB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E163E7C521352561002310EB /* LaunchScreen.xib */; };
 		E163E7CB21352561002310EB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E163E7C721352561002310EB /* Main.storyboard */; };
 		E163E7CC21352561002310EB /* bird.atlas in Resources */ = {isa = PBXBuildFile; fileRef = E163E7C921352561002310EB /* bird.atlas */; };
 /* End PBXBuildFile section */
@@ -74,6 +75,8 @@
 		9A92AE131E6DBD9A000DBC84 /* CSVReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSVReader.swift; sourceTree = "<group>"; };
 		AD54BBE1B07E33FF3F5DD543 /* Pods-MLKit_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MLKit_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-MLKit_Example/Pods-MLKit_Example.release.xcconfig"; sourceTree = "<group>"; };
 		BCFC43680C2D8165DD3A9F1E /* MachineLearningKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = MachineLearningKit.podspec; path = ../MachineLearningKit.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		E10B1DC62135EE7A0076E94D /* LaunchImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchImage.png; sourceTree = "<group>"; };
+		E10B1DC92135EEEE0076E94D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E163E79921352514002310EB /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		E163E79E21352514002310EB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E163E79F21352514002310EB /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -81,7 +84,6 @@
 		E163E7A121352514002310EB /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		E163E7A221352514002310EB /* GeneticOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneticOperations.swift; sourceTree = "<group>"; };
 		E163E7A321352514002310EB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E163E7C621352561002310EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		E163E7C821352561002310EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
 		E163E7C921352561002310EB /* bird.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = bird.atlas; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -178,6 +180,7 @@
 				E163E7A221352514002310EB /* GeneticOperations.swift */,
 				E163E79E21352514002310EB /* Images.xcassets */,
 				E163E7A321352514002310EB /* Info.plist */,
+				E10B1DC62135EE7A0076E94D /* LaunchImage.png */,
 			);
 			path = MLKit;
 			sourceTree = "<group>";
@@ -185,7 +188,7 @@
 		E163E7C421352561002310EB /* Base.lproj */ = {
 			isa = PBXGroup;
 			children = (
-				E163E7C521352561002310EB /* LaunchScreen.xib */,
+				E10B1DC82135EEEE0076E94D /* LaunchScreen.storyboard */,
 				E163E7C721352561002310EB /* Main.storyboard */,
 			);
 			path = Base.lproj;
@@ -283,8 +286,9 @@
 			files = (
 				E163E7CB21352561002310EB /* Main.storyboard in Resources */,
 				E163E7B521352514002310EB /* Images.xcassets in Resources */,
+				E10B1DC72135EE7A0076E94D /* LaunchImage.png in Resources */,
 				E163E7B621352514002310EB /* GameScene.sks in Resources */,
-				E163E7CA21352561002310EB /* LaunchScreen.xib in Resources */,
+				E10B1DCA2135EEEF0076E94D /* LaunchScreen.storyboard in Resources */,
 				E163E7CC21352561002310EB /* bird.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -416,12 +420,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		E163E7C521352561002310EB /* LaunchScreen.xib */ = {
+		E10B1DC82135EEEE0076E94D /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				E163E7C621352561002310EB /* Base */,
+				E10B1DC92135EEEE0076E94D /* Base */,
 			);
-			name = LaunchScreen.xib;
+			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 		E163E7C721352561002310EB /* Main.storyboard */ = {
