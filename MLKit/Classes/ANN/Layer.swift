@@ -130,9 +130,9 @@ open class Layer {
 
         z = Matrix<Float>(rows: (z?.rows)!, columns: (z?.columns)!, elements:ValueArray<Float>(z!.elements.map((activationType?.derivative())!)))
 
-        var sigmaPrime = z
+        let sigmaPrime = z
 
-        var Δ = cost * sigmaPrime!
+        let Δ = cost * sigmaPrime!
 
         return Δ
     }
@@ -147,18 +147,18 @@ open class Layer {
     public func propagateError(previousLayerDelta: Matrix<Float>, nextLayer: Layer) -> Matrix <Float> {
 
         // Compute the current layers δ value.
-        var nextLayerWeightTranspose = transpose(nextLayer.weights!)
+        let nextLayerWeightTranspose = transpose(nextLayer.weights!)
 
-        var deltaMultipliedBywT =  nextLayerWeightTranspose * previousLayerDelta
+        let deltaMultipliedBywT =  nextLayerWeightTranspose * previousLayerDelta
 
-        var sigmaPrime = Matrix<Float>(rows: (self.zValues?.rows)!, columns: (self.zValues?.columns)!, elements: ValueArray(self.zValues!.elements.map((activationType?.derivative())!)))
+        let sigmaPrime = Matrix<Float>(rows: (self.zValues?.rows)!, columns: (self.zValues?.columns)!, elements: ValueArray(self.zValues!.elements.map((activationType?.derivative())!)))
 
-        var currentLayerDelta =  Matrix<Float>(rows: deltaMultipliedBywT.rows, columns: deltaMultipliedBywT.columns, elements:  ValueArray(deltaMultipliedBywT.elements * sigmaPrime.elements))
+        let currentLayerDelta =  Matrix<Float>(rows: deltaMultipliedBywT.rows, columns: deltaMultipliedBywT.columns, elements:  ValueArray(deltaMultipliedBywT.elements * sigmaPrime.elements))
 
         // Update the current layers weights
-        var inputTranspose = transpose(self.input!)
+        let inputTranspose = transpose(self.input!)
 
-        var updatedWeights = currentLayerDelta * inputTranspose
+        let updatedWeights = currentLayerDelta * inputTranspose
 
         self.Δw = updatedWeights
 
@@ -177,11 +177,11 @@ open class Layer {
      */
     public func updateWeights(miniBatchSize: Int, eta: Float) {
 
-        var learningRate = eta/Float(miniBatchSize)
+        let learningRate = eta/Float(miniBatchSize)
 
-        var changeInWeights = learningRate * self.Δw!
+        let changeInWeights = learningRate * self.Δw!
 
-        var changedBiases = learningRate * self.Δb!
+        let changedBiases = learningRate * self.Δb!
 
         self.weights = self.weights! - changeInWeights
 
@@ -193,8 +193,8 @@ open class Layer {
 
         var biasValues: [Float] = []
 
-        for i in 0..<layerSize!.outgoingSynapsesForEachNeuron {
-            var biasValue = generateRandomNumber()
+        for _ in 0..<layerSize!.outgoingSynapsesForEachNeuron {
+            let biasValue = generateRandomNumber()
             biasValues.append(biasValue)
         }
 
@@ -205,8 +205,8 @@ open class Layer {
     private func generateRandomWeights() -> Matrix<Float> {
         var weightValues: [Float] = []
 
-        for i in 0..<(layerSize!.numberOfNeurons * layerSize!.outgoingSynapsesForEachNeuron) {
-            var weightValue = generateRandomNumber()
+        for _ in 0..<(layerSize!.numberOfNeurons * layerSize!.outgoingSynapsesForEachNeuron) {
+            let weightValue = generateRandomNumber()
 
             weightValues.append(weightValue)
         }
@@ -223,7 +223,7 @@ open class Layer {
     private func generateRandomNumber() -> Float {
         let u = Float(arc4random()) / Float(UINT32_MAX)
         let v = Float(arc4random()) / Float(UINT32_MAX)
-        let randomNum = sqrt( -2 * log(u) ) * cos( Float(2) * Float(M_PI) * v )
+        let randomNum = sqrt( -2 * log(u) ) * cos( Float(2) * Float.pi * v )
 
         return randomNum
     }

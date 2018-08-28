@@ -72,14 +72,14 @@ open class NeuralNetwork {
     */
     public func SGD(trainingData: InputDataType, epochs: Int, miniBatchSize: Int, eta: Float, testData: InputDataType? = nil) {
 
-        for i in 0..<epochs {
+        for _ in 0..<epochs {
             var shuffledData = trainingData.data.shuffle()
             let miniBatches = stride(from: 0, to: shuffledData.count, by: miniBatchSize).map {
                 Array(shuffledData[$0..<min($0 + miniBatchSize, shuffledData.count)])
             }
 
             for batch in miniBatches {
-                var b = InputDataType(data: batch)
+                let b = InputDataType(data: batch)
                 self.updateMiniBatch(miniBatch: b, eta: eta)
             }
         }
@@ -97,8 +97,8 @@ open class NeuralNetwork {
 
 
         for batch in miniBatch.data {
-            var inputMatrix = Matrix<Float>(rows: batch.input.count, columns: 1, elements: batch.input)
-            var outputMatrix = Matrix<Float>(rows: batch.target.count, columns: 1, elements: batch.target)
+            let inputMatrix = Matrix<Float>(rows: batch.input.count, columns: 1, elements: batch.input)
+            let outputMatrix = Matrix<Float>(rows: batch.target.count, columns: 1, elements: batch.target)
 
             self.backpropagate(input: inputMatrix, target: outputMatrix)
         }
@@ -132,7 +132,7 @@ open class NeuralNetwork {
         // Set the change in weights and bias for the last layer
         self.layers.last?.Δb = delta
 
-        var activationValuesforTheSecondToLastLayer = layers[layers.count-2].activationValues
+        let activationValuesforTheSecondToLastLayer = layers[layers.count-2].activationValues
 
         self.layers.last?.Δw = delta! * transpose(activationValuesforTheSecondToLastLayer!)
 

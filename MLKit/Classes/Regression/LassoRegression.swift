@@ -138,10 +138,10 @@ open class LassoRegression {
      - returns: The cost of your model (a.k.a The Residual Sum of Squares).
      */
     open func RSS(_ features: [Array<Float>], observation: Array<Float>) throws -> Float {
-        // Check if the users model has fit to their data
-        if self.finalWeights == nil {
-            throw MachineLearningError.modelHasNotBeenFit
-        }
+        // KBR: Check if the users model has fit to their data
+        //if self.finalWeights == nil {
+        //    throw MachineLearningError.modelHasNotBeenFit
+        //}
 
         // First get the predictions
         let yActual = observation

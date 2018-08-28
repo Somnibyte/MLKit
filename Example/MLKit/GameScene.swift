@@ -310,10 +310,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
             if bird.fitness >= 9.0 {
                 print("FOUND RARE BIRD")
-                print(bird.brain?.layers[0].weights)
-                print(bird.brain?.layers[1].weights)
-                print(bird.brain?.layers[0].bias)
-                print(bird.brain?.layers[1].bias)
+                print(bird.brain?.layers[0].weights as Any)
+                print(bird.brain?.layers[1].weights as Any)
+                print(bird.brain?.layers[0].bias as Any)
+                print(bird.brain?.layers[1].bias as Any)
             }
         }
 
@@ -396,7 +396,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 if generation.count > currentFlappy {
                     currentBird = generation[currentFlappy]
                 } else {
-                    if let bestBird = maxBird {
+                    if maxBird != nil {
                         currentBird = maxBird
                     }
                 }
@@ -549,7 +549,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 moving.speed = 0
 
                 bird.physicsBody?.collisionBitMask = worldCategory
-                bird.run(  SKAction.rotate(byAngle: CGFloat(M_PI) * CGFloat(bird.position.y) * 0.01, duration:1), completion: {self.bird.speed = 0 })
+                bird.run(  SKAction.rotate(byAngle: CGFloat.pi * CGFloat(bird.position.y) * 0.01, duration:1), completion: {self.bird.speed = 0 })
 
                 // Flash background if contact is detected
                 self.removeAction(forKey: "flash")
@@ -587,7 +587,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 moving.speed = 0
 
                 bird.physicsBody?.collisionBitMask = worldCategory
-                bird.run(  SKAction.rotate(byAngle: CGFloat(M_PI) * CGFloat(bird.position.y) * 0.01, duration:1), completion: {self.bird.speed = 0 })
+                bird.run(  SKAction.rotate(byAngle: CGFloat.pi * CGFloat(bird.position.y) * 0.01, duration:1), completion: {self.bird.speed = 0 })
 
                 // Flash background if contact is detected
                 self.removeAction(forKey: "flash")

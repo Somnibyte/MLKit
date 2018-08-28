@@ -125,11 +125,11 @@ open class RidgeRegression {
      - returns: The cost of your model (a.k.a The Residual Sum of Squares).
      */
     open func RSS(_ features: [Array<Float>], observation: Array<Float>) throws -> Float {
-        // Check if the users model has fit to their data
-        if self.finalWeights == nil {
-            print("You need to have fit a model first before computing the RSS/Cost Function.")
-            throw MachineLearningError.modelHasNotBeenFit
-        }
+        // KBR: Check if the users model has fit to their data
+        //if self.finalWeights == nil {
+        //    print("You need to have fit a model first before computing the RSS/Cost Function.")
+        //    throw MachineLearningError.modelHasNotBeenFit
+        //}
 
         // First get the predictions
         let yActual = observation

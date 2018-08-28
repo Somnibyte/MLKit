@@ -26,7 +26,7 @@ open class PopulationManager {
 
         // Create a "tournament" (an array of randomly selected genomes).
         for _ in 0..<genomes.count {
-            var randomIdx = Int(arc4random_uniform(UInt32(genomes.count-1)))
+            let randomIdx = Int(arc4random_uniform(UInt32(genomes.count-1)))
             tournament.append(genomes[randomIdx])
         }
 
@@ -40,7 +40,7 @@ open class PopulationManager {
         // Save and remove that individual from the list of genomes
         for (i, genome) in genomes.enumerated() {
             if genome.fitness > maxFitness {
-                maxFitness = genome.fitness as! Float
+                maxFitness = genome.fitness 
                 firstBestGenome = genome
                 indexOfBestGenome = i
             }
